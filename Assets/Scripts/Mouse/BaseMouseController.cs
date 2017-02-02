@@ -2,25 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseController : MonoBehaviour {
+public class BaseMouseController : MonoBehaviour {
 
-    Vector3 positionClick,positionCurrent,positionRelease;
-    
+    protected Vector3 positionClick,positionCurrent,positionRelease;
     bool firstClick = false;
     bool mouseHeld = false;
     public float doubleClickTime;
     float timeAtFirstClick;
+    public float holdCheckTime;
+    float holdTime = 0;
+    
+    [SerializeField] KeyCode mouseButton; //323 for leftClick, 324 for right
+
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Mouse0)){
+        if (Input.GetKeyDown(mouseButton)){
+            holdTime = 0;
+            findPosition(ref positionClick);
             mouseClick();
         }
         checkSingleClick();
 
-        if (Input.GetKey(KeyCode.Mouse0)) {
-            mouseHold();
+        if (Input.GetKey(mouseButton)) {
+            holdTime += Time.deltaTime;
+            if (holdTime > holdCheckTime)
+            {
+                findPosition(ref positionCurrent);
+                mouseHold();
+            }
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(mouseButton))
         {
+            findPosition(ref positionRelease);
             mouseRelease();
         }
 
@@ -36,7 +48,6 @@ public class MouseController : MonoBehaviour {
         }
     }
     void mouseClick() {
-        findPosition(ref positionClick);
 
         if (!firstClick)
         {
@@ -57,20 +68,21 @@ public class MouseController : MonoBehaviour {
             singleClick();
         }
     }
-    void singleClick() {
+
+
+    protected virtual void singleClick() {
 
     }
-    void doubleClick() {
+    protected virtual void doubleClick() {
     }
 
-    void mouseHold() {
-        findPosition(ref positionCurrent);
+    protected virtual void mouseHold() {
     }
 
-    void mouseRelease()
+    protected virtual void mouseRelease()
     {
-        findPosition(ref positionRelease);
 
     }
+
 
 }

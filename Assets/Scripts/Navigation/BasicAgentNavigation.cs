@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(NavMeshAgent))]
 public class BasicAgentNavigation : MonoBehaviour {
 
-    Transform target;
+    SmartTarget target;
     private Vector3 currentDestination;
     GameObject clickEffect;
     NavMeshAgent agent;
@@ -16,16 +16,21 @@ public class BasicAgentNavigation : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
     }
 	void Update () {
-        if (target.position != currentDestination) {
+        if (target!=null && target.getPosition() != currentDestination) {
             setDestination();
         }
 	}
-    public void setTarget(Transform t) {
+    public void setTarget(SmartTarget t) {
+        if (target != null)
+        {
+            target.removeFollower();
+        }
         target = t;
+        t.addFollower();
         setDestination();
     }
     void setDestination() {
-        currentDestination = target.position;
+        currentDestination = target.getPosition();
         agent.SetDestination(currentDestination);
     }
 
