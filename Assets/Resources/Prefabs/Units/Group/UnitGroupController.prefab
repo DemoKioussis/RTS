@@ -53,7 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   units: []
-  groupMovementSpeed: 5
+  arrived: 0
+  arriveRadius: 1.2
+  stopDist: 0
 --- !u!114 &114150679185762970
 MonoBehaviour:
   m_ObjectHideFlags: 1
