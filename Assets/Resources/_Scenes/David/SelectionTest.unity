@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13c056830c594bd4a88fbc9a9de18a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: {fileID: 0}
   selectionCircle: {fileID: 0}
 --- !u!23 &1190824708
 MeshRenderer:
@@ -236,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13c056830c594bd4a88fbc9a9de18a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: {fileID: 0}
   selectionCircle: {fileID: 0}
 --- !u!23 &1336892927
 MeshRenderer:
@@ -350,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13c056830c594bd4a88fbc9a9de18a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: {fileID: 0}
   selectionCircle: {fileID: 0}
 --- !u!23 &1706611686
 MeshRenderer:
@@ -547,6 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13c056830c594bd4a88fbc9a9de18a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: {fileID: 0}
   selectionCircle: {fileID: 0}
 --- !u!23 &2096182852
 MeshRenderer:
@@ -730,6 +734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionCirclePrefab: {fileID: 166266, guid: b95631d263a174465a52d446a85dace8,
+    type: 2}
+  unitGroupControllerPrefab: {fileID: 114150679185762970, guid: 23efe30d5fbe743049ec7dda488edfb2,
     type: 2}
 --- !u!1 &2136949688
 GameObject:
