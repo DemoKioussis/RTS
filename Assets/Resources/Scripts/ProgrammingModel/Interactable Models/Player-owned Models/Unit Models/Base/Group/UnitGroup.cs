@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using UnityEngine;
 public class UnitGroup :MonoBehaviour{
 
-    public List<Unit> units;
+    public List<UnitController> units;
     public float groupMovementSpeed;
     NavMeshAgent agent;
 
@@ -14,13 +14,13 @@ public class UnitGroup :MonoBehaviour{
 
 
     void Awake() {
-        units = new List<Unit>();
+        units = new List<UnitController>();
         agent = GetComponent<NavMeshAgent>();
     }
 
     void Update() {
         if (hasAction) {
-            transform.position += (targetPosition - transform.position).normalized*groupMovementSpeed;
+			transform.position = Vector3.MoveTowards (transform.position, targetPosition, groupMovementSpeed * Time.deltaTime);
         }
     }
     public void moveTo(MapPos p) {

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23496187234633968}
   - component: {fileID: 114490697480513236}
   - component: {fileID: 195054600350750664}
+  - component: {fileID: 114008059806515882}
   m_Layer: 10
   m_Name: ShortRange
   m_TagString: Untagged
@@ -82,6 +83,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1631743313040632}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114008059806515882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1631743313040632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e067e23ebdb23941a11ddcc738e8605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamId: 0
+  stats:
+    viewRange: 0
+    maxHitpoints: 0
+    hitpoints: 0
+    influenceMultiplier: 0
+  unitStats:
+    moveSpeed: 0
 --- !u!114 &114490697480513236
 MonoBehaviour:
   m_ObjectHideFlags: 1
