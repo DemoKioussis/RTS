@@ -27,7 +27,7 @@ public class UnitGroupController : MonoBehaviour, Interacts
         foreach(Unit u in group.units)
             u.transform.parent = transform;
 
-        switch (i.getInterationType()) {
+        switch (i.getInteractionType()) {
             case INTERACTION_TYPE.BUILDING:
                 break;
             case INTERACTION_TYPE.POSITION:

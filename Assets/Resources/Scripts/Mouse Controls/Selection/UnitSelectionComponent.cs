@@ -81,7 +81,7 @@ public class UnitSelectionComponent : MonoBehaviour
                         Destroy( selectableObject.selectionCircle.gameObject );
                         selectableObject.selectionCircle = null;
                     }
-                    selectedGroup.remove(selectableObject.GetComponent<Unit>())
+                    selectedGroup.remove(selectableObject.GetComponent<Unit>());
                 }
             }
         }

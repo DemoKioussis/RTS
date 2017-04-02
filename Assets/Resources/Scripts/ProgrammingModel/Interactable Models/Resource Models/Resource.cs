@@ -22,7 +22,7 @@ public class Resource : Interactable {
 	{
 		// To do
 	}
-    public override INTERACTION_TYPE getInterationType()
+    public override INTERACTION_TYPE getInteractionType()
     {
         return INTERACTION_TYPE.RESOURCE;
     }

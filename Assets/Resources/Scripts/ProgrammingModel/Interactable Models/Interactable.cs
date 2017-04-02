@@ -9,5 +9,5 @@ public abstract class Interactable : MonoBehaviour {
 
     public int teamId;
 
-    public abstract INTERACTION_TYPE getInterationType();
+    public abstract INTERACTION_TYPE getInteractionType();
 }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Interactable))]
 public class SelectableUnitComponent : MonoBehaviour
 {
-    Interactable interactable;
+    public Interactable interactable;
 
     void Awake()
     {

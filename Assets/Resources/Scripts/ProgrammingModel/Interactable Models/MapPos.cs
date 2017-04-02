@@ -14,7 +14,7 @@ public class MapPos : Interactable {
     public Vector3 getPosition() {
         return position;
     }
-    public override INTERACTION_TYPE getInterationType() {
+    public override INTERACTION_TYPE getInteractionType() {
         return INTERACTION_TYPE.POSITION;
     }
 
