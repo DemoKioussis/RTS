@@ -43,7 +43,8 @@ public class Building : RTSObject {
 		// To do
 	}
 
-	public override void SetSpawnPointAs(Vector3 p){
+	public virtual void SetSpawnPointAs(Vector3 p){
+		Debug.Log ("Set a spawn point");
 		spawnPoint = p;
 	}
 

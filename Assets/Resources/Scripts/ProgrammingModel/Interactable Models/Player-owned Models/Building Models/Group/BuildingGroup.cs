@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class BuildingGroup : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public List<BuildingController> buildings;
+	Interactable interaction;
+	Vector3 targetPosition;
+
+
+	void Awake() {
+		buildings = new List<BuildingController>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void SetSpawnTo(MapPos p) {
+		foreach (BuildingController u in buildings) {
+			u.SetSpawnTo(p);
+		}
+	}
+
+	public bool isEmpty() {
+		return buildings.Count == 0;
 	}
 }

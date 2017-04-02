@@ -33,6 +33,11 @@ public class TrainingBuilding : Building{
 		// To do
 	}
 
+	// Set the spawn point
+	public override void SetSpawnPointAs(Vector3 p){
+		base.SetSpawnPointAs (p);
+	}
+
 	GameObject InstantiatePlayableObject(GameObject playableObject)
 	{
 		GameObject output = Instantiate (playableObject, transform);

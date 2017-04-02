@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingController : MonoBehaviour, Interacts {
+public class BuildingController : MonoBehaviour{
 	private Building building;
 	private BuildingGroupController group;
 
 	void Awake() {
-		building = GetComponent<Unit>();
+		building = GetComponent<Building>();
 	}
 	public void setGroup(BuildingGroupController g)
 	{
@@ -17,8 +17,11 @@ public class BuildingController : MonoBehaviour, Interacts {
 		}
 		group = g;
 	}
-	public UnitGroupController getGroup()
+	public BuildingGroupController getGroup()
 	{
 		return group;
+	}
+	public void SetSpawnTo(MapPos p){
+		building.SetSpawnPointAs (p.getPosition());
 	}
 }
