@@ -12,10 +12,10 @@ public class UnitGroupController : MonoBehaviour, Interacts
         group = GetComponent<UnitGroup>();
 
     }
-    public void add(Unit u) {
+    public void add(UnitController u) {
         group.units.Add(u);
     }
-    public void remove(Unit u) {
+    public void remove(UnitController u) {
         group.units.Remove(u);
     }
     public bool isEmpty() {
@@ -24,7 +24,7 @@ public class UnitGroupController : MonoBehaviour, Interacts
     }
     public void interactWith(Interactable i)
     {
-        foreach (Unit u in group.units)
+        foreach (UnitController u in group.units)
         {
             if(u.getGroup()!=this)
                 setUnitGroup(u);
@@ -43,12 +43,12 @@ public class UnitGroupController : MonoBehaviour, Interacts
         }
 
     }
-    private void setUnitGroup(Unit u) {
+    private void setUnitGroup(UnitController u) {
         u.transform.parent = transform;
         u.setGroup(this);
     }
 
-    public void removeUnit(Unit u) {
+    public void removeUnit(UnitController u) {
         remove(u);
 		if (isEmpty())
 		{
