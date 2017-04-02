@@ -5,17 +5,27 @@ using UnityEngine;
 public class UnitGroup :MonoBehaviour{
 
     public List<Unit> units;
+    public float groupMovementSpeed;
     NavMeshAgent agent;
 
     Interactable interaction;
+    Vector3 targetPosition;
+    bool hasAction;
+
 
     void Awake() {
         units = new List<Unit>();
         agent = GetComponent<NavMeshAgent>();
     }
 
-    public void setTargetPosition(Vector3 p) {
-
+    void Update() {
+        if (hasAction) {
+            transform.position += (targetPosition - transform.position).normalized*groupMovementSpeed;
+        }
+    }
+    public void moveTo(MapPos p) {
+        hasAction = true;
+        targetPosition = p.getPosition();
     }
 
     public bool isEmpty() {

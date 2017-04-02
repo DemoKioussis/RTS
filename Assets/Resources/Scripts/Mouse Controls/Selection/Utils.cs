@@ -74,4 +74,21 @@ public static class Utils {
 
         return hitInfo;
     }
+
+	public static Vector3 GetPositionOfMouseOn(string layer)
+	{
+		int layerID = LayerMask.NameToLayer (layer);
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hitInfo;
+		Debug.DrawRay (ray.origin, ray.direction);
+		bool didHit = Physics.Raycast(ray, out hitInfo, 1000.0f, (1<<layerID));
+
+		if (didHit) {
+			return hitInfo.point;
+		}
+
+		return new Vector3(0,0,0);
+	}
+
+
 }
