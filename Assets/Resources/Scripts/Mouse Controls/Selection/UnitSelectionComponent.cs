@@ -12,12 +12,16 @@ public class UnitSelectionComponent : MonoBehaviour
 
     public GameObject selectionCirclePrefab;
     List<SelectableUnitComponent> selectedUnits = new List<SelectableUnitComponent>();
+    UnitGroupController selectedGroup;
+    UnitGroupController unitGroupControllerPrefab;
 
     void Update()
     {
         // If we press the left mouse button, begin selection and remember the location of the mouse
         if( Input.GetMouseButtonDown( 0 ) )
         {
+            selectedGroup = Instantiate(unitGroupControllerPrefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            selectedGroup = new UnitGroupController();
             selectedUnits = new List<SelectableUnitComponent>();
             isSelecting = true;
             mousePosition1 = Input.mousePosition;
@@ -34,6 +38,9 @@ public class UnitSelectionComponent : MonoBehaviour
         // If we let go of the left mouse button, end selection
         if( Input.GetMouseButtonUp( 0 ) )
         {
+            if (selectedGroup.isEmpty())
+                Destroy(selectedGroup);
+
             selectedUnits = new List<SelectableUnitComponent>();
             foreach( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
             {
@@ -64,6 +71,8 @@ public class UnitSelectionComponent : MonoBehaviour
                         selectableObject.selectionCircle = Instantiate( selectionCirclePrefab );
                         selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
                         selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
+                        if (selectableObject.interactable.getInteractionType() == INTERACTION_TYPE.UNIT)
+                            selectedGroup.Add(selectableObject.GetComponent<Unit>());
                     }
                 }
                 else
