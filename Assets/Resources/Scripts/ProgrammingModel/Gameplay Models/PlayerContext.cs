@@ -69,11 +69,4 @@ public class PlayerContext : MonoBehaviour {
 	void Update () {
 
 	}
-
-	GameObject InstantiatePlayableObject(GameObject playableObject)
-	{
-		GameObject output = Instantiate (playableObject, transform);
-		output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
-		return output;
-	}
 }

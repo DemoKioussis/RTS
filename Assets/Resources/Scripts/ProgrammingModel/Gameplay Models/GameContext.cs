@@ -43,13 +43,13 @@ public class GameContext : MonoBehaviour {
 
 	void AcquirePrefabs()
 	{
-		Object[] unitP = Resources.LoadAll ("Prefabs/Units", typeof(GameObject));
+		Object[] unitP = Resources.LoadAll ("Prefabs/Units/Individual", typeof(GameObject));
 		prefabs.unitPrefabs = new GameObject[unitP.Length];
 
 		for (int i = 0; i < unitP.Length; i++)
 			prefabs.unitPrefabs [i] = unitP[i] as GameObject;
 
-		Object[] buildingP = Resources.LoadAll ("Prefabs/Buildings", typeof(GameObject));
+		Object[] buildingP = Resources.LoadAll ("Prefabs/Buildings/Individual", typeof(GameObject));
 		prefabs.buildingPrefabs = new GameObject[buildingP.Length];
 
 		for (int i = 0; i < buildingP.Length; i++)

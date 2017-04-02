@@ -32,4 +32,11 @@ public class TrainingBuilding : Building {
 	{
 		// To do
 	}
+
+	GameObject InstantiatePlayableObject(GameObject playableObject)
+	{
+		GameObject output = Instantiate (playableObject, transform);
+		output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
+		return output;
+	}
 }
