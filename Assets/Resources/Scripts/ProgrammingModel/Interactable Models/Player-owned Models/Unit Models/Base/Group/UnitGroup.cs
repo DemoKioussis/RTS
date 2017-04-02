@@ -2,25 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
-public class UnitGroup : Interacts {
+public class UnitGroup :MonoBehaviour{
 
-    List<UnitMovementController> units;
+    public List<Unit> units;
+    public float groupMovementSpeed;
     NavMeshAgent agent;
 
     Interactable interaction;
+    Vector3 targetPosition;
+    bool hasAction;
+
 
     void Awake() {
-        units = new List<UnitMovementController>();
-       // agent = <NavMeshAgent>();
+        units = new List<Unit>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    public void addUnit(UnitMovementController unit) {
-        units.Add(unit);
+    void Update() {
+        if (hasAction) {
+            transform.position += (targetPosition - transform.position).normalized*groupMovementSpeed;
+        }
+    }
+    public void moveTo(MapPos p) {
+        hasAction = true;
+        targetPosition = p.getPosition();
     }
 
-    public void interactWith(Interactable i) {
-
+    public bool isEmpty() {
+        return units.Count == 0;
     }
+   
 
 
 }

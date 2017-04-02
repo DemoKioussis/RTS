@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+public enum INTERACTION_TYPE { POSITION, UNIT, BUILDING, RESOURCE }
 
 public abstract class Interactable : MonoBehaviour {
-    public enum TYPE { POSITION, UNIT, BUILDING,RESOURCE }
 
     public int teamId;
 
-    public abstract TYPE getInterationType();
+    public abstract INTERACTION_TYPE getInteractionType();
 }

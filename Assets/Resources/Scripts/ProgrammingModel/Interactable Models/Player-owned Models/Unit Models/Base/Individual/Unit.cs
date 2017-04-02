@@ -7,7 +7,7 @@ public class Unit : RTSObject {
 	
 	public UnitStats unitStats;
 	Vector3 patrolAnchor;
-
+    private UnitGroupController group;
 	// Use this for initialization
 	void Start () {
 		
@@ -30,8 +30,15 @@ public class Unit : RTSObject {
 		return 0;
 		// To do
 	}
-    public override TYPE getInterationType()
+
+    public void setGroup(UnitGroupController g) {
+        if (group != null) {
+            group.removeUnit(this);
+        }
+        group = g;
+    }
+    public override INTERACTION_TYPE getInteractionType()
     {
-        return TYPE.UNIT;
+        return INTERACTION_TYPE.UNIT;
     }
 }

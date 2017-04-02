@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class MapPos : Interactable {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    public override TYPE getInterationType() {
-        return TYPE.POSITION;
+
+    Vector3 position;
+
+    public void setPosition(Vector3 p) {
+        position = p;
+    }
+
+    public Vector3 getPosition() {
+        return position;
+    }
+    public override INTERACTION_TYPE getInteractionType() {
+        return INTERACTION_TYPE.POSITION;
     }
 
 }

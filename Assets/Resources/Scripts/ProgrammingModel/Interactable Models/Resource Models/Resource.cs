@@ -22,8 +22,8 @@ public class Resource : Interactable {
 	{
 		// To do
 	}
-    public override TYPE getInterationType()
+    public override INTERACTION_TYPE getInteractionType()
     {
-        return TYPE.RESOURCE;
+        return INTERACTION_TYPE.RESOURCE;
     }
 }
