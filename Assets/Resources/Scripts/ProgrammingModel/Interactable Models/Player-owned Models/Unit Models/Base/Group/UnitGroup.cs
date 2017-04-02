@@ -10,7 +10,6 @@ public class UnitGroup :MonoBehaviour{
 
     Interactable interaction;
     Vector3 targetPosition;
-    bool hasAction;
 
 
     void Awake() {
@@ -18,14 +17,12 @@ public class UnitGroup :MonoBehaviour{
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update() {
-        if (hasAction) {
-			transform.position = Vector3.MoveTowards (transform.position, targetPosition, groupMovementSpeed * Time.deltaTime);
-        }
-    }
+
     public void moveTo(MapPos p) {
-        hasAction = true;
-        targetPosition = p.getPosition();
+      //  agent.SetPath(p);
+        foreach (UnitController u in units) {
+            u.moveTo(p.getPosition());
+        }
     }
 
     public bool isEmpty() {
