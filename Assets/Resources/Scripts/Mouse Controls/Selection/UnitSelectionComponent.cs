@@ -7,19 +7,28 @@ using System.Text;
 
 public class UnitSelectionComponent : MonoBehaviour
 {
+	public LayerMask layerMask;
     bool isSelecting = false;
     Vector3 mousePosition1;
 
     public GameObject selectionCirclePrefab;
     List<SelectableUnitComponent> selectedUnits = new List<SelectableUnitComponent>();
     UnitGroupController selectedGroup;
-    UnitGroupController unitGroupControllerPrefab;
+    public UnitGroupController unitGroupControllerPrefab;
+
+    bool previousInputLeftClick;
 
     void Update()
     {
         // If we press the left mouse button, begin selection and remember the location of the mouse
         if( Input.GetMouseButtonDown( 0 ) )
         {
+            if (previousInputLeftClick && selectedGroup != null)
+            {
+                Destroy(selectedGroup.gameObject);
+            }
+
+            previousInputLeftClick = true;
             selectedGroup = Instantiate(unitGroupControllerPrefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
             selectedUnits = new List<SelectableUnitComponent>();
             isSelecting = true;
@@ -38,7 +47,7 @@ public class UnitSelectionComponent : MonoBehaviour
         if( Input.GetMouseButtonUp( 0 ) )
         {
             if (selectedGroup.isEmpty())
-                Destroy(selectedGroup);
+                Destroy(selectedGroup.gameObject);
 
             selectedUnits = new List<SelectableUnitComponent>();
             foreach( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
@@ -71,7 +80,7 @@ public class UnitSelectionComponent : MonoBehaviour
                         selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
                         selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
                         if (selectableObject.interactable.getInteractionType() == INTERACTION_TYPE.UNIT)
-                            selectedGroup.add(selectableObject.GetComponent<Unit>());
+                            selectedGroup.add(selectableObject.GetComponent<UnitController>());
                     }
                 }
                 else
@@ -81,31 +90,44 @@ public class UnitSelectionComponent : MonoBehaviour
                         Destroy( selectableObject.selectionCircle.gameObject );
                         selectableObject.selectionCircle = null;
                     }
-                    selectedGroup.remove(selectableObject.GetComponent<Unit>());
+                    selectedGroup.remove(selectableObject.GetComponent<UnitController>());
                 }
             }
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (selectedUnits.Count != 0)
-            {
-                foreach (SelectableUnitComponent selectedUnit in selectedUnits)
-                {
-                    //Debug.Log(selectedUnit.name);
-                }
-            }
+			previousInputLeftClick = false;
+			RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
 
-            RaycastHit hitInfo = Utils.GetPositionFromMouseClick();
-
-            GameObject o;
-            if (hitInfo.collider != null)
-            {
-                o = hitInfo.collider.gameObject;
-                Debug.Log(o.name);
-            }
+			Interactable interactable;
+			if (hitInfo.collider != null)
+			{
+				interactable = hitInfo.collider.GetComponent<Interactable>();
+				if (interactable != null) {
+					Debug.Log("Interacted with: " + interactable.name);
+					Debug.Log (interactable.getInteractionType());
+					if (selectedGroup != null) {
+						InteractionSetter (interactable, hitInfo.point);
+						selectedGroup.interactWith (interactable);
+					}
+				}
+			}
         }
     }
+
+	void InteractionSetter(Interactable interaction, Vector3 position)
+	{
+		switch (interaction.getInteractionType ()) {
+
+		case INTERACTION_TYPE.POSITION:
+			{
+				((MapPos)interaction).setPosition (position);
+				break;
+			}
+
+		}
+	}
 
     public bool IsWithinSelectionBounds( GameObject gameObject )
     {

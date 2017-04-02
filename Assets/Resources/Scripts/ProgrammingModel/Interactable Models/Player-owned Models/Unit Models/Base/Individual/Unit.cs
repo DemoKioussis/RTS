@@ -7,7 +7,7 @@ public class Unit : RTSObject {
 	
 	public UnitStats unitStats;
 	Vector3 patrolAnchor;
-
+    private 
 	// Use this for initialization
 	void Start () {
 		
@@ -30,6 +30,9 @@ public class Unit : RTSObject {
 		return 0;
 		// To do
 	}
+
+
+
     public override INTERACTION_TYPE getInteractionType()
     {
         return INTERACTION_TYPE.UNIT;

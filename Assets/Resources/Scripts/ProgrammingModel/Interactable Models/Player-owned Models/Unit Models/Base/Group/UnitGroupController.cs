@@ -12,10 +12,10 @@ public class UnitGroupController : MonoBehaviour, Interacts
         group = GetComponent<UnitGroup>();
 
     }
-    public void add(Unit u) {
+    public void add(UnitController u) {
         group.units.Add(u);
     }
-    public void remove(Unit u) {
+    public void remove(UnitController u) {
         group.units.Remove(u);
     }
     public bool isEmpty() {
@@ -24,14 +24,17 @@ public class UnitGroupController : MonoBehaviour, Interacts
     }
     public void interactWith(Interactable i)
     {
-        foreach(Unit u in group.units)
-            u.transform.parent = transform;
+        foreach (UnitController u in group.units)
+        {
+            if(u.getGroup()!=this)
+                setUnitGroup(u);
+        }
 
         switch (i.getInteractionType()) {
             case INTERACTION_TYPE.BUILDING:
                 break;
             case INTERACTION_TYPE.POSITION:
-                group.setTargetPosition(((MapPos)i).getPosition());
+                group.moveTo((MapPos)i);
                 break;
             case INTERACTION_TYPE.UNIT:
                 break;
@@ -39,5 +42,17 @@ public class UnitGroupController : MonoBehaviour, Interacts
                 break;
         }
 
+    }
+    private void setUnitGroup(UnitController u) {
+        u.transform.parent = transform;
+        u.setGroup(this);
+    }
+
+    public void removeUnit(UnitController u) {
+        remove(u);
+		if (isEmpty())
+		{
+			Destroy(this.gameObject);
+		}
     }
 }

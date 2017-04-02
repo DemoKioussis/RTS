@@ -4,18 +4,25 @@ using UnityEngine.AI;
 using UnityEngine;
 public class UnitGroup :MonoBehaviour{
 
-    public List<Unit> units;
+    public List<UnitController> units;
+    public float groupMovementSpeed;
     NavMeshAgent agent;
 
     Interactable interaction;
+    Vector3 targetPosition;
+
 
     void Awake() {
-        units = new List<Unit>();
+        units = new List<UnitController>();
         agent = GetComponent<NavMeshAgent>();
     }
 
-    public void setTargetPosition(Vector3 p) {
 
+    public void moveTo(MapPos p) {
+      //  agent.SetPath(p);
+        foreach (UnitController u in units) {
+            u.moveTo(p.getPosition());
+        }
     }
 
     public bool isEmpty() {
