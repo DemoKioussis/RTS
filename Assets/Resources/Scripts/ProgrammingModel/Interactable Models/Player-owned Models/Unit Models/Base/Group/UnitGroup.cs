@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
-public class UnitGroup : Interacts {
+public class UnitGroup {
 
-    List<UnitMovementController> units;
+    List<Unit> units;
     NavMeshAgent agent;
 
     Interactable interaction;
 
     void Awake() {
-        units = new List<UnitMovementController>();
+        units = new List<Unit>();
        // agent = <NavMeshAgent>();
     }
 
-    public void addUnit(UnitMovementController unit) {
+    public void addUnit(Unit unit) {
         units.Add(unit);
     }
 
-    public void interactWith(Interactable i) {
-
+    public bool isEmpty() {
+        return units.Count == 0;
     }
+   
 
 
 }
