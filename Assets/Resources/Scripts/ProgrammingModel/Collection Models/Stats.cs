@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [System.Serializable]
-public struct Stats {
+public class Stats {
 	public float viewRange;
 	public int maxHitpoints;
 	public int hitpoints;
@@ -12,12 +13,12 @@ public struct Stats {
 
 
 [System.Serializable]
-public struct UnitStats {
+public class UnitStats {
 	public float moveSpeed;
 }
 
 [System.Serializable]
-public struct WorkerStats {
+public class WorkerStats {
 	public float buildRate;
 	public float buildStep;
 	public float repairRate;
@@ -29,7 +30,7 @@ public struct WorkerStats {
 }
 
 [System.Serializable]
-public struct MilitaryStats {
+public class MilitaryStats {
 	public float minAttackRange;
 	public float maxAttackRange;
 	public float attackStrength;
@@ -37,11 +38,11 @@ public struct MilitaryStats {
 }
 
 [System.Serializable]
-public struct SupportStats {
+public class SupportStats {
 	public float abilityRate;
 }
 
 [System.Serializable]
-public struct StubStats {
+public class StubStats {
 	public float spawnRate;
 }

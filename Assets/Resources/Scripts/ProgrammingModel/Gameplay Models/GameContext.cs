@@ -7,9 +7,13 @@ public class GameContext : MonoBehaviour {
 
 	public static GameContext currentGameContext;
 
-	// Game mode and gameplay variables go here
 	public int playerCount;
+	public GameObject playerPrefab;
 
+	List<PlayerContext> allPlayers = new List<PlayerContext>();
+	List<PlayerContext> activePlayers = new List<PlayerContext> ();
+
+	// Game mode and gameplay variables go here
 	public GameObject mapPrefab;
 	public PrefabDatabase prefabs;
 
@@ -18,6 +22,7 @@ public class GameContext : MonoBehaviour {
 	public Resource[] activeResources;
 
 	public GameMap map;
+	public List<Vector3> initialPlayerPositions = new List<Vector3> ();
 	// Use this for initialization
 	void Start () {
 
@@ -28,18 +33,23 @@ public class GameContext : MonoBehaviour {
 		map = GetComponentInChildren<GameMap> ();
 
 		AcquirePrefabs ();
+
+		for (int i = 0; i < playerCount; i++) {
+			allPlayers.Add (Instantiate (playerPrefab).GetComponent<PlayerContext>());
+			activePlayers.Add (allPlayers [allPlayers.Count - 1]);
+		}
 //		SetSpawnables ();
 	}
 
 	void AcquirePrefabs()
 	{
-		Object[] unitP = Resources.LoadAll ("Prefabs/Units", typeof(GameObject));
+		Object[] unitP = Resources.LoadAll ("Prefabs/Units/Individual", typeof(GameObject));
 		prefabs.unitPrefabs = new GameObject[unitP.Length];
 
 		for (int i = 0; i < unitP.Length; i++)
 			prefabs.unitPrefabs [i] = unitP[i] as GameObject;
 
-		Object[] buildingP = Resources.LoadAll ("Prefabs/Buildings", typeof(GameObject));
+		Object[] buildingP = Resources.LoadAll ("Prefabs/Buildings/Individual", typeof(GameObject));
 		prefabs.buildingPrefabs = new GameObject[buildingP.Length];
 
 		for (int i = 0; i < buildingP.Length; i++)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainingBuilding : Building {
+public class TrainingBuilding : Building{
 
 	List<Stub> stubPrefabs = new List<Stub>();
 
@@ -31,5 +31,17 @@ public class TrainingBuilding : Building {
 	public virtual void SpawnUnit(Unit unit)
 	{
 		// To do
+	}
+
+	// Set the spawn point
+	public override void SetSpawnPointAs(Vector3 p){
+		base.SetSpawnPointAs (p);
+	}
+
+	GameObject InstantiatePlayableObject(GameObject playableObject)
+	{
+		GameObject output = Instantiate (playableObject, transform);
+		output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
+		return output;
 	}
 }

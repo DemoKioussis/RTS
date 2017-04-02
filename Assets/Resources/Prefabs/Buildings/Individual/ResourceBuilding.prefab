@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23751118432933648}
   - component: {fileID: 208432849836366494}
   - component: {fileID: 114196191006494320}
+  - component: {fileID: 114247560261968096}
   m_Layer: 0
   m_Name: ResourceBuilding
   m_TagString: Untagged
@@ -111,6 +112,17 @@ MonoBehaviour:
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
+--- !u!114 &114247560261968096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009949689278842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07b827220e28448d9c022ce61a7f38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!208 &208432849836366494
 NavMeshObstacle:
   m_ObjectHideFlags: 1

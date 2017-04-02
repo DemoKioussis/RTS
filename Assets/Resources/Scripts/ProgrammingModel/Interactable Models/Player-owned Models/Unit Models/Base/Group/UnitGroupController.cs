@@ -40,7 +40,6 @@ public class UnitGroupController : MonoBehaviour, Interacts
             case INTERACTION_TYPE.RESOURCE:
                 break;
         }
-
     }
     private void setUnitGroup(UnitController u) {
         u.transform.parent = transform;
