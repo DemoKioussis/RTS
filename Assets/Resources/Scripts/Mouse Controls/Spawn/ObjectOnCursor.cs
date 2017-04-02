@@ -77,15 +77,16 @@ public class ObjectOnCursor : MonoBehaviour {
 					SetGameObjectTo (hit.point + new Vector3(0, yOffset, 0));
 				}
 			}
-
 		}
 	}
 
 	public void hasCollided(){
+		Debug.Log ("Collision");
 		objectIsColliding = true;
 	}
 
 	public void hasNotCollided(){
+		Debug.Log ("No collision");
 		objectIsColliding = false;
 	}
 
