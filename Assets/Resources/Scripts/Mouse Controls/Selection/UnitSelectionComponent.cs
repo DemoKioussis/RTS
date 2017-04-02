@@ -105,7 +105,8 @@ public class UnitSelectionComponent : MonoBehaviour
 			{
 				interactable = hitInfo.collider.GetComponent<Interactable>();
 				if (interactable != null) {
-					Debug.Log(interactable.name);
+					Debug.Log("Interacted with: " + interactable.name);
+					Debug.Log (interactable.getInteractionType());
 					if (selectedGroup != null) {
 						selectedGroup.interactWith (interactable);
 					}
