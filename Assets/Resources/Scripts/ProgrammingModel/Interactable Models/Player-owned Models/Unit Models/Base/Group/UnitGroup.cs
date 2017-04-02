@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
-public class UnitGroup {
+public class UnitGroup :MonoBehaviour{
 
-    List<Unit> units;
+    public List<Unit> units;
     NavMeshAgent agent;
 
     Interactable interaction;
 
     void Awake() {
         units = new List<Unit>();
-       // agent = <NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    public void addUnit(Unit unit) {
-        units.Add(unit);
+    public void setTargetPosition(Vector3 p) {
+
     }
 
     public bool isEmpty() {
