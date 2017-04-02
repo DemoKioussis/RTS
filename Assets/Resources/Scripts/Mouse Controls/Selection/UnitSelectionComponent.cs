@@ -11,12 +11,14 @@ public class UnitSelectionComponent : MonoBehaviour
     Vector3 mousePosition1;
 
     public GameObject selectionCirclePrefab;
+    List<SelectableUnitComponent> selectedUnits = new List<SelectableUnitComponent>();
 
     void Update()
     {
         // If we press the left mouse button, begin selection and remember the location of the mouse
         if( Input.GetMouseButtonDown( 0 ) )
         {
+            selectedUnits = new List<SelectableUnitComponent>();
             isSelecting = true;
             mousePosition1 = Input.mousePosition;
 
@@ -32,19 +34,19 @@ public class UnitSelectionComponent : MonoBehaviour
         // If we let go of the left mouse button, end selection
         if( Input.GetMouseButtonUp( 0 ) )
         {
-            var selectedObjects = new List<SelectableUnitComponent>();
+            selectedUnits = new List<SelectableUnitComponent>();
             foreach( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
             {
                 if( IsWithinSelectionBounds( selectableObject.gameObject ) )
                 {
-                    selectedObjects.Add( selectableObject );
+                    selectedUnits.Add( selectableObject );
                 }
             }
 
             var sb = new StringBuilder();
-            sb.AppendLine( string.Format( "Selecting [{0}] Units", selectedObjects.Count ) );
-            foreach( var selectedObject in selectedObjects )
-                sb.AppendLine( "-> " + selectedObject.gameObject.name );
+            sb.AppendLine( string.Format( "Selecting [{0}] Units", selectedUnits.Count ) );
+            foreach( var selectedUnit in selectedUnits )
+                sb.AppendLine( "-> " + selectedUnit.gameObject.name );
             Debug.Log( sb.ToString() );
 
             isSelecting = false;
@@ -72,6 +74,26 @@ public class UnitSelectionComponent : MonoBehaviour
                         selectableObject.selectionCircle = null;
                     }
                 }
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (selectedUnits.Count != 0)
+            {
+                foreach (SelectableUnitComponent selectedUnit in selectedUnits)
+                {
+                    //Debug.Log(selectedUnit.name);
+                }
+            }
+
+            RaycastHit hitInfo = Utils.GetPositionFromMouseClick();
+
+            GameObject o;
+            if (hitInfo.collider != null)
+            {
+                o = hitInfo.collider.gameObject;
+                Debug.Log(o.name);
             }
         }
     }
