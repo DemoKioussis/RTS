@@ -42,6 +42,15 @@ public class UnitGroupController : MonoBehaviour, Interacts
         }
     }
     private void setUnitGroup(Unit u) {
+        u.transform.parent = transform;
+        u.setGroup(this);
+    }
 
+    public void removeUnit(Unit u) {
+        remove(u);
+        if (isEmpty())
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
