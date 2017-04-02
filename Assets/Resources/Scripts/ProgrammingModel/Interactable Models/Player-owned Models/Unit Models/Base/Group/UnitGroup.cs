@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.AI;
-public class UnitGroup : InterationManager {
+using UnityEngine;
+public class UnitGroup :MonoBehaviour{
 
-    List<UnitMovementController> units;
+    public List<Unit> units;
     NavMeshAgent agent;
 
     Interactable interaction;
 
     void Awake() {
-        units = new List<UnitMovementController>();
+        units = new List<Unit>();
         agent = GetComponent<NavMeshAgent>();
     }
 
-    public void addUnit(UnitMovementController unit) {
-        units.Add(unit);
-    }
-
-    public void setInteraction() {
+    public void setTargetPosition(Vector3 p) {
 
     }
-    
+
+    public bool isEmpty() {
+        return units.Count == 0;
+    }
+   
+
+
 }

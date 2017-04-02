@@ -30,4 +30,8 @@ public class Unit : RTSObject {
 		return 0;
 		// To do
 	}
+    public override INTERACTION_TYPE getInteractionType()
+    {
+        return INTERACTION_TYPE.UNIT;
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Worker : RTSObject {
+public class Worker : Unit {
 
 	
 	public WorkerStats workerStats;
@@ -29,4 +29,5 @@ public class Worker : RTSObject {
 	{
 		return 0;
 	}
+
 }
