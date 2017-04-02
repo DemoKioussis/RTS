@@ -29,8 +29,5 @@ public class Worker : Unit {
 	{
 		return 0;
 	}
-    public override TYPE getInterationType()
-    {
-        return TYPE.POSITION;
-    }
+
 }
