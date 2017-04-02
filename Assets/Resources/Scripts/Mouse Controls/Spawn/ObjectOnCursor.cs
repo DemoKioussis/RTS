@@ -14,7 +14,9 @@ public class ObjectOnCursor : MonoBehaviour {
 	private Color initialColor;
 	private Color transparentColor;
 
-	public float transparentFactor = 0.1f;
+	private RaycastHit hit;
+
+	public float transparentFactor = 0.5f;
 
 	void Start()
 	{
@@ -33,13 +35,16 @@ public class ObjectOnCursor : MonoBehaviour {
 
 	void Update()
 	{
-		transform.position = Utils.GetPositionOfMouseOn ("Map"); // update the position of the mouse
+		hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
+
+		if(hit.collider != null){
+			transform.position = hit.point; // update the position of the mouse
+		}
 
 		if (gameObjectToSpawn != null) {
 			
 			if (Input.GetButton("LeftClick"))
 			{
-				RaycastHit hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
 				if (hit.collider != null) {
 					SetGameObjectTo (hit.point);
 				}

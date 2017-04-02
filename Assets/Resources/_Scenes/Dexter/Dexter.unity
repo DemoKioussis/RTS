@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1009949689278842, guid: 74e94ccb6fdbc4626871612ec9593c3a, type: 2}
-  transparentFactor: 0.1
+  transparentFactor: 0.5
 --- !u!1 &870823357
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 870823360}
   - component: {fileID: 870823359}
   - component: {fileID: 870823361}
-  m_Layer: 31
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
