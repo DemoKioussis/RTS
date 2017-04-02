@@ -14,7 +14,7 @@ public class ObjectOnCursor : MonoBehaviour {
 	private Color initialColor;
 	private Color transparentColor;
 
-	public float transparentFactor = 0.1f;
+	public float transparentFactor = 0.5f;
 
 	void Start()
 	{
