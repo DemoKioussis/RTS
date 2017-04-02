@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using UnityEngine;
 public class UnitGroup :MonoBehaviour{
 
-    public List<Unit> units;
+    public List<UnitController> units;
     public float groupMovementSpeed;
     NavMeshAgent agent;
 
@@ -14,7 +14,7 @@ public class UnitGroup :MonoBehaviour{
 
 
     void Awake() {
-        units = new List<Unit>();
+        units = new List<UnitController>();
         agent = GetComponent<NavMeshAgent>();
     }
 
