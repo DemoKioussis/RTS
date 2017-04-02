@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Interactable : MonoBehaviour {
 
-	public int teamId;
+public abstract class Interactable : MonoBehaviour {
+    public enum TYPE { POSITION, UNIT, BUILDING }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public int teamId;
+
+    public abstract TYPE getInterationType();
 }
