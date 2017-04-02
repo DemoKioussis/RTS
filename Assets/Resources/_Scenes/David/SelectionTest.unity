@@ -746,6 +746,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca058c5ddc81404bb9a96d4a0c2d5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 7168
   selectionCirclePrefab: {fileID: 166266, guid: b95631d263a174465a52d446a85dace8,
     type: 2}
   unitGroupControllerPrefab: {fileID: 114150679185762970, guid: 23efe30d5fbe743049ec7dda488edfb2,

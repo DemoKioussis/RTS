@@ -70,7 +70,7 @@ public static class Utils {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 
-		bool didHit = Physics.Raycast(ray, out hitInfo, 1000.0f, 1 << layerMask);
+		bool didHit = Physics.Raycast(ray, out hitInfo, 1000.0f, layerMask);
 
         return hitInfo;
     }

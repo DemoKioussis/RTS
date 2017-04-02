@@ -98,7 +98,7 @@ public class UnitSelectionComponent : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
 			previousInputLeftClick = false;
-			RaycastHit hitInfo = Utils.GetPositionFromMouseClick();
+			RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
 
 			Interactable interactable;
 			if (hitInfo.collider != null)

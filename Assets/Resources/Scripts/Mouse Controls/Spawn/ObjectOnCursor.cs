@@ -39,7 +39,7 @@ public class ObjectOnCursor : MonoBehaviour {
 			
 			if (Input.GetButton("LeftClick"))
 			{
-				RaycastHit hit = Utils.GetPositionFromMouseClick ();
+				RaycastHit hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
 				if (hit.collider != null) {
 					SetGameObjectTo (hit.point);
 				}
