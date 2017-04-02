@@ -6,8 +6,6 @@ public class Building : RTSObject {
 	
 	bool built = false;
 
-	public Queue<Stub> stubQueue;
-
 	// Use this for initialization
 	void Start () {
 
