@@ -40,4 +40,9 @@ public abstract class RTSObject : Interactable {
 		if (stats.hitpoints > stats.maxHitpoints)
 			stats.hitpoints = stats.maxHitpoints;
 	}
+
+	public virtual void ReplaceStatsReferences (RTSObject otherObject)
+	{
+		stats = otherObject.stats;
+	}
 }

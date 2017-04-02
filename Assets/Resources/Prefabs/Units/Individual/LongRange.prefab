@@ -97,7 +97,7 @@ MonoBehaviour:
   teamId: 0
   stats:
     viewRange: 0
-    maxHitpoints: 0
+    maxHitpoints: 100
     hitpoints: 0
     influenceMultiplier: 0
   unitStats:
