@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33444653801017918}
   - component: {fileID: 65340020656287944}
   - component: {fileID: 23751118432933648}
-  - component: {fileID: 114056250985170210}
   - component: {fileID: 208432849836366494}
+  - component: {fileID: 114196191006494320}
   m_Layer: 0
   m_Name: ResourceBuilding
   m_TagString: Untagged
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114056250985170210
+--- !u!114 &114196191006494320
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1009949689278842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58865815fd3f8714b8918a3a7834bc3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a4cf6bfa6af6124988110d5a0de2e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0

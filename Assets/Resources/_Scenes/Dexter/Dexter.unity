@@ -131,7 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fce8a4c90b044339147c2fb2472af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stub: {fileID: 1009949689278842, guid: 74e94ccb6fdbc4626871612ec9593c3a, type: 2}
+  prefab: {fileID: 1009949689278842, guid: 74e94ccb6fdbc4626871612ec9593c3a, type: 2}
+  transparentFactor: 0.1
 --- !u!1 &870823357
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +143,8 @@ GameObject:
   - component: {fileID: 870823358}
   - component: {fileID: 870823360}
   - component: {fileID: 870823359}
-  m_Layer: 0
+  - component: {fileID: 870823361}
+  m_Layer: 31
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,6 +201,20 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 870823357}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &870823361
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 870823357}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1294453703
 GameObject:
