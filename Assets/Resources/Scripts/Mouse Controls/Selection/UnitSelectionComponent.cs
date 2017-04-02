@@ -7,6 +7,7 @@ using System.Text;
 
 public class UnitSelectionComponent : MonoBehaviour
 {
+	public LayerMask layerMask;
     bool isSelecting = false;
     Vector3 mousePosition1;
 
@@ -15,11 +16,19 @@ public class UnitSelectionComponent : MonoBehaviour
     UnitGroupController selectedGroup;
     public UnitGroupController unitGroupControllerPrefab;
 
+    bool previousInputLeftClick;
+
     void Update()
     {
         // If we press the left mouse button, begin selection and remember the location of the mouse
         if( Input.GetMouseButtonDown( 0 ) )
         {
+            if (previousInputLeftClick && selectedGroup != null)
+            {
+                Destroy(selectedGroup.gameObject);
+            }
+
+            previousInputLeftClick = true;
             selectedGroup = Instantiate(unitGroupControllerPrefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
             selectedUnits = new List<SelectableUnitComponent>();
             isSelecting = true;
@@ -88,22 +97,20 @@ public class UnitSelectionComponent : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (selectedUnits.Count != 0)
-            {
-                foreach (SelectableUnitComponent selectedUnit in selectedUnits)
-                {
-                    //Debug.Log(selectedUnit.name);
-                }
-            }
+			previousInputLeftClick = false;
+			RaycastHit hitInfo = Utils.GetPositionFromMouseClick();
 
-            RaycastHit hitInfo = Utils.GetPositionFromMouseClick();
-
-            GameObject o;
-            if (hitInfo.collider != null)
-            {
-                o = hitInfo.collider.gameObject;
-                Debug.Log(o.name);
-            }
+			Interactable interactable;
+			if (hitInfo.collider != null)
+			{
+				interactable = hitInfo.collider.GetComponent<Interactable>();
+				if (interactable != null) {
+					Debug.Log(interactable.name);
+					if (selectedGroup != null) {
+						selectedGroup.interactWith (interactable);
+					}
+				}
+			}
         }
     }
 

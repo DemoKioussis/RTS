@@ -48,9 +48,9 @@ public class UnitGroupController : MonoBehaviour, Interacts
 
     public void removeUnit(Unit u) {
         remove(u);
-        if (isEmpty())
-        {
-            Destroy(this.gameObject);
-        }
+		if (isEmpty())
+		{
+			Destroy(this.gameObject);
+		}
     }
 }
