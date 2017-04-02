@@ -33,13 +33,14 @@ public class UnitGroupController : MonoBehaviour, Interacts
             case INTERACTION_TYPE.BUILDING:
                 break;
             case INTERACTION_TYPE.POSITION:
-                group.setTargetPosition(((MapPos)i).getPosition());
+                group.moveTo((MapPos)i);
                 break;
             case INTERACTION_TYPE.UNIT:
                 break;
             case INTERACTION_TYPE.RESOURCE:
                 break;
         }
+
     }
     private void setUnitGroup(Unit u) {
         u.transform.parent = transform;
