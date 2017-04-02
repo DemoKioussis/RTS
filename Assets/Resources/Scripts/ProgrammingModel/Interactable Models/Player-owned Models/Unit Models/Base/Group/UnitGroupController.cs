@@ -26,7 +26,8 @@ public class UnitGroupController : MonoBehaviour, Interacts
     {
         foreach (Unit u in group.units)
         {
-            setUnitGroup(u);
+            if(u.getGroup()!=this)
+                setUnitGroup(u);
         }
 
         switch (i.getInteractionType()) {

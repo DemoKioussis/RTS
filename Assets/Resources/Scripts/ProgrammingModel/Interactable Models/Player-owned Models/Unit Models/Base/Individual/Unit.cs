@@ -37,6 +37,9 @@ public class Unit : RTSObject {
         }
         group = g;
     }
+    public UnitGroupController getGroup() {
+        return group;
+    }
     public override INTERACTION_TYPE getInteractionType()
     {
         return INTERACTION_TYPE.UNIT;

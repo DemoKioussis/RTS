@@ -20,7 +20,7 @@ public class UnitGroup :MonoBehaviour{
 
     void Update() {
         if (hasAction) {
-            transform.position += (targetPosition - transform.position).normalized*groupMovementSpeed;
+            transform.position += (targetPosition - transform.position).normalized*groupMovementSpeed*Time.deltaTime;
         }
     }
     public void moveTo(MapPos p) {
