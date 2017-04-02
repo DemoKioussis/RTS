@@ -29,12 +29,11 @@ public class UnitGroupController : MonoBehaviour, Interacts
             if(u.getGroup()!=this)
                 setUnitGroup(u);
         }
-
         switch (i.getInteractionType()) {
             case INTERACTION_TYPE.BUILDING:
                 break;
             case INTERACTION_TYPE.POSITION:
-                group.moveTo((MapPos)i);
+                moveGroupToPosition((MapPos)i);
                 break;
             case INTERACTION_TYPE.UNIT:
                 break;
@@ -54,5 +53,9 @@ public class UnitGroupController : MonoBehaviour, Interacts
 		{
 			Destroy(this.gameObject);
 		}
+    }
+
+    private void moveGroupToPosition(MapPos m) {
+        group.moveTo(m);
     }
 }
