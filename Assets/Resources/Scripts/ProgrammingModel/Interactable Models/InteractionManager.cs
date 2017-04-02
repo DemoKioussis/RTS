@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InteractionManager : MonoBehaviour {
+public interface Interacts {
 
-    public abstract void interactWith(Interactable i);
+    void interactWith(Interactable i);
 }

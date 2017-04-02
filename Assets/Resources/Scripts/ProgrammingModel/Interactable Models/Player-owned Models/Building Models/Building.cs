@@ -41,4 +41,8 @@ public class Building : RTSObject {
 	{
 		// To do
 	}
+    public override TYPE getInterationType()
+    {
+        return TYPE.BUILDING;
+    }
 }
