@@ -18,6 +18,7 @@ public class GameContext : MonoBehaviour {
 	public Resource[] activeResources;
 
 	public GameMap map;
+	public List<Vector3> initialPlayerPositions = new List<Vector3> ();
 	// Use this for initialization
 	void Start () {
 
