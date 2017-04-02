@@ -108,12 +108,26 @@ public class UnitSelectionComponent : MonoBehaviour
 					Debug.Log("Interacted with: " + interactable.name);
 					Debug.Log (interactable.getInteractionType());
 					if (selectedGroup != null) {
+						InteractionSetter (interactable, hitInfo.point);
 						selectedGroup.interactWith (interactable);
 					}
 				}
 			}
         }
     }
+
+	void InteractionSetter(Interactable interaction, Vector3 position)
+	{
+		switch (interaction.getInteractionType ()) {
+
+		case INTERACTION_TYPE.POSITION:
+			{
+				((MapPos)interaction).setPosition (position);
+				break;
+			}
+
+		}
+	}
 
     public bool IsWithinSelectionBounds( GameObject gameObject )
     {
