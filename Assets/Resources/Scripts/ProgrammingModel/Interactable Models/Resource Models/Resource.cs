@@ -22,4 +22,8 @@ public class Resource : Interactable {
 	{
 		// To do
 	}
+    public override TYPE getInterationType()
+    {
+        return TYPE.RESOURCE;
+    }
 }

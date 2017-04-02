@@ -13,4 +13,8 @@ public class MapPos : Interactable {
 	void Update () {
 		
 	}
+    public override TYPE getInterationType() {
+        return TYPE.POSITION;
+    }
+
 }

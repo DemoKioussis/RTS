@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.AI;
-public class UnitGroup : InterationManager {
+using UnityEngine;
+public class UnitGroup : Interacts {
 
     List<UnitMovementController> units;
     NavMeshAgent agent;
@@ -11,15 +11,16 @@ public class UnitGroup : InterationManager {
 
     void Awake() {
         units = new List<UnitMovementController>();
-        agent = GetComponent<NavMeshAgent>();
+       // agent = <NavMeshAgent>();
     }
 
     public void addUnit(UnitMovementController unit) {
         units.Add(unit);
     }
 
-    public void setInteraction() {
+    public void interactWith(Interactable i) {
 
     }
-    
+
+
 }
