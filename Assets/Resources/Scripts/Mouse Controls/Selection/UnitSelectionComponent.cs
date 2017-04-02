@@ -80,7 +80,7 @@ public class UnitSelectionComponent : MonoBehaviour
                         selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
                         selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
                         if (selectableObject.interactable.getInteractionType() == INTERACTION_TYPE.UNIT)
-                            selectedGroup.add(selectableObject.GetComponent<UnitController>());
+                            selectedGroup.add(selectableObject.GetComponent<Unit>());
                     }
                 }
                 else
@@ -90,7 +90,7 @@ public class UnitSelectionComponent : MonoBehaviour
                         Destroy( selectableObject.selectionCircle.gameObject );
                         selectableObject.selectionCircle = null;
                     }
-                    selectedGroup.remove(selectableObject.GetComponent<UnitController>());
+                    selectedGroup.remove(selectableObject.GetComponent<Unit>());
                 }
             }
         }
@@ -108,6 +108,7 @@ public class UnitSelectionComponent : MonoBehaviour
 					Debug.Log("Interacted with: " + interactable.name);
 					Debug.Log (interactable.getInteractionType());
 					if (selectedGroup != null) {
+						InteractionSetter (interactable, hitInfo.point);
 						selectedGroup.interactWith (interactable);
 					}
 				}
@@ -115,6 +116,18 @@ public class UnitSelectionComponent : MonoBehaviour
         }
     }
 
+	void InteractionSetter(Interactable interaction, Vector3 position)
+	{
+		switch (interaction.getInteractionType ()) {
+
+		case INTERACTION_TYPE.POSITION:
+			{
+				((MapPos)interaction).setPosition (position);
+				break;
+			}
+
+		}
+	}
 
     public bool IsWithinSelectionBounds( GameObject gameObject )
     {
