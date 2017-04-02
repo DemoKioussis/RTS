@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Unit))]
 public class UnitController : MonoBehaviour {
 
     private NavMeshAgent agent;
@@ -25,6 +27,6 @@ public class UnitController : MonoBehaviour {
         return group;
     }
     public void moveTo(Vector3 p) {
-
+        agent.SetDestination(p);
     }
 }
