@@ -24,8 +24,10 @@ public class UnitGroupController : MonoBehaviour, Interacts
     }
     public void interactWith(Interactable i)
     {
-        foreach(Unit u in group.units)
-            u.transform.parent = transform;
+        foreach (Unit u in group.units)
+        {
+            setUnitGroup(u);
+        }
 
         switch (i.getInteractionType()) {
             case INTERACTION_TYPE.BUILDING:
@@ -38,6 +40,8 @@ public class UnitGroupController : MonoBehaviour, Interacts
             case INTERACTION_TYPE.RESOURCE:
                 break;
         }
+    }
+    private void setUnitGroup(Unit u) {
 
     }
 }
