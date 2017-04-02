@@ -5,6 +5,7 @@ using UnityEngine;
 public class Building : RTSObject {
 	
 	bool built = false;
+	Vector3 spawnPoint;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,11 @@ public class Building : RTSObject {
 	{
 		// To do
 	}
+
+	public override void SetSpawnPointAs(Vector3 p){
+		spawnPoint = p;
+	}
+
     public override INTERACTION_TYPE getInteractionType()
     {
         return INTERACTION_TYPE.BUILDING;

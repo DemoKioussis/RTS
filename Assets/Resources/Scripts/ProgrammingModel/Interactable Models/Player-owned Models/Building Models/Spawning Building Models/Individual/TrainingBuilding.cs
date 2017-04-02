@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainingBuilding : Building {
+public class TrainingBuilding : Building{
 
 	List<Stub> stubPrefabs = new List<Stub>();
 
