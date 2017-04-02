@@ -17,7 +17,7 @@ public class GameContext : MonoBehaviour {
 	public Building[] activeBuildings;
 	public Resource[] activeResources;
 
-	GameMap map;
+	public GameMap map;
 	// Use this for initialization
 	void Start () {
 
