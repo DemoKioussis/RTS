@@ -8,7 +8,7 @@ public class ObjectOnCursor : MonoBehaviour {
 
 	private GameObject gameObjectToSpawn;
 
-	private bool objectIsColliding = false;
+	private bool objectIsColliding;
 
 	private Renderer gameObjectRenderer;
 	private Color initialColor;
@@ -16,11 +16,25 @@ public class ObjectOnCursor : MonoBehaviour {
 
 	private RaycastHit hit;
 
+	private BoxCollider boxCollider;
+
 	public float transparentFactor = 0.5f;
+
+	public Color colorOfNoCollision;
+	public Color colorOfCollision;
+
+	public float yOffset = 0.0f; // the actual offset height of the mouse above the map
 
 	void Start()
 	{
+		// set the colors
+		colorOfNoCollision = new Color (0, 1, 0, transparentFactor);
+		colorOfCollision = new Color(1, 0, 0, transparentFactor);
+
+		boxCollider = GetComponent<BoxCollider> ();
+
 		// Testing
+		//
 		gameObjectToSpawn = (GameObject) Instantiate (prefab, transform.position, transform.rotation, transform);
 
 		// get the renderer of the object
@@ -30,7 +44,12 @@ public class ObjectOnCursor : MonoBehaviour {
 		initialColor = gameObjectRenderer.material.color;
 
 		// set the transparency of the object
-		gameObjectRenderer.material.color = new Color (initialColor.r, initialColor.g, initialColor.b, transparentFactor);
+		objectIsColliding = false;
+
+		// set the size of the collider
+		boxCollider.size = gameObjectToSpawn.transform.localScale;
+		//
+		// end of test
 	}
 
 	void Update()
@@ -38,19 +57,41 @@ public class ObjectOnCursor : MonoBehaviour {
 		hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
 
 		if(hit.collider != null){
-			transform.position = hit.point; // update the position of the mouse
+			transform.position = hit.point + new Vector3(0, yOffset, 0); // update the position of the mouse
 		}
 
 		if (gameObjectToSpawn != null) {
-			
+			// set the color of the object depending on collision information
+			if (objectIsColliding) 
+			{
+				SetColor(colorOfCollision);
+			} 
+			else 
+			{
+				SetColor(colorOfNoCollision);
+			}
+
 			if (Input.GetButton("LeftClick"))
 			{
-				if (hit.collider != null) {
-					SetGameObjectTo (hit.point);
+				if (!objectIsColliding && hit.collider != null) {
+					SetGameObjectTo (hit.point + new Vector3(0, yOffset, 0));
 				}
 			}
 
 		}
+	}
+
+	public void hasCollided(){
+		objectIsColliding = true;
+	}
+
+	public void hasNotCollided(){
+		objectIsColliding = false;
+	}
+
+	// Function to set the color of the object on the cursor
+	public void SetColor(Color color){
+		gameObjectRenderer.material.color = color;
 	}
 
 	public void SpawnObjectOnCursor(GameObject spawnObject){
@@ -63,8 +104,10 @@ public class ObjectOnCursor : MonoBehaviour {
 		initialColor = gameObjectRenderer.material.color; 
 
 		// set the transparency of the object
-		gameObjectRenderer.material.color = new Color (initialColor.r, initialColor.g, initialColor.b, transparentFactor);
+		objectIsColliding = false;
 
+		// set the size of the collider
+		boxCollider.size = gameObjectToSpawn.transform.localScale;
 	}
 
 	private void SetGameObjectTo(Vector3 position){
@@ -77,9 +120,10 @@ public class ObjectOnCursor : MonoBehaviour {
 		// reset the game object's color to its initial property
 		gameObjectRenderer.material.color = initialColor;
 
+		// set the scale of the mouse component
+		transform.localScale = new Vector3(0,0,0);
+
 		gameObjectToSpawn = null;
+		objectIsColliding = false;
 	}
-
-
-
 }
