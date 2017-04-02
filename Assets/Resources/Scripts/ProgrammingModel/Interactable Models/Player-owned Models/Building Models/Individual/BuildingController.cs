@@ -21,7 +21,4 @@ public class BuildingController : MonoBehaviour, Interacts {
 	{
 		return group;
 	}
-	public void SetSpawnPointAs(Vector3 p) {
-		building.SetSpawnPointAs(p);
-	}
 }
