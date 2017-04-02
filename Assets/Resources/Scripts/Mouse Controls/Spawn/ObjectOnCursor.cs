@@ -33,7 +33,7 @@ public class ObjectOnCursor : MonoBehaviour {
 
 	void Update()
 	{
-		transform.position = Utils.GetPositionOfMouseOn ("Terrain"); // update the position of the mouse
+		transform.position = Utils.GetPositionOfMouseOn ("Map"); // update the position of the mouse
 
 		if (gameObjectToSpawn != null) {
 			

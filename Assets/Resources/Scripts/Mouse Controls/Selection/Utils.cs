@@ -65,12 +65,12 @@ public static class Utils {
         return bounds;
     }
 
-    public static RaycastHit GetPositionFromMouseClick()
+	public static RaycastHit GetPositionFromMouseClick(LayerMask layerMask)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 
-        bool didHit = Physics.Raycast(ray, out hitInfo, 1000.0f);
+		bool didHit = Physics.Raycast(ray, out hitInfo, 1000.0f, 1 << layerMask);
 
         return hitInfo;
     }
@@ -89,6 +89,5 @@ public static class Utils {
 
 		return new Vector3(0,0,0);
 	}
-
 
 }
