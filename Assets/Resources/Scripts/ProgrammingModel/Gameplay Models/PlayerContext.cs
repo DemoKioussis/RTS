@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerContext : MonoBehaviour {
@@ -28,11 +29,15 @@ public class PlayerContext : MonoBehaviour {
 		updatedPrefabs.unitPrefabs = new GameObject[originalPrefabs.unitPrefabs.Length];
 		updatedPrefabs.buildingPrefabs = new GameObject[originalPrefabs.buildingPrefabs.Length];
 
-		for (int i = 0; i < originalPrefabs.unitPrefabs.Length; i++)
-			updatedPrefabs.unitPrefabs [i] = Instantiate (originalPrefabs.unitPrefabs [i], transform);
-
-		for (int i = 0; i < originalPrefabs.buildingPrefabs.Length; i++)
-			updatedPrefabs.buildingPrefabs [i] = Instantiate (originalPrefabs.buildingPrefabs [i], transform);
+		for (int i = 0; i < originalPrefabs.unitPrefabs.Length; i++) {
+			updatedPrefabs.unitPrefabs [i] = Instantiate(originalPrefabs.unitPrefabs [i], transform);
+			updatedPrefabs.unitPrefabs [i].GetComponent<Renderer> ().enabled = false;
+		}
+			
+		for (int i = 0; i < originalPrefabs.buildingPrefabs.Length; i++) {
+			updatedPrefabs.buildingPrefabs [i] = Instantiate(originalPrefabs.buildingPrefabs [i], transform);
+			updatedPrefabs.buildingPrefabs [i].GetComponent<Renderer> ().enabled = false;
+		}
 
 		List<Vector3> spawnPoints = new List<Vector3> ();
 
@@ -43,7 +48,7 @@ public class PlayerContext : MonoBehaviour {
 				spawnPoints.Add (t.position);
 		}
 
-		int index = Random.Range (0, spawnPoints);
+		int index = Random.Range (0, spawnPoints.Count);
 
 		GameObject townCenter = null;
 
@@ -53,6 +58,8 @@ public class PlayerContext : MonoBehaviour {
 				break;
 			}
 
+		Debug.Log (spawnPoints);
+
 		if (townCenter != null) {
 			Instantiate (townCenter, spawnPoints[index], Quaternion.identity, transform);
 		}
@@ -61,5 +68,12 @@ public class PlayerContext : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	GameObject InstantiatePlayableObject(GameObject playableObject)
+	{
+		GameObject output = Instantiate (playableObject, transform);
+		output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
+		return output;
 	}
 }

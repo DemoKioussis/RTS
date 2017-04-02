@@ -9,6 +9,7 @@ TagManager:
   - UnitShortRange
   - Building
   - AI
+  - TownCenter
   layers:
   - Default
   - TransparentFX

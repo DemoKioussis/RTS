@@ -7,9 +7,13 @@ public class GameContext : MonoBehaviour {
 
 	public static GameContext currentGameContext;
 
-	// Game mode and gameplay variables go here
 	public int playerCount;
+	public GameObject playerPrefab;
 
+	List<PlayerContext> allPlayers = new List<PlayerContext>();
+	List<PlayerContext> activePlayers = new List<PlayerContext> ();
+
+	// Game mode and gameplay variables go here
 	public GameObject mapPrefab;
 	public PrefabDatabase prefabs;
 
@@ -29,6 +33,11 @@ public class GameContext : MonoBehaviour {
 		map = GetComponentInChildren<GameMap> ();
 
 		AcquirePrefabs ();
+
+		for (int i = 0; i < playerCount; i++) {
+			allPlayers.Add (Instantiate (playerPrefab).GetComponent<PlayerContext>());
+			activePlayers.Add (allPlayers [allPlayers.Count - 1]);
+		}
 //		SetSpawnables ();
 	}
 

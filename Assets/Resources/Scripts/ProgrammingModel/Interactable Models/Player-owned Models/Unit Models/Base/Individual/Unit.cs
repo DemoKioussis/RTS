@@ -34,4 +34,12 @@ public class Unit : RTSObject {
     {
         return INTERACTION_TYPE.UNIT;
     }
+
+	public override void ReplaceStatsReferences(RTSObject otherObject)
+	{
+		base.ReplaceStatsReferences (otherObject);
+
+		if (otherObject is Unit)
+			unitStats = ((Unit)otherObject).unitStats;
+	}
 }
