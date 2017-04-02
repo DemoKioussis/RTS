@@ -35,19 +35,19 @@ public class ObjectOnCursor : MonoBehaviour {
 
 		// Testing
 		//
-		gameObjectToSpawn = (GameObject) Instantiate (prefab, transform.position, transform.rotation, transform);
+		//gameObjectToSpawn = (GameObject) Instantiate (prefab, transform.position, transform.rotation, transform);
 
 		// get the renderer of the object
-		gameObjectRenderer = gameObjectToSpawn.GetComponent<Renderer> ();
+		//gameObjectRenderer = gameObjectToSpawn.GetComponent<Renderer> ();
 
 		// get the color
-		initialColor = gameObjectRenderer.material.color;
+		//initialColor = gameObjectRenderer.material.color;
 
 		// set the transparency of the object
 		objectIsColliding = false;
 
 		// set the size of the collider
-		boxCollider.size = gameObjectToSpawn.transform.localScale;
+		//boxCollider.size = gameObjectToSpawn.transform.localScale;
 		//
 		// end of test
 	}
@@ -81,12 +81,10 @@ public class ObjectOnCursor : MonoBehaviour {
 	}
 
 	public void hasCollided(){
-		Debug.Log ("Collision");
 		objectIsColliding = true;
 	}
 
 	public void hasNotCollided(){
-		Debug.Log ("No collision");
 		objectIsColliding = false;
 	}
 
