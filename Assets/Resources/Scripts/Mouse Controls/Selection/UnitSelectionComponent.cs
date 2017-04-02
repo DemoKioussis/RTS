@@ -13,7 +13,7 @@ public class UnitSelectionComponent : MonoBehaviour
     public GameObject selectionCirclePrefab;
     List<SelectableUnitComponent> selectedUnits = new List<SelectableUnitComponent>();
     UnitGroupController selectedGroup;
-    UnitGroupController unitGroupControllerPrefab;
+    public UnitGroupController unitGroupControllerPrefab;
 
     void Update()
     {
@@ -38,7 +38,7 @@ public class UnitSelectionComponent : MonoBehaviour
         if( Input.GetMouseButtonUp( 0 ) )
         {
             if (selectedGroup.isEmpty())
-                Destroy(selectedGroup);
+                Destroy(selectedGroup.gameObject);
 
             selectedUnits = new List<SelectableUnitComponent>();
             foreach( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
