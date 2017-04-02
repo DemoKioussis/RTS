@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23663716103676932}
   - component: {fileID: 114170303354362912}
   - component: {fileID: 195020718062020762}
+  - component: {fileID: 114651033343132888}
   m_Layer: 10
   m_Name: LongRange
   m_TagString: Untagged
@@ -106,6 +107,17 @@ MonoBehaviour:
     maxAttackRange: 0
     attackStrength: 0
     attackRate: 0
+--- !u!114 &114651033343132888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909318969148630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7ea9a8fa556274cb75c4b19a2ffb5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135360957961386770
 SphereCollider:
   m_ObjectHideFlags: 1
