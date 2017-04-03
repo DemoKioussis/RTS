@@ -5,15 +5,38 @@ using UnityEngine;
 public class TrainingBuilding : Building{
 
 	List<Stub> stubPrefabs = new List<Stub>();
+	public GameObject unit;
+	public bool awake;
+
+	public float yOffset = 0.25f;
 
 	// Use this for initialization
 	void Start () {
-
+		awake = true;
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKey (KeyCode.S)) {
+			Debug.Log ("Building is awake: " + awake);
+			awake = !awake;
+		}
 
+		if (Input.GetButton ("LeftClick")) {
+			RaycastHit hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
+
+			if (hit.collider != null) {
+				SetSpawnPointAs (hit.point + new Vector3(0, yOffset, 0));
+			}
+		}
+
+		/*
+		// test spawning units
+		if (Input.GetKey (KeyCode.I) && awake) {
+			GameObject obj = (GameObject) InstantiatePlayableObject (unit);
+			obj.GetComponent<UnitController>().setDestination(base.GetSpawnPoint());
+		}
+		*/
 	}
 
 	protected override void Interaction(Interactable newInteraction)
@@ -34,8 +57,14 @@ public class TrainingBuilding : Building{
 	}
 
 	// Set the spawn point
-	public override void SetSpawnPointAs(Vector3 p){
-		base.SetSpawnPointAs (p);
+	public override void SetSpawnPointAs(Vector3 spawnPosition){
+		if(base.flagReference == null){
+			GameObject flag = (GameObject)Instantiate (base.flagPrefab, spawnPosition, transform.rotation);
+			base.flagReference = flag;
+			base.SetSpawnPointAs (spawnPosition);
+
+			Destroy (flag, 3); // destroy the flag object after 3 seconds
+		}
 	}
 
 	GameObject InstantiatePlayableObject(GameObject playableObject)

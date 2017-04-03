@@ -7,6 +7,9 @@ public class Building : RTSObject {
 	bool built = false;
 	Vector3 spawnPoint;
 
+	public GameObject flagPrefab;
+	public GameObject flagReference;
+
 	// Use this for initialization
 	void Start () {
 
@@ -43,9 +46,12 @@ public class Building : RTSObject {
 		// To do
 	}
 
-	public virtual void SetSpawnPointAs(Vector3 p){
-		Debug.Log ("Set a spawn point");
-		spawnPoint = p;
+	public virtual void SetSpawnPointAs(Vector3 spawnPosition){
+		spawnPoint = spawnPosition;
+	}
+
+	protected Vector3 GetSpawnPoint(){
+		return spawnPoint;
 	}
 
     public override INTERACTION_TYPE getInteractionType()

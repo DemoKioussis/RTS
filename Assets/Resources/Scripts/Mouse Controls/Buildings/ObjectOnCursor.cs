@@ -33,21 +33,8 @@ public class ObjectOnCursor : MonoBehaviour {
 
 		boxCollider = GetComponent<BoxCollider> ();
 
-		// Testing
-		//
-		//gameObjectToSpawn = (GameObject) Instantiate (prefab, transform.position, transform.rotation, transform);
-
-		// get the renderer of the object
-		//gameObjectRenderer = gameObjectToSpawn.GetComponent<Renderer> ();
-
-		// get the color
-		//initialColor = gameObjectRenderer.material.color;
-
 		// set the transparency of the object
 		objectIsColliding = false;
-
-		// set the size of the collider
-		//boxCollider.size = gameObjectToSpawn.transform.localScale;
 		//
 		// end of test
 	}
