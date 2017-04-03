@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectOnCursor : MonoBehaviour {
-
-	public GameObject prefab; // for testing
-
-	private GameObject gameObjectToSpawn;
+public class BuildingCursor : MonoBehaviour {
+	
+	private GameObject buildingObjectToSpawn;
 
 	private bool objectIsColliding;
 
@@ -47,7 +45,7 @@ public class ObjectOnCursor : MonoBehaviour {
 			transform.position = hit.point + new Vector3(0, yOffset, 0); // update the position of the mouse
 		}
 
-		if (gameObjectToSpawn != null) {
+		if (buildingObjectToSpawn != null) {
 			// set the color of the object depending on collision information
 			if (objectIsColliding) 
 			{
@@ -67,11 +65,11 @@ public class ObjectOnCursor : MonoBehaviour {
 		}
 	}
 
-	public void hasCollided(){
+	public void CannotBePlaced(){
 		objectIsColliding = true;
 	}
 
-	public void hasNotCollided(){
+	public void CanBePlaced(){
 		objectIsColliding = false;
 	}
 
@@ -80,11 +78,15 @@ public class ObjectOnCursor : MonoBehaviour {
 		gameObjectRenderer.material.color = color;
 	}
 
+	public void SetBuildingObject(GameObject building){
+		buildingObjectToSpawn = building;
+	}
+
 	public void SpawnObjectOnCursor(GameObject spawnObject){
-		gameObjectToSpawn = (GameObject) Instantiate(spawnObject, transform.position, transform.rotation, transform); // get reference to the object
+		buildingObjectToSpawn = (GameObject) Instantiate(spawnObject, transform.position, transform.rotation, transform); // get reference to the object
 
 		// get the renderer of the object
-		gameObjectRenderer = gameObjectToSpawn.GetComponent<Renderer> ();
+		gameObjectRenderer = buildingObjectToSpawn.GetComponent<Renderer> ();
 
 		// get the initial property colors of the object
 		initialColor = gameObjectRenderer.material.color; 
@@ -93,15 +95,15 @@ public class ObjectOnCursor : MonoBehaviour {
 		objectIsColliding = false;
 
 		// set the size of the collider
-		boxCollider.size = gameObjectToSpawn.transform.localScale;
+		boxCollider.size = buildingObjectToSpawn.transform.localScale;
 	}
 
 	private void SetGameObjectTo(Vector3 position){
 		// set the parent of the created object to the scene
-		gameObjectToSpawn.transform.parent = this.transform.parent;
+		buildingObjectToSpawn.transform.parent = this.transform.parent;
 
 		// set the position of the created object to the level
-		gameObjectToSpawn.transform.position = position; 
+		buildingObjectToSpawn.transform.position = position; 
 
 		// reset the game object's color to its initial property
 		gameObjectRenderer.material.color = initialColor;
@@ -109,7 +111,7 @@ public class ObjectOnCursor : MonoBehaviour {
 		// set the scale of the mouse component
 		transform.localScale = new Vector3(0,0,0);
 
-		gameObjectToSpawn = null;
+		buildingObjectToSpawn = null;
 		objectIsColliding = false;
 	}
 }

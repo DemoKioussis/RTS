@@ -36,4 +36,8 @@ public class ResourceBuilding : Building {
 	{
 		// To do
 	}
+
+	public override BUILDING_TYPE getBuildingType(){
+		return BUILDING_TYPE.TOWNCENTER;
+	}
 }

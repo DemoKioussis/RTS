@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrainingBuilding : Building{
 
 	List<Stub> stubPrefabs = new List<Stub>();
+
 	public GameObject unit;
 	public bool awake;
 
@@ -58,9 +59,9 @@ public class TrainingBuilding : Building{
 
 	// Set the spawn point
 	public override void SetSpawnPointAs(Vector3 spawnPosition){
-		if(base.flagReference == null){
+		if(base.GetFlagReference() == null){
 			GameObject flag = (GameObject)Instantiate (base.flagPrefab, spawnPosition, transform.rotation);
-			base.flagReference = flag;
+			base.SetFlagReference(flag);
 			base.SetSpawnPointAs (spawnPosition);
 
 			Destroy (flag, 3); // destroy the flag object after 3 seconds
@@ -72,5 +73,9 @@ public class TrainingBuilding : Building{
 		GameObject output = Instantiate (playableObject, transform);
 		output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
 		return output;
+	}
+
+	public override BUILDING_TYPE getBuildingType(){
+		return BUILDING_TYPE.TRAINING;
 	}
 }

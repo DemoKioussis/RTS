@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Unit : RTSObject {
 	
 	public UnitStats unitStats;
