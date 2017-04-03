@@ -23,6 +23,7 @@ public class TrainingBuilding : Building{
 			awake = !awake;
 		}
 
+		/*
 		if (Input.GetButton ("LeftClick")) {
 			RaycastHit hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
 
@@ -31,7 +32,6 @@ public class TrainingBuilding : Building{
 			}
 		}
 
-		/*
 		// test spawning units
 		if (Input.GetKey (KeyCode.I) && awake) {
 			GameObject obj = (GameObject) InstantiatePlayableObject (unit);
