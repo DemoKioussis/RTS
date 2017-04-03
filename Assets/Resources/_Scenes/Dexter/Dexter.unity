@@ -478,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 4096
   selectionCirclePrefab: {fileID: 166266, guid: b95631d263a174465a52d446a85dace8,
     type: 2}
   buildingGroupControllerPrefab: {fileID: 114197302711199396, guid: dd7fd3494f46643aea283858bf20b696,
