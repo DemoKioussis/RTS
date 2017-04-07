@@ -8,9 +8,6 @@ public class IndustrialCenter : ResourceBuilding {
 	void Update () {
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
-	}
 
 	protected override float Influence (Vector3 samplePosition)
 	{

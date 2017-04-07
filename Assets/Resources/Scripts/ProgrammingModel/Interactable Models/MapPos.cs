@@ -17,5 +17,9 @@ public class MapPos : Interactable {
     public override INTERACTION_TYPE getInteractionType() {
         return INTERACTION_TYPE.POSITION;
     }
+    public override void buildingInteratction(Building b) { }
+    public override void positionInteration(MapPos p) { }
+    public override void unitInteraction(Unit u) { }
+    public override void resourceInteraction(Resource r) { }
 
 }

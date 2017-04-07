@@ -43,6 +43,9 @@ public class RTSObjectGroup : Interactable {
 		Debug.Log("Move to " + p);
 	}
 
+    public override INTERACTION_TYPE getInteractionType() {
+        return INTERACTION_TYPE.GROUP;
+    }
     public override void buildingInteratction(Building b) { }
     public override void positionInteration(MapPos p) { }
     public override void unitInteraction(Unit u) { }

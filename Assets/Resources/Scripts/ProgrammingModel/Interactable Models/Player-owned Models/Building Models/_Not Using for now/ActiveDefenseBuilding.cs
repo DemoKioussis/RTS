@@ -16,9 +16,6 @@ public abstract class ActiveDefenseBuilding : DefensiveBuilding {
 
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
-	}
 
 	protected override float Influence (Vector3 samplePosition)
 	{

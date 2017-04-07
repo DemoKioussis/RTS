@@ -14,8 +14,4 @@ public class ShortRangeUnit : Military {
 
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
-
-	}
 }

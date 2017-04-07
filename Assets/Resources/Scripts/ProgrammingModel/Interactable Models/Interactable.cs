@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum INTERACTION_TYPE { POSITION, UNIT, BUILDING, RESOURCE }
+public enum INTERACTION_TYPE { POSITION, UNIT, BUILDING, RESOURCE,GROUP }
 
 public abstract class Interactable : MonoBehaviour {
 

@@ -18,8 +18,4 @@ public class Military : Unit {
 		
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
-
-	}
 }

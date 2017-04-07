@@ -33,9 +33,6 @@ public class TrainingBuilding : Building{
 		*/
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
-	}
 
 	protected override float Influence (Vector3 samplePosition)
 	{

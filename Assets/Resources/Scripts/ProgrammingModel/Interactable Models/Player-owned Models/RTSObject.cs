@@ -33,8 +33,6 @@ public abstract class RTSObject : Interactable {
 		targets.Enqueue (newTarget);
 	}
 
-	protected abstract void InteractWith (Interactable target);
-
 	protected abstract float Influence (Vector3 samplePosition);
 
 	protected virtual void Heal(int hp)

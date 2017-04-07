@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitController : MonoBehaviour {
-
+    /*
 	// Use this for initialization
 	void Start () {
 		
@@ -70,4 +70,5 @@ public class UnitController : MonoBehaviour {
 	void Update () {
 		
 	}
+    */
 }

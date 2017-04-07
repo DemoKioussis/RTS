@@ -71,4 +71,8 @@ public abstract class Building : RTSObject {
     }
 
 	public abstract BUILDING_TYPE getBuildingType();
+    public override void buildingInteratction(Building b) { }
+    public override void positionInteration(MapPos p) { }
+    public override void unitInteraction(Unit u) { }
+    public override void resourceInteraction(Resource r) { }
 }

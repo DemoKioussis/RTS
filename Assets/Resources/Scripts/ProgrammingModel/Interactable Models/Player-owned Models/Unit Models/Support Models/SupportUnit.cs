@@ -18,8 +18,5 @@ public class SupportUnit : Unit {
 
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
 
-	}
 }

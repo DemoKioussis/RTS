@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Unit : RTSObject {
 	public UnitStats unitStats;
+    public UnitMovement movement;
 	Vector3 patrolAnchor;
+    UnitGroup group;
 
 	// Update is called once per frame
 	void Update () {
@@ -13,12 +15,20 @@ public class Unit : RTSObject {
 			playerSetUp = true;
 		}
 	}
+    public void setGroup(UnitGroup g)
+    {
+        if (group != null)
+        {
+            group.removeUnit(this);
+        }
+        group = g;
+    }
+    public UnitGroup getGroup()
+    {
+        return group;
+    }
 
-	protected override void InteractWith(Interactable target)
-	{
-	}
-
-	protected override float Influence (Vector3 samplePosition)
+    protected override float Influence (Vector3 samplePosition)
 	{
 		return 0;
 		// To do
@@ -36,4 +46,8 @@ public class Unit : RTSObject {
 		if (otherObject is Unit)
 			unitStats = ((Unit)otherObject).unitStats;
 	}
+    public override void buildingInteratction(Building b) { }
+    public override void positionInteration(MapPos p) { }
+    public override void unitInteraction(Unit u) { }
+    public override void resourceInteraction(Resource r) { }
 }
