@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114561727594026662}
   - component: {fileID: 114850325607178730}
   - component: {fileID: 114308294740335314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TrainingLongRangeBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}

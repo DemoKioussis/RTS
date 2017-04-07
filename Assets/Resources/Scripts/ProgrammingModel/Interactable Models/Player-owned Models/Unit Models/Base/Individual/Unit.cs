@@ -20,12 +20,9 @@ public class Unit : RTSObject {
 			playerSetUp = true;
 		}
 	}
-		
-	protected override void Interaction(Interactable newInteraction)
-	{
-		base.Interaction (newInteraction);
 
-		// To do
+	protected override void InteractWith(Interactable target)
+	{
 	}
 
 	protected override float Influence (Vector3 samplePosition)

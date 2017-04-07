@@ -14,10 +14,8 @@ public class ShortRangeUnit : Military {
 
 	}
 
-	protected override void Interaction(Interactable newInteraction)
+	protected override void InteractWith(Interactable target)
 	{
-		base.Interaction (newInteraction);
 
-		// To do
 	}
 }

@@ -26,9 +26,9 @@ GameObject:
   - component: {fileID: 114187708969158130}
   - component: {fileID: 114233010208452184}
   - component: {fileID: 114728927432983696}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IndustrialCenter
-  m_TagString: Untagged
+  m_TagString: TownCenter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   objectIsColliding: 0
   isBeingPlaced: 0
   flagPrefab: {fileID: 1728843172292248, guid: c0328b19ca2252841a48901676292e46, type: 2}
+  yOffset: 0.25
 --- !u!114 &114233010208452184
 MonoBehaviour:
   m_ObjectHideFlags: 1

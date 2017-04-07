@@ -20,10 +20,12 @@ public abstract class RTSObject : Interactable {
 
 	Activity currentActivity;
 
-	protected virtual void Interaction (Interactable newTarget)
+	protected void AddInteraction (Interactable newTarget)
 	{
 		targets.Enqueue (newTarget);
 	}
+
+	protected abstract void InteractWith (Interactable target);
 
 	protected abstract float Influence (Vector3 samplePosition);
 

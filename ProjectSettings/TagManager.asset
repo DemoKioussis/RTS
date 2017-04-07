@@ -4,13 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SpawnPoint
-  - UnitLongRange
-  - UnitShortRange
-  - Building
-  - AI
   - TownCenter
-  - Mouse
+  - SpawnPoint
+  - Glue
+  - Paper
   layers:
   - Default
   - TransparentFX
@@ -20,11 +17,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
   - Player
   - Unit
   - Building
   - Map
+  - Resource
   - 
   - 
   - 
