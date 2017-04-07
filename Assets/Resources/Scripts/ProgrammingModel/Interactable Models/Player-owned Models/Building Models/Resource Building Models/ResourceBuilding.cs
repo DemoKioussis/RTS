@@ -26,10 +26,18 @@ public class ResourceBuilding : Building {
 		return base.Influence (samplePosition) + 0; 
 		// To do
 	}
+		
+	public override void SetSpawnPointAs(Vector3 p){
+		Debug.Log ("You cannot set a spawn point for this building");
+	}
 
 	// Adds the quantity specified to the resource quantity in PlayerContext
 	public void registerResource(System.Type type, int quantity)
 	{
 		// To do
+	}
+
+	public override BUILDING_TYPE getBuildingType(){
+		return BUILDING_TYPE.TOWNCENTER;
 	}
 }

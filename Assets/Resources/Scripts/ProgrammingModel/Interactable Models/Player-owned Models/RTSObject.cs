@@ -6,10 +6,13 @@ using UnityEngine;
 public abstract class RTSObject : Interactable {
 
 	public enum Activity {NONE, MOVE, GATHER, BUILD, REPAIR, ATTACK, HEAL, PATROL};
-	
+
 	public Stats stats;
 	protected bool playerSetUp = false;
 	public PlayerContext player = null;
+
+	public bool objectIsColliding;
+	public bool isBeingPlaced;
 
 	Queue<Interactable> targets = new Queue<Interactable>();
 
@@ -32,11 +35,11 @@ public abstract class RTSObject : Interactable {
 			stats.hitpoints = stats.maxHitpoints;
 	}
 
-	protected virtual void ReplaceStatsReferences (RTSObject otherObject)
+	public virtual void ReplaceStatsReferences (RTSObject otherObject)
 	{
 		stats = otherObject.stats;
 	}
-
+		
 	public static GameObject InstantiatePlayableObject(GameObject playableObject, Vector3 position, Transform parent)
 	{
 		GameObject output = Instantiate (playableObject, position, Quaternion.identity, parent);
@@ -45,5 +48,13 @@ public abstract class RTSObject : Interactable {
 		output.GetComponent<Renderer> ().enabled = true;
 
 		return output;
+	}
+
+	public void CannotBePlaced(){
+		objectIsColliding = true;
+	}
+
+	public void CanBePlaced(){
+		objectIsColliding = false;
 	}
 }

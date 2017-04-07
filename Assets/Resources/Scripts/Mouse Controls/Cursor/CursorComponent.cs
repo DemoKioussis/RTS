@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectOnCursor : MonoBehaviour {
+public class CursorComponent : MonoBehaviour {
 
-	public GameObject prefab; // for testing
+	public GameObject gObject;
 
-	private GameObject gameObjectToSpawn;
-
-	private bool objectIsColliding;
+	private RTSObject objectToSpawn;
 
 	private Renderer gameObjectRenderer;
 	private Color initialColor;
 	private Color transparentColor;
 
 	private RaycastHit hit;
-
-	private BoxCollider boxCollider;
 
 	public float transparentFactor = 0.5f;
 
@@ -27,27 +23,20 @@ public class ObjectOnCursor : MonoBehaviour {
 
 	void Start()
 	{
+		/* 
+		//testing
+			GameObject testObject = (GameObject)Instantiate (gObject, transform.position, transform.rotation, transform);
+			objectToSpawn = testObject.GetComponent<RTSObject> ();
+			gameObjectRenderer = testObject.GetComponent<Renderer> ();
+			objectToSpawn.isBeingPlaced = true;
+			// get the initial property colors of the object
+			initialColor = gameObjectRenderer.material.color; 
+		// end of test
+		*/
+
 		// set the colors
 		colorOfNoCollision = new Color (0, 1, 0, transparentFactor);
 		colorOfCollision = new Color(1, 0, 0, transparentFactor);
-
-		boxCollider = GetComponent<BoxCollider> ();
-
-		// Testing
-		//
-		//gameObjectToSpawn = (GameObject) Instantiate (prefab, transform.position, transform.rotation, transform);
-
-		// get the renderer of the object
-		//gameObjectRenderer = gameObjectToSpawn.GetComponent<Renderer> ();
-
-		// get the color
-		//initialColor = gameObjectRenderer.material.color;
-
-		// set the transparency of the object
-		objectIsColliding = false;
-
-		// set the size of the collider
-		//boxCollider.size = gameObjectToSpawn.transform.localScale;
 		//
 		// end of test
 	}
@@ -60,9 +49,9 @@ public class ObjectOnCursor : MonoBehaviour {
 			transform.position = hit.point + new Vector3(0, yOffset, 0); // update the position of the mouse
 		}
 
-		if (gameObjectToSpawn != null) {
+		if (objectToSpawn != null) {
 			// set the color of the object depending on collision information
-			if (objectIsColliding) 
+			if (objectToSpawn.objectIsColliding) 
 			{
 				SetColor(colorOfCollision);
 			} 
@@ -73,19 +62,11 @@ public class ObjectOnCursor : MonoBehaviour {
 
 			if (Input.GetButton("LeftClick"))
 			{
-				if (!objectIsColliding && hit.collider != null) {
+				if (!objectToSpawn.objectIsColliding && hit.collider != null) {
 					SetGameObjectTo (hit.point + new Vector3(0, yOffset, 0));
 				}
 			}
 		}
-	}
-
-	public void hasCollided(){
-		objectIsColliding = true;
-	}
-
-	public void hasNotCollided(){
-		objectIsColliding = false;
 	}
 
 	// Function to set the color of the object on the cursor
@@ -93,36 +74,40 @@ public class ObjectOnCursor : MonoBehaviour {
 		gameObjectRenderer.material.color = color;
 	}
 
-	public void SpawnObjectOnCursor(GameObject spawnObject){
-		gameObjectToSpawn = (GameObject) Instantiate(spawnObject, transform.position, transform.rotation, transform); // get reference to the object
+	public void SetBuildingObject(GameObject rtsObject){
+		objectToSpawn = rtsObject.GetComponent<RTSObject>();
+	}
+
+	public void SpawnObjectOnCursor(GameObject rtsObject){
+		objectToSpawn = ((GameObject) Instantiate(rtsObject, transform.position, transform.rotation, transform)).GetComponent<RTSObject>(); // get reference to the object
+
+		objectToSpawn.isBeingPlaced = true;
 
 		// get the renderer of the object
-		gameObjectRenderer = gameObjectToSpawn.GetComponent<Renderer> ();
+		gameObjectRenderer = objectToSpawn.GetComponent<Renderer> ();
 
 		// get the initial property colors of the object
 		initialColor = gameObjectRenderer.material.color; 
 
-		// set the transparency of the object
-		objectIsColliding = false;
+		// set color of the object
+		gameObjectRenderer.material.color = colorOfNoCollision;
 
-		// set the size of the collider
-		boxCollider.size = gameObjectToSpawn.transform.localScale;
+		objectToSpawn.CannotBePlaced();
 	}
 
 	private void SetGameObjectTo(Vector3 position){
+		// object is no longer being placed
+		objectToSpawn.isBeingPlaced = false;
+
 		// set the parent of the created object to the scene
-		gameObjectToSpawn.transform.parent = this.transform.parent;
+		objectToSpawn.transform.parent = this.transform.parent;
 
 		// set the position of the created object to the level
-		gameObjectToSpawn.transform.position = position; 
+		objectToSpawn.transform.position = position; 
 
 		// reset the game object's color to its initial property
 		gameObjectRenderer.material.color = initialColor;
 
-		// set the scale of the mouse component
-		transform.localScale = new Vector3(0,0,0);
-
-		gameObjectToSpawn = null;
-		objectIsColliding = false;
+		objectToSpawn = null;
 	}
 }

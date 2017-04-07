@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveDefenseBuilding : DefensiveBuilding {
+public abstract class ActiveDefenseBuilding : DefensiveBuilding {
 
 	MilitaryStats militaryStats;
 
@@ -27,5 +27,9 @@ public class ActiveDefenseBuilding : DefensiveBuilding {
 	{
 		return base.Influence (samplePosition) + 0;
 		// To do
+	}
+		
+	public override BUILDING_TYPE getBuildingType(){
+		return BUILDING_TYPE.ATTACK;
 	}
 }

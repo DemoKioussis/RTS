@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class IndustrialCenter : ResourceBuilding {
-	
+
 	// Use this for initialization
 	void Start () {
 		
@@ -31,8 +31,16 @@ public class IndustrialCenter : ResourceBuilding {
 		// To do
 	}*/
 
+	public override void SetSpawnPointAs(Vector3 spawnPosition){
+		Debug.Log ("Cannot set spawn point for this building");
+	}
+
 	public void registerResource(System.Type type, int quantity)
 	{
 		// To do
+	}
+
+	public override BUILDING_TYPE getBuildingType(){
+		return BUILDING_TYPE.TOWNCENTER;
 	}
 }

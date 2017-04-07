@@ -111,6 +111,7 @@ MonoBehaviour:
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
+  flagPrefab: {fileID: 1728843172292248, guid: c0328b19ca2252841a48901676292e46, type: 2}
 --- !u!208 &208434337714330544
 NavMeshObstacle:
   m_ObjectHideFlags: 1

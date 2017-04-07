@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Unit : RTSObject {
 	public UnitStats unitStats;
 	Vector3 patrolAnchor;
@@ -35,7 +34,7 @@ public class Unit : RTSObject {
         return INTERACTION_TYPE.UNIT;
     }
 
-	protected override void ReplaceStatsReferences(RTSObject otherObject)
+	public override void ReplaceStatsReferences(RTSObject otherObject)
 	{
 		base.ReplaceStatsReferences (otherObject);
 

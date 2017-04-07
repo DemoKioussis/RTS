@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefensiveBuilding : Building {
+public abstract class DefensiveBuilding : Building {
 
 	// Use this for initialization
 	void Start () {
@@ -24,5 +24,9 @@ public class DefensiveBuilding : Building {
 	protected override float Influence (Vector3 samplePosition)
 	{
 		return base.Influence (samplePosition) + 0;
+	}
+
+	public override BUILDING_TYPE getBuildingType(){
+		return BUILDING_TYPE.DEFENSE;
 	}
 }
