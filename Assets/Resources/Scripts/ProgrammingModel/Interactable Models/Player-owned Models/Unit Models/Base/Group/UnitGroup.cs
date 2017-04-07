@@ -46,22 +46,18 @@ public class UnitGroup : RTSObjectGroup {
 #endif
     }
 
+    public void preInteract() {
+        Debug.Log("AAAAHh");
+
+        foreach (Unit u in units) {
+            u.transform.parent = transform;
+        }
+    }
     public void removeUnit(Unit u) {
         units.Remove(u);
     }
     public void moveTo(MapPos p) {
-        arrived = false;
-        interaction = p;
-        center = getCenter();
-        path = new NavMeshPath();
-        targetPosition = p.getPosition();
-        NavMesh.CalculatePath(center, p.getPosition(), NavMesh.AllAreas, path);
 
-        foreach (Unit u in units) {
-            u.movement.setPath(path);
-            u.movement.setStoppingDistance(0);
-
-        }
     }
 
     public bool isEmpty() {
@@ -95,7 +91,22 @@ public class UnitGroup : RTSObjectGroup {
         }
     }
     public override void buildingInteratction(Building b) { }
-    public override void positionInteration(MapPos p) { }
+    public override void positionInteration(MapPos p) {
+        preInteract();
+        arrived = false;
+        interaction = p;
+        center = getCenter();
+        path = new NavMeshPath();
+        targetPosition = p.getPosition();
+        NavMesh.CalculatePath(center, p.getPosition(), NavMesh.AllAreas, path);
+
+        foreach (Unit u in units)
+        {
+            u.movement.setPath(path);
+            u.movement.setStoppingDistance(0);
+
+        }
+    }
     public override void unitInteraction(Unit u) { }
     public override void resourceInteraction(Resource r) { }
 

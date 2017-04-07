@@ -34,10 +34,6 @@ public class Unit : RTSObject {
 		// To do
 	}
 
-    public override INTERACTION_TYPE getInteractionType()
-    {
-        return INTERACTION_TYPE.UNIT;
-    }
 
 	public override void ReplaceStatsReferences(RTSObject otherObject)
 	{
@@ -46,6 +42,11 @@ public class Unit : RTSObject {
 		if (otherObject is Unit)
 			unitStats = ((Unit)otherObject).unitStats;
 	}
+
+    public override INTERACTION_TYPE getInteractionType()
+    {
+        return INTERACTION_TYPE.UNIT;
+    }
     public override void buildingInteratction(Building b) { }
     public override void positionInteration(MapPos p) { }
     public override void unitInteraction(Unit u) { }
