@@ -50,11 +50,11 @@ public class TrainingBuilding : Building{
 		// To do
 	}
 		
-	public virtual void SetToAwake(){
+	public override void SetToAwake(){
 		awake = true;
 	}
 
-	public virtual void SetToSleep(){
+	public override void SetToSleep(){
 		awake = false;
 	}
 
