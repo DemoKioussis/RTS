@@ -17,7 +17,6 @@ public class UnitGroup : RTSObjectGroup {
     void Awake() {
         units = new List<Unit>();
         agent = GetComponent<NavMeshAgent>();
-
     }
 
     void FixedUpdate() {

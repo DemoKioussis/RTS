@@ -43,7 +43,7 @@ public class RTSObjectGroup : MonoBehaviour {
 		Debug.Log("Move to " + p);
 	}
 
-	protected virtual void InteractWith(Interactable i)
+	public virtual void InteractWith(Interactable i)
 	{
 		foreach (RTSObject obj in rtsObjects)
 		{
