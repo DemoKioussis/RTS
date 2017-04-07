@@ -47,6 +47,14 @@ public abstract class RTSObject : Interactable {
 		output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
 		output.GetComponent<Renderer> ().enabled = true;
 
+		if (output.GetComponent<Unit> ()) {
+			Unit unit = output.GetComponent<Unit> ();
+			unit.player.activeUnits.Add (unit);
+		} else if (output.GetComponent<Building> ()) {
+			Building bldg = output.GetComponent<Building> ();
+			bldg.player.activeBuildings.Add (bldg);
+		}
+
 		return output;
 	}
 

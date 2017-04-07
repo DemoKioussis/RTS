@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unit : RTSObject {
 	public UnitStats unitStats;
 	Vector3 patrolAnchor;
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (!playerSetUp && player != null) {
@@ -26,8 +26,6 @@ public class Unit : RTSObject {
 		return 0;
 		// To do
 	}
-
-
 
     public override INTERACTION_TYPE getInteractionType()
     {
