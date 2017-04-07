@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114490697480513236}
   - component: {fileID: 195054600350750664}
   - component: {fileID: 114008059806515882}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: ShortRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +105,8 @@ MonoBehaviour:
   isBeingPlaced: 0
   unitStats:
     moveSpeed: 0
+  interactable: {fileID: 0}
+  selectionCircle: {fileID: 0}
 --- !u!114 &114490697480513236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +129,8 @@ MonoBehaviour:
   isBeingPlaced: 0
   unitStats:
     moveSpeed: 0
+  interactable: {fileID: 0}
+  selectionCircle: {fileID: 0}
   militaryStats:
     minAttackRange: 0
     maxAttackRange: 0

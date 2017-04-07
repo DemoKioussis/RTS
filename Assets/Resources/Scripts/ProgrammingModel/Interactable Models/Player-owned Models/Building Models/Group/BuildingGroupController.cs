@@ -19,7 +19,10 @@ public class BuildingGroupController : MonoBehaviour, Interacts {
 	}
 	public bool isEmpty() {
 		return group.isEmpty();
+	}
 
+	public int getCount(){
+		return group.buildings.Count;
 	}
 
 	public void SetToAwake(){

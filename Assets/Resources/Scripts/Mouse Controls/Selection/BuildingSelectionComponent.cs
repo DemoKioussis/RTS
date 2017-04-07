@@ -17,12 +17,25 @@ public class BuildingSelectionComponent : MonoBehaviour
 	public BuildingGroupController buildingGroupControllerPrefab;
 
 	bool previousInputLeftClick;
+	Vector3 clickPosition;
+
+	// resource building, long range, short range
+	public List<GameObject> buildingPrefabs;
+
+	private CursorComponent cursor;
+
+	void Awake()
+	{
+		cursor = GameObject.FindGameObjectWithTag ("Mouse").GetComponent<CursorComponent>();
+	}
 
 	void Update()
 	{
 		// If we press the left mouse button, begin selection and remember the location of the mouse
 		if( Input.GetMouseButtonDown( 0 ) )
 		{
+			clickPosition = Input.mousePosition;
+
 			if (previousInputLeftClick && selectedGroup != null)
 			{
 				Destroy(selectedGroup.gameObject);
@@ -42,6 +55,24 @@ public class BuildingSelectionComponent : MonoBehaviour
 					selectableObject.selectionCircle = null;
 				}
 			}
+
+			RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
+			if (hitInfo.collider != null) {
+				if (hitInfo.collider.gameObject.GetComponent<SelectableBuildingComponent> () != null) {
+					SelectableBuildingComponent selectableObject = hitInfo.collider.gameObject.GetComponent<SelectableBuildingComponent> ();
+					if( selectableObject.selectionCircle == null )
+					{
+						selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
+						selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.GetComponent<MeshRenderer>().bounds);
+						selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
+						selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
+						if (selectableObject.interactable.getInteractionType () == INTERACTION_TYPE.UNIT) {
+							selectedGroup.add(selectableObject.GetComponent<BuildingController>());
+							selectedBuildings.Add (selectableObject);
+						}
+					}
+				}
+			}
 		}
 		// If we let go of the left mouse button, end selection
 		if( Input.GetMouseButtonUp( 0 ) )
@@ -49,12 +80,12 @@ public class BuildingSelectionComponent : MonoBehaviour
 			if (selectedGroup.isEmpty())
 				Destroy(selectedGroup.gameObject);
 
-			selectedBuildings = new List<SelectableBuildingComponent>();
-			foreach( var selectableObject in FindObjectsOfType<SelectableBuildingComponent>() )
-			{
-				if( IsWithinSelectionBounds( selectableObject.gameObject ) )
-				{
-					selectedBuildings.Add( selectableObject );
+			if (clickPosition != Input.mousePosition) {
+				selectedBuildings = new List<SelectableBuildingComponent> ();
+				foreach (var selectableObject in FindObjectsOfType<SelectableBuildingComponent>()) {
+					if (IsWithinSelectionBounds (selectableObject.gameObject)) {
+						selectedBuildings.Add (selectableObject);
+					}
 				}
 			}
 
@@ -83,7 +114,7 @@ public class BuildingSelectionComponent : MonoBehaviour
 							selectedGroup.add(selectableObject.GetComponent<BuildingController>());
 					}
 				}
-				else
+				else if (clickPosition != Input.mousePosition)
 				{
 					if( selectableObject.selectionCircle != null )
 					{
@@ -121,11 +152,25 @@ public class BuildingSelectionComponent : MonoBehaviour
 				selectedGroup.SetToAwake ();
 			}
 		}
-
-		if (Input.GetKeyUp (KeyCode.S)) {
+		else if (Input.GetKeyUp (KeyCode.S)) {
 			Debug.Log("Sleeping");
 			if (selectedGroup != null) {
 				selectedGroup.SetToSleep ();
+			}
+		}
+		else if (Input.GetKeyUp (KeyCode.Alpha1)) {
+			if (selectedGroup != null && selectedGroup.getCount() == 1) {
+				cursor.SpawnObjectOnCursor(buildingPrefabs[0]);
+			}
+		}
+		else if (Input.GetKeyUp (KeyCode.Alpha2)) {
+			if (selectedGroup != null && selectedGroup.getCount() == 1) {
+				cursor.SpawnObjectOnCursor(buildingPrefabs[1]);
+			}
+		}
+		else if (Input.GetKeyUp (KeyCode.Alpha3)) {
+			if (selectedGroup != null && selectedGroup.getCount() == 1) {
+				cursor.SpawnObjectOnCursor(buildingPrefabs[2]);
 			}
 		}
 	}

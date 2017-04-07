@@ -4,12 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SpawnPoint
-  - UnitLongRange
-  - UnitShortRange
-  - Building
-  - AI
   - TownCenter
+  - SpawnPoint
   - Glue
   - Paper
   layers:
@@ -21,12 +17,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
   - Player
   - Unit
   - Building
   - Map
   - Resource
+  - 
   - 
   - 
   - 
