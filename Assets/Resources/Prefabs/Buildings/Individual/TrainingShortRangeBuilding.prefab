@@ -169,7 +169,7 @@ MonoBehaviour:
   objectIsColliding: 0
   isBeingPlaced: 0
   flagPrefab: {fileID: 1728843172292248, guid: c0328b19ca2252841a48901676292e46, type: 2}
-  unit: {fileID: 1561799709714086, guid: 40bc5b8d5167c73429ea4e92d66d34da, type: 2}
+  unit: {fileID: 1631743313040632, guid: 9508372a892351440aba71f0f7c6ae85, type: 2}
   yOffset: 0.25
 --- !u!208 &208175460728556488
 NavMeshObstacle:
