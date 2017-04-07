@@ -114,6 +114,14 @@ public class BuildingSelectionComponent : MonoBehaviour
 				}
 			}
 		}
+
+		if (Input.GetKey (KeyCode.A)) {
+			Debug.Log ("Awake");
+		}
+
+		if (Input.GetKey (KeyCode.S)) {
+			Debug.Log("Sleeping");
+		}
 	}
 
 	void InteractionSetter(Interactable interaction, Vector3 position)

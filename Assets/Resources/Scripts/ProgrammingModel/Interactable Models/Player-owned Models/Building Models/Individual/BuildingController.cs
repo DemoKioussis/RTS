@@ -21,6 +21,7 @@ public class BuildingController : MonoBehaviour{
 	{
 		return group;
 	}
+
 	public void SetSpawnTo(MapPos p){
 		building.SetSpawnPointAs (p.getPosition());
 	}
