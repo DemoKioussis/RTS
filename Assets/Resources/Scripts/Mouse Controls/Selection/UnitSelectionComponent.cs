@@ -17,12 +17,15 @@ public class UnitSelectionComponent : MonoBehaviour
     public UnitGroupController unitGroupControllerPrefab;
 
     bool previousInputLeftClick;
+	Vector3 clickPosition;
 
     void Update()
     {
         // If we press the left mouse button, begin selection and remember the location of the mouse
         if( Input.GetMouseButtonDown( 0 ) )
         {
+			clickPosition = Input.mousePosition;
+
             if (previousInputLeftClick && selectedGroup != null)
             {
                 Destroy(selectedGroup.gameObject);
@@ -42,6 +45,26 @@ public class UnitSelectionComponent : MonoBehaviour
                     selectableObject.selectionCircle = null;
                 }
             }
+
+
+			RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
+			if (hitInfo.collider != null) {
+				if (hitInfo.collider.gameObject.GetComponent<SelectableUnitComponent> () != null) {
+					SelectableUnitComponent selectableObject = hitInfo.collider.gameObject.GetComponent<SelectableUnitComponent> ();
+					if( selectableObject.selectionCircle == null )
+					{
+						selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
+						selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.GetComponent<MeshRenderer>().bounds);
+						selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
+						selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
+						if (selectableObject.interactable.getInteractionType () == INTERACTION_TYPE.UNIT) {
+							selectedGroup.add(selectableObject.GetComponent<UnitController>());
+							selectedUnits.Add (selectableObject);
+						}
+					}
+				}
+			}
+
         }
         // If we let go of the left mouse button, end selection
         if( Input.GetMouseButtonUp( 0 ) )
@@ -49,15 +72,17 @@ public class UnitSelectionComponent : MonoBehaviour
             if (selectedGroup.isEmpty())
                 Destroy(selectedGroup.gameObject);
 
-            selectedUnits = new List<SelectableUnitComponent>();
-            foreach( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
-            {
-                if( IsWithinSelectionBounds( selectableObject.gameObject ) )
-                {
-                    selectedUnits.Add( selectableObject );
-                }
-            }
-
+			if (clickPosition != Input.mousePosition) {
+				selectedUnits = new List<SelectableUnitComponent>();
+				foreach( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
+				{
+					if( IsWithinSelectionBounds( selectableObject.gameObject ) )
+					{
+						selectedUnits.Add( selectableObject );
+					}
+				}
+			}
+				
             var sb = new StringBuilder();
             sb.AppendLine( string.Format( "Selecting [{0}] Units", selectedUnits.Count ) );
             foreach( var selectedUnit in selectedUnits )
@@ -76,14 +101,15 @@ public class UnitSelectionComponent : MonoBehaviour
                 {
                     if( selectableObject.selectionCircle == null )
                     {
-                        selectableObject.selectionCircle = Instantiate( selectionCirclePrefab );
+						selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
+						selectableObject.selectionCircle.GetComponent<SizeBasedOnObject>().SetSize(selectableObject.GetComponent<MeshRenderer>().bounds);
                         selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
                         selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
                         if (selectableObject.interactable.getInteractionType() == INTERACTION_TYPE.UNIT)
                             selectedGroup.add(selectableObject.GetComponent<UnitController>());
                     }
                 }
-                else
+				else if (clickPosition != Input.mousePosition)
                 {
                     if( selectableObject.selectionCircle != null )
                     {
