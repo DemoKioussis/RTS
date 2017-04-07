@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
+
 public class UnitGroup : RTSObjectGroup {
-	/*
+	
     public List<Unit> units;
     public bool arrived= false;
     public float arriveRadius;
@@ -27,6 +28,7 @@ public class UnitGroup : RTSObjectGroup {
             arrived = true;
         }
     }
+
     void OnDrawGizmos() {
 #if UNITY_EDITOR
         Gizmos.color = Color.red;
@@ -65,7 +67,7 @@ public class UnitGroup : RTSObjectGroup {
     private Vector3 getCenter() {
         Vector3 center = new Vector3(0, 0, 0);
 
-        foreach (UnitController u in units) {
+        foreach (Unit u in units) {
             center += u.transform.position;
         }
         center = center / units.Count;
@@ -73,8 +75,8 @@ public class UnitGroup : RTSObjectGroup {
     }
 
     private void stopAgents() {
-        UnitController closest = units[0];
-        foreach (UnitController u in units) {
+        Unit closest = units[0];
+        foreach (Unit u in units) {
             if (u.distanceTo(targetPosition) < closest.distanceTo(targetPosition)) {
                 closest = u;
 
@@ -89,5 +91,5 @@ public class UnitGroup : RTSObjectGroup {
         }
     }
 
-*/
+
 }

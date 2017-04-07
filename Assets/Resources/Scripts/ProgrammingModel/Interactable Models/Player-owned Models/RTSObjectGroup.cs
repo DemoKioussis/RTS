@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class RTSObjectGroup : MonoBehaviour {
+public class RTSObjectGroup : Interactable {
 
 	public List<RTSObject> rtsObjects = new List<RTSObject>();
 
@@ -43,6 +43,11 @@ public abstract class RTSObjectGroup : MonoBehaviour {
 		Debug.Log("Move to " + p);
 	}
 
-	public virtual abstract void InteractWith (Interactable i);
+    public override void buildingInteratction(Building b) { }
+    public override void positionInteration(MapPos p) { }
+    public override void unitInteraction(Unit u) { }
+    public override void resourceInteraction(Resource r) { }
+
+
 
 }
