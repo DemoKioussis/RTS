@@ -14,8 +14,4 @@ public class Healer : SupportUnit {
 
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
-
-	}
 }

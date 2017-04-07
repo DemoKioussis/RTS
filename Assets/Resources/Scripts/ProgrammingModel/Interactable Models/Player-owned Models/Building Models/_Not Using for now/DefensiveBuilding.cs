@@ -14,10 +14,6 @@ public abstract class DefensiveBuilding : Building {
 
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
-	}
-
 	protected override float Influence (Vector3 samplePosition)
 	{
 		return base.Influence (samplePosition) + 0;

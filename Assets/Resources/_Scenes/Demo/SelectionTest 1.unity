@@ -24583,8 +24583,8 @@ GameObject:
   - component: {fileID: 2104728567}
   - component: {fileID: 2104728566}
   - component: {fileID: 2104728565}
-  - component: {fileID: 2104728570}
   - component: {fileID: 2104728571}
+  - component: {fileID: 2104728570}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -24668,15 +24668,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2104728564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca058c5ddc81404bb9a96d4a0c2d5b9, type: 3}
+  m_Script: {fileID: 11500000, guid: d79dd01b1bc92401ca2e924719474624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 7168
+    m_Bits: 3584
   selectionCirclePrefab: {fileID: 166266, guid: b95631d263a174465a52d446a85dace8,
     type: 2}
-  unitGroupControllerPrefab: {fileID: 114150679185762970, guid: 23efe30d5fbe743049ec7dda488edfb2,
+  selectedUnitGroupPrefab: {fileID: 114209035315617428, guid: 8ed1c8b142f734a35a2066bd2a06f3ae,
+    type: 2}
+  selectedBuildingGroupPrefab: {fileID: 114868029730161312, guid: d08ca96e112e44c5cabb17d5610df379,
     type: 2}
 --- !u!114 &2104728571
 MonoBehaviour:

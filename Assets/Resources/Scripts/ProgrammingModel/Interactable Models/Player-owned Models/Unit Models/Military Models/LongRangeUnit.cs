@@ -14,8 +14,4 @@ public class LongRangeUnit : Military {
 
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
-
-	}
 }

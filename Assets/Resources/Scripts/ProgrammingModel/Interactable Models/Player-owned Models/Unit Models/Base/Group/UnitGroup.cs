@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
+
 public class UnitGroup : RTSObjectGroup {
-	/*
+	
     public List<Unit> units;
     public bool arrived= false;
     public float arriveRadius;
@@ -27,6 +28,7 @@ public class UnitGroup : RTSObjectGroup {
             arrived = true;
         }
     }
+
     void OnDrawGizmos() {
 #if UNITY_EDITOR
         Gizmos.color = Color.red;
@@ -43,6 +45,10 @@ public class UnitGroup : RTSObjectGroup {
 
 #endif
     }
+
+    public void removeUnit(Unit u) {
+        units.Remove(u);
+    }
     public void moveTo(MapPos p) {
         arrived = false;
         interaction = p;
@@ -52,8 +58,8 @@ public class UnitGroup : RTSObjectGroup {
         NavMesh.CalculatePath(center, p.getPosition(), NavMesh.AllAreas, path);
 
         foreach (Unit u in units) {
-            u.setPath(path);
-            u.setStoppingDistance(0);
+            u.movement.setPath(path);
+            u.movement.setStoppingDistance(0);
 
         }
     }
@@ -65,7 +71,7 @@ public class UnitGroup : RTSObjectGroup {
     private Vector3 getCenter() {
         Vector3 center = new Vector3(0, 0, 0);
 
-        foreach (UnitController u in units) {
+        foreach (Unit u in units) {
             center += u.transform.position;
         }
         center = center / units.Count;
@@ -73,21 +79,24 @@ public class UnitGroup : RTSObjectGroup {
     }
 
     private void stopAgents() {
-        UnitController closest = units[0];
-        foreach (UnitController u in units) {
-            if (u.distanceTo(targetPosition) < closest.distanceTo(targetPosition)) {
+        Unit closest = units[0];
+        foreach (Unit u in units) {
+            if (u.movement.distanceTo(targetPosition) < closest.movement.distanceTo(targetPosition)) {
                 closest = u;
 
             }
         }
 
-        stopDist = Mathf.Sqrt(units.Count) * closest.getRadius() / 1.8f;
-        foreach (UnitController u in units)
+        stopDist = Mathf.Sqrt(units.Count) * closest.movement.getRadius() / 1.8f;
+        foreach (Unit u in units)
         {
-            u.setDestination(u.transform.position);
-            u.setStoppingDistance(stopDist);
+            u.movement.setDestination(u.transform.position);
+            u.movement.setStoppingDistance(stopDist);
         }
     }
+    public override void buildingInteratction(Building b) { }
+    public override void positionInteration(MapPos p) { }
+    public override void unitInteraction(Unit u) { }
+    public override void resourceInteraction(Resource r) { }
 
-*/
 }

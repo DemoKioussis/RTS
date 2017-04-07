@@ -14,7 +14,5 @@ public class Artillery : Military {
 		
 	}
 
-	protected override void InteractWith(Interactable target)
-	{
-	}
+	
 }
