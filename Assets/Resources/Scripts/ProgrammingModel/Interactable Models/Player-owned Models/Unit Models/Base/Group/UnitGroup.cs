@@ -32,10 +32,14 @@ public class UnitGroup :MonoBehaviour{
 #if UNITY_EDITOR
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(center + Vector3.up*0.5f ,arriveRadius);
-        for (int i = 0; i < path.corners.Length - 1; i++)
-            Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(center + Vector3.up * 0.5f, stopDist);
+		if (path != null)
+		{
+		for (int i = 0; i < path.corners.Length - 1; i++)
+		Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+		Gizmos.color = Color.blue;
+		Gizmos.DrawSphere(center + Vector3.up * 0.5f, stopDist);
+		}
+
 
 
 #endif

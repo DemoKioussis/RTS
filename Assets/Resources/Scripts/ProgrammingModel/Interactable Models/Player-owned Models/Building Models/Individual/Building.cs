@@ -6,11 +6,13 @@ public enum BUILDING_TYPE {RESOURCE, TRAINING, TOWNCENTER, ATTACK, DEFENSE}
 
 public abstract class Building : RTSObject {
 
-	bool built = false;
-	Vector3 spawnPoint;
+	protected bool built = false;
+	protected bool awake = true;
+
+	private Vector3 spawnPoint;
 
 	public GameObject flagPrefab;
-	GameObject flagReference;
+	private GameObject flagReference;
 
 	// Update is called once per frame
 	void Update () {
@@ -56,6 +58,14 @@ public abstract class Building : RTSObject {
 
 	protected GameObject GetFlagReference(){
 		return flagReference;
+	}
+
+	public virtual void SetToAwake(){
+
+	}
+
+	public virtual void SetToSleep(){
+
 	}
 
 	public virtual void SetSpawnPointAs(Vector3 spawnPosition){

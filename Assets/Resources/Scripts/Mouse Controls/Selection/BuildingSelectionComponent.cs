@@ -115,12 +115,18 @@ public class BuildingSelectionComponent : MonoBehaviour
 			}
 		}
 
-		if (Input.GetKey (KeyCode.A)) {
+		if (Input.GetKeyUp (KeyCode.A)) {
 			Debug.Log ("Awake");
+			if (selectedGroup != null) {
+				selectedGroup.SetToAwake ();
+			}
 		}
 
-		if (Input.GetKey (KeyCode.S)) {
+		if (Input.GetKeyUp (KeyCode.S)) {
 			Debug.Log("Sleeping");
+			if (selectedGroup != null) {
+				selectedGroup.SetToSleep ();
+			}
 		}
 	}
 

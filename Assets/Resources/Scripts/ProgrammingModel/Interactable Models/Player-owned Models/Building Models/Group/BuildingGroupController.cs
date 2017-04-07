@@ -21,6 +21,21 @@ public class BuildingGroupController : MonoBehaviour, Interacts {
 		return group.isEmpty();
 
 	}
+
+	public void SetToAwake(){
+		foreach (BuildingController u in group.buildings)
+		{
+			u.SetToAwake ();
+		}
+	}
+
+	public void SetToSleep(){
+		foreach (BuildingController u in group.buildings)
+		{
+			u.SetToSleep ();
+		}
+	}
+
 	public virtual void interactWith(Interactable i)
 	{
 		foreach (BuildingController u in group.buildings)
