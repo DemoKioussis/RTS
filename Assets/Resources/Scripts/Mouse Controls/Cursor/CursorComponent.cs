@@ -79,12 +79,15 @@ public class CursorComponent : MonoBehaviour {
 	}
 
 	public void SpawnObjectOnCursor(GameObject rtsObject){
-		objectToSpawn = ((GameObject) Instantiate(rtsObject, transform.position, transform.rotation, transform)).GetComponent<RTSObject>(); // get reference to the object
+		GameObject tempObj = (GameObject) Instantiate(rtsObject, transform.position, transform.rotation, transform); // get reference to the object
+
+		objectToSpawn = tempObj.GetComponent<RTSObject>();
 
 		objectToSpawn.isBeingPlaced = true;
+		objectToSpawn.objectIsColliding = false;
 
 		// get the renderer of the object
-		gameObjectRenderer = objectToSpawn.GetComponent<Renderer> ();
+		gameObjectRenderer = tempObj.GetComponent<Renderer> ();
 
 		// get the initial property colors of the object
 		initialColor = gameObjectRenderer.material.color; 
@@ -96,8 +99,10 @@ public class CursorComponent : MonoBehaviour {
 	}
 
 	private void SetGameObjectTo(Vector3 position){
+		
 		// object is no longer being placed
 		objectToSpawn.isBeingPlaced = false;
+		objectToSpawn.objectIsColliding = false;
 
 		// set the parent of the created object to the scene
 		objectToSpawn.transform.parent = this.transform.parent;

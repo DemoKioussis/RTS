@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ResourceBuilding : Building {
 
+	public float yOffset = 0.25f;
+
 	// Use this for initialization
 	void Start () {
 
