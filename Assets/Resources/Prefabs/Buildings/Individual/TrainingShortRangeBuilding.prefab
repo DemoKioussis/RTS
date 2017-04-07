@@ -25,8 +25,6 @@ GameObject:
   - component: {fileID: 23712352796438696}
   - component: {fileID: 208175460728556488}
   - component: {fileID: 114951066976862450}
-  - component: {fileID: 114650836643235864}
-  - component: {fileID: 114821976671130664}
   - component: {fileID: 114585948498656914}
   m_Layer: 10
   m_Name: TrainingShortRangeBuilding
@@ -124,30 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdc615a7781a4a24a0880f96a0e04ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114650836643235864
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1332469895593294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a07b827220e28448d9c022ce61a7f38b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114821976671130664
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1332469895593294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29cfa2dba3c054a47b1e370f9e2809b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: {fileID: 0}
-  selectionCircle: {fileID: 0}
 --- !u!114 &114951066976862450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,6 +142,8 @@ MonoBehaviour:
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
+  interactable: {fileID: 0}
+  selectionCircle: {fileID: 0}
   flagPrefab: {fileID: 1728843172292248, guid: c0328b19ca2252841a48901676292e46, type: 2}
   unit: {fileID: 1631743313040632, guid: 9508372a892351440aba71f0f7c6ae85, type: 2}
   yOffset: 0.25
