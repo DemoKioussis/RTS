@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AIStrategy : Strategy {
 
-	PlayerContext player;
-
 	public AIStrategy(PlayerContext player)
 	{
 		this.player = player;

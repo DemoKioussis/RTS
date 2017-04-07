@@ -8,6 +8,7 @@ public class GameContext : MonoBehaviour {
 	public static GameContext currentGameContext;
 
 	public int playerCount;
+	public bool[] playerType;
 	public GameObject playerPrefab;
 
 	List<PlayerContext> allPlayers = new List<PlayerContext>();
@@ -36,7 +37,7 @@ public class GameContext : MonoBehaviour {
 		for (int i = 0; i < playerCount; i++) {
 			allPlayers.Add (Instantiate (playerPrefab).GetComponent<PlayerContext>());
 			activePlayers.Add (allPlayers [allPlayers.Count - 1]);
-			activePlayers [allPlayers.Count - 1].Init (i, i, true, true, false);
+			activePlayers [allPlayers.Count - 1].Init (i, i, playerType[i], true, false);
 		}
 //		SetSpawnables ();
 	}

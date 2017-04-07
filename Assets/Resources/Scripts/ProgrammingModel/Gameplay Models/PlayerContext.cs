@@ -91,6 +91,8 @@ public class PlayerContext : MonoBehaviour {
 
 		if (isAI)
 			strategy = new AIStrategy (this);
+		else
+			strategy = new PlayerStrategy (this);
 
 		switch (this.teamId) {
 		case 0:
