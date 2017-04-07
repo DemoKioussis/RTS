@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStrategy : MonoBehaviour {
+public class PlayerStrategy : Strategy {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public override void RealizeStrategy()
+	{
 	}
 }

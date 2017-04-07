@@ -12,14 +12,12 @@ public abstract class Building : RTSObject {
 	public GameObject flagPrefab;
 	GameObject flagReference;
 
-	// Use this for initialization
-	void Start () {
-
-	}
-
 	// Update is called once per frame
 	void Update () {
-
+		if (!playerSetUp && player != null) {
+			player.activeBuildings.Add (this);
+			playerSetUp = true;
+		}
 	}
 
 	protected override void Interaction(Interactable newInteraction)
