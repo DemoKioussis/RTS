@@ -7,6 +7,7 @@ using System.Text;
 
 public class BuildingSelectionComponent : MonoBehaviour
 {
+	/*
 	public LayerMask layerMask;
 	bool isSelecting = false;
 	Vector3 mousePosition1;
@@ -140,12 +141,12 @@ public class BuildingSelectionComponent : MonoBehaviour
 					Debug.Log (interactable.getInteractionType());
 					if (selectedGroup != null) {
 						InteractionSetter (interactable, hitInfo.point);
-						selectedGroup.interactWith (interactable);
+						selectedGroup.InteractWith (interactable);
 					}
 				}
 			}
 		}
-
+			
 		if (Input.GetKeyUp (KeyCode.A)) {
 			Debug.Log ("Awake");
 			if (selectedGroup != null) {
@@ -173,6 +174,7 @@ public class BuildingSelectionComponent : MonoBehaviour
 				cursor.SpawnObjectOnCursor(buildingPrefabs[2]);
 			}
 		}
+
 	}
 
 	void InteractionSetter(Interactable interaction, Vector3 position)
@@ -208,4 +210,5 @@ public class BuildingSelectionComponent : MonoBehaviour
 			Utils.DrawScreenRectBorder( rect, 2, new Color( 0.8f, 0.8f, 0.95f ) );
 		}
 	}
+	*/
 }

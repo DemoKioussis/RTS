@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
-public class UnitGroup :MonoBehaviour{
-
-    public List<UnitController> units;
+public class UnitGroup : RTSObjectGroup {
+	/*
+    public List<Unit> units;
     public bool arrived= false;
     public float arriveRadius;
     public float stopDist;
@@ -15,7 +15,7 @@ public class UnitGroup :MonoBehaviour{
     Vector3 center;
 
     void Awake() {
-        units = new List<UnitController>();
+        units = new List<Unit>();
         agent = GetComponent<NavMeshAgent>();
 
     }
@@ -52,7 +52,7 @@ public class UnitGroup :MonoBehaviour{
         targetPosition = p.getPosition();
         NavMesh.CalculatePath(center, p.getPosition(), NavMesh.AllAreas, path);
 
-        foreach (UnitController u in units) {
+        foreach (Unit u in units) {
             u.setPath(path);
             u.setStoppingDistance(0);
 
@@ -90,5 +90,5 @@ public class UnitGroup :MonoBehaviour{
         }
     }
 
-
+*/
 }

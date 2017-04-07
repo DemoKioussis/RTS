@@ -14,6 +14,14 @@ public abstract class RTSObject : Interactable {
 	public bool objectIsColliding;
 	public bool isBeingPlaced;
 
+	public Interactable interactable;
+	public GameObject selectionCircle;
+
+	void Awake()
+	{
+		interactable = GetComponent<Interactable>();
+	}
+
 	Queue<Interactable> targets = new Queue<Interactable>();
 
 	// Behaviour DFA object

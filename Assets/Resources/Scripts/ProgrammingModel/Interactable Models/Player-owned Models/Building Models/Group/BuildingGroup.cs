@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingGroup : MonoBehaviour {
+public class BuildingGroup : RTSObjectGroup {
 
-	public List<BuildingController> buildings;
+	/*
+	public List<Building> buildings;
 	Interactable interaction;
 	Vector3 targetPosition;
 
@@ -34,4 +35,5 @@ public class BuildingGroup : MonoBehaviour {
 			u.SetToSleep();
 		}
 	}
+	*/
 }
