@@ -130,7 +130,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: ffafae56e4741364997efd150e9fcaf3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &230076873
@@ -172,7 +174,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: ecd1932ffcc4548bc8a529dcf5a0d406, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &310488421
@@ -436,7 +440,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 89e77e02cea3f40e894c7fb8a2d5d3a7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1294453703
@@ -598,20 +604,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679681425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2825e71c5a79f457a874618df6ebd6f3, type: 3}
+  m_Script: {fileID: 11500000, guid: d79dd01b1bc92401ca2e924719474624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 3584
   selectionCirclePrefab: {fileID: 166266, guid: b95631d263a174465a52d446a85dace8,
     type: 2}
-  buildingGroupControllerPrefab: {fileID: 114197302711199396, guid: dd7fd3494f46643aea283858bf20b696,
+  selectedUnitGroupPrefab: {fileID: 114209035315617428, guid: 8ed1c8b142f734a35a2066bd2a06f3ae,
     type: 2}
-  buildingPrefabs:
-  - {fileID: 1009949689278842, guid: 74e94ccb6fdbc4626871612ec9593c3a, type: 2}
-  - {fileID: 1108184180570134, guid: 89e77e02cea3f40e894c7fb8a2d5d3a7, type: 2}
-  - {fileID: 1332469895593294, guid: ecd1932ffcc4548bc8a529dcf5a0d406, type: 2}
+  selectedBuildingGroupPrefab: {fileID: 114868029730161312, guid: d08ca96e112e44c5cabb17d5610df379,
+    type: 2}
 --- !u!1 &1851157571
 GameObject:
   m_ObjectHideFlags: 0
