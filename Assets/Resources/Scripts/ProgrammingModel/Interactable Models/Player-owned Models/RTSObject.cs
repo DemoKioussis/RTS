@@ -7,8 +7,10 @@ public abstract class RTSObject : Interactable {
 
 	public enum Activity {NONE, MOVE, GATHER, BUILD, REPAIR, ATTACK, HEAL, PATROL};
 
-	
 	public Stats stats;
+
+	public bool objectIsColliding;
+	public bool isBeingPlaced;
 
 	Queue<Interactable> targets = new Queue<Interactable>();
 
@@ -44,5 +46,13 @@ public abstract class RTSObject : Interactable {
 	public virtual void ReplaceStatsReferences (RTSObject otherObject)
 	{
 		stats = otherObject.stats;
+	}
+
+	public void CannotBePlaced(){
+		objectIsColliding = true;
+	}
+
+	public void CanBePlaced(){
+		objectIsColliding = false;
 	}
 }

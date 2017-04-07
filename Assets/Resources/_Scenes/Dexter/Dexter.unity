@@ -141,10 +141,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 451566991}
-  - component: {fileID: 451566993}
-  - component: {fileID: 451566995}
   - component: {fileID: 451566992}
-  - component: {fileID: 451566994}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Untagged
@@ -176,48 +173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fce8a4c90b044339147c2fb2472af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gObject: {fileID: 1108184180570134, guid: 89e77e02cea3f40e894c7fb8a2d5d3a7, type: 2}
   transparentFactor: 0.5
   colorOfNoCollision: {r: 0, g: 0, b: 0, a: 0}
   colorOfCollision: {r: 0, g: 0, b: 0, a: 0}
   yOffset: 0.25
---- !u!65 &451566993
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 451566990}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &451566994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 451566990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cdc615a7781a4a24a0880f96a0e04ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!54 &451566995
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 451566990}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &870823357
 GameObject:
   m_ObjectHideFlags: 0
