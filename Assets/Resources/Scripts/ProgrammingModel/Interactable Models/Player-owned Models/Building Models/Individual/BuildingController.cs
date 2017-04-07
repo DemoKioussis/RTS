@@ -25,4 +25,12 @@ public class BuildingController : MonoBehaviour{
 	public void SetSpawnTo(MapPos p){
 		building.SetSpawnPointAs (p.getPosition());
 	}
+
+	public void SetToAwake(){
+		building.SetToAwake ();
+	}
+
+	public void SetToSleep(){
+		building.SetToSleep ();
+	}
 }

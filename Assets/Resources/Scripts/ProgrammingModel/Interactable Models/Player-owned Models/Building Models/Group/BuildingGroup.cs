@@ -22,4 +22,16 @@ public class BuildingGroup : MonoBehaviour {
 	public bool isEmpty() {
 		return buildings.Count == 0;
 	}
+
+	public void SetToAwake(){
+		foreach (BuildingController u in buildings) {
+			u.SetToAwake();
+		}
+	}
+
+	public void SetToSleep(){
+		foreach (BuildingController u in buildings) {
+			u.SetToSleep();
+		}
+	}
 }

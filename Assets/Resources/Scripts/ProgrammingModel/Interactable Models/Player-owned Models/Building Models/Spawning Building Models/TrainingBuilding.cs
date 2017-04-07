@@ -7,22 +7,15 @@ public class TrainingBuilding : Building{
 	List<Stub> stubPrefabs = new List<Stub>();
 
 	public GameObject unit;
-	public bool awake;
 
 	public float yOffset = 0.25f;
 
-	// Use this for initialization
-	void Start () {
-		awake = true;
-	}
-
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey (KeyCode.S)) {
-			Debug.Log ("Building is awake: " + awake);
-			awake = !awake;
-		}
+		if (awake) {
+			// TODO: Instantiate the unit prefab
 
+		}
 		/*
 		if (Input.GetButton ("LeftClick")) {
 			RaycastHit hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
@@ -55,6 +48,14 @@ public class TrainingBuilding : Building{
 	public virtual void SpawnUnit(Unit unit)
 	{
 		// To do
+	}
+		
+	public virtual void SetToAwake(){
+		awake = true;
+	}
+
+	public virtual void SetToSleep(){
+		awake = false;
 	}
 
 	// Set the spawn point
