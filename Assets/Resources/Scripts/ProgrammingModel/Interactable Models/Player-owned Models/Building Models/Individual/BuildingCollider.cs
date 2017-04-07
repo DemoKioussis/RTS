@@ -20,7 +20,7 @@ public class BuildingCollider : MonoBehaviour {
 				// check the type of the building
 				BUILDING_TYPE type = buildingObject.getBuildingType ();
 
-				if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer == LayerMask.NameToLayer ("Tree") || col.gameObject.layer == LayerMask.NameToLayer ("Glue")))
+				if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer == LayerMask.NameToLayer("Resource")))
 				{
 					buildingObject.CanBePlaced ();
 				} 
@@ -41,7 +41,7 @@ public class BuildingCollider : MonoBehaviour {
 
 			if (buildingObject.isBeingPlaced) 
 			{
-				if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer == LayerMask.NameToLayer ("Tree") || col.gameObject.layer == LayerMask.NameToLayer ("Glue")))
+				if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer == LayerMask.NameToLayer("Resource")))
 				{
 					buildingObject.CannotBePlaced ();
 				} 

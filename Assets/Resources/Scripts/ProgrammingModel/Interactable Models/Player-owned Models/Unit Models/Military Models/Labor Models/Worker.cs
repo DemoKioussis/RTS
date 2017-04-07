@@ -18,11 +18,8 @@ public class Worker : Unit {
 		
 	}
 
-	protected override void Interaction(Interactable newInteraction)
+	protected override void InteractWith(Interactable target)
 	{
-		base.Interaction (newInteraction);
-
-		// To do
 	}
 
 	protected override float Influence(Vector3 samplePosition)

@@ -22,13 +22,6 @@ public abstract class Building : RTSObject {
 		}
 	}
 
-	protected override void Interaction(Interactable newInteraction)
-	{
-		base.Interaction (newInteraction);
-
-		// To do
-	}
-
 	protected override float Influence (Vector3 samplePosition)
 	{
 		return 0;
