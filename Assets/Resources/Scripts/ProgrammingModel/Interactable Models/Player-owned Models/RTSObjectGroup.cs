@@ -43,6 +43,6 @@ public abstract class RTSObjectGroup : MonoBehaviour {
 		Debug.Log("Move to " + p);
 	}
 
-	public virtual abstract void InteractWith (Interactable i);
+	public abstract void InteractWith (Interactable i);
 
 }
