@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RTSObjectGroup : MonoBehaviour {
+public class RTSObjectGroup : Interactable {
 
 	public List<RTSObject> rtsObjects = new List<RTSObject>();
 
@@ -43,24 +43,11 @@ public class RTSObjectGroup : MonoBehaviour {
 		Debug.Log("Move to " + p);
 	}
 
-	public virtual void InteractWith(Interactable i)
-	{
-		foreach (RTSObject obj in rtsObjects)
-		{
-			//if(obj.GetGroup()!=this)
-				//SetUnitGroup(u);
-		}
-		switch (i.getInteractionType()) {
-		case INTERACTION_TYPE.BUILDING:
-			break;
-		case INTERACTION_TYPE.POSITION:
-			MoveGroupToPosition((MapPos)i);
-			break;
-		case INTERACTION_TYPE.UNIT:
-			break;
-		case INTERACTION_TYPE.RESOURCE:
-			break;
-		}
-	}
+    public override void buildingInteratction(Building b) { }
+    public override void positionInteration(MapPos p) { }
+    public override void unitInteraction(Unit u) { }
+    public override void resourceInteraction(Resource r) { }
+
+
 
 }
