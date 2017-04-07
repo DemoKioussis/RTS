@@ -5,7 +5,14 @@ using UnityEngine;
 public class Unit : RTSObject {
 	public UnitStats unitStats;
 	Vector3 patrolAnchor;
-	
+	public Interactable interactable;
+	public GameObject selectionCircle;
+
+	void Awake()
+	{
+		interactable = GetComponent<Interactable>();
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (!playerSetUp && player != null) {
@@ -26,8 +33,6 @@ public class Unit : RTSObject {
 		return 0;
 		// To do
 	}
-
-
 
     public override INTERACTION_TYPE getInteractionType()
     {

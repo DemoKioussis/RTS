@@ -12,7 +12,7 @@ public class UnitSelectionComponent : MonoBehaviour
     Vector3 mousePosition1;
 
     public GameObject selectionCirclePrefab;
-    List<SelectableUnitComponent> selectedUnits = new List<SelectableUnitComponent>();
+    List<Unit> selectedUnits = new List<Unit>();
     UnitGroupController selectedGroup;
     public UnitGroupController unitGroupControllerPrefab;
 
@@ -33,11 +33,11 @@ public class UnitSelectionComponent : MonoBehaviour
 
             previousInputLeftClick = true;
             selectedGroup = Instantiate(unitGroupControllerPrefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-            selectedUnits = new List<SelectableUnitComponent>();
+			selectedUnits = new List<Unit>();
             isSelecting = true;
             mousePosition1 = Input.mousePosition;
 
-            foreach( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
+			foreach( var selectableObject in FindObjectsOfType<Unit>() )
             {
                 if( selectableObject.selectionCircle != null )
                 {
@@ -49,8 +49,8 @@ public class UnitSelectionComponent : MonoBehaviour
 
 			RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
 			if (hitInfo.collider != null) {
-				if (hitInfo.collider.gameObject.GetComponent<SelectableUnitComponent> () != null) {
-					SelectableUnitComponent selectableObject = hitInfo.collider.gameObject.GetComponent<SelectableUnitComponent> ();
+				if (hitInfo.collider.gameObject.GetComponent<Unit> () != null) {
+					Unit selectableObject = hitInfo.collider.gameObject.GetComponent<Unit> ();
 					if( selectableObject.selectionCircle == null )
 					{
 						selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
@@ -73,8 +73,8 @@ public class UnitSelectionComponent : MonoBehaviour
                 Destroy(selectedGroup.gameObject);
 
 			if (clickPosition != Input.mousePosition) {
-				selectedUnits = new List<SelectableUnitComponent>();
-				foreach( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
+				selectedUnits = new List<Unit>();
+				foreach( var selectableObject in FindObjectsOfType<Unit>() )
 				{
 					if( IsWithinSelectionBounds( selectableObject.gameObject ) )
 					{
@@ -95,7 +95,7 @@ public class UnitSelectionComponent : MonoBehaviour
         // Highlight all objects within the selection box
         if( isSelecting )
         {
-            foreach( var selectableObject in FindObjectsOfType<SelectableUnitComponent>() )
+			foreach( var selectableObject in FindObjectsOfType<Unit>() )
             {
                 if( IsWithinSelectionBounds( selectableObject.gameObject ) )
                 {

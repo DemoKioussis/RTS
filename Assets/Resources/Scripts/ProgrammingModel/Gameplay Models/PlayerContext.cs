@@ -114,7 +114,8 @@ public class PlayerContext : MonoBehaviour {
 		if (Random.Range (0.0f, 1.0f) <= spawnProbability) {
 			GameObject playableObject = updatedPrefabs.unitPrefabs [Random.Range (0, updatedPrefabs.unitPrefabs.Length)];
 			Vector3 position = new Vector3 (Random.Range (-5.0f, 5.0f), 0, Random.Range(-5.0f, 5.0f));
-			activeUnits.Add(RTSObject.InstantiatePlayableObject (playableObject, position, transform).GetComponent<Unit>());
+			RTSObject.InstantiatePlayableObject (playableObject, position, transform);
+//			activeUnits.Add(RTSObject.InstantiatePlayableObject (playableObject, position, transform).GetComponent<Unit>());
 		}
 	}
 }
