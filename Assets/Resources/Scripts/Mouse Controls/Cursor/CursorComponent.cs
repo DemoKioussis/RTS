@@ -84,7 +84,6 @@ public class CursorComponent : MonoBehaviour {
 		objectToSpawn = tempObj.GetComponent<RTSObject>();
 
 		objectToSpawn.isBeingPlaced = true;
-		objectToSpawn.objectIsColliding = false;
 
 		// get the renderer of the object
 		gameObjectRenderer = tempObj.GetComponent<Renderer> ();
@@ -95,7 +94,7 @@ public class CursorComponent : MonoBehaviour {
 		// set color of the object
 		gameObjectRenderer.material.color = colorOfNoCollision;
 
-		objectToSpawn.CannotBePlaced();
+		objectToSpawn.CanBePlaced();
 	}
 
 	private void SetGameObjectTo(Vector3 position){

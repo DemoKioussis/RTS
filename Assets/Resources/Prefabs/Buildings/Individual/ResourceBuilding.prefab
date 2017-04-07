@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4096335597278518}
   - component: {fileID: 33444653801017918}
-  - component: {fileID: 54423203278774764}
   - component: {fileID: 65340020656287944}
+  - component: {fileID: 54423203278774764}
   - component: {fileID: 23751118432933648}
   - component: {fileID: 208432849836366494}
   - component: {fileID: 114196191006494320}
@@ -134,6 +134,7 @@ MonoBehaviour:
   objectIsColliding: 0
   isBeingPlaced: 0
   flagPrefab: {fileID: 1728843172292248, guid: c0328b19ca2252841a48901676292e46, type: 2}
+  yOffset: 0.25
 --- !u!114 &114247560261968096
 MonoBehaviour:
   m_ObjectHideFlags: 1
