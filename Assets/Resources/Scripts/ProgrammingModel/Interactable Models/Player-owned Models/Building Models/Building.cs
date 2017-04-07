@@ -6,14 +6,12 @@ public class Building : RTSObject {
 	
 	bool built = false;
 
-	// Use this for initialization
-	void Start () {
-
-	}
-
 	// Update is called once per frame
 	void Update () {
-
+		if (!playerSetUp && player != null) {
+			player.activeBuildings.Add (this);
+			playerSetUp = true;
+		}
 	}
 
 	protected override void Interaction(Interactable newInteraction)

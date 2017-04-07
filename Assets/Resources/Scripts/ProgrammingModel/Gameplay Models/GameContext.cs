@@ -11,7 +11,7 @@ public class GameContext : MonoBehaviour {
 	public GameObject playerPrefab;
 
 	List<PlayerContext> allPlayers = new List<PlayerContext>();
-	List<PlayerContext> activePlayers = new List<PlayerContext> ();
+	public List<PlayerContext> activePlayers = new List<PlayerContext> ();
 
 	// Game mode and gameplay variables go here
 	public GameObject mapPrefab;
@@ -22,7 +22,6 @@ public class GameContext : MonoBehaviour {
 	public Resource[] activeResources;
 
 	public GameMap map;
-	public List<Vector3> initialPlayerPositions = new List<Vector3> ();
 	// Use this for initialization
 	void Start () {
 
@@ -37,8 +36,14 @@ public class GameContext : MonoBehaviour {
 		for (int i = 0; i < playerCount; i++) {
 			allPlayers.Add (Instantiate (playerPrefab).GetComponent<PlayerContext>());
 			activePlayers.Add (allPlayers [allPlayers.Count - 1]);
+			activePlayers [allPlayers.Count - 1].Init (i, i, true, true, false);
 		}
 //		SetSpawnables ();
+	}
+
+	void Update() {
+		if (activePlayers.Count == 1)
+			GameWon (activePlayers [0]);
 	}
 
 	void AcquirePrefabs()
@@ -60,6 +65,11 @@ public class GameContext : MonoBehaviour {
 
 		for (int i = 0; i < resourceP.Length; i++)
 			prefabs.resourcePrefabs [i] = resourceP[i] as GameObject;
+	}
+
+	void GameWon(PlayerContext player)
+	{
+		Debug.Log (player.playerId);
 	}
 
 /*	void SetSpawnables()

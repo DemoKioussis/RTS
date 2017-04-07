@@ -4,18 +4,15 @@ using UnityEngine;
 
 
 public class Unit : RTSObject {
-	
 	public UnitStats unitStats;
 	Vector3 patrolAnchor;
-    private 
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (!playerSetUp && player != null) {
+			player.activeUnits.Add (this);
+			playerSetUp = true;
+		}
 	}
 		
 	protected override void Interaction(Interactable newInteraction)
@@ -38,7 +35,7 @@ public class Unit : RTSObject {
         return INTERACTION_TYPE.UNIT;
     }
 
-	public override void ReplaceStatsReferences(RTSObject otherObject)
+	protected override void ReplaceStatsReferences(RTSObject otherObject)
 	{
 		base.ReplaceStatsReferences (otherObject);
 
