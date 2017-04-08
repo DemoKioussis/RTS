@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114490697480513236}
   - component: {fileID: 195054600350750664}
   - component: {fileID: 114008059806515882}
+  - component: {fileID: 114853349373515504}
   m_Layer: 9
   m_Name: ShortRange
   m_TagString: Untagged
@@ -103,10 +104,11 @@ MonoBehaviour:
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
-  unitStats:
-    moveSpeed: 0
   interactable: {fileID: 0}
   selectionCircle: {fileID: 0}
+  unitStats:
+    moveSpeed: 0
+  movement: {fileID: 0}
 --- !u!114 &114490697480513236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,15 +129,28 @@ MonoBehaviour:
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
-  unitStats:
-    moveSpeed: 0
   interactable: {fileID: 0}
   selectionCircle: {fileID: 0}
+  unitStats:
+    moveSpeed: 0
+  movement: {fileID: 0}
   militaryStats:
     minAttackRange: 0
     maxAttackRange: 0
     attackStrength: 0
     attackRate: 0
+--- !u!114 &114853349373515504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1631743313040632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0854ecc06b8a8a4cb391d1e6c90ce50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arriveDelta: 0
 --- !u!136 &136225361366051888
 CapsuleCollider:
   m_ObjectHideFlags: 1
