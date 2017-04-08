@@ -27,6 +27,9 @@ public class RTSObjectGroup : Interactable {
 	public void Remove(RTSObject obj)
 	{
 		rtsObjects.Remove (obj);
+        if (IsEmpty()) {
+            GameObject.Destroy(this.gameObject, 0);
+        }
 	}
 
 	public bool IsEmpty() {

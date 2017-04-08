@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(UnitMovement))]
 public class Unit : RTSObject {
 	public UnitStats unitStats;
     public UnitMovement movement;
@@ -19,9 +20,18 @@ public class Unit : RTSObject {
     {
         if (group != null)
         {
-            group.removeUnit(this);
+            if (group != g)
+            {
+                group.Remove(this);
+                transform.parent = g.transform;
+                group = g;
+            }
         }
-        group = g;
+        else {
+            transform.parent = g.transform;
+            group = g;
+        }
+
     }
     public UnitGroup getGroup()
     {

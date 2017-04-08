@@ -5,105 +5,82 @@ using UnityEngine;
 
 public class UnitGroup : RTSObjectGroup {
 	
-    public List<Unit> units;
-    public bool arrived= false;
     public float arriveRadius;
-    public float stopDist;
+    public float arrivePercent;
     NavMeshAgent agent;
     NavMeshPath path;
-    Interactable interaction;
+    Interactable currentInteraction;
     Vector3 targetPosition;
     Vector3 center;
-
+    private int arrivalCount = 0;
     void Awake() {
-        units = new List<Unit>();
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void FixedUpdate() {
+    void Update() {
         center = getCenter();
-        if (Vector3.Distance(targetPosition, center) < arriveRadius && !arrived)
-        {
-            stopAgents();
-            arrived = true;
-        }
+        
     }
 
     void OnDrawGizmos() {
 #if UNITY_EDITOR
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(center + Vector3.up*0.5f ,arriveRadius);
-		if (path != null)
-		{
-		for (int i = 0; i < path.corners.Length - 1; i++)
-		Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
-		Gizmos.color = Color.blue;
-		Gizmos.DrawSphere(center + Vector3.up * 0.5f, stopDist);
-		}
-
-
-
+        Gizmos.DrawSphere(targetPosition ,arriveRadius);
+       
 #endif
     }
 
-    public void preInteract() {
-        Debug.Log("AAAAHh");
+    public Interactable getInteraction() {
+        return currentInteraction;
+    }
 
-        foreach (Unit u in units) {
-            u.transform.parent = transform;
+    public void unitArrived() {
+        arrivalCount++;
+        if (arrivalCount > rtsObjects.Count * arrivePercent) {
+            stopAgents();
         }
     }
-    public void removeUnit(Unit u) {
-        units.Remove(u);
+    private void stopAgents() {
+        foreach (Unit u in rtsObjects) {
+            u.movement.stopMovement();
+        }
     }
-    public void moveTo(MapPos p) {
+    void preInteract(Interactable i) {
+        currentInteraction = i;
+        foreach (Unit u in rtsObjects) {
+            u.setGroup(this);
+        }
+        if (rtsObjects.Count > 0)
+        {
+            arriveRadius = Mathf.Sqrt(rtsObjects.Count * ((Unit)rtsObjects[0]).movement.getRadius())/(2* Mathf.PI);
+        }
 
-    }
-
-    public bool isEmpty() {
-        return units.Count == 0;
     }
 
     private Vector3 getCenter() {
-        Vector3 center = new Vector3(0, 0, 0);
+        Vector3 mean = new Vector3(0, 0, 0);
 
-        foreach (Unit u in units) {
-            center += u.transform.position;
+        foreach (Unit u in rtsObjects) {
+            mean += u.transform.position;
         }
-        center = center / units.Count;
-        return center;
+        mean = mean / rtsObjects.Count;
+        return mean;
     }
 
-    private void stopAgents() {
-        Unit closest = units[0];
-        foreach (Unit u in units) {
-            if (u.movement.distanceTo(targetPosition) < closest.movement.distanceTo(targetPosition)) {
-                closest = u;
 
-            }
-        }
-
-        stopDist = Mathf.Sqrt(units.Count) * closest.movement.getRadius() / 1.8f;
-        foreach (Unit u in units)
-        {
-            u.movement.setDestination(u.transform.position);
-            u.movement.setStoppingDistance(stopDist);
-        }
-    }
     public override void buildingInteratction(Building b) { }
     public override void positionInteration(MapPos p) {
-        preInteract();
-        arrived = false;
-        interaction = p;
+        preInteract(p);
         center = getCenter();
+        arrivalCount = 0;
         path = new NavMeshPath();
         targetPosition = p.getPosition();
         NavMesh.CalculatePath(center, p.getPosition(), NavMesh.AllAreas, path);
-
-        foreach (Unit u in units)
+        foreach (Unit u in rtsObjects)
         {
             u.movement.setPath(path);
-            u.movement.setStoppingDistance(0);
+            u.movement.setArriveRadius(arriveRadius);
+            u.movement.setDestination(p.getPosition());
 
         }
     }
