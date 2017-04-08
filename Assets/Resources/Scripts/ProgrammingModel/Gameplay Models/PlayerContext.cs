@@ -24,6 +24,7 @@ public class PlayerContext : MonoBehaviour {
 
 	public List<Unit> activeUnits = new List<Unit>();
 	public List<Building> activeBuildings = new List<Building>();
+	public IndustrialCenter industrialCenter = null;
 
 	public float spawnProbability;
 
@@ -69,7 +70,7 @@ public class PlayerContext : MonoBehaviour {
 			}
 
 		if (townCenter != null) {
-			RTSObject.InstantiatePlayableObject (townCenter, new Vector3(spawnPoints[index].x, 0, spawnPoints[index].z), transform);
+			industrialCenter = RTSObject.InstantiatePlayableObject (townCenter, new Vector3(spawnPoints[index].x, 0, spawnPoints[index].z), transform).GetComponent<IndustrialCenter>();
 		}
 	}
 

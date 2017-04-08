@@ -17,9 +17,9 @@ public abstract class ActiveDefenseBuilding : DefensiveBuilding {
 	}
 
 
-	protected override float Influence (Vector3 samplePosition)
+	public override float Influence ()
 	{
-		return base.Influence (samplePosition) + 0;
+		return base.Influence () + 0;
 		// To do
 	}
 		
