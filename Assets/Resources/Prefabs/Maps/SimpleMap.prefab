@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 64009173002681950}
   - component: {fileID: 23709888908021636}
   - component: {fileID: 114743458400224508}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: SimpleMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
