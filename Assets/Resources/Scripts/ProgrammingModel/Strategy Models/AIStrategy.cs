@@ -302,8 +302,7 @@ public class AIStrategy : Strategy {
 
 		for (int i = 0; i < units.Length; i++) {
 			if (units [i].GetComponent<Unit>() is T) {
-				tB.unit = units [i];
-
+				tB.unit = units [i].GetComponent<Unit>();
 				return true;
 			}
 		}

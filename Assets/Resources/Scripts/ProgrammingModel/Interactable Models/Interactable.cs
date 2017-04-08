@@ -11,7 +11,8 @@ public abstract class Interactable : MonoBehaviour {
 
     public abstract INTERACTION_TYPE getInteractionType();
 
-    public void InteractWith(Interactable i)
+    
+    public virtual void InteractWith(Interactable i)
     {
    
         switch (i.getInteractionType())
@@ -19,9 +20,11 @@ public abstract class Interactable : MonoBehaviour {
             case INTERACTION_TYPE.BUILDING:
                 buildingInteraction((Building)i);
                 break;
-            case INTERACTION_TYPE.POSITION:
-                positionInteraction((MapPos)i);
-                break;
+			case INTERACTION_TYPE.POSITION:
+			{
+				positionInteraction ((MapPos)i);
+				break;
+			}
             case INTERACTION_TYPE.UNIT:
                 unitInteraction((Unit)i);
                 break;

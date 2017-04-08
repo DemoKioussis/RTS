@@ -16,24 +16,37 @@ public abstract class RTSObject : Interactable {
 
 	public Interactable interactable;
 	public GameObject selectionCircle;
-
-	void Awake()
+    MeshRenderer model;
+    BaseStateMachine stateDFA;
+    Interactable targetInteraction;
+    void Awake()
 	{
 		interactable = GetComponent<Interactable>();
-	}
-
-	Queue<Interactable> targets = new Queue<Interactable>();
-
-	// Behaviour DFA object
+        model = GetComponentInChildren<MeshRenderer>();
+        stateDFA = GetComponentInChildren<BaseStateMachine>();
+    }
 
 	Activity currentActivity;
 
-	protected void AddInteraction (Interactable newTarget)
-	{
-		targets.Enqueue (newTarget);
-	}
-
 	public abstract float Influence ();
+
+    public void setTarget(Interactable t) {
+        Debug.Log("Target set");
+        targetInteraction = t;
+    }
+    public override void InteractWith(Interactable i)
+    {
+        setTarget(i);
+        base.InteractWith(i);
+    }
+    public Interactable getTargetInteraction() {
+        return targetInteraction;
+    }
+
+    public void takeDamage(float d)
+    {
+
+    }
 
 	protected virtual void Heal(int hp)
 	{
@@ -53,7 +66,7 @@ public abstract class RTSObject : Interactable {
 		GameObject output = Instantiate (playableObject, position, Quaternion.identity, parent);
 		output.GetComponent<RTSObject> ().player = playableObject.GetComponent<RTSObject> ().player;
 		//output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
-		output.GetComponent<Renderer> ().enabled = true;
+		output.GetComponent<RTSObject> ().getModel().enabled = true;
 
 		if (output.GetComponent<Unit> ()) {
 			Unit unit = output.GetComponent<Unit> ();
@@ -73,4 +86,14 @@ public abstract class RTSObject : Interactable {
 	public void CanBePlaced(){
 		objectIsColliding = false;
 	}
+
+    public MeshRenderer getModel() {
+		if (model == null) {
+			model = GetComponentInChildren<MeshRenderer>();
+		}
+        return model;
+    }
+    public virtual BaseStateMachine getStateMachine() {
+        return stateDFA;
+    }
 }

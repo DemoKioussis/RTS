@@ -6,35 +6,29 @@ public class TrainingBuilding : Building{
 
 	List<Stub> stubPrefabs = new List<Stub>();
 
-	public GameObject unit;
-
+	public Unit unit;
+	public PlayerContext player;
 	public float yOffset = 0.25f;
+	public int unitIndex;
 
 	void Start(){
-		unit = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.unitPrefabs [0];
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext>();
+		unit = player.updatedPrefabs.unitPrefabs [unitIndex].GetComponent<Unit>();
 	}
 
 	// Update is called once per frame
-	void Update () {
-		if (awake) {
-			// TODO: Instantiate the unit prefab
-			// Debug.Log("Building is awake");
-		}
-		/*
-		if (Input.GetButton ("LeftClick")) {
-			RaycastHit hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
-
-			if (hit.collider != null) {
-				SetSpawnPointAs (hit.point + new Vector3(0, yOffset, 0));
+	void Update () 
+	{
+		if (awake)
+		{
+			UpdateTime ();
+			if (unitReadyToGo ()) 
+			{
+				// TODO: Instantiate the unit prefab
+				// Debug.Log("Building is awake");
+				SpawnUnit (unit);
 			}
 		}
-
-		// test spawning units
-		if (Input.GetKey (KeyCode.I) && awake) {
-			GameObject obj = (GameObject) InstantiatePlayableObject (unit);
-			obj.GetComponent<UnitController>().setDestination(base.GetSpawnPoint());
-		}
-		*/
 	}
 
 
@@ -43,9 +37,18 @@ public class TrainingBuilding : Building{
 		return base.Influence () + 0;
 	}
 
-	public virtual void SpawnUnit(Unit unit)
+	public void SpawnUnit(Unit unit)
 	{
-		// To do
+		GameObject unitObject = InstantiatePlayableObject (unit.gameObject, transform.position, player.transform);
+		if (spawnPointSet) 
+		{
+			//unitObject.GetComponent<Unit> ().movement.moveTo (GetSpawnPoint ());
+		} 
+		else 
+		{
+			// spawn point is not set
+			//unitObject.GetComponent<Unit> ().movement.moveTo (new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.0f));
+		}
 	}
 		
 	public override void SetToAwake(){
@@ -61,22 +64,26 @@ public class TrainingBuilding : Building{
 	// Set the spawn point
 	public override void SetSpawnPointAs(Vector3 spawnPosition){
 		if(base.GetFlagReference() == null){
+			// Debug.Log ("Setting Spawn Point");
 			GameObject flag = (GameObject)Instantiate (base.flagPrefab, spawnPosition, transform.rotation);
 			base.SetFlagReference(flag);
 			base.SetSpawnPointAs (spawnPosition);
+			spawnPointSet = true; // spawn point is set
 
 			Destroy (flag, 3); // destroy the flag object after 3 seconds
 		}
 	}
 
-	GameObject InstantiatePlayableObject(GameObject playableObject)
-	{
-		GameObject output = Instantiate (playableObject, transform);
-		output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
-		return output;
-	}
-
 	public override BUILDING_TYPE getBuildingType(){
 		return BUILDING_TYPE.TRAINING;
+	}
+
+	private bool unitReadyToGo(){
+		if (gameTime >= 1.0f && (int)gameTime % (int)unit.unitStats.trainingTime == 0) {
+			gameTime = 0.0f;
+			return true;
+		}
+
+		return false;
 	}
 }

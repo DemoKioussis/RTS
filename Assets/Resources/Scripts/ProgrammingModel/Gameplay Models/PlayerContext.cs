@@ -39,15 +39,16 @@ public class PlayerContext : MonoBehaviour {
 		for (int i = 0; i < originalPrefabs.unitPrefabs.Length; i++) {
 			updatedPrefabs.unitPrefabs [i] = Instantiate(originalPrefabs.unitPrefabs [i], transform);
 			updatedPrefabs.unitPrefabs [i].GetComponent<Unit> ().player = this;
-			updatedPrefabs.unitPrefabs [i].GetComponent<Renderer> ().enabled = false;
-			updatedPrefabs.unitPrefabs [i].GetComponent<Renderer> ().material.SetColor ("_Color", playerColor);
+			updatedPrefabs.unitPrefabs [i].GetComponent<RTSObject> ().getModel().enabled = false;
+			updatedPrefabs.unitPrefabs [i].GetComponent<RTSObject> ().getModel().material.SetColor ("_Color", playerColor);
 		}
 			
 		for (int i = 0; i < originalPrefabs.buildingPrefabs.Length; i++) {
 			updatedPrefabs.buildingPrefabs [i] = Instantiate(originalPrefabs.buildingPrefabs [i], transform);
 			updatedPrefabs.buildingPrefabs [i].GetComponent<Building> ().player = this;
-			updatedPrefabs.buildingPrefabs [i].GetComponent<Renderer> ().enabled = false;
-			updatedPrefabs.buildingPrefabs [i].GetComponent<Renderer> ().material.SetColor ("_Color", playerColor);
+			Debug.Log (updatedPrefabs.buildingPrefabs [i].GetComponent<RTSObject> ().getModel());
+			updatedPrefabs.buildingPrefabs [i].GetComponent<RTSObject> ().getModel().enabled = false;
+			updatedPrefabs.buildingPrefabs [i].GetComponent<RTSObject> ().getModel().material.SetColor ("_Color", playerColor);
 		}
 
 		List<Vector3> spawnPoints = new List<Vector3> ();
@@ -76,13 +77,13 @@ public class PlayerContext : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		GameLost ();
+		// GameLost ();
 
 		// Update
 
-		SpawnRandomUnits ();
+		// SpawnRandomUnits ();
 
-		strategy.RealizeStrategy ();
+		// strategy.RealizeStrategy ();
 	}
 
 	public void Init(int playerId, int teamId, bool isAI, bool fogOfWar, bool explored)

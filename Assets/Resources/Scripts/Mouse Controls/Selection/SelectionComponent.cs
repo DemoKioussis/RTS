@@ -30,12 +30,11 @@ public class SelectionComponent : MonoBehaviour {
 		{
 			clickPosition = Input.mousePosition;
 
-			if (previousInputLeftClick && selectedUnitGroup != null)
-				Destroy(selectedUnitGroup.gameObject);
-			if (previousInputLeftClick && selectedBuildingGroup != null)
+		//	if (selectedUnitGroup != null)
+		//		Destroy(selectedUnitGroup.gameObject);
+			if (selectedBuildingGroup != null)
 				Destroy(selectedBuildingGroup.gameObject);
 
-			previousInputLeftClick = true;
 			selectedUnits = new List<Unit>();
 			selectedBuildings = new List<Building>();
 			selectedUnitGroup = Instantiate (selectedUnitGroupPrefab);
@@ -52,54 +51,55 @@ public class SelectionComponent : MonoBehaviour {
 				}
 			}
 
-			RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
-			if (hitInfo.collider != null) {
-				if (hitInfo.collider.gameObject.GetComponent<RTSObject> () != null) {
-					RTSObject selectableObject = hitInfo.collider.gameObject.GetComponent<RTSObject> ();
-					if( selectableObject.selectionCircle == null )
-					{
-						selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
-						selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.GetComponent<MeshRenderer>().bounds);
-						selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
-						selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
-						if (selectableObject.GetComponent<Building> () != null) {
-							selectedBuildings.Add (selectableObject.GetComponent<Building> ());
-							selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
-						}
-						else if (selectableObject.GetComponent<Unit> () != null) {
-							selectedUnits.Add (selectableObject.GetComponent<Unit> ());
-							selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
-						}
-					}
-				}
-			}
-
 			Debug.Log (selectedBuildingGroup.rtsObjects);
 
 		}
+
 		// If we let go of the left mouse button, end selection
 		if( Input.GetMouseButtonUp( 0 ) )
 		{
-			//Debug.Log (selectedBuildingGroup.IsEmpty());
-			if (selectedUnitGroup.IsEmpty())
-				Destroy(selectedUnitGroup.gameObject);
-			if (selectedBuildingGroup.IsEmpty())
-				Destroy(selectedBuildingGroup.gameObject);
-			
-			if (clickPosition == Input.mousePosition) {
-				selectedUnits = new List<Unit>();
-				selectedBuildings = new List<Building>();
+			if (clickPosition != Input.mousePosition) {
 				foreach( var selectableObject in FindObjectsOfType<RTSObject>() )
 				{
 					if( IsWithinSelectionBounds( selectableObject.gameObject ) )
 					{
-						if (selectableObject.GetComponent<Building> () != null) {
-							selectedBuildings.Add (selectableObject.GetComponent<Building> ());
-							selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
+						if( selectableObject.selectionCircle == null )
+						{
+							selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
+							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject>().SetSize(selectableObject.getModel().bounds);
+							selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
+							if (selectableObject.GetComponent<Building> () != null) {
+								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
+								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
+							}
+							else if (selectableObject.GetComponent<Unit> () != null) {
+								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
+								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
+							}
 						}
-						else if (selectableObject.GetComponent<Unit> () != null) {
-							selectedUnits.Add (selectableObject.GetComponent<Unit> ());
-							selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
+					}
+				}
+			}
+			else {
+				RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
+				if (hitInfo.collider != null) {
+					if (hitInfo.collider.gameObject.GetComponent<RTSObject> () != null) {
+						RTSObject selectableObject = hitInfo.collider.gameObject.GetComponent<RTSObject> ();
+						if( selectableObject.selectionCircle == null )
+						{
+							selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
+							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel().bounds);
+							selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
+							if (selectableObject.GetComponent<Building> () != null) {
+								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
+								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
+							}
+							else if (selectableObject.GetComponent<Unit> () != null) {
+								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
+								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
+							}
 						}
 					}
 				}
@@ -116,50 +116,8 @@ public class SelectionComponent : MonoBehaviour {
 			isSelecting = false;
 		}
 
-		// Highlight all objects within the selection box
-		if( isSelecting )
-		{
-			foreach( var selectableObject in FindObjectsOfType<RTSObject>() )
-			{
-				if( IsWithinSelectionBounds( selectableObject.gameObject ) )
-				{
-					if( selectableObject.selectionCircle == null )
-					{
-						selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
-						selectableObject.selectionCircle.GetComponent<SizeBasedOnObject>().SetSize(selectableObject.GetComponent<MeshRenderer>().bounds);
-						selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
-						selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
-						if (selectableObject.GetComponent<Building> () != null) {
-							selectedBuildings.Add (selectableObject.GetComponent<Building> ());
-							selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
-						}
-						else if (selectableObject.GetComponent<Unit> () != null) {
-							selectedUnits.Add (selectableObject.GetComponent<Unit> ());
-							selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
-						}
-					}
-				}
-				else if (clickPosition != Input.mousePosition)
-				{
-					if( selectableObject.selectionCircle != null )
-					{
-						Destroy( selectableObject.selectionCircle.gameObject );
-						selectableObject.selectionCircle = null;
-					}
-					if (selectableObject.GetComponent<Building> () != null) {
-						selectedBuildings.Remove (selectableObject.GetComponent<Building> ());
-					}
-					else if (selectableObject.GetComponent<Unit> () != null) {
-						selectedUnits.Remove (selectableObject.GetComponent<Unit> ());
-					}
-				}
-			}
-		}
-
-
 		if (Input.GetMouseButtonDown(1))
 		{
-			previousInputLeftClick = false;
 			RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
 
 			Interactable interactable;
@@ -172,7 +130,7 @@ public class SelectionComponent : MonoBehaviour {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedUnitGroup.InteractWith (interactable);
 					}
-					else if (selectedBuildingGroup != null) {
+					if (selectedBuildingGroup != null) {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedBuildingGroup.InteractWith (interactable);
 					}
