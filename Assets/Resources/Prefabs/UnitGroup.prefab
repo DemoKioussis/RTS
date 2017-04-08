@@ -51,4 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe424a9359c5034b9d11aee093467a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamId: 0
   rtsObjects: []
+  arriveRadius: 5
+  arrivePercent: 0.99
