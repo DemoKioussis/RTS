@@ -7,17 +7,32 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 
 public class UnitMovement : MonoBehaviour {
-    public float arriveDistance;
+    public float arriveDelta;
     private NavMeshAgent agent;
     private Unit unit;
+    private Vector3 target;
+    float arriveRadius;
+    bool arrived;
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         unit = GetComponent<Unit>();
+        unit.movement = this;
+        arrived = false;
     }
 
 
+    void Update() {
+        checkArrived();
 
+    }
+    public void checkArrived() {
+        if (!arrived && distanceTo(target) < arriveRadius)
+        {
+            arrived = true;
+            unit.getGroup().unitArrived();
+        }
+    }
     public void moveTo(Vector3 p)
     {
         agent.SetDestination(p);
@@ -29,6 +44,12 @@ public class UnitMovement : MonoBehaviour {
     public void setDestination(Vector3 p)
     {
         agent.SetDestination(p);
+        target = p;
+        arrived = false;
+    }
+    public void setArriveRadius(float s)
+    {
+        arriveRadius = s;
     }
     public void stopMovement()
     {
@@ -39,14 +60,7 @@ public class UnitMovement : MonoBehaviour {
     {
         return Vector3.Distance(p, transform.position);
     }
-    public float getStoppingDistance()
-    {
-        return agent.stoppingDistance;
-    }
-    public void setStoppingDistance(float s)
-    {
-        agent.stoppingDistance = s;
-    }
+
     public float getRadius()
     {
         return agent.radius;

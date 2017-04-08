@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// for testing
+public enum RESOURCE_TYPE {GLUE, PAPER}
+
 public class ResourceBuilding : Building {
 
 	public float yOffset = 0.25f;
+	private RESOURCE_TYPE type; 
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +26,10 @@ public class ResourceBuilding : Building {
 		return base.Influence (samplePosition) + 0; 
 		// To do
 	}
+
+	public override void SetPositionOfBuilding(Vector3 pos){
+		resourcePosition = pos;
+	}
 		
 	public override void SetSpawnPointAs(Vector3 p){
 		Debug.Log ("You cannot set a spawn point for this building");
@@ -34,6 +42,6 @@ public class ResourceBuilding : Building {
 	}
 
 	public override BUILDING_TYPE getBuildingType(){
-		return BUILDING_TYPE.TOWNCENTER;
+		return BUILDING_TYPE.RESOURCE;
 	}
 }

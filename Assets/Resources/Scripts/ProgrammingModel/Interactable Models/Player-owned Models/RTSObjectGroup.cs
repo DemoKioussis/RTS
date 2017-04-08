@@ -27,6 +27,9 @@ public class RTSObjectGroup : Interactable {
 	public void Remove(RTSObject obj)
 	{
 		rtsObjects.Remove (obj);
+        if (IsEmpty()) {
+            GameObject.Destroy(this.gameObject, 0);
+        }
 	}
 
 	public bool IsEmpty() {
@@ -46,8 +49,8 @@ public class RTSObjectGroup : Interactable {
     public override INTERACTION_TYPE getInteractionType() {
         return INTERACTION_TYPE.GROUP;
     }
-    public override void buildingInteratction(Building b) { }
-    public override void positionInteration(MapPos p) { }
+    public override void buildingInteraction(Building b) { }
+    public override void positionInteraction(MapPos p) { }
     public override void unitInteraction(Unit u) { }
     public override void resourceInteraction(Resource r) { }
 }

@@ -17,10 +17,10 @@ public abstract class Interactable : MonoBehaviour {
         switch (i.getInteractionType())
         {
             case INTERACTION_TYPE.BUILDING:
-                buildingInteratction((Building)i);
+                buildingInteraction((Building)i);
                 break;
             case INTERACTION_TYPE.POSITION:
-                positionInteration((MapPos)i);
+                positionInteraction((MapPos)i);
                 break;
             case INTERACTION_TYPE.UNIT:
                 unitInteraction((Unit)i);
@@ -30,8 +30,8 @@ public abstract class Interactable : MonoBehaviour {
                 break;
         }
     }
-    public abstract void buildingInteratction(Building b);
-    public abstract void positionInteration(MapPos p);
+    public abstract void buildingInteraction(Building b);
+    public abstract void positionInteraction(MapPos p);
     public abstract void unitInteraction(Unit u);
     public abstract void resourceInteraction(Resource r);
 
