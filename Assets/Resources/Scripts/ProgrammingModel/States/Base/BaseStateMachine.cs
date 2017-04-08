@@ -11,15 +11,14 @@ public class BaseStateMachine : MonoBehaviour {
     private int updateOffsetCounter;
     [SerializeField]
     private int updateOffset;
-
+    [SerializeField]
     private RTSObject rtsObject;
-    void Awake() {
+    virtual public void Awake() {
         stateMachine = GetComponent<Animator>();
         BaseStateBehaviour[] behaviours = stateMachine.GetBehaviours<BaseStateBehaviour>();
         foreach (BaseStateBehaviour b in behaviours) {
             b.setStateMachine(this);
         }
-        rtsObject = GetComponentInParent<RTSObject>();
         setInitialState();
     }
 

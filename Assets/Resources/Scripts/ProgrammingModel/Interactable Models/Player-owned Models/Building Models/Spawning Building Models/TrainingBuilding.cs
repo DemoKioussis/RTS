@@ -42,12 +42,12 @@ public class TrainingBuilding : Building{
 		GameObject unitObject = InstantiatePlayableObject (unit.gameObject, transform.position, player.transform);
 		if (spawnPointSet) 
 		{
-			unitObject.GetComponent<Unit> ().movement.moveTo (GetSpawnPoint ());
+			//unitObject.GetComponent<Unit> ().movement.moveTo (GetSpawnPoint ());
 		} 
 		else 
 		{
 			// spawn point is not set
-			unitObject.GetComponent<Unit> ().movement.moveTo (new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.0f));
+			//unitObject.GetComponent<Unit> ().movement.moveTo (new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.0f));
 		}
 	}
 		

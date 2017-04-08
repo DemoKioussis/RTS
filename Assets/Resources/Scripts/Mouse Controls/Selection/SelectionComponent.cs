@@ -30,8 +30,8 @@ public class SelectionComponent : MonoBehaviour {
 		{
 			clickPosition = Input.mousePosition;
 
-			if (selectedUnitGroup != null)
-				Destroy(selectedUnitGroup.gameObject);
+		//	if (selectedUnitGroup != null)
+		//		Destroy(selectedUnitGroup.gameObject);
 			if (selectedBuildingGroup != null)
 				Destroy(selectedBuildingGroup.gameObject);
 

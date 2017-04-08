@@ -29,9 +29,14 @@ public abstract class RTSObject : Interactable {
 	Activity currentActivity;
 
     public void setTarget(Interactable t) {
+        Debug.Log("Target set");
         targetInteraction = t;
     }
-
+    public override void InteractWith(Interactable i)
+    {
+        setTarget(i);
+        base.InteractWith(i);
+    }
     public Interactable getTargetInteraction() {
         return targetInteraction;
     }
@@ -87,7 +92,7 @@ public abstract class RTSObject : Interactable {
 		}
         return model;
     }
-    public BaseStateMachine getStateMachine() {
+    public virtual BaseStateMachine getStateMachine() {
         return stateDFA;
     }
 }

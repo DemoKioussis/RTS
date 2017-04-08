@@ -12,9 +12,9 @@ public class UnitStateMachine : BaseStateMachine {
     BaseUnitIdleBehaviour idleBehaviour;
     Unit unit;
     public bool attack, hasTarget, targetInFireRange, hasFired, atTarget;
-    public int queueSize;
 
-    void Awake() {
+    override public void Awake() {
+        base.Awake();
         unit = (Unit)getRTSObject();
         moveBehaviour = stateMachine.GetBehaviour<UnitMoveBehaviour>();
         attackBehaviour = stateMachine.GetBehaviour<BaseUnitAttackBehaviour>();
@@ -37,24 +37,25 @@ public class UnitStateMachine : BaseStateMachine {
     // new update function for efficiency's sake
     protected override void update()
     {
-        Interactable target = getRTSObject().getTargetInteraction();
+        Interactable target = unit.getTargetInteraction();
         if (target != null)
         {
+            setHasTarget(true);
             // attackDistance
-            if(Vector3.Distance(transform.position, target.transform.position) < ((Military)unit).militaryStats.maxAttackRange)
+            if (Vector3.Distance(transform.position, target.transform.position) < ((Military)unit).militaryStats.maxAttackRange)
             {
                 setTargetInFireRange(true);
             }
-            else 
+            else
                 setTargetInFireRange(false);
 
             if (Vector3.Distance(transform.position, target.transform.position) < moveBehaviour.arriveDelta)
                 setAtTarget(true);
             else
                 setAtTarget(false);
-
-
         }
+        else
+            setHasTarget(false);
 
     }
 

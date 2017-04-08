@@ -65,5 +65,10 @@ public class UnitMoveBehaviour : BaseStateBehaviour
     public void setPath(NavMeshPath p) {
         path = p;
     }
+    public void setDestination(Vector3 d) {
+        if (path == null)
+            agent.SetDestination(d);
+        else return;
+    }
 
 }
