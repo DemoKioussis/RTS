@@ -61,6 +61,8 @@ MonoBehaviour:
     buildingPrefabs: []
     resourcePrefabs: []
   playerMap: {fileID: 0}
+  inputManager: {fileID: 1129491809680338, guid: fa3b55c675da948ff9f1fcf930e12b78,
+    type: 2}
   glueQuantity: 0
   paperQuantity: 0
   populationLimit: 0

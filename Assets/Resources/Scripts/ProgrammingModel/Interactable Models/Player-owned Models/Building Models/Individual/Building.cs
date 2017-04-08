@@ -7,8 +7,7 @@ public enum BUILDING_TYPE {RESOURCE, TRAINING, TOWNCENTER, ATTACK, DEFENSE}
 public abstract class Building : RTSObject {
 
 	protected bool built = false;
-	public bool awake = true;
-	protected Vector3 resourcePosition;
+	public bool awake = false;
 
 	private Vector3 spawnPoint;
 
@@ -62,12 +61,17 @@ public abstract class Building : RTSObject {
 		// Debug.Log ("Building status cannot be changed"); 
 	}
 
-	public virtual void SetPositionOfBuilding(Vector3 pos){
+	public virtual void SetPositionOfBuildingWith(Resource res){
 		// Debug.Log ("Building position cannot be set");
 	}
 
-	public Vector3 GetPositionOfResource(){
-		return resourcePosition;
+	public virtual void ClearPositionOfBuilding(){
+		// Debug.Log ("Building position cannot be cleared");
+	}
+
+	public virtual Vector3 GetPositionOfResource(){
+		// Debug.Log ("Returning empty vector");
+		return new Vector3(0,0,0);
 	}
 
 	public virtual void SetSpawnPointAs(Vector3 spawnPosition){

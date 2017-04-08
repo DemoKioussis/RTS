@@ -14,6 +14,7 @@ public class PlayerContext : MonoBehaviour {
 	public PrefabDatabase updatedPrefabs;
 
 	public PlayerMap playerMap;
+	public GameObject inputManager;
 	public Strategy strategy;
 
 	public int glueQuantity;
@@ -74,13 +75,13 @@ public class PlayerContext : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//GameLost ();
+		GameLost ();
 
 		// Update
 
-		//SpawnRandomUnits ();
+		SpawnRandomUnits ();
 
-		//strategy.RealizeStrategy ();
+		strategy.RealizeStrategy ();
 	}
 
 	public void Init(int playerId, int teamId, bool isAI, bool fogOfWar, bool explored)
@@ -92,8 +93,11 @@ public class PlayerContext : MonoBehaviour {
 
 		if (isAI)
 			strategy = new AIStrategy (this);
-		else
+		else {
+			// is a player
 			strategy = new PlayerStrategy (this);
+			Instantiate (inputManager, transform);
+		}
 
 		switch (this.teamId) {
 		case 0:

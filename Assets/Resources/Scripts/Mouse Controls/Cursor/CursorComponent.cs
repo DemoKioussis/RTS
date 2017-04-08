@@ -60,8 +60,13 @@ public class CursorComponent : MonoBehaviour {
 
 			if (Input.GetButton("LeftClick"))
 			{
-				if (!currentRTSObject.objectIsColliding && hit.collider != null) {
-					SetGameObjectTo (hit.point + new Vector3(0, yOffset, 0));
+				if (!currentRTSObject.objectIsColliding && hit.collider != null) 
+				{
+					SetGameObjectTo (hit.point + new Vector3 (0, yOffset, 0));
+				}
+				else if (currentRTSObject.objectIsColliding) 
+				{
+					CancelAction ();
 				}
 			}
 		}
@@ -85,7 +90,7 @@ public class CursorComponent : MonoBehaviour {
 
 		if (currentRTSObject == null) {
 			// User is not currently placing an object
-			GameObject tempObj = (GameObject)Instantiate (nextRTSObject, transform.position, transform.rotation, transform); // get reference to the object
+			GameObject tempObj = RTSObject.InstantiatePlayableObject(nextRTSObject, transform.position, transform); // get reference to the object
 
 			currentRTSObject = tempObj.GetComponent<RTSObject> ();
 
@@ -102,6 +107,12 @@ public class CursorComponent : MonoBehaviour {
 
 			currentRTSObject.CanBePlaced ();
 		}
+	}
+
+	public void CancelAction(){
+		Destroy(currentRTSObject.gameObject);
+
+		currentRTSObject = null;
 	}
 
 	private bool compareRTSObject(RTSObject current, RTSObject next){
@@ -132,10 +143,20 @@ public class CursorComponent : MonoBehaviour {
 		Building tempBldg = currentRTSObject.GetComponent<Building> ();
 
 		// set the position of the created object to the level
-		if (tempBldg != null && tempBldg.getBuildingType () == BUILDING_TYPE.RESOURCE) 
+		if (tempBldg != null) 
 		{
-			// object is a resource building
-			tempBldg.transform.position = tempBldg.GetPositionOfResource ();
+			if (tempBldg.getBuildingType () == BUILDING_TYPE.RESOURCE) 
+			{
+				// object is a resource building
+				tempBldg.transform.position = tempBldg.GetPositionOfResource ();
+				// disable the resource collider
+				tempBldg.GetComponent<ResourceBuilding> ().DisableResourceCollider ();
+			} 
+			else if(tempBldg.getBuildingType() == BUILDING_TYPE.TRAINING)
+			{
+				// training building is set, set it to awake
+				tempBldg.SetToAwake ();
+			}
 		} 
 		else 
 		{
