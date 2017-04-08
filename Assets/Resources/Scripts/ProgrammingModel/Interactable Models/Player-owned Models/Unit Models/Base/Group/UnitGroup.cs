@@ -22,13 +22,6 @@ public class UnitGroup : RTSObjectGroup {
         
     }
 
-    void OnDrawGizmos() {
-#if UNITY_EDITOR
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(targetPosition ,arriveRadius);
-       
-#endif
-    }
 
     public Interactable getInteraction() {
         return currentInteraction;
@@ -52,7 +45,7 @@ public class UnitGroup : RTSObjectGroup {
         }
         if (rtsObjects.Count > 0)
         {
-            arriveRadius = Mathf.Sqrt(rtsObjects.Count * ((Unit)rtsObjects[0]).movement.getRadius())/(2* Mathf.PI);
+            arriveRadius = Mathf.Sqrt(rtsObjects.Count * ((Unit)rtsObjects[0]).movement.getRadius());
         }
 
     }
