@@ -20,10 +20,19 @@ public class BuildingCollider : MonoBehaviour {
 				// check the type of the building
 				BUILDING_TYPE type = buildingObject.getBuildingType ();
 
-				if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer == LayerMask.NameToLayer("Resource")))
+				if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer == LayerMask.NameToLayer ("Resource"))) 
 				{
 					buildingObject.CanBePlaced ();
+
+					buildingObject.SetPositionOfBuilding (col.gameObject.transform.position);
+
+					col.gameObject.GetComponent<Collider> ().enabled = false;
+
 				} 
+				else if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer != LayerMask.NameToLayer ("Resource"))) 
+				{
+					buildingObject.CannotBePlaced ();
+				}
 				else if (type.Equals (BUILDING_TYPE.TRAINING) && col.gameObject.layer != LayerMask.NameToLayer ("Map")) 
 				{
 					// cursor collided with an object

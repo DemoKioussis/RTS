@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - Glue
   - Paper
+  - InputManager
   layers:
   - Default
   - TransparentFX

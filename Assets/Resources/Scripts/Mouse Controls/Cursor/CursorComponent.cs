@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CursorComponent : MonoBehaviour {
 
-	public GameObject gObject;
-
 	private RTSObject objectToSpawn;
 
 	private Renderer gameObjectRenderer;
@@ -79,22 +77,26 @@ public class CursorComponent : MonoBehaviour {
 	}
 
 	public void SpawnObjectOnCursor(GameObject rtsObject){
-		GameObject tempObj = (GameObject) Instantiate(rtsObject, transform.position, transform.rotation, transform); // get reference to the object
+		if (objectToSpawn == null) {
+			// User is not currently placing an object
 
-		objectToSpawn = tempObj.GetComponent<RTSObject>();
+			GameObject tempObj = (GameObject)Instantiate (rtsObject, transform.position, transform.rotation, transform); // get reference to the object
 
-		objectToSpawn.isBeingPlaced = true;
+			objectToSpawn = tempObj.GetComponent<RTSObject> ();
 
-		// get the renderer of the object
-		gameObjectRenderer = tempObj.GetComponent<Renderer> ();
+			objectToSpawn.isBeingPlaced = true;
 
-		// get the initial property colors of the object
-		initialColor = gameObjectRenderer.material.color; 
+			// get the renderer of the object
+			gameObjectRenderer = tempObj.GetComponent<Renderer> ();
 
-		// set color of the object
-		gameObjectRenderer.material.color = colorOfNoCollision;
+			// get the initial property colors of the object
+			initialColor = gameObjectRenderer.material.color; 
 
-		objectToSpawn.CanBePlaced();
+			// set color of the object
+			gameObjectRenderer.material.color = colorOfNoCollision;
+
+			objectToSpawn.CanBePlaced ();
+		}
 	}
 
 	private void SetGameObjectTo(Vector3 position){
@@ -106,8 +108,18 @@ public class CursorComponent : MonoBehaviour {
 		// set the parent of the created object to the scene
 		objectToSpawn.transform.parent = this.transform.parent;
 
+		Building tempBldg = objectToSpawn.GetComponent<Building> ();
+
 		// set the position of the created object to the level
-		objectToSpawn.transform.position = position; 
+		if (tempBldg != null && tempBldg.getBuildingType () == BUILDING_TYPE.RESOURCE) 
+		{
+			// object is a resource building
+			tempBldg.transform.position = tempBldg.GetPositionOfResource ();
+		} 
+		else 
+		{
+			objectToSpawn.transform.position = position; 
+		}
 
 		// reset the game object's color to its initial property
 		gameObjectRenderer.material.color = initialColor;

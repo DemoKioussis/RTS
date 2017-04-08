@@ -14,8 +14,8 @@ public class SelectionComponent : MonoBehaviour {
 	public GameObject selectionCirclePrefab;
 	List<Unit> selectedUnits = new List<Unit> ();
 	List<Building> selectedBuildings = new List<Building> ();
-	UnitGroup selectedUnitGroup;
-	BuildingGroup selectedBuildingGroup;
+	public UnitGroup selectedUnitGroup;
+	public BuildingGroup selectedBuildingGroup;
 	public UnitGroup selectedUnitGroupPrefab;
 	public BuildingGroup selectedBuildingGroupPrefab;
 

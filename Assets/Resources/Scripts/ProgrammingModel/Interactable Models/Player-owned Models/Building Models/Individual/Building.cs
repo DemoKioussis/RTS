@@ -8,6 +8,7 @@ public abstract class Building : RTSObject {
 
 	protected bool built = false;
 	protected bool awake = true;
+	protected Vector3 resourcePosition;
 
 	private Vector3 spawnPoint;
 
@@ -53,16 +54,23 @@ public abstract class Building : RTSObject {
 		return flagReference;
 	}
 
-	public virtual void SetToAwake(){
-
+	public virtual void SetToAwake(){ 
+		// Debug.Log ("Building status cannot be changed");
 	}
 
-	public virtual void SetToSleep(){
+	public virtual void SetToSleep(){ 
+		// Debug.Log ("Building status cannot be changed"); 
+	}
 
+	public virtual void SetPositionOfBuilding(Vector3 pos){
+		// Debug.Log ("Building position cannot be set");
+	}
+
+	public Vector3 GetPositionOfResource(){
+		return resourcePosition;
 	}
 
 	public virtual void SetSpawnPointAs(Vector3 spawnPosition){
-		Debug.Log ("Setting spawn point");
 		spawnPoint = spawnPosition;
 	}
 
