@@ -62,6 +62,7 @@ public abstract class Building : RTSObject {
 	}
 
 	public virtual void SetSpawnPointAs(Vector3 spawnPosition){
+		Debug.Log ("Setting spawn point");
 		spawnPoint = spawnPosition;
 	}
 
