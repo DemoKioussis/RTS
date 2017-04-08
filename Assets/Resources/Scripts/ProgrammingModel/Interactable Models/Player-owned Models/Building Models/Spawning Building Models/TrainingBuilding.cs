@@ -6,7 +6,7 @@ public class TrainingBuilding : Building{
 
 	List<Stub> stubPrefabs = new List<Stub>();
 
-	private GameObject unit;
+	public GameObject unit;
 
 	public float yOffset = 0.25f;
 

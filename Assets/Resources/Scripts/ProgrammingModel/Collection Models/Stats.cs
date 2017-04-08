@@ -9,12 +9,15 @@ public class Stats {
 	public int maxHitpoints;
 	public int hitpoints;
 	public float influenceMultiplier;
+	public int paperCost;
+	public int glueCost;
 }
-
-
+	
 [System.Serializable]
 public class UnitStats {
 	public float moveSpeed;
+	public float trainingTime;
+	public int populationCost;
 }
 
 [System.Serializable]
@@ -35,6 +38,13 @@ public class MilitaryStats {
 	public float maxAttackRange;
 	public float attackStrength;
 	public float attackRate;
+}
+
+[System.Serializable]
+public class ResourceBuildingStats {
+	public float gatheringTime;
+	public int glueReturn;
+	public int paperReturn;
 }
 
 [System.Serializable]

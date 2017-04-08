@@ -19,6 +19,7 @@ public class PlayerContext : MonoBehaviour {
 
 	public int glueQuantity;
 	public int paperQuantity;
+	public int population;
 	public int populationLimit;
 
 	public List<Unit> activeUnits = new List<Unit>();
@@ -74,13 +75,13 @@ public class PlayerContext : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//GameLost ();
+		GameLost ();
 
 		// Update
 
-		//SpawnRandomUnits ();
+		SpawnRandomUnits ();
 
-		//strategy.RealizeStrategy ();
+		strategy.RealizeStrategy ();
 	}
 
 	public void Init(int playerId, int teamId, bool isAI, bool fogOfWar, bool explored)
