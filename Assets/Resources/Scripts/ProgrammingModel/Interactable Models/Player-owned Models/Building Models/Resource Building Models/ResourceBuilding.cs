@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// for testing
-public enum RESOURCE_TYPE {GLUE, PAPER}
-
 public class ResourceBuilding : Building {
 
 	public float yOffset = 0.25f;
-	private RESOURCE_TYPE type; 
+
+	private Resource resource; 
 
 	// Use this for initialization
 	void Start () {

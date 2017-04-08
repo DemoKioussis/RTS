@@ -73,13 +73,13 @@ public class PlayerContext : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		GameLost ();
+		//GameLost ();
 
 		// Update
 
-		SpawnRandomUnits ();
+		//SpawnRandomUnits ();
 
-		strategy.RealizeStrategy ();
+		//strategy.RealizeStrategy ();
 	}
 
 	public void Init(int playerId, int teamId, bool isAI, bool fogOfWar, bool explored)
