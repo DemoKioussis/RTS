@@ -52,7 +52,7 @@ public abstract class RTSObject : Interactable {
 	{
 		GameObject output = Instantiate (playableObject, position, Quaternion.identity, parent);
 		output.GetComponent<RTSObject> ().player = playableObject.GetComponent<RTSObject> ().player;
-		output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
+		//output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
 		output.GetComponent<Renderer> ().enabled = true;
 
 		if (output.GetComponent<Unit> ()) {

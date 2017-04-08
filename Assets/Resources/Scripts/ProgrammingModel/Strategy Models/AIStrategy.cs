@@ -13,6 +13,11 @@ public class AIStrategy : Strategy {
 
 	public override void RealizeStrategy()
 	{
+		
+	}
+
+	void UpdateInfluenceMap()
+	{
 		GameContext game = GameContext.currentGameContext;
 		GameMap map = game.map;
 		Vector3[] vertices = map.GetComponent<MeshFilter> ().mesh.vertices;
