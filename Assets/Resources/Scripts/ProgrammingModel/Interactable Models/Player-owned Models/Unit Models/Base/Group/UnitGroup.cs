@@ -68,8 +68,8 @@ public class UnitGroup : RTSObjectGroup {
     }
 
 
-    public override void buildingInteratction(Building b) { }
-    public override void positionInteration(MapPos p) {
+    public override void buildingInteraction(Building b) { }
+    public override void positionInteraction(MapPos p) {
         preInteract(p);
         center = getCenter();
         arrivalCount = 0;

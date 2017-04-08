@@ -57,8 +57,8 @@ public class Unit : RTSObject {
     {
         return INTERACTION_TYPE.UNIT;
     }
-    public override void buildingInteratction(Building b) { }
-    public override void positionInteration(MapPos p) { }
+    public override void buildingInteraction(Building b) { }
+    public override void positionInteraction(MapPos p) { }
     public override void unitInteraction(Unit u) { }
     public override void resourceInteraction(Resource r) { }
 }
