@@ -52,6 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCount: 2
+  playerType: 0001
+  playerPrefab: {fileID: 1026045006428586, guid: f009fcbc6112e3843a76a614f35e3d86,
+    type: 2}
+  activePlayers: []
   mapPrefab: {fileID: 1197079522935486, guid: 0c9ecae012b08bb429e0f725ec41633a, type: 2}
   prefabs:
     unitPrefabs: []
@@ -60,3 +64,4 @@ MonoBehaviour:
   activeUnits: []
   activeBuildings: []
   activeResources: []
+  map: {fileID: 0}
