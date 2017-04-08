@@ -8,9 +8,7 @@ public abstract class BaseStateBehaviour : StateMachineBehaviour {
     public void setStateMachine(BaseStateMachine s) {
         stateMachine = s;
     }
-    void Awake() {
-        
-    }
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         update();

@@ -10,7 +10,8 @@ public class BaseUnitAttackBehaviour : BaseStateBehaviour
   
     protected override void enter()
     {
-        
+     //   stateMachine.getRTSObject().getTargetInteraction().takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength);
+      //  ((TestUnitStateMachine)stateMachine).setHasFired()
     }
     protected override void exit()
     {
@@ -20,5 +21,7 @@ public class BaseUnitAttackBehaviour : BaseStateBehaviour
     {
 
     }
+
+
 
 }

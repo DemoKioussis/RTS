@@ -18,24 +18,34 @@ public abstract class RTSObject : Interactable {
 	public GameObject selectionCircle;
     MeshRenderer model;
     BaseStateMachine stateDFA;
-    Queue<Interactable> targets;
-
+    Interactable targetInteraction;
     void Awake()
 	{
 		interactable = GetComponent<Interactable>();
         model = GetComponentInChildren<MeshRenderer>();
-        targets = new Queue<Interactable>();
         stateDFA = GetComponentInChildren<BaseStateMachine>();
     }
 
 	Activity currentActivity;
 
-	protected void AddInteraction (Interactable newTarget)
-	{
-		targets.Enqueue (newTarget);
-	}
+    public void setTarget(Interactable t) {
+        Debug.Log("Target set");
+        targetInteraction = t;
+    }
+    public override void InteractWith(Interactable i)
+    {
+        setTarget(i);
+        base.InteractWith(i);
+    }
+    public Interactable getTargetInteraction() {
+        return targetInteraction;
+    }
 
-	protected abstract float Influence (Vector3 samplePosition);
+    public void takeDamage(float d)
+    {
+
+    }
+    protected abstract float Influence (Vector3 samplePosition);
 
 	protected virtual void Heal(int hp)
 	{
@@ -82,7 +92,7 @@ public abstract class RTSObject : Interactable {
 		}
         return model;
     }
-    public BaseStateMachine getStateMachine() {
+    public virtual BaseStateMachine getStateMachine() {
         return stateDFA;
     }
 }

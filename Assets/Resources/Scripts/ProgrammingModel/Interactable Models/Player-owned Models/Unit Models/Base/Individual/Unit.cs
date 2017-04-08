@@ -5,11 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(UnitMovement))]
 public class Unit : RTSObject {
 	public UnitStats unitStats;
-    public UnitMovement movement;
 	Vector3 patrolAnchor;
     UnitGroup group;
 
-	// Update is called once per frame
+    // Update is called once per frame
+
 	void Update () {
 		if (!playerSetUp && player != null) {
 			player.activeUnits.Add (this);
@@ -20,8 +20,7 @@ public class Unit : RTSObject {
     {
         if (group != null)
         {
-            if (group != g)
-            {
+            if (group != g) { 
                 group.Remove(this);
                 transform.parent = g.transform;
                 group = g;
@@ -53,12 +52,18 @@ public class Unit : RTSObject {
 			unitStats = ((Unit)otherObject).unitStats;
 	}
 
+  
     public override INTERACTION_TYPE getInteractionType()
     {
         return INTERACTION_TYPE.UNIT;
     }
+
     public override void buildingInteraction(Building b) { }
-    public override void positionInteraction(MapPos p) { }
+    public override void positionInteraction(MapPos p) {
+
+        ((UnitStateMachine)getStateMachine()).getMoveBehaviour().setDestination(p.getPosition());
+
+    }
     public override void unitInteraction(Unit u) { }
     public override void resourceInteraction(Resource r) { }
 }

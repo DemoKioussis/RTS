@@ -11,7 +11,8 @@ public abstract class Interactable : MonoBehaviour {
 
     public abstract INTERACTION_TYPE getInteractionType();
 
-    public void InteractWith(Interactable i)
+    
+    public virtual void InteractWith(Interactable i)
     {
    
         switch (i.getInteractionType())
