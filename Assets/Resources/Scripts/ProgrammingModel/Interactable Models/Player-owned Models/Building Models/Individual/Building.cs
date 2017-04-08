@@ -7,6 +7,9 @@ public enum BUILDING_TYPE {RESOURCE, TRAINING, TOWNCENTER, ATTACK, DEFENSE}
 public abstract class Building : RTSObject {
 
 	protected bool built = false;
+	protected bool spawnPointSet = false;
+	protected float gameTime = 0.0f;
+
 	public bool awake = false;
 
 	private Vector3 spawnPoint;
@@ -51,6 +54,10 @@ public abstract class Building : RTSObject {
 
 	protected GameObject GetFlagReference(){
 		return flagReference;
+	}
+
+	protected void UpdateTime(){
+		gameTime += Time.deltaTime;
 	}
 
 	public virtual void SetToAwake(){ 
