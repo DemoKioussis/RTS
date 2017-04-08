@@ -19,9 +19,11 @@ public abstract class Interactable : MonoBehaviour {
             case INTERACTION_TYPE.BUILDING:
                 buildingInteraction((Building)i);
                 break;
-            case INTERACTION_TYPE.POSITION:
-                positionInteraction((MapPos)i);
-                break;
+			case INTERACTION_TYPE.POSITION:
+			{
+				positionInteraction ((MapPos)i);
+				break;
+			}
             case INTERACTION_TYPE.UNIT:
                 unitInteraction((Unit)i);
                 break;

@@ -7,11 +7,13 @@ public class TrainingBuilding : Building{
 	List<Stub> stubPrefabs = new List<Stub>();
 
 	public Unit unit;
+	public PlayerContext player;
 	public float yOffset = 0.25f;
 	public int unitIndex;
 
 	void Start(){
-		unit = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.unitPrefabs [unitIndex].GetComponent<Unit>();
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext>();
+		unit = player.updatedPrefabs.unitPrefabs [unitIndex].GetComponent<Unit>();
 	}
 
 	// Update is called once per frame
@@ -37,7 +39,7 @@ public class TrainingBuilding : Building{
 
 	public void SpawnUnit(Unit unit)
 	{
-		GameObject unitObject = InstantiatePlayableObject (unit.gameObject, transform.position, transform.parent);
+		GameObject unitObject = InstantiatePlayableObject (unit.gameObject, transform.position, player.transform);
 		if (spawnPointSet) 
 		{
 			unitObject.GetComponent<Unit> ().movement.moveTo (GetSpawnPoint ());
