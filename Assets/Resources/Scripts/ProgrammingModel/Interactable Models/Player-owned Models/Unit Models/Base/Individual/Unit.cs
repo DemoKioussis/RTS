@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(UnitMovement))]
 public class Unit : RTSObject {
 	public UnitStats unitStats;
 	Vector3 patrolAnchor;

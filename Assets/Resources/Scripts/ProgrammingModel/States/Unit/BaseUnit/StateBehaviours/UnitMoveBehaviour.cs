@@ -38,7 +38,6 @@ public class UnitMoveBehaviour : BaseStateBehaviour
     public void setAgent(NavMeshAgent a) {
         agent = a;
     }
-
     public float getRadius() {
         return agent.radius;
     }
@@ -56,7 +55,7 @@ public class UnitMoveBehaviour : BaseStateBehaviour
         arriveRadius = r;
     }
     private Vector3 getTargetPosition() {
-        return stateMachine.getRTSObject().getTargetInteraction().transform.position;
+        return Vector3.zero;// stateMachine.getRTSObject().getTargetInteraction().transform.position;
     }
     public float distanceTo(Vector3 p)
     {

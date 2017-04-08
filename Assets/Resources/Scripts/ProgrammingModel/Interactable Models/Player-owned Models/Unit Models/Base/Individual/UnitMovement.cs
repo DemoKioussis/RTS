@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent (typeof(Unit))]
-[RequireComponent(typeof(NavMeshAgent))]
 
 public class UnitMovement : MonoBehaviour {
 /*    private NavMeshAgent agent;
