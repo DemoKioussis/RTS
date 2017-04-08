@@ -28,8 +28,6 @@ public abstract class RTSObject : Interactable {
         stateDFA = GetComponentInChildren<BaseStateMachine>();
     }
 
-
-
 	Activity currentActivity;
 
 	protected void AddInteraction (Interactable newTarget)
@@ -57,7 +55,7 @@ public abstract class RTSObject : Interactable {
 		GameObject output = Instantiate (playableObject, position, Quaternion.identity, parent);
 		output.GetComponent<RTSObject> ().player = playableObject.GetComponent<RTSObject> ().player;
 		//output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
-		output.GetComponent<Renderer> ().enabled = true;
+		output.GetComponent<RTSObject> ().getModel().enabled = true;
 
 		if (output.GetComponent<Unit> ()) {
 			Unit unit = output.GetComponent<Unit> ();
@@ -79,6 +77,9 @@ public abstract class RTSObject : Interactable {
 	}
 
     public MeshRenderer getModel() {
+		if (model == null) {
+			model = GetComponentInChildren<MeshRenderer>();
+		}
         return model;
     }
     public BaseStateMachine getStateMachine() {
