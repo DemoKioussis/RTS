@@ -19,7 +19,7 @@ public class Worker : Unit {
 	}
 
 
-	protected override float Influence(Vector3 samplePosition)
+	public override float Influence()
 	{
 		return 0;
 	}

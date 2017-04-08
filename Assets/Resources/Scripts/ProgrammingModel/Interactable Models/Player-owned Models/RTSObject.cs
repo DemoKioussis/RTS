@@ -28,6 +28,8 @@ public abstract class RTSObject : Interactable {
 
 	Activity currentActivity;
 
+	public abstract float Influence ();
+
     public void setTarget(Interactable t) {
         Debug.Log("Target set");
         targetInteraction = t;
@@ -45,7 +47,6 @@ public abstract class RTSObject : Interactable {
     {
 
     }
-    protected abstract float Influence (Vector3 samplePosition);
 
 	protected virtual void Heal(int hp)
 	{

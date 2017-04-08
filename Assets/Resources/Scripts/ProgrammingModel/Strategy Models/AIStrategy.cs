@@ -6,6 +6,8 @@ public class AIStrategy : Strategy {
 	public enum Activity {MAKEPAPER, MAKEGLUE, MAKESHORTRANGE, MAKELONGRANGE};
 	int paperQuantityInStock;
 	int glueQuantityInStock;
+	int shortRangeUnits;
+	int longRangeUnits;
 	float paperGatheringRate;
 	float glueGatheringRate;
 	int population;
@@ -42,7 +44,25 @@ public class AIStrategy : Strategy {
 	{
 		UpdateInfluenceMap ();
 
+		UpdateStateVariables ();
 
+		UpdateTasks ();
+
+		for (int i = 0; i < tasks.Count; i++) {
+			bool wasFulfilled = true;
+			if (tasks [i].activity == Activity.MAKEGLUE) {
+				wasFulfilled = ManageGlue ();
+			} else if (tasks [i].activity == Activity.MAKEPAPER) {
+				wasFulfilled = ManagePaper ();
+			} else if (tasks [i].activity == Activity.MAKESHORTRANGE) {
+				wasFulfilled = ManageShortRange (tasks[i].value);
+			} else if (tasks [i].activity == Activity.MAKELONGRANGE) {
+				wasFulfilled = ManageLongRange (tasks[i].value);
+			}
+
+			if (!wasFulfilled)
+				break;
+		}
 	}
 
 	void UpdateInfluenceMap()
@@ -58,9 +78,9 @@ public class AIStrategy : Strategy {
 				if (j != player.playerId) {
 					PlayerContext p = game.activePlayers [j];
 					for (int k = 0; k < p.activeUnits.Count; k++)
-						magnitude += p.activeUnits [k].stats.hitpoints / (1 + (vertices [i] - p.activeUnits [k].transform.position).sqrMagnitude);
+						magnitude += p.activeUnits [k].Influence() / (1 + (vertices [i] - p.activeUnits [k].transform.position).sqrMagnitude);
 					for (int k = 0; k < p.activeBuildings.Count; k++)
-						magnitude += p.activeBuildings [k].stats.hitpoints / (1 + (vertices [i] - p.activeBuildings [k].transform.position).sqrMagnitude);
+						magnitude += p.activeBuildings [k].Influence() / (1 + (vertices [i] - p.activeBuildings [k].transform.position).sqrMagnitude);
 				}
 			}
 			colors [i] = new Color (1.0f, 1.0f, 1.0f) * magnitude / 50.0f;
@@ -72,9 +92,9 @@ public class AIStrategy : Strategy {
 
 		for (int i = 0; i < vertices.Length; i++) {
 			for (int k = 0; k < player.activeUnits.Count; k++)
-				overallLocalInfluence += player.activeUnits [k].stats.hitpoints / (1 + (vertices [i] - player.activeUnits [k].transform.position).sqrMagnitude);
+				overallLocalInfluence += player.activeUnits [k].Influence() / (1 + (vertices [i] - player.activeUnits [k].transform.position).sqrMagnitude);
 			for (int k = 0; k < player.activeBuildings.Count; k++)
-				overallLocalInfluence += player.activeBuildings [k].stats.hitpoints / (1 + (vertices [i] - player.activeBuildings [k].transform.position).sqrMagnitude);
+				overallLocalInfluence += player.activeBuildings [k].Influence() / (1 + (vertices [i] - player.activeBuildings [k].transform.position).sqrMagnitude);
 		}
 
 		overallLocalInfluence /= 50.0f;
@@ -84,23 +104,28 @@ public class AIStrategy : Strategy {
 
 	float PaperResourceHeuristic()
 	{
-
-		return 0;
+		return 1.0f / (paperGatheringRate + paperQuantityInStock);
 	}
 
 	float GlueResourceHeuristic ()
 	{
-		return 0;
+		return 1.0f / (glueGatheringRate + paperQuantityInStock);
 	}
 
 	float ShortRangeHeuristic()
 	{
-		return 0;
+		if (population == 0 || shortRangeUnits == 0 || longRangeUnits == 0)
+			return 1.5f;
+		else
+			return (float)population * ((float) shortRangeUnits / (float) longRangeUnits > 1.5f ? -1.0f : 1.0f) / (float)populationLimit + dangerIndex;
 	}
 
 	float LongRangeHeuristic()
 	{
-		return 0;
+		if (population == 0 || shortRangeUnits == 0 || longRangeUnits == 0)
+			return 1.0f / 1.5f;
+		else
+			return (float)population * ((float) longRangeUnits / (float) shortRangeUnits > 1.0f / 1.5f ? -1.0f : 1.0f) / (float)populationLimit + dangerIndex;
 	}
 
 	void UpdateTasks()
@@ -136,10 +161,10 @@ public class AIStrategy : Strategy {
 				if (player.activeBuildings [i] is ResourceBuilding) {
 					ResourceBuilding rB = player.activeBuildings [i] as ResourceBuilding;
 					float rate = 1.0f / rB.resourceBldgStats.gatheringTime;
-					if (rB.resource is Paper) {
+					if (rB.resource.gameObject.tag == "Paper") {
 						paperGatheringRate += rate;
 					}
-					else if (rB.resource is Glue) {
+					else if (rB.resource.gameObject.tag == "Glue") {
 						glueGatheringRate += rate;
 					}
 
@@ -153,12 +178,148 @@ public class AIStrategy : Strategy {
 			}
 		}
 
+		shortRangeUnits = 0;
+		longRangeUnits = 0;
 
+		for (int i = 0; i < player.activeUnits.Count; i++) {
+			if (player.activeUnits [i] is ShortRangeUnit)
+				shortRangeUnits++;
+			else if (player.activeUnits [i] is LongRangeUnit)
+				longRangeUnits++;
+		}
+	}
+
+	Vector3 FindClosestResource(string resourceType)
+	{
+		Resource[] resources = GameContext.currentGameContext.activeResources;
+		Resource closestResource = null;
+		float minDistance = 100000000000000;
+
+		for (int i = 0; i < resources.Length; i++)
+			if (resources [i].gameObject.tag == resourceType) {
+				float distance = (resources [i].transform.position - player.industrialCenter.transform.position).magnitude;
+				if (distance < minDistance) {
+					minDistance = distance;
+					closestResource = resources [i];
+				}
+			}
+
+		if (closestResource != null)
+			return closestResource.transform.position;
+		else
+			return new Vector3(0, 0, 0);
+	}
+
+	bool ManagePaper()
+	{
+		Vector3 point = FindClosestResource ("Paper");
+		return MakeNewBuilding<ResourceBuilding> (out point);
+	}
+
+	bool ManageGlue()
+	{
+		Vector3 point = FindClosestResource ("Glue");
+		return MakeNewBuilding<ResourceBuilding> (out point);
+	}
+
+	bool ManageShortRange(float value)
+	{
+		for (int i = 0; i < player.activeBuildings.Count; i++) {
+			if(!(value > 0 ^ player.activeBuildings[i].awake))
+			{
+				TrainingBuilding bldg = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
+				ShortRangeUnit unit = bldg.unit.GetComponent<ShortRangeUnit> ();
+
+				if (bldg != null && unit != null)
+				{
+					player.activeBuildings [i].ToggleAwake();
+					return true;
+				}
+			}	
+		}
+
+		if (value > 0)
+			return MakeNewTrainingBuilding<ShortRangeUnit>();
+		else
+			return true;
+	}
+
+	bool ManageLongRange(float value)
+	{
+		for (int i = 0; i < player.activeBuildings.Count; i++) {
+			if(!(value > 0 ^ player.activeBuildings[i].awake))
+			{
+				TrainingBuilding bldg = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
+				LongRangeUnit unit = bldg.unit.GetComponent<LongRangeUnit> ();
+
+				if (bldg != null && unit != null)
+				{
+					player.activeBuildings [i].ToggleAwake();
+					return true;
+				}
+			}
+		}
+
+		if (value > 0)
+			return MakeNewTrainingBuilding<LongRangeUnit>();
+		else
+			return true;
+	}
+
+	Vector3 GetEmptyArea()
+	{
+//		Bounds boundingBox = bldg.GetComponent<
+		return new Vector3 (0, 0, 0);
+	}
+
+	T MakeNewBuilding<T>(out Vector3 emptyArea) where T : Building
+	{
+		emptyArea = GetEmptyArea();
+
+		GameObject[] buildings = player.updatedPrefabs.buildingPrefabs;
+
+		T t = null;
+
+		if (emptyArea == null)
+			return t;
+
+		for (int i = 0; i < buildings.Length; i++) {
+			if (buildings [i].GetComponent<Building>() is T) {
+				t = (T) RTSObject.InstantiatePlayableObject (buildings[i], emptyArea, player.transform).GetComponent<Building>();
+				return t;
+			}
+		}
+
+		return t;
+	}
+
+	bool MakeNewTrainingBuilding<T>() where T : Unit
+	{
+		Vector3 emptyArea;
+		TrainingBuilding tB = MakeNewBuilding<TrainingBuilding>(out emptyArea);
+		
+		GameObject[] units = player.updatedPrefabs.unitPrefabs;
+
+		for (int i = 0; i < units.Length; i++) {
+			if (units [i].GetComponent<Unit>() is T) {
+				tB.unit = units [i].GetComponent<Unit>();
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public static int SortByValue(WeighedTask t1, WeighedTask t2)
 	{
-		return t1.value.CompareTo (t2.value);
+		if (t1.value < 0 && t2.value > 0)
+			return 1;
+		else if (t1.value > 0 && t2.value < 0)
+			return -1;
+		else if (t1.value < 0 && t2.value < 0)
+			return Mathf.Abs (t1.value).CompareTo (Mathf.Abs (t2.value));
+		else
+			return t1.value.CompareTo (t2.value);
 	}
 }
 

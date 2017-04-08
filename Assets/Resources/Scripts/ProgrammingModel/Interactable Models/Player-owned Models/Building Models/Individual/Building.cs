@@ -25,9 +25,9 @@ public abstract class Building : RTSObject {
 		}
 	}
 
-	protected override float Influence (Vector3 samplePosition)
+	public override float Influence ()
 	{
-		return 0;
+		return stats.hitpoints;
 		// To do
 	}
 
@@ -66,6 +66,11 @@ public abstract class Building : RTSObject {
 
 	public virtual void SetToSleep(){ 
 		// Debug.Log ("Building status cannot be changed"); 
+	}
+
+	public virtual void ToggleAwake()
+	{
+		awake ^= true;
 	}
 
 	public virtual void SetPositionOfBuildingWith(Resource res){
