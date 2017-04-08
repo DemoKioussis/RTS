@@ -18,6 +18,7 @@ public class PlayerContext : MonoBehaviour {
 
 	public int glueQuantity;
 	public int paperQuantity;
+	public int population;
 	public int populationLimit;
 
 	public List<Unit> activeUnits = new List<Unit>();

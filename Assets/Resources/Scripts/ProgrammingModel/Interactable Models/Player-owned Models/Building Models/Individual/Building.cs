@@ -7,7 +7,7 @@ public enum BUILDING_TYPE {RESOURCE, TRAINING, TOWNCENTER, ATTACK, DEFENSE}
 public abstract class Building : RTSObject {
 
 	protected bool built = false;
-	protected bool awake = true;
+	public bool awake = true;
 	protected Vector3 resourcePosition;
 
 	private Vector3 spawnPoint;

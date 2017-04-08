@@ -6,7 +6,8 @@ public class ResourceBuilding : Building {
 
 	public float yOffset = 0.25f;
 
-	private Resource resource; 
+	public Resource resource;
+	public ResourceBuildingStats resourceBldgStats;
 
 	// Use this for initialization
 	void Start () {

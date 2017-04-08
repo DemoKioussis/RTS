@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class AIStrategy : Strategy {
 	public enum Activity {MAKEPAPER, MAKEGLUE, MAKESHORTRANGE, MAKELONGRANGE};
+	int paperQuantityInStock;
+	int glueQuantityInStock;
+	float paperGatheringRate;
+	float glueGatheringRate;
+	int population;
+	int populationLimit;
+	float dangerIndex;
 
 	public class WeighedTask
 	{
@@ -60,16 +67,23 @@ public class AIStrategy : Strategy {
 		}
 
 		GameContext.currentGameContext.map.GetComponent<MeshFilter> ().mesh.colors = colors;
+
+		float overallLocalInfluence = 0;
+
+		for (int i = 0; i < vertices.Length; i++) {
+			for (int k = 0; k < player.activeUnits.Count; k++)
+				overallLocalInfluence += player.activeUnits [k].stats.hitpoints / (1 + (vertices [i] - player.activeUnits [k].transform.position).sqrMagnitude);
+			for (int k = 0; k < player.activeBuildings.Count; k++)
+				overallLocalInfluence += player.activeBuildings [k].stats.hitpoints / (1 + (vertices [i] - player.activeBuildings [k].transform.position).sqrMagnitude);
+		}
+
+		overallLocalInfluence /= 50.0f;
+
+		dangerIndex = 1.0f / overallLocalInfluence;
 	}
 
 	float PaperResourceHeuristic()
 	{
-		int paperQuantityInStock = player.paperQuantity;
-		int paperGatheringRate, paperExpenditureRate;
-
-		for (int i = 0; i < player.activeBuildings.Count; i++) {
-//			if(player.activeBuildings[i] is ResourceBuilding &&)
-		}
 
 		return 0;
 	}
@@ -107,6 +121,39 @@ public class AIStrategy : Strategy {
 		}
 
 		tasks.Sort (SortByValue);
+	}
+
+	void UpdateStateVariables()
+	{
+		paperQuantityInStock = player.paperQuantity;
+		glueQuantityInStock = player.glueQuantity;
+		population = player.population;
+		paperGatheringRate = 0;
+		glueGatheringRate = 0;
+
+		for (int i = 0; i < player.activeBuildings.Count; i++) {
+			if (player.activeBuildings [i].awake) {
+				if (player.activeBuildings [i] is ResourceBuilding) {
+					ResourceBuilding rB = player.activeBuildings [i] as ResourceBuilding;
+					float rate = 1.0f / rB.resourceBldgStats.gatheringTime;
+					if (rB.resource is Paper) {
+						paperGatheringRate += rate;
+					}
+					else if (rB.resource is Glue) {
+						glueGatheringRate += rate;
+					}
+
+				} else if (player.activeBuildings [i] is TrainingBuilding) {
+					Unit unit = (player.activeBuildings [i] as TrainingBuilding).unit.GetComponent<Unit>();
+					if (unit != null) {
+						paperGatheringRate -= (float)unit.stats.paperCost / unit.unitStats.trainingTime;
+						glueGatheringRate -= (float)unit.stats.glueCost / unit.unitStats.trainingTime;
+					}
+				}
+			}
+		}
+
+
 	}
 
 	public static int SortByValue(WeighedTask t1, WeighedTask t2)
