@@ -84,8 +84,7 @@ public class CursorComponent : MonoBehaviour {
 	public void SpawnObjectOnCursor(GameObject nextRTSObject){
 
 		if(compareRTSObject(currentRTSObject, nextRTSObject.GetComponent<RTSObject>())){
-			Destroy(currentRTSObject.gameObject);
-			currentRTSObject = null;
+			CancelAction ();
 		}
 
 		if (currentRTSObject == null) {
