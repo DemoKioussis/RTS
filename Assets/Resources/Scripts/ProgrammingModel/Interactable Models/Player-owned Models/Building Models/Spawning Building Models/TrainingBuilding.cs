@@ -47,7 +47,7 @@ public class TrainingBuilding : Building{
 		else 
 		{
 			// spawn point is not set
-			unitObject.GetComponent<Unit> ().movement.moveTo (new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.0f));
+			unitObject.GetComponent<Unit> ().movement.moveTo (new Vector3(transform.position.x, transform.position.y, transform.position.z - 2.0f));
 		}
 	}
 		
