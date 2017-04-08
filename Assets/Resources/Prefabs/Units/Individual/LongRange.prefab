@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4423019377906876}
   - component: {fileID: 95416019983605222}
-  - component: {fileID: 114448349976968186}
+  - component: {fileID: 114228908478999678}
   m_Layer: 9
   m_Name: State
   m_TagString: Untagged
@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909318969148630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.98, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4423019377906876}
@@ -119,7 +119,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a68cea82f23b6554c8aa2c52a2400064, type: 2}
+  - {fileID: 2100000, guid: 7bba278b70c62dc48a91dc596711711b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,7 +168,7 @@ Animator:
   m_GameObject: {fileID: 1095832494504642}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0981bda666dbbb046b4293efa238f056, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8adb5e846d7e2b7498e0914819c7a354, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
     maxAttackRange: 0
     attackStrength: 0
     attackRate: 0
---- !u!114 &114448349976968186
+--- !u!114 &114228908478999678
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -218,19 +218,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1095832494504642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8909be283b3b93458912dcd0a3be204, type: 3}
+  m_Script: {fileID: 11500000, guid: 282d9331d1b36a54398a8e92c5b34987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 95416019983605222}
   updateOffset: 5
-  defend: 0
-  inLOS: 0
-  patrol: 0
-  onTarget: 0
-  reloading: 0
-  targetNull: 1
-  targetInRange: 0
   attack: 0
+  hasTarget: 0
+  targetInFireRange: 0
+  hasFired: 0
+  atTarget: 0
   target: {fileID: 0}
   queueSize: 0
 --- !u!114 &114774548463792312
@@ -275,5 +272,5 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 2

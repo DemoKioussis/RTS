@@ -35,17 +35,20 @@ public class UnitGroup : RTSObjectGroup {
     }
     private void stopAgents() {
         foreach (Unit u in rtsObjects) {
-            u.movement.stopMovement();
+            ((UnitStateMachine)u.getStateMachine()).setAtTarget(true);
         }
     }
     void preInteract(Interactable i) {
         currentInteraction = i;
+
         foreach (Unit u in rtsObjects) {
             u.setGroup(this);
         }
         if (rtsObjects.Count > 0)
         {
-            arriveRadius = Mathf.Sqrt(rtsObjects.Count * ((Unit)rtsObjects[0]).movement.getRadius());
+            Unit u = (Unit)rtsObjects[0];
+            UnitStateMachine s = (UnitStateMachine)u.getStateMachine();
+            arriveRadius = Mathf.Sqrt(rtsObjects.Count * s.getMoveBehaviour().getRadius());
         }
 
     }
@@ -71,10 +74,11 @@ public class UnitGroup : RTSObjectGroup {
         NavMesh.CalculatePath(center, p.getPosition(), NavMesh.AllAreas, path);
         foreach (Unit u in rtsObjects)
         {
-            u.movement.setPath(path);
-            u.movement.setArriveRadius(arriveRadius);
-            u.movement.setDestination(p.getPosition());
-
+          //  u.
+            UnitStateMachine s = (UnitStateMachine)u.getStateMachine();
+            s.getMoveBehaviour().setPath(path);
+            s.getMoveBehaviour().setArriveRadius(arriveRadius);
+            
         }
     }
     public override void unitInteraction(Unit u) { }

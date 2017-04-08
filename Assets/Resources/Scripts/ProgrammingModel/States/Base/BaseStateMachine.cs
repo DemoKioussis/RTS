@@ -7,16 +7,20 @@ using UnityEngine;
 public class BaseStateMachine : MonoBehaviour {
 
     [SerializeField]
-    private Animator stateMachine;
+    protected Animator stateMachine;
     private int updateOffsetCounter;
     [SerializeField]
     private int updateOffset;
+
+    private RTSObject rtsObject;
     void Awake() {
         stateMachine = GetComponent<Animator>();
         BaseStateBehaviour[] behaviours = stateMachine.GetBehaviours<BaseStateBehaviour>();
         foreach (BaseStateBehaviour b in behaviours) {
             b.setStateMachine(this);
         }
+        rtsObject = GetComponentInParent<RTSObject>();
+        setInitialState();
     }
 
     void Update()
@@ -30,6 +34,9 @@ public class BaseStateMachine : MonoBehaviour {
     protected virtual void update() {
 
     }
+
+    [ContextMenu("Set States")]
+    protected virtual void setInitialState() { }
     protected void updateParameter(string s, int value) {
         stateMachine.SetInteger(s, value);
     }
@@ -40,6 +47,9 @@ public class BaseStateMachine : MonoBehaviour {
     protected void updateParameter(string s, bool value)
     {
         stateMachine.SetBool(s, value);
+    }
+    public RTSObject getRTSObject() {
+        return rtsObject;
     }
 
 

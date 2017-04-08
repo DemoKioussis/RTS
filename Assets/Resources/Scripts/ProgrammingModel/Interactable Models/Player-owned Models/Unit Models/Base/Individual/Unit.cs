@@ -20,8 +20,7 @@ public class Unit : RTSObject {
     {
         if (group != null)
         {
-            if (group != g)
-            {
+            if (group != g) { 
                 group.Remove(this);
                 transform.parent = g.transform;
                 group = g;
