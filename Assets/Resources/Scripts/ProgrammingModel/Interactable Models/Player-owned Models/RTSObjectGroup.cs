@@ -53,6 +53,4 @@ public class RTSObjectGroup : Interactable {
     public override void positionInteraction(MapPos p) { }
     public override void unitInteraction(Unit u) { }
     public override void resourceInteraction(Resource r) { }
-
-
 }
