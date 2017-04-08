@@ -6,12 +6,12 @@ public class TrainingBuilding : Building{
 
 	List<Stub> stubPrefabs = new List<Stub>();
 
-	public GameObject unit;
+	public Unit unit;
 	public float yOffset = 0.25f;
 	public int unitIndex;
 
 	void Start(){
-		unit = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.unitPrefabs [unitIndex];
+		unit = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.unitPrefabs [unitIndex].GetComponent<Unit>();
 	}
 
 	// Update is called once per frame
@@ -19,7 +19,7 @@ public class TrainingBuilding : Building{
 		if (awake) {
 			// TODO: Instantiate the unit prefab
 			// Debug.Log("Building is awake");
-
+			SpawnUnit(unit);
 		}
 		/*
 		if (Input.GetButton ("LeftClick")) {
@@ -44,9 +44,10 @@ public class TrainingBuilding : Building{
 		return base.Influence (samplePosition) + 0;
 	}
 
-	public virtual void SpawnUnit(Unit unit)
+	public void SpawnUnit(Unit unit)
 	{
-		// To do
+		GameObject unitObject = InstantiatePlayableObject (unit.gameObject);
+		unitObject.GetComponent<Unit> ().movement.moveTo (GetSpawnPoint ());
 	}
 		
 	public override void SetToAwake(){
