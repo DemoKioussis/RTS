@@ -14,6 +14,7 @@ public class PlayerContext : MonoBehaviour {
 	public PrefabDatabase updatedPrefabs;
 
 	public PlayerMap playerMap;
+	public GameObject inputManager;
 	public Strategy strategy;
 
 	public int glueQuantity;
@@ -91,8 +92,11 @@ public class PlayerContext : MonoBehaviour {
 
 		if (isAI)
 			strategy = new AIStrategy (this);
-		else
+		else {
+			// is a player
 			strategy = new PlayerStrategy (this);
+			Instantiate (inputManager, transform);
+		}
 
 		switch (this.teamId) {
 		case 0:
