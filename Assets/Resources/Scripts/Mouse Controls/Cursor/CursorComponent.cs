@@ -60,8 +60,13 @@ public class CursorComponent : MonoBehaviour {
 
 			if (Input.GetButton("LeftClick"))
 			{
-				if (!currentRTSObject.objectIsColliding && hit.collider != null) {
-					SetGameObjectTo (hit.point + new Vector3(0, yOffset, 0));
+				if (!currentRTSObject.objectIsColliding && hit.collider != null) 
+				{
+					SetGameObjectTo (hit.point + new Vector3 (0, yOffset, 0));
+				}
+				else if (currentRTSObject.objectIsColliding) 
+				{
+					CancelAction ();
 				}
 			}
 		}

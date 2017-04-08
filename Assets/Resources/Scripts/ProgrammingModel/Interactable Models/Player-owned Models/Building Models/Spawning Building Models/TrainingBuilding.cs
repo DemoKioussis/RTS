@@ -18,7 +18,7 @@ public class TrainingBuilding : Building{
 	void Update () {
 		if (awake) {
 			// TODO: Instantiate the unit prefab
-			Debug.Log("Building is awake");
+			// Debug.Log("Building is awake");
 		}
 		/*
 		if (Input.GetButton ("LeftClick")) {
