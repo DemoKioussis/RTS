@@ -16,15 +16,19 @@ public abstract class RTSObject : Interactable {
 
 	public Interactable interactable;
 	public GameObject selectionCircle;
+    MeshRenderer model;
+    BaseStateMachine stateDFA;
+    Queue<Interactable> targets;
 
-	void Awake()
+    void Awake()
 	{
 		interactable = GetComponent<Interactable>();
-	}
+        model = GetComponentInChildren<MeshRenderer>();
+        targets = new Queue<Interactable>();
+        stateDFA = GetComponentInChildren<BaseStateMachine>();
+    }
 
-	Queue<Interactable> targets = new Queue<Interactable>();
 
-	// Behaviour DFA object
 
 	Activity currentActivity;
 
@@ -73,4 +77,11 @@ public abstract class RTSObject : Interactable {
 	public void CanBePlaced(){
 		objectIsColliding = false;
 	}
+
+    public MeshRenderer getModel() {
+        return model;
+    }
+    public BaseStateMachine getStateMachine() {
+        return stateDFA;
+    }
 }
