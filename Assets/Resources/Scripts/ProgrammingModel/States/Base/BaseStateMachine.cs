@@ -6,9 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class BaseStateMachine : MonoBehaviour {
 
-    protected Animator stateMachine;
-    public bool test;
-
+    [SerializeField]
+    private Animator stateMachine;
+    private int updateOffsetCounter;
+    [SerializeField]
+    private int updateOffset;
     void Awake() {
         stateMachine = GetComponent<Animator>();
         BaseStateBehaviour[] behaviours = stateMachine.GetBehaviours<BaseStateBehaviour>();
@@ -17,15 +19,25 @@ public class BaseStateMachine : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        if (updateOffsetCounter++ > updateOffset)
+        {
+            updateOffsetCounter = 0;
+            update();
+        }
+    }
+    protected virtual void update() {
 
-    private void updateParameter(string s, int value) {
+    }
+    protected void updateParameter(string s, int value) {
         stateMachine.SetInteger(s, value);
     }
-    private void updateParameter(string s, float value)
+    protected void updateParameter(string s, float value)
     {
         stateMachine.SetFloat(s, value);
     }
-    private void updateParameter(string s, bool value)
+    protected void updateParameter(string s, bool value)
     {
         stateMachine.SetBool(s, value);
     }

@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class LongRangeUnit : Military {
 
-	// Use this for initialization
-	void Start () {
 
-	}
-
-	// Update is called once per frame
-	void Update () {
-
-	}
 
 }
