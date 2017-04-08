@@ -15,27 +15,18 @@ public class TrainingBuilding : Building{
 	}
 
 	// Update is called once per frame
-	void Update () {
-		if (awake) {
-			// TODO: Instantiate the unit prefab
-			// Debug.Log("Building is awake");
-			SpawnUnit(unit);
-		}
-		/*
-		if (Input.GetButton ("LeftClick")) {
-			RaycastHit hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
-
-			if (hit.collider != null) {
-				SetSpawnPointAs (hit.point + new Vector3(0, yOffset, 0));
+	void Update () 
+	{
+		if (awake)
+		{
+			UpdateTime ();
+			if (unitReadyToGo ()) 
+			{
+				// TODO: Instantiate the unit prefab
+				// Debug.Log("Building is awake");
+				SpawnUnit (unit);
 			}
 		}
-
-		// test spawning units
-		if (Input.GetKey (KeyCode.I) && awake) {
-			GameObject obj = (GameObject) InstantiatePlayableObject (unit);
-			obj.GetComponent<UnitController>().setDestination(base.GetSpawnPoint());
-		}
-		*/
 	}
 
 
@@ -46,8 +37,16 @@ public class TrainingBuilding : Building{
 
 	public void SpawnUnit(Unit unit)
 	{
-		GameObject unitObject = InstantiatePlayableObject (unit.gameObject);
-		unitObject.GetComponent<Unit> ().movement.moveTo (GetSpawnPoint ());
+		GameObject unitObject = InstantiatePlayableObject (unit.gameObject, transform.position, transform.parent);
+		if (spawnPointSet) 
+		{
+			unitObject.GetComponent<Unit> ().movement.moveTo (GetSpawnPoint ());
+		} 
+		else 
+		{
+			// spawn point is not set
+			unitObject.GetComponent<Unit> ().movement.moveTo (new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.0f));
+		}
 	}
 		
 	public override void SetToAwake(){
@@ -67,19 +66,22 @@ public class TrainingBuilding : Building{
 			GameObject flag = (GameObject)Instantiate (base.flagPrefab, spawnPosition, transform.rotation);
 			base.SetFlagReference(flag);
 			base.SetSpawnPointAs (spawnPosition);
+			spawnPointSet = true; // spawn point is set
 
 			Destroy (flag, 3); // destroy the flag object after 3 seconds
 		}
 	}
 
-	GameObject InstantiatePlayableObject(GameObject playableObject)
-	{
-		GameObject output = Instantiate (playableObject, transform);
-		output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
-		return output;
-	}
-
 	public override BUILDING_TYPE getBuildingType(){
 		return BUILDING_TYPE.TRAINING;
+	}
+
+	private bool unitReadyToGo(){
+		if (gameTime >= 1.0f && (int)gameTime % (int)unit.unitStats.trainingTime == 0) {
+			gameTime = 0.0f;
+			return true;
+		}
+
+		return false;
 	}
 }

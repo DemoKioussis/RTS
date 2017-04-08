@@ -200,9 +200,9 @@ MonoBehaviour:
   interactable: {fileID: 0}
   selectionCircle: {fileID: 0}
   unitStats:
-    moveSpeed: 0
-    trainingTime: 0
-    populationCost: 0
+    moveSpeed: 1
+    trainingTime: 10
+    populationCost: 1
   movement: {fileID: 0}
   militaryStats:
     minAttackRange: 0
