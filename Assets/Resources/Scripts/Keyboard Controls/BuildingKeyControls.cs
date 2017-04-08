@@ -8,13 +8,13 @@ public class BuildingKeyControls : MonoBehaviour {
 	public static void ActivateKeyboardAction(BuildingGroup bldgGroup, char input){
 		switch(input){
 		case '1':
-			bldgGroup.CreateNewBuilding ('0');
-			break;
-		case '2':
 			bldgGroup.CreateNewBuilding ('1');
 			break;
-		case '3':
+		case '2':
 			bldgGroup.CreateNewBuilding ('2');
+			break;
+		case '3':
+			bldgGroup.CreateNewBuilding ('3');
 			break;
 		case 'a':
 			bldgGroup.SetToAwake ();
@@ -23,7 +23,7 @@ public class BuildingKeyControls : MonoBehaviour {
 			bldgGroup.SetToSleep ();
 			break; 
 		case 'x':
-			Debug.Log("Escape key");
+			bldgGroup.CancelAction ();
 			break;
 		default:
 			break;

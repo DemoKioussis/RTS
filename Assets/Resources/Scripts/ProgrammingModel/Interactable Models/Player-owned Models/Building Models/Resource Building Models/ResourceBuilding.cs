@@ -25,8 +25,20 @@ public class ResourceBuilding : Building {
 		// To do
 	}
 
-	public override void SetPositionOfBuilding(Vector3 pos){
-		resourcePosition = pos;
+	public override void SetPositionOfBuildingWith(Resource res){
+		resource = res;
+	}
+
+	public override void ClearPositionOfBuilding(){
+		resource = null;
+	}
+
+	public override Vector3 GetPositionOfResource(){
+		return resource.gameObject.transform.position;
+	}
+
+	public void DisableResourceCollider(){
+		resource.gameObject.GetComponent<Collider> ().enabled = false;
 	}
 		
 	public override void SetSpawnPointAs(Vector3 p){

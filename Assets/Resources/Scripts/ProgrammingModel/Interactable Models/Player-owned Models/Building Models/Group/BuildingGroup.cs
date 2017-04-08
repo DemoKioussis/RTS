@@ -26,6 +26,15 @@ public class BuildingGroup : RTSObjectGroup {
 		}
 	}
 
+	public void CancelAction(){
+		IndustrialCenter townCenter;
+		foreach (Building bldg in rtsObjects) {
+			townCenter = bldg.GetComponent<IndustrialCenter> ();
+			if (townCenter != null) {
+				townCenter.CancelAction ();
+			}
+		}
+	}
 
     public override void buildingInteraction(Building b) { }
     public override void positionInteraction(MapPos p) {

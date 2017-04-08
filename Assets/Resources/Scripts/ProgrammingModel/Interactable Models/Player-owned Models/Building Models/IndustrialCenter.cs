@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class IndustrialCenter : ResourceBuilding {
 
-	public List<GameObject> buildingPrefabs;
+	private GameObject[] buildings;
 
 	private CursorComponent cursor;
 
 	void Awake(){
-
+		buildings = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.buildingPrefabs;
 		cursor = GameObject.FindGameObjectWithTag ("InputManager").GetComponent<CursorComponent>();
 	}
 
@@ -31,9 +31,13 @@ public class IndustrialCenter : ResourceBuilding {
 	public void CreateNewBuilding(char keyInput){
 		int index = int.Parse (keyInput + "");
 
-		if (index >= 0 && index < buildingPrefabs.Count) {
-			cursor.SpawnObjectOnCursor (buildingPrefabs [index]);
+		if (index >= 0 && index < buildings.Length) {
+			cursor.SpawnObjectOnCursor (buildings [index]);
 		}
+	}
+
+	public void CancelAction(){
+		cursor.CancelAction ();
 	}
 
 	public override void SetSpawnPointAs(Vector3 spawnPosition){
