@@ -7,11 +7,11 @@ public class TrainingBuilding : Building{
 	List<Stub> stubPrefabs = new List<Stub>();
 
 	public GameObject unit;
-
 	public float yOffset = 0.25f;
+	public int unitIndex;
 
 	void Start(){
-		unit = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.unitPrefabs [0];
+		unit = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.unitPrefabs [unitIndex];
 	}
 
 	// Update is called once per frame
@@ -61,6 +61,7 @@ public class TrainingBuilding : Building{
 	// Set the spawn point
 	public override void SetSpawnPointAs(Vector3 spawnPosition){
 		if(base.GetFlagReference() == null){
+			// Debug.Log ("Setting Spawn Point");
 			GameObject flag = (GameObject)Instantiate (base.flagPrefab, spawnPosition, transform.rotation);
 			base.SetFlagReference(flag);
 			base.SetSpawnPointAs (spawnPosition);

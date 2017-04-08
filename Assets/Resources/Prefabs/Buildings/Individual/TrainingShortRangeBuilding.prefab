@@ -139,13 +139,18 @@ MonoBehaviour:
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
+    paperCost: 0
+    glueCost: 0
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
   interactable: {fileID: 0}
   selectionCircle: {fileID: 0}
+  awake: 0
   flagPrefab: {fileID: 1142279928341876, guid: 884bb4ddebfa6c14884af1688ff75a18, type: 2}
+  unit: {fileID: 0}
   yOffset: 0.25
+  unitIndex: 1
 --- !u!208 &208175460728556488
 NavMeshObstacle:
   m_ObjectHideFlags: 1
