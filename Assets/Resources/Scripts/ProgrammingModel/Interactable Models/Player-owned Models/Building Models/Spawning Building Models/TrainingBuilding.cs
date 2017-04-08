@@ -6,9 +6,13 @@ public class TrainingBuilding : Building{
 
 	List<Stub> stubPrefabs = new List<Stub>();
 
-	public GameObject unit;
+	private GameObject unit;
 
 	public float yOffset = 0.25f;
+
+	void Start(){
+		unit = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.unitPrefabs [0];
+	}
 
 	// Update is called once per frame
 	void Update () {

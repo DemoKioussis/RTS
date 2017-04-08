@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CursorComponent : MonoBehaviour {
 
-	private RTSObject objectToSpawn;
+	private RTSObject currentRTSObject;
 
 	private Renderer gameObjectRenderer;
 	private Color initialColor;
@@ -24,9 +24,9 @@ public class CursorComponent : MonoBehaviour {
 		/* 
 		//testing
 			GameObject testObject = (GameObject)Instantiate (gObject, transform.position, transform.rotation, transform);
-			objectToSpawn = testObject.GetComponent<RTSObject> ();
+			currentRTSObject = testObject.GetComponent<RTSObject> ();
 			gameObjectRenderer = testObject.GetComponent<Renderer> ();
-			objectToSpawn.isBeingPlaced = true;
+			currentRTSObject.isBeingPlaced = true;
 			// get the initial property colors of the object
 			initialColor = gameObjectRenderer.material.color; 
 		// end of test
@@ -47,9 +47,9 @@ public class CursorComponent : MonoBehaviour {
 			transform.position = hit.point + new Vector3(0, yOffset, 0); // update the position of the mouse
 		}
 
-		if (objectToSpawn != null) {
+		if (currentRTSObject != null) {
 			// set the color of the object depending on collision information
-			if (objectToSpawn.objectIsColliding) 
+			if (currentRTSObject.objectIsColliding) 
 			{
 				SetColor(colorOfCollision);
 			} 
@@ -60,7 +60,7 @@ public class CursorComponent : MonoBehaviour {
 
 			if (Input.GetButton("LeftClick"))
 			{
-				if (!objectToSpawn.objectIsColliding && hit.collider != null) {
+				if (!currentRTSObject.objectIsColliding && hit.collider != null) {
 					SetGameObjectTo (hit.point + new Vector3(0, yOffset, 0));
 				}
 			}
@@ -73,18 +73,23 @@ public class CursorComponent : MonoBehaviour {
 	}
 
 	public void SetBuildingObject(GameObject rtsObject){
-		objectToSpawn = rtsObject.GetComponent<RTSObject>();
+		currentRTSObject = rtsObject.GetComponent<RTSObject>();
 	}
 
-	public void SpawnObjectOnCursor(GameObject rtsObject){
-		if (objectToSpawn == null) {
+	public void SpawnObjectOnCursor(GameObject nextRTSObject){
+
+		if(compareRTSObject(currentRTSObject, nextRTSObject.GetComponent<RTSObject>())){
+			Destroy(currentRTSObject.gameObject);
+			currentRTSObject = null;
+		}
+
+		if (currentRTSObject == null) {
 			// User is not currently placing an object
+			GameObject tempObj = (GameObject)Instantiate (nextRTSObject, transform.position, transform.rotation, transform); // get reference to the object
 
-			GameObject tempObj = (GameObject)Instantiate (rtsObject, transform.position, transform.rotation, transform); // get reference to the object
+			currentRTSObject = tempObj.GetComponent<RTSObject> ();
 
-			objectToSpawn = tempObj.GetComponent<RTSObject> ();
-
-			objectToSpawn.isBeingPlaced = true;
+			currentRTSObject.isBeingPlaced = true;
 
 			// get the renderer of the object
 			gameObjectRenderer = tempObj.GetComponent<Renderer> ();
@@ -95,20 +100,36 @@ public class CursorComponent : MonoBehaviour {
 			// set color of the object
 			gameObjectRenderer.material.color = colorOfNoCollision;
 
-			objectToSpawn.CanBePlaced ();
+			currentRTSObject.CanBePlaced ();
 		}
+	}
+
+	private bool compareRTSObject(RTSObject current, RTSObject next){
+		if(current == null || next == null){
+			return false;
+		}
+
+		// check if it is a building
+		Building bldg1 = current.GetComponent<Building> ();
+		Building bldg2 = next.GetComponent<Building> ();
+
+		if (bldg1.getBuildingType () == bldg2.getBuildingType ()) {
+			return false;
+		}
+
+		return true;
 	}
 
 	private void SetGameObjectTo(Vector3 position){
 		
 		// object is no longer being placed
-		objectToSpawn.isBeingPlaced = false;
-		objectToSpawn.objectIsColliding = false;
+		currentRTSObject.isBeingPlaced = false;
+		currentRTSObject.objectIsColliding = false;
 
 		// set the parent of the created object to the scene
-		objectToSpawn.transform.parent = this.transform.parent;
+		currentRTSObject.transform.parent = this.transform.parent;
 
-		Building tempBldg = objectToSpawn.GetComponent<Building> ();
+		Building tempBldg = currentRTSObject.GetComponent<Building> ();
 
 		// set the position of the created object to the level
 		if (tempBldg != null && tempBldg.getBuildingType () == BUILDING_TYPE.RESOURCE) 
@@ -118,12 +139,12 @@ public class CursorComponent : MonoBehaviour {
 		} 
 		else 
 		{
-			objectToSpawn.transform.position = position; 
+			currentRTSObject.transform.position = position; 
 		}
 
 		// reset the game object's color to its initial property
 		gameObjectRenderer.material.color = initialColor;
 
-		objectToSpawn = null;
+		currentRTSObject = null;
 	}
 }

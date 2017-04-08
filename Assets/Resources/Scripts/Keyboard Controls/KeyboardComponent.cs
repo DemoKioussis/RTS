@@ -19,7 +19,7 @@ public class KeyboardComponent : MonoBehaviour {
 			// Debug.Log("Any key was pressed");
 
 			selectedUnitGroup = selection.selectedUnitGroup;
-			selectedBuildingGroup = selection.selectedBuildingGroup;
+			selectedBuildingGroup = selection.selectedBuildingGroup;	
 
 			if (!Input.inputString.Equals("")) 
 			{

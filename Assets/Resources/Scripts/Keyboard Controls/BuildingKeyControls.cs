@@ -21,6 +21,9 @@ public class BuildingKeyControls : MonoBehaviour {
 			break;
 		case 's':
 			bldgGroup.SetToSleep ();
+			break; 
+		case 'x':
+			Debug.Log("Escape key");
 			break;
 		default:
 			break;
