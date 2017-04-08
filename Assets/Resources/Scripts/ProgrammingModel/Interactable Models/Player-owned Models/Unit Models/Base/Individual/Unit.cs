@@ -36,9 +36,9 @@ public class Unit : RTSObject {
         return group;
     }
 
-    protected override float Influence (Vector3 samplePosition)
+    public override float Influence ()
 	{
-		return 0;
+		return stats.hitpoints;
 		// To do
 	}
 
