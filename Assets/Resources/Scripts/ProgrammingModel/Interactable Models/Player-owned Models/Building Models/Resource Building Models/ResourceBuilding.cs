@@ -19,7 +19,7 @@ public class ResourceBuilding : Building {
 		if (awake) {
 			UpdateTime ();
 
-			if(resourceReadyToGather())
+			if(resource != null && resourceReadyToGather())
 			{
 				if (resource.type == "Glue") 
 				{

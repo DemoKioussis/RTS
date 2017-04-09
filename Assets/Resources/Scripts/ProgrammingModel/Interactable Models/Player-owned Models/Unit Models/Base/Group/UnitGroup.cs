@@ -11,21 +11,28 @@ public class UnitGroup : RTSObjectGroup {
     Interactable currentInteraction;
     Vector3 targetPosition;
     Vector3 center;
+    public MapPos emptyMapPos;
     private int arrivalCount = 0;
     void Awake() {
     }
 
     void Update() {
         center = getCenter();
-        
     }
 
-
+    void OnDrawGizmos() {
+        if(currentInteraction!=null)
+            Gizmos.DrawWireSphere(currentInteraction.getPosition(), arriveRadius);
+    }
     public Interactable getInteraction() {
         return currentInteraction;
     }
 
+    public bool isActivated() {
+        return getInteraction() != null;
+    }
     public void unitArrived() {
+
         arrivalCount++;
         if (arrivalCount > rtsObjects.Count * arrivePercent) {
             stopAgents();
@@ -58,6 +65,10 @@ public class UnitGroup : RTSObjectGroup {
     public override void buildingInteraction(Building b) { }
     public override void positionInteraction(MapPos p) {
         preInteract(p);
+        MapPos temp = Instantiate(emptyMapPos, p.getPosition(), Quaternion.identity);
+        temp.setPosition(p.getPosition());
+        temp.transform.parent = transform;
+        currentInteraction = temp;
         if (rtsObjects.Count > 0)
         {
             Unit u = (Unit)rtsObjects[0];
@@ -75,10 +86,18 @@ public class UnitGroup : RTSObjectGroup {
             UnitStateMachine s = (UnitStateMachine)u.getStateMachine();
             s.getMoveBehaviour().setPath(path);
             s.getMoveBehaviour().setArriveRadius(arriveRadius);
-            u.InteractWith(p);  
+            u.InteractWith(temp);  
         }
     }
-    public override void unitInteraction(Unit u) { }
+    public override void unitInteraction(Unit u) {
+        preInteract(u);
+        Debug.Log("Going to attack");
+        foreach (Unit myUnit in rtsObjects)
+        {
+            myUnit.InteractWith(u);
+        }
+
+    }
     public override void resourceInteraction(Resource r) { }
 
 }

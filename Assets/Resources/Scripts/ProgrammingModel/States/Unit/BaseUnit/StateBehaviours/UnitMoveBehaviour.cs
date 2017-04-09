@@ -8,21 +8,26 @@ public class UnitMoveBehaviour : BaseStateBehaviour
 {
     private NavMeshAgent agent;
     private NavMeshPath path;
+
     float arriveRadius;
     bool arrived;
-    public float arriveDelta;
-
+    public float movementDelta;
+    Vector3 lastPosition;
+    Vector3 origionalPosition;
     void Awake() {
 
     }
     protected override void enter()
     {
+
         arrived = false;
 
-        if(path==null)
-            agent.SetDestination(getTargetPosition());
-        else
-            agent.SetPath(path);
+     //   if(path==null)
+        agent.SetDestination(getTargetPosition());
+        lastPosition = getTargetPosition();
+        origionalPosition = lastPosition;
+    //    else
+   //         agent.SetPath(path);
 
 
     }
@@ -34,6 +39,7 @@ public class UnitMoveBehaviour : BaseStateBehaviour
     protected override void update()
     {
         checkArrived();
+        checkMoved();
     }
 
     public void setAgent(NavMeshAgent a) {
@@ -51,12 +57,21 @@ public class UnitMoveBehaviour : BaseStateBehaviour
         }
     }
 
+    private void checkMoved() {
+        if (Vector3.Distance(lastPosition, getTargetPosition()) > movementDelta) {
+            lastPosition = getTargetPosition();
+            setDestination(lastPosition);
+        }
+    }
 
     public void setArriveRadius(float r) {
         arriveRadius = r;
     }
+    public float getArriveRadius() {
+        return arriveRadius;
+    }
     private Vector3 getTargetPosition() {
-        return Vector3.zero;// stateMachine.getRTSObject().getTargetInteraction().transform.position;
+        return stateMachine.getRTSObject().getTargetInteraction().getPosition();
     }
     public float distanceTo(Vector3 p)
     {
@@ -64,11 +79,11 @@ public class UnitMoveBehaviour : BaseStateBehaviour
     }
     public void setPath(NavMeshPath p) {
         path = p;
+        arrived = false;
     }
     public void setDestination(Vector3 d) {
-        if (path == null)
-            agent.SetDestination(d);
-        else return;
+        agent.SetDestination(d);
+        arrived = false;
     }
 
 }
