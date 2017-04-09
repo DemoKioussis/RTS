@@ -181,6 +181,8 @@ MonoBehaviour:
   player: {fileID: 0}
   yOffset: 0.25
   unitIndex: 0
+  mapPosPrefab: {fileID: 1412890718017786, guid: d90e21a17de674f28b3de4b3bb9bf2d6,
+    type: 2}
 --- !u!208 &208504450301498626
 NavMeshObstacle:
   m_ObjectHideFlags: 1

@@ -201,7 +201,7 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   unitStats:
     moveSpeed: 2
-    trainingTime: 2
+    trainingTime: 8
     populationCost: 1
   militaryStats:
     minAttackRange: 0
