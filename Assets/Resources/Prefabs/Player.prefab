@@ -65,7 +65,9 @@ MonoBehaviour:
     type: 2}
   glueQuantity: 0
   paperQuantity: 0
+  population: 0
   populationLimit: 0
   activeUnits: []
   activeBuildings: []
+  industrialCenter: {fileID: 0}
   spawnProbability: 0.1
