@@ -180,9 +180,9 @@ MonoBehaviour:
   yOffset: 0.25
   resource: {fileID: 0}
   resourceBldgStats:
-    gatheringTime: 0
-    glueReturn: 0
-    paperReturn: 0
+    gatheringTime: 2
+    glueReturn: 1
+    paperReturn: 1
 --- !u!208 &208212624230134748
 NavMeshObstacle:
   m_ObjectHideFlags: 1

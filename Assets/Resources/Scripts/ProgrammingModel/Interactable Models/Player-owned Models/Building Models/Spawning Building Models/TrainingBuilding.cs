@@ -30,9 +30,9 @@ public class TrainingBuilding : Building{
 			UpdateTime ();
 			if (unitReadyToGo ()) 
 			{
-				// TODO: Instantiate the unit prefab
 				// Debug.Log("Building is awake");
 				SpawnUnit (unit);
+				player.population++;
 			}
 		}
 	}

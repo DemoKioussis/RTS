@@ -150,12 +150,9 @@ public class CursorComponent : MonoBehaviour {
 				tempBldg.transform.position = tempBldg.GetPositionOfResource ();
 				// disable the resource collider
 				tempBldg.GetComponent<ResourceBuilding> ().DisableResourceCollider ();
-			} 
-			else if(tempBldg.getBuildingType() == BUILDING_TYPE.TRAINING)
-			{
-				// training building is set, set it to awake
-				tempBldg.SetToAwake ();
 			}
+
+			tempBldg.SetToAwake ();
 		} 
 		else 
 		{

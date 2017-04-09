@@ -17,7 +17,21 @@ public class ResourceBuilding : Building {
 	// Update is called once per frame
 	void Update () {
 		if (awake) {
-			// ....
+			UpdateTime ();
+
+			if(resourceReadyToGather())
+			{
+				if (resource.type == "Glue") 
+				{
+					resource.GetQuantity (resourceBldgStats.glueReturn);
+					player.glueQuantity++;
+				} 
+				else if (resource.type == "Paper") 
+				{
+					resource.GetQuantity (resourceBldgStats.paperReturn);
+					player.paperQuantity++;
+				}
+			}
 		}
 	}
 		
@@ -55,5 +69,14 @@ public class ResourceBuilding : Building {
 
 	public override BUILDING_TYPE getBuildingType(){
 		return BUILDING_TYPE.RESOURCE;
+	}
+
+	private bool resourceReadyToGather(){
+		if (gameTime >= 1.0f && (int)gameTime % (int)resourceBldgStats.gatheringTime == 0) {
+			gameTime = 0.0f;
+			return true;
+		}
+
+		return false;
 	}
 }
