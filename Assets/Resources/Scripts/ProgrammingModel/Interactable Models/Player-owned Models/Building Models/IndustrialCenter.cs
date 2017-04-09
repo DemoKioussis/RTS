@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class IndustrialCenter : Building {
 
-	private GameObject[] buildings;
+	public GameObject[] buildings;
 
 	private CursorComponent cursor;
 
 	void Awake(){
-		buildings = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.buildingPrefabs;
 		cursor = GameObject.FindGameObjectWithTag ("InputManager").GetComponent<CursorComponent>();
 	}
 
