@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4423019377906876}
   - component: {fileID: 95416019983605222}
-  - component: {fileID: 114228908478999678}
+  - component: {fileID: 114194836389441868}
   m_Layer: 9
   m_Name: State
   m_TagString: Untagged
@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 135360957961386770}
   - component: {fileID: 195020718062020762}
   - component: {fileID: 114170303354362912}
-  - component: {fileID: 114774548463792312}
   - component: {fileID: 54010832629035568}
   m_Layer: 9
   m_Name: LongRange
@@ -85,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909318969148630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.98, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4423019377906876}
@@ -204,13 +203,12 @@ MonoBehaviour:
     moveSpeed: 2
     trainingTime: 8
     populationCost: 1
-  movement: {fileID: 0}
   militaryStats:
     minAttackRange: 0
     maxAttackRange: 0
     attackStrength: 0
     attackRate: 0
---- !u!114 &114228908478999678
+--- !u!114 &114194836389441868
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -222,26 +220,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 95416019983605222}
-  updateOffset: 5
+  updateOffset: 10
+  rtsObject: {fileID: 114170303354362912}
   attack: 0
   hasTarget: 0
   targetInFireRange: 0
   hasFired: 0
   atTarget: 0
-  target: {fileID: 0}
-  queueSize: 0
---- !u!114 &114774548463792312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1909318969148630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0854ecc06b8a8a4cb391d1e6c90ce50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arriveDelta: 0
 --- !u!135 &135360957961386770
 SphereCollider:
   m_ObjectHideFlags: 1
