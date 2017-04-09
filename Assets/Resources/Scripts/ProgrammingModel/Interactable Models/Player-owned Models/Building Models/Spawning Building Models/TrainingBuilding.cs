@@ -28,10 +28,11 @@ public class TrainingBuilding : Building{
 		if (awake)
 		{
 			UpdateTime ();
-			if (unitReadyToGo ()) 
+			if (unitReadyToGo () && unit.CheckCost()) 
 			{
 				// Debug.Log("Building is awake");
 				SpawnUnit (unit);
+				unit.RemovePlayerResourceQuantity ();
 				player.population++;
 			}
 		}

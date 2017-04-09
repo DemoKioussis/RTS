@@ -168,8 +168,8 @@ MonoBehaviour:
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
-    paperCost: 0
-    glueCost: 0
+    paperCost: 20
+    glueCost: 20
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0

@@ -151,7 +151,7 @@ public class CursorComponent : MonoBehaviour {
 				// disable the resource collider
 				tempBldg.GetComponent<ResourceBuilding> ().DisableResourceCollider ();
 			}
-
+			tempBldg.RemovePlayerResourceQuantity ();
 			tempBldg.SetToAwake ();
 		} 
 		else 

@@ -34,6 +34,16 @@ public abstract class RTSObject : Interactable {
         Debug.Log("Target set");
         targetInteraction = t;
     }
+
+	public bool CheckCost(){
+		return player.glueQuantity >= stats.glueCost && player.paperQuantity >= stats.paperCost;
+	}
+
+	public void RemovePlayerResourceQuantity(){
+		player.glueQuantity -= stats.glueCost;
+		player.paperQuantity -= stats.paperCost;
+	}
+
     public override void InteractWith(Interactable i)
     {
         setTarget(i);
