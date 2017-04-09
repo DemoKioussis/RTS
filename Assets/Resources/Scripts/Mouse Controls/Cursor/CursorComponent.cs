@@ -105,7 +105,13 @@ public class CursorComponent : MonoBehaviour {
 
 	public void CancelAction(){
 		if (currentRTSObject != null) {
+			// Remove from the list of active objects
+			RTSObject.RemovePlayableObject (currentRTSObject);
+
+			// Destroy it in the game
 			Destroy (currentRTSObject.gameObject);
+
+			// set the reference to null
 			currentRTSObject = null;
 		}
 	}

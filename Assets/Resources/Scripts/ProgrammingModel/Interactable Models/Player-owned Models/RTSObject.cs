@@ -84,6 +84,16 @@ public abstract class RTSObject : Interactable {
 		return output;
 	}
 
+	public static void RemovePlayableObject(RTSObject rtsObject) {
+		if (rtsObject.GetComponent<Unit> ()) {
+			Unit unit = rtsObject.GetComponent<Unit> ();
+			unit.player.activeUnits.Remove (unit);
+		} else if (rtsObject.GetComponent<Building> ()) {
+			Building bldg = rtsObject.GetComponent<Building> ();
+			bldg.player.activeBuildings.Remove (bldg);
+		}
+	}
+
 	public static bool compareRTSObject(RTSObject current, RTSObject next){
 		if(current == null || next == null){
 			return false;

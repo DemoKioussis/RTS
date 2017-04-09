@@ -23,13 +23,13 @@ public class ResourceBuilding : Building {
 			{
 				if (resource.type == "Glue") 
 				{
+					player.glueQuantity += resourceBldgStats.glueReturn;
 					resource.GetQuantity (resourceBldgStats.glueReturn);
-					player.glueQuantity++;
 				} 
 				else if (resource.type == "Paper") 
 				{
+					player.paperQuantity += resourceBldgStats.paperReturn;
 					resource.GetQuantity (resourceBldgStats.paperReturn);
-					player.paperQuantity++;
 				}
 			}
 		}

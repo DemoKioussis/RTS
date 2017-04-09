@@ -203,12 +203,12 @@ public class AIStrategy : Strategy {
 
 	Vector3 FindClosestResource(string resourceType)
 	{
-		Resource[] resources = GameContext.currentGameContext.activeResources;
-		Debug.Log (resources.Length);
+		List<Resource> resources = GameContext.currentGameContext.activeResources;
+		Debug.Log (resources.Count);
 		Resource closestResource = null;
 		float minDistance = 100000000000000;
 
-		for (int i = 0; i < resources.Length; i++) {
+		for (int i = 0; i < resources.Count; i++) {
 			if (resources [i].gameObject.tag == resourceType) {
 				float distance = (resources [i].transform.position - player.industrialCenter.transform.position).magnitude;
 				if (distance < minDistance) {
