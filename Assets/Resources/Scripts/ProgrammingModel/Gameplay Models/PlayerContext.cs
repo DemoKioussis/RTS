@@ -122,4 +122,12 @@ public class PlayerContext : MonoBehaviour {
 		glueQuantity -= entity.stats.glueCost;
 		paperQuantity -= entity.stats.paperCost;
 	}
+
+	public void Sell(RTSObject entity)
+	{
+		if (entity != null) {
+			glueQuantity += entity.stats.glueCost;
+			paperQuantity += entity.stats.paperCost;
+		}
+	}
 }

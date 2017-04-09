@@ -226,7 +226,12 @@ public class AIStrategy : Strategy {
 
 	bool ManagePaper()
 	{
+		// return the Resource, it would be easier for you because I set up a function to set the resource from the building
 		Vector3 point = FindClosestResource ("Paper");
+
+		// The function will also associate the building to the resource
+		// example: building.AssociateToResource(Resource res) --> does everything (assign building to resource and resource to building)
+
 		return MakeNewBuilding<ResourceBuilding> (point);
 
 		// WE NEED TO SET THE RESOURCE OF EACH OF THIS! KEEP IN MIND!

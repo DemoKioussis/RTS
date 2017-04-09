@@ -22,9 +22,10 @@ public class BuildingCollider : MonoBehaviour {
 
 				if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer == LayerMask.NameToLayer ("Resource"))) 
 				{
-					buildingObject.CanBePlaced ();
-
-					buildingObject.SetPositionOfBuildingWith (col.gameObject.GetComponent<Resource>());
+					if (col.gameObject.GetComponent<Resource> ().building == null) {
+						buildingObject.CanBePlaced ();
+						buildingObject.AssignResourcePosition (col.gameObject.GetComponent<Resource> ());
+					}
 				} 
 				else if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer != LayerMask.NameToLayer ("Resource"))) 
 				{
@@ -51,7 +52,7 @@ public class BuildingCollider : MonoBehaviour {
 				{
 					buildingObject.CannotBePlaced ();
 
-					buildingObject.ClearPositionOfBuilding ();
+					buildingObject.ClearResourcePosition ();
 				} 
 				else if (type.Equals (BUILDING_TYPE.TRAINING) && col.gameObject.layer != LayerMask.NameToLayer ("Map")) 
 				{

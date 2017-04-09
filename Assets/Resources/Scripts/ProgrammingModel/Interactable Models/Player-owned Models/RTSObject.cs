@@ -34,13 +34,8 @@ public abstract class RTSObject : Interactable {
         targetInteraction = t;
     }
 
-	public bool CheckCost(){
+	public virtual bool CheckCost(){
 		return player.glueQuantity >= stats.glueCost && player.paperQuantity >= stats.paperCost;
-	}
-
-	public void RemovePlayerResourceQuantity(){
-		player.glueQuantity -= stats.glueCost;
-		player.paperQuantity -= stats.paperCost;
 	}
 
     public override void InteractWith(Interactable i)
@@ -87,6 +82,29 @@ public abstract class RTSObject : Interactable {
 		}
 
 		return output;
+	}
+
+	public static bool compareRTSObject(RTSObject current, RTSObject next){
+		if(current == null || next == null){
+			return false;
+		}
+
+		// check if it is a building
+		Building bldg1 = current.GetComponent<Building> ();
+		Building bldg2 = next.GetComponent<Building> ();
+
+		if (bldg1.getBuildingType () == bldg2.getBuildingType ()) {
+			// same building type
+
+			if (bldg1.GetComponent<TrainingBuilding> () != null) {
+				// both are training buldings, check if they have the same unitIndex
+				return bldg1.GetComponent<TrainingBuilding>().unitIndex != bldg2.GetComponent<TrainingBuilding>().unitIndex;
+			}
+				
+			return false;
+		}
+
+		return true;
 	}
 
 	public void CannotBePlaced(){

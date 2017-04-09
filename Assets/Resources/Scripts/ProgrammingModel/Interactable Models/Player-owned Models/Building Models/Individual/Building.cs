@@ -69,12 +69,23 @@ public abstract class Building : RTSObject {
 		awake ^= true;
 	}
 
-	public virtual void SetPositionOfBuildingWith(Resource res){
+	// Mouse - selection functions
+	public virtual void AssignResourcePosition(Resource res){
 		// Debug.Log ("Building position cannot be set");
 	}
 
-	public virtual void ClearPositionOfBuilding(){
+	public virtual void ClearResourcePosition(){
 		// Debug.Log ("Building position cannot be cleared");
+	}
+
+	// Mouse - building/resource association & placement
+	public virtual void SetToResource(){
+
+	}
+
+	// AI - building/resource association
+	public virtual void AssociateToResource(Resource res){
+
 	}
 
 	public virtual Vector3 GetPositionOfResource(){
