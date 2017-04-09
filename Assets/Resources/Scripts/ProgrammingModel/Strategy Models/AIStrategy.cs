@@ -269,6 +269,32 @@ public class AIStrategy : Strategy {
 	Vector3 GetEmptyArea(Bounds bounds)
 	{
 		Vector3 dimensions = bounds.size;
+		float maxDimension = Mathf.Max (dimensions.x, dimensions.z);
+
+		Vector3 tCSize = player.industrialCenter.GetComponent<Renderer> ().bounds.size / 2;
+
+		float initialRadius = Mathf.Max (tCSize.x, tCSize.z);
+
+		int resolution = 10;
+
+		float angleDiff = 2 * Mathf.PI / resolution;
+
+		for(int j = 0; j < 4; j++)
+			for (int i = 0; i < resolution; i++) {
+				Vector3 pos = (player.industrialCenter.transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
+				Collider[] c = Physics.OverlapBox (pos, tCSize);
+				if (c != null) {
+					bool validPos = true;
+					for (int k = 0; k < c.Length; k++)
+						if (c [k] != null && c [k].gameObject.layer != LayerMask.NameToLayer ("Floor")) {
+							validPos = false;
+							break;
+						}
+
+					if (validPos)
+						return pos;
+				}
+			}
 
 		return new Vector3 (0, 0, 0);
 	}
@@ -289,7 +315,7 @@ public class AIStrategy : Strategy {
 
 		T t = null;
 
-		if (emptyArea == null)
+		if (emptyArea == new Vector3(0,0,0))
 			return t;
 
 		t = (T)(RTSObject.InstantiatePlayableObject (bldg, emptyArea, player.transform).GetComponent<Building>());

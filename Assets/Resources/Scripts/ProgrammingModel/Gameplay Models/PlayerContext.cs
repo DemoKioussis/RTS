@@ -72,6 +72,7 @@ public class PlayerContext : MonoBehaviour {
 
 		if (townCenter != null) {
 			industrialCenter = RTSObject.InstantiatePlayableObject (townCenter, new Vector3(spawnPoints[index].x, 0, spawnPoints[index].z), transform).GetComponent<IndustrialCenter>();
+			industrialCenter.SetToAwake ();
 		}
 	}
 

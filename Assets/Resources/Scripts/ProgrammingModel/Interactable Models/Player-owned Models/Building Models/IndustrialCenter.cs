@@ -31,7 +31,7 @@ public class IndustrialCenter : ResourceBuilding {
 	public void CreateNewBuilding(char keyInput){
 		int index = int.Parse (keyInput + "");
 
-		if (index >= 0 && index < buildings.Length) {
+		if (index >= 0 && index < buildings.Length && buildings[index].GetComponent<RTSObject>().CheckCost()) {
 			cursor.SpawnObjectOnCursor (buildings [index]);
 		}
 	}
