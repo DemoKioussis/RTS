@@ -89,7 +89,7 @@ public class CursorComponent : MonoBehaviour {
 
 		if (currentRTSObject == null) {
 			// User is not currently placing an object
-			GameObject tempObj = RTSObject.InstantiatePlayableObject(nextRTSObject, transform.position, transform); // get reference to the object
+			GameObject tempObj = nextRTSObject.GetComponent<RTSObject>().InstantiatePlayableObject(transform.position, transform); // get reference to the object
 
 			currentRTSObject = tempObj.GetComponent<RTSObject> ();
 

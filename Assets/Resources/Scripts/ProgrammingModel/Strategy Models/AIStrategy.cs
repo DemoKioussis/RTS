@@ -104,12 +104,12 @@ public class AIStrategy : Strategy {
 
 	float PaperResourceHeuristic()
 	{
-		return 100.0f / (paperGatheringRate + paperQuantityInStock);
+		return 100.0f / (paperGatheringRate * paperGatheringRate + paperQuantityInStock + 1);
 	}
 
 	float GlueResourceHeuristic ()
 	{
-		return 100.0f / (glueGatheringRate + paperQuantityInStock);
+		return 100.0f / (glueGatheringRate * glueGatheringRate + paperQuantityInStock + 1);
 	}
 
 	float ShortRangeHeuristic()
@@ -204,7 +204,7 @@ public class AIStrategy : Strategy {
 	Vector3 FindClosestResource(string resourceType)
 	{
 		Resource[] resources = GameContext.currentGameContext.activeResources;
-		Debug.Log (resources.Length);
+
 		Resource closestResource = null;
 		float minDistance = 100000000000000;
 
@@ -339,7 +339,7 @@ public class AIStrategy : Strategy {
 		T t = null;
 
 		if (bldg.GetComponent<Building> ().CheckCost ()) {
-			t = (T)(RTSObject.InstantiatePlayableObject (bldg, emptyArea, player.transform).GetComponent<Building> ());
+			t = (T)(bldg.GetComponent<Building>().InstantiatePlayableObject (emptyArea, player.transform).GetComponent<Building> ());
 			t.SetToAwake ();
 		}
 
@@ -364,8 +364,7 @@ public class AIStrategy : Strategy {
 		T t = null;
 
 		if (bldg != null && bldg.GetComponent<Building> ().CheckCost ()) {
-			Debug.Log (bldg.GetComponent<Building> ());
-			t = (T)(RTSObject.InstantiatePlayableObject (bldg, location, player.transform).GetComponent<Building> ());
+			t = (T)(bldg.GetComponent<Building>().InstantiatePlayableObject (location, player.transform).GetComponent<Building> ());
 			t.SetToAwake ();
 		}
 

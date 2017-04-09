@@ -48,7 +48,7 @@ public class TrainingBuilding : Building{
 	{
 		float z = transform.position.z - getModel ().bounds.size.z / 2 - 0.5f - 1f;
 		Vector3 vec = new Vector3 (transform.position.x, transform.position.y, z);
-		GameObject unitObject = InstantiatePlayableObject (unit.gameObject, vec, player.transform);
+		GameObject unitObject = unit.InstantiatePlayableObject (vec, player.transform);
 		if (spawnPointSet) 
 		{
 			unitObject.GetComponent<Unit> ().InteractWith (GetSpawnPoint());

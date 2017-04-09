@@ -70,10 +70,10 @@ public abstract class RTSObject : Interactable {
 		stats = otherObject.stats;
 	}
 		
-	public static GameObject InstantiatePlayableObject(GameObject playableObject, Vector3 position, Transform parent)
+	public GameObject InstantiatePlayableObject(Vector3 position, Transform parent)
 	{
-		GameObject output = Instantiate (playableObject, position, Quaternion.identity, parent);
-		output.GetComponent<RTSObject> ().player = playableObject.GetComponent<RTSObject> ().player;
+		GameObject output = Instantiate (gameObject, position, Quaternion.identity, parent);
+		output.GetComponent<RTSObject> ().player = player;
 		output.GetComponent<RTSObject> ().player.Buy (output.GetComponent<RTSObject> ());
 		//output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
 		output.GetComponent<RTSObject> ().getModel().enabled = true;
