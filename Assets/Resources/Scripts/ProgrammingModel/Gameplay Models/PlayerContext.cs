@@ -84,7 +84,7 @@ public class PlayerContext : MonoBehaviour {
 
 		// SpawnRandomUnits ();
 
-		// strategy.RealizeStrategy ();
+		 strategy.RealizeStrategy ();
 	}
 
 	public void Init(int playerId, int teamId, bool isAI, bool fogOfWar, bool explored)
@@ -117,13 +117,9 @@ public class PlayerContext : MonoBehaviour {
 		// To do: Make sure that player is still playable. If not, destroy
 	}
 
-	void SpawnRandomUnits()
+	public void Buy(RTSObject entity)
 	{
-		if (Random.Range (0.0f, 1.0f) <= spawnProbability) {
-			GameObject playableObject = updatedPrefabs.unitPrefabs [Random.Range (0, updatedPrefabs.unitPrefabs.Length)];
-			Vector3 position = new Vector3 (Random.Range (-5.0f, 5.0f), 0, Random.Range(-5.0f, 5.0f));
-			RTSObject.InstantiatePlayableObject (playableObject, position, transform);
-//			activeUnits.Add(RTSObject.InstantiatePlayableObject (playableObject, position, transform).GetComponent<Unit>());
-		}
+		glueQuantity -= entity.stats.glueCost;
+		paperQuantity -= entity.stats.paperCost;
 	}
 }

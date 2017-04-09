@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Resource : Interactable {
-	
+	public ResourceBuilding building;
 	public int quantity;
 	public int startingMinQuantity;
 	public int startingMaxQuantity;

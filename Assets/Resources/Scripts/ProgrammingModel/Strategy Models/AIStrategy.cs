@@ -104,12 +104,12 @@ public class AIStrategy : Strategy {
 
 	float PaperResourceHeuristic()
 	{
-		return 1.0f / (paperGatheringRate + paperQuantityInStock);
+		return 100.0f / (paperGatheringRate + paperQuantityInStock);
 	}
 
 	float GlueResourceHeuristic ()
 	{
-		return 1.0f / (glueGatheringRate + paperQuantityInStock);
+		return 100.0f / (glueGatheringRate + paperQuantityInStock);
 	}
 
 	float ShortRangeHeuristic()
@@ -130,20 +130,31 @@ public class AIStrategy : Strategy {
 
 	void UpdateTasks()
 	{
+		string stats = "STATS:\n";
+
 		for (int i = 0; i < tasks.Count; i++) {
+			
 			if (tasks [i].activity == Activity.MAKEPAPER) {
-				tasks [i].value *= PaperResourceHeuristic ();
+				tasks [i].value = PaperResourceHeuristic ();
+				stats += "Paper: ";
 			}
 			else if (tasks [i].activity == Activity.MAKEGLUE) {
-				tasks [i].value *= GlueResourceHeuristic ();
+				tasks [i].value = GlueResourceHeuristic ();
+				stats += "Glue: ";
 			}
 			else if (tasks [i].activity == Activity.MAKESHORTRANGE) {
-				tasks [i].value *= ShortRangeHeuristic ();
+				tasks [i].value = ShortRangeHeuristic ();
+				stats += "ShortRange: ";
 			}
 			else if (tasks [i].activity == Activity.MAKELONGRANGE) {
-				tasks [i].value *= LongRangeHeuristic ();
+				tasks [i].value = LongRangeHeuristic ();
+				stats += "LongRange: ";
 			}
+
+			stats += tasks [i].value + " ";
 		}
+
+		Debug.Log (stats);
 
 		tasks.Sort (SortByValue);
 	}
@@ -160,12 +171,13 @@ public class AIStrategy : Strategy {
 			if (player.activeBuildings [i].awake) {
 				if (player.activeBuildings [i] is ResourceBuilding) {
 					ResourceBuilding rB = player.activeBuildings [i] as ResourceBuilding;
-					float rate = 1.0f / rB.resourceBldgStats.gatheringTime;
-					if (rB.resource.gameObject.tag == "Paper") {
-						paperGatheringRate += rate;
-					}
-					else if (rB.resource.gameObject.tag == "Glue") {
-						glueGatheringRate += rate;
+					if (rB.resource != null) {
+						float rate = 1.0f / rB.resourceBldgStats.gatheringTime;
+						if (rB.resource.gameObject.tag == "Paper") {
+							paperGatheringRate += rate;
+						} else if (rB.resource.gameObject.tag == "Glue") {
+							glueGatheringRate += rate;
+						}
 					}
 
 				} else if (player.activeBuildings [i] is TrainingBuilding) {
@@ -192,10 +204,11 @@ public class AIStrategy : Strategy {
 	Vector3 FindClosestResource(string resourceType)
 	{
 		Resource[] resources = GameContext.currentGameContext.activeResources;
+		Debug.Log (resources.Length);
 		Resource closestResource = null;
 		float minDistance = 100000000000000;
 
-		for (int i = 0; i < resources.Length; i++)
+		for (int i = 0; i < resources.Length; i++) {
 			if (resources [i].gameObject.tag == resourceType) {
 				float distance = (resources [i].transform.position - player.industrialCenter.transform.position).magnitude;
 				if (distance < minDistance) {
@@ -203,6 +216,7 @@ public class AIStrategy : Strategy {
 					closestResource = resources [i];
 				}
 			}
+		}
 
 		if (closestResource != null)
 			return closestResource.transform.position;
@@ -213,13 +227,16 @@ public class AIStrategy : Strategy {
 	bool ManagePaper()
 	{
 		Vector3 point = FindClosestResource ("Paper");
-		return MakeNewBuilding<ResourceBuilding> (out point);
+		return MakeNewBuilding<ResourceBuilding> (point);
+
+		// WE NEED TO SET THE RESOURCE OF EACH OF THIS! KEEP IN MIND!
 	}
 
 	bool ManageGlue()
 	{
 		Vector3 point = FindClosestResource ("Glue");
-		return MakeNewBuilding<ResourceBuilding> (out point);
+		return MakeNewBuilding<ResourceBuilding> (point);
+		return true;
 	}
 
 	bool ManageShortRange(float value)
@@ -228,12 +245,13 @@ public class AIStrategy : Strategy {
 			if(!(value > 0 ^ player.activeBuildings[i].awake))
 			{
 				TrainingBuilding bldg = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
-				ShortRangeUnit unit = bldg.unit.GetComponent<ShortRangeUnit> ();
+				if (bldg != null) {
+					ShortRangeUnit unit = bldg.unit.GetComponent<ShortRangeUnit> ();
 
-				if (bldg != null && unit != null)
-				{
-					player.activeBuildings [i].ToggleAwake();
-					return true;
+					if (unit != null) {
+						player.activeBuildings [i].ToggleAwake ();
+						return true;
+					}
 				}
 			}	
 		}
@@ -250,12 +268,13 @@ public class AIStrategy : Strategy {
 			if(!(value > 0 ^ player.activeBuildings[i].awake))
 			{
 				TrainingBuilding bldg = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
-				LongRangeUnit unit = bldg.unit.GetComponent<LongRangeUnit> ();
+				if (bldg != null) {
+					LongRangeUnit unit = bldg.unit.GetComponent<LongRangeUnit> ();
 
-				if (bldg != null && unit != null)
-				{
-					player.activeBuildings [i].ToggleAwake();
-					return true;
+					if (unit != null) {
+						player.activeBuildings [i].ToggleAwake ();
+						return true;
+					}
 				}
 			}
 		}
@@ -271,7 +290,7 @@ public class AIStrategy : Strategy {
 		Vector3 dimensions = bounds.size;
 		float maxDimension = Mathf.Max (dimensions.x, dimensions.z);
 
-		Vector3 tCSize = player.industrialCenter.GetComponent<Renderer> ().bounds.size / 2;
+		Vector3 tCSize = player.industrialCenter.getModel().GetComponent<Renderer> ().bounds.size / 2;
 
 		float initialRadius = Mathf.Max (tCSize.x, tCSize.z);
 
@@ -282,7 +301,8 @@ public class AIStrategy : Strategy {
 		for(int j = 0; j < 4; j++)
 			for (int i = 0; i < resolution; i++) {
 				Vector3 pos = (player.industrialCenter.transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
-				Collider[] c = Physics.OverlapBox (pos, tCSize);
+				Debug.DrawLine (player.industrialCenter.transform.position, pos, Color.red, 10);
+				Collider[] c = Physics.OverlapBox (pos, tCSize / 5);
 				if (c != null) {
 					bool validPos = true;
 					for (int k = 0; k < c.Length; k++)
@@ -299,7 +319,7 @@ public class AIStrategy : Strategy {
 		return new Vector3 (0, 0, 0);
 	}
 
-	T MakeNewBuilding<T>(out Vector3 emptyArea) where T : Building
+	T MakeNewBuilding<T>() where T : Building
 	{
 		GameObject bldg = null;
 		GameObject[] buildings = player.updatedPrefabs.buildingPrefabs;
@@ -311,23 +331,50 @@ public class AIStrategy : Strategy {
 			}
 		}
 
-		emptyArea = GetEmptyArea(bldg.GetComponent<Building>().getModel().GetComponent<Renderer>().bounds);
+		Vector3 emptyArea = GetEmptyArea(bldg.GetComponent<Building>().getModel().GetComponent<Renderer>().bounds);
+
+		if (emptyArea == new Vector3(0,0,0))
+			return null;
 
 		T t = null;
 
-		if (emptyArea == new Vector3(0,0,0))
-			return t;
+		if (bldg.GetComponent<Building> ().CheckCost ()) {
+			t = (T)(RTSObject.InstantiatePlayableObject (bldg, emptyArea, player.transform).GetComponent<Building> ());
+			t.SetToAwake ();
+		}
 
-		t = (T)(RTSObject.InstantiatePlayableObject (bldg, emptyArea, player.transform).GetComponent<Building>());
-		t.SetToAwake ();
+		return t;
+	}
+
+	T MakeNewBuilding<T>(Vector3 location) where T : Building
+	{
+		if (location == new Vector3(0,0,0))
+			return null;
+
+		GameObject bldg = null;
+		GameObject[] buildings = player.updatedPrefabs.buildingPrefabs;
+
+		for (int i = 0; i < buildings.Length; i++) {
+			if (buildings [i].GetComponent<Building>() is T) {
+				bldg = buildings [i];
+				break;
+			}
+		}
+
+		T t = null;
+
+		if (bldg != null && bldg.GetComponent<Building> ().CheckCost ()) {
+			Debug.Log (bldg.GetComponent<Building> ());
+			t = (T)(RTSObject.InstantiatePlayableObject (bldg, location, player.transform).GetComponent<Building> ());
+			t.SetToAwake ();
+		}
 
 		return t;
 	}
 
 	bool MakeNewTrainingBuilding<T>() where T : Unit
 	{
-		Vector3 emptyArea;
-		TrainingBuilding tB = MakeNewBuilding<TrainingBuilding>(out emptyArea);
+		TrainingBuilding tB = MakeNewBuilding<TrainingBuilding>();
 		
 		GameObject[] units = player.updatedPrefabs.unitPrefabs;
 
@@ -344,13 +391,13 @@ public class AIStrategy : Strategy {
 	public static int SortByValue(WeighedTask t1, WeighedTask t2)
 	{
 		if (t1.value < 0 && t2.value > 0)
-			return 1;
-		else if (t1.value > 0 && t2.value < 0)
 			return -1;
+		else if (t1.value > 0 && t2.value < 0)
+			return 1;
 		else if (t1.value < 0 && t2.value < 0)
-			return Mathf.Abs (t1.value).CompareTo (Mathf.Abs (t2.value));
+			return - Mathf.Abs (t1.value).CompareTo (Mathf.Abs (t2.value));
 		else
-			return t1.value.CompareTo (t2.value);
+			return - t1.value.CompareTo (t2.value);
 	}
 }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IndustrialCenter : ResourceBuilding {
+public class IndustrialCenter : Building {
 
 	private GameObject[] buildings;
 

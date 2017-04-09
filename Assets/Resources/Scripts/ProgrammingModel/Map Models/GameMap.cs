@@ -9,6 +9,7 @@ public class GameMap : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		resources = GetComponentsInChildren<Resource> ();
+		GameContext.currentGameContext.activeResources = resources;
 	}
 	
 	// Update is called once per frame
