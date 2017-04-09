@@ -59,11 +59,6 @@ public class TrainingBuilding : Building{
 			unitObject.GetComponent<Unit> ().InteractWith (GetSpawnPoint());
 		}
 	}
-		
-	public override void SetToAwake(){
-		Debug.Log("Training Building is Awake");
-		awake = true;
-	}
 
 	public override void SetToSleep(){
 		Debug.Log("Training Building is Asleep");

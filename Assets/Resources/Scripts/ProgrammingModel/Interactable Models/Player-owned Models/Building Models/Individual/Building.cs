@@ -6,7 +6,6 @@ public enum BUILDING_TYPE {RESOURCE, TRAINING, TOWNCENTER, ATTACK, DEFENSE}
 
 public abstract class Building : RTSObject {
 
-	protected bool built = false;
 	protected bool spawnPointSet = false;
 	protected float gameTime = 0.0f;
 
@@ -33,10 +32,7 @@ public abstract class Building : RTSObject {
 
 	protected override void Heal(int hp)
 	{
-		base.Heal (hp);
-
-		if (!built && stats.hitpoints == stats.maxHitpoints)
-			built = true;
+		// nothing
 	}
 
 	protected virtual void AddStub(Stub stub)
@@ -60,8 +56,8 @@ public abstract class Building : RTSObject {
 		gameTime += Time.deltaTime;
 	}
 
-	public virtual void SetToAwake(){ 
-		// Debug.Log ("Building status cannot be changed");
+	public void SetToAwake(){ 
+		awake = true;
 	}
 
 	public virtual void SetToSleep(){ 
