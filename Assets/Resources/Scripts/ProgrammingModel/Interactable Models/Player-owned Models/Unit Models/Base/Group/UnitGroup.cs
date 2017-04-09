@@ -7,14 +7,12 @@ public class UnitGroup : RTSObjectGroup {
 	
     public float arriveRadius;
     public float arrivePercent;
-    NavMeshAgent agent;
     NavMeshPath path;
     Interactable currentInteraction;
     Vector3 targetPosition;
     Vector3 center;
     private int arrivalCount = 0;
     void Awake() {
-        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update() {
@@ -44,8 +42,6 @@ public class UnitGroup : RTSObjectGroup {
         foreach (Unit u in rtsObjects) {
             u.setGroup(this);
         }
-
-
     }
 
     private Vector3 getCenter() {
@@ -79,10 +75,7 @@ public class UnitGroup : RTSObjectGroup {
             UnitStateMachine s = (UnitStateMachine)u.getStateMachine();
             s.getMoveBehaviour().setPath(path);
             s.getMoveBehaviour().setArriveRadius(arriveRadius);
-
-            u.InteractWith(p);
-           
-            
+            u.InteractWith(p);  
         }
     }
     public override void unitInteraction(Unit u) { }

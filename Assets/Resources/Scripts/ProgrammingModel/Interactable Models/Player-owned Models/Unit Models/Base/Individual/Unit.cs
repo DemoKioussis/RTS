@@ -15,17 +15,20 @@ public class Unit : RTSObject {
 			playerSetUp = true;
 		}
 	}
+    void OnDrawGizmos()
+    {
+        if ( getTargetInteraction()!=null && getTargetInteraction().getInteractionType() == INTERACTION_TYPE.POSITION)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(transform.position, ((MapPos)getTargetInteraction()).getPosition());
+        }
+    }
     public void setGroup(UnitGroup g)
     {
-        if (group != null)
-        {
-            if (group != g) { 
+        if (group != g) {
+            if (group != null) {
                 group.Remove(this);
-                transform.parent = g.transform;
-                group = g;
             }
-        }
-        else {
             transform.parent = g.transform;
             group = g;
         }
