@@ -63,6 +63,8 @@ MonoBehaviour:
   playerMap: {fileID: 0}
   inputManager: {fileID: 1129491809680338, guid: fa3b55c675da948ff9f1fcf930e12b78,
     type: 2}
+  selectionManager: {fileID: 1592148528117964, guid: 9c6fe5621f3e2ec4e9bb57050224fa5a,
+    type: 2}
   glueQuantity: 40
   paperQuantity: 40
   population: 0

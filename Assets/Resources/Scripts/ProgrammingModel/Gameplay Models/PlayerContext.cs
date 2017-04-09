@@ -15,6 +15,7 @@ public class PlayerContext : MonoBehaviour {
 
 	public PlayerMap playerMap;
 	public GameObject inputManager;
+	public GameObject selectionManager;
 	public Strategy strategy;
 
 	public int glueQuantity;
@@ -100,10 +101,11 @@ public class PlayerContext : MonoBehaviour {
 		else {
 			// is a player
 			strategy = new PlayerStrategy (this);
+			Instantiate (selectionManager, transform);
 			Instantiate (inputManager, transform);
 		}
 
-		switch (this.teamId) {
+		switch (this.playerId) {
 		case 0:
 			playerColor = new Color (0, 0, 255);
 			break;
