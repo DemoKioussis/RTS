@@ -11,8 +11,10 @@ public class UnitStateMachine : BaseStateMachine {
     BaseUnitAttackBehaviour attackBehaviour;
     BaseUnitIdleBehaviour idleBehaviour;
     Unit unit;
-    public bool attack, hasTarget, targetInFireRange, hasFired, atTarget;
+   
+    public bool attack, hasTarget, targetInFireRange, hasFired, atTarget,lookForTarget;
 
+    private bool reloading;
     override public void Awake() {
         base.Awake();
         unit = (Unit)getRTSObject();
@@ -51,16 +53,28 @@ public class UnitStateMachine : BaseStateMachine {
             else
                 setTargetInFireRange(false);
 
-            if (Vector3.Distance(transform.position, target.transform.position) < moveBehaviour.arriveDelta)
-                setAtTarget(true);
-            else
+            if (Vector3.Distance(transform.position, target.transform.position) > moveBehaviour.getArriveRadius())
                 setAtTarget(false);
         }
         else
             setHasTarget(false);
 
+        if (!hasTarget && attack) {
+            setLookForTarget(true);
+        }
+
+
+
     }
 
+
+    public void reload() {
+        Invoke("reloadAction", ((Military)unit).militaryStats.attackRate);
+    }
+
+    private void reloadAction() {
+        setHasFired(false);
+    }
     protected override void setInitialState() {
         updateParameter("Attack", attack);
         updateParameter("HasTarget", hasTarget);
@@ -108,4 +122,13 @@ public class UnitStateMachine : BaseStateMachine {
             updateParameter("AtTarget", b);
         }
     }
+    public void setLookForTarget(bool b)
+    {
+        if (b != lookForTarget)
+        {
+            lookForTarget = b;
+            updateParameter("LookForTarget", b);
+        }
+    }
+
 }

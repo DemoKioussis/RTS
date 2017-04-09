@@ -20,7 +20,7 @@ public class Unit : RTSObject {
         if ( getTargetInteraction()!=null && getTargetInteraction().getInteractionType() == INTERACTION_TYPE.POSITION)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(transform.position, ((MapPos)getTargetInteraction()).getPosition());
+            Gizmos.DrawLine(transform.position, getTargetInteraction().getPosition());
         }
     }
     public void setGroup(UnitGroup g)
@@ -64,8 +64,11 @@ public class Unit : RTSObject {
     public override void positionInteraction(MapPos p) {
 
         ((UnitStateMachine)getStateMachine()).getMoveBehaviour().setDestination(p.getPosition());
+        ((UnitStateMachine)getStateMachine()).getAttackBehaviour().stopAttack();
 
     }
-    public override void unitInteraction(Unit u) { }
+    public override void unitInteraction(Unit u) {
+        ((UnitStateMachine)getStateMachine()).getAttackBehaviour().setAttackTarget();
+    }
     public override void resourceInteraction(Resource r) { }
 }

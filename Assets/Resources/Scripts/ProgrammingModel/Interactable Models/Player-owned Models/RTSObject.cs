@@ -31,7 +31,6 @@ public abstract class RTSObject : Interactable {
 	public abstract float Influence ();
 
     public void setTarget(Interactable t) {
-        Debug.Log("Target set");
         targetInteraction = t;
     }
     public override void InteractWith(Interactable i)
@@ -45,7 +44,7 @@ public abstract class RTSObject : Interactable {
 
     public void takeDamage(float d)
     {
-
+        Debug.Log("I TOOK DAMAGE!");
     }
 
 	protected virtual void Heal(int hp)

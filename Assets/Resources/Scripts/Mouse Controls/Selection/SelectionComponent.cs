@@ -28,7 +28,10 @@ public class SelectionComponent : MonoBehaviour {
 		// If we press the left mouse button, begin selection and remember the location of the mouse
 		if( Input.GetMouseButtonDown( 0 ) )
 		{
-			clickPosition = Input.mousePosition;
+            if (selectedUnitGroup != null && !selectedUnitGroup.isActivated())
+                Destroy(selectedUnitGroup.gameObject);
+
+            clickPosition = Input.mousePosition;
 
 		//	if (selectedUnitGroup != null)
 		//		Destroy(selectedUnitGroup.gameObject);
@@ -104,8 +107,10 @@ public class SelectionComponent : MonoBehaviour {
 					}
 				}
 			}
+            	if (selectedUnitGroup != null && selectedUnitGroup.IsEmpty())
+            		Destroy(selectedUnitGroup.gameObject);
 
-			/*
+            /*
 			var sb = new StringBuilder();
 			sb.AppendLine( string.Format( "Selecting [{0}] Objects", selectedObjects.Count ) );
 			foreach( var selectedObject in selectedObjects )
@@ -113,7 +118,7 @@ public class SelectionComponent : MonoBehaviour {
 			Debug.Log( sb.ToString() );
 			*/
 
-			isSelecting = false;
+            isSelecting = false;
 		}
 
 		if (Input.GetMouseButtonDown(1))

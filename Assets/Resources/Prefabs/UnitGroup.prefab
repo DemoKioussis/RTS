@@ -55,3 +55,5 @@ MonoBehaviour:
   rtsObjects: []
   arriveRadius: 5
   arrivePercent: 0.99
+  emptyMapPos: {fileID: 114257140517570680, guid: d90e21a17de674f28b3de4b3bb9bf2d6,
+    type: 2}
