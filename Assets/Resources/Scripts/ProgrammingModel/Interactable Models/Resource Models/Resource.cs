@@ -8,19 +8,24 @@ public class Resource : Interactable {
 	public int startingMinQuantity;
 	public int startingMaxQuantity;
 
+	public string type;
+
 	// Use this for initialization
 	void Start () {
+		type = gameObject.tag;
 		quantity = Random.Range (startingMinQuantity, startingMaxQuantity + 1);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (quantity == 0) {
+			Destroy (this.gameObject);
+		}
 	}
 
-	protected virtual void GetQuantity(int consumeQuantity)
+	public virtual void GetQuantity(int q)
 	{
-		// To do
+		quantity -= q;
 	}
     public override INTERACTION_TYPE getInteractionType()
     {

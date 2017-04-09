@@ -28,11 +28,12 @@ public class TrainingBuilding : Building{
 		if (awake)
 		{
 			UpdateTime ();
-			if (unitReadyToGo ()) 
+			if (unitReadyToGo () && unit.CheckCost()) 
 			{
-				// TODO: Instantiate the unit prefab
 				// Debug.Log("Building is awake");
 				SpawnUnit (unit);
+				unit.RemovePlayerResourceQuantity ();
+				player.population++;
 			}
 		}
 	}
@@ -58,11 +59,6 @@ public class TrainingBuilding : Building{
 			// spawn point is not set
 			unitObject.GetComponent<Unit> ().InteractWith (GetSpawnPoint());
 		}
-	}
-		
-	public override void SetToAwake(){
-		Debug.Log("Training Building is Awake");
-		awake = true;
 	}
 
 	public override void SetToSleep(){

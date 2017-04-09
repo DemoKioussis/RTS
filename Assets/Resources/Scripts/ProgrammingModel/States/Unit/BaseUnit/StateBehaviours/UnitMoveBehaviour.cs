@@ -18,6 +18,7 @@ public class UnitMoveBehaviour : BaseStateBehaviour
     protected override void enter()
     {
         arrived = false;
+
         if(path==null)
             agent.SetDestination(getTargetPosition());
         else

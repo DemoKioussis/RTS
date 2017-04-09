@@ -5,7 +5,7 @@ using UnityEngine;
 public class RTSObjectGroup : Interactable {
 
 	public List<RTSObject> rtsObjects = new List<RTSObject>();
-
+    int groupSize = 0;
 	void Awake () {
 		rtsObjects = new List<RTSObject> ();
 	}
@@ -22,29 +22,22 @@ public class RTSObjectGroup : Interactable {
 	public void Add(RTSObject obj)
 	{
 		rtsObjects.Add(obj);
+        groupSize++;
 	}
 
 	public void Remove(RTSObject obj)
 	{
 		rtsObjects.Remove (obj);
+        groupSize--;
         if (IsEmpty()) {
-            GameObject.Destroy(this.gameObject, 0);
+            GameObject.Destroy(this.gameObject, 0.1f);
         }
 	}
 
 	public bool IsEmpty() {
-		return rtsObjects.Count == 0;
+		return groupSize == 0;
 	}
 
-	public void MoveGroupToPosition (MapPos m)
-	{
-		Debug.Log ("Move Group to " + m);
-	}
-
-	public void MoveTo (MapPos p)
-	{
-		Debug.Log("Move to " + p);
-	}
 		
     public override INTERACTION_TYPE getInteractionType() {
         return INTERACTION_TYPE.GROUP;

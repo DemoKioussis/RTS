@@ -144,7 +144,7 @@ Prefab:
         type: 2}
       propertyPath: mapPrefab
       value: 
-      objectReference: {fileID: 1947498989846188, guid: 8a58fb6f295b0418fab4afafeccc585f,
+      objectReference: {fileID: 1277172318468260, guid: 8a58fb6f295b0418fab4afafeccc585f,
         type: 2}
     - target: {fileID: 114269166190658114, guid: 855fc263fca3eb74584483c6a53c0348,
         type: 2}
@@ -160,8 +160,7 @@ Prefab:
         type: 2}
       propertyPath: map
       value: 
-      objectReference: {fileID: 114635127400291622, guid: 8a58fb6f295b0418fab4afafeccc585f,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 114269166190658114, guid: 855fc263fca3eb74584483c6a53c0348,
         type: 2}
       propertyPath: playerType.Array.data[1]

@@ -168,8 +168,8 @@ MonoBehaviour:
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
-    paperCost: 0
-    glueCost: 0
+    paperCost: 20
+    glueCost: 20
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
@@ -180,9 +180,9 @@ MonoBehaviour:
   yOffset: 0.25
   resource: {fileID: 0}
   resourceBldgStats:
-    gatheringTime: 0
-    glueReturn: 0
-    paperReturn: 0
+    gatheringTime: 2
+    glueReturn: 1
+    paperReturn: 1
 --- !u!208 &208212624230134748
 NavMeshObstacle:
   m_ObjectHideFlags: 1
