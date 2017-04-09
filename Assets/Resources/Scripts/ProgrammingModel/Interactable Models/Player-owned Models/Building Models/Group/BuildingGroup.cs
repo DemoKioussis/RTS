@@ -19,11 +19,9 @@ public class BuildingGroup : RTSObjectGroup {
 	public void CreateNewBuilding(char keyInput){
 		IndustrialCenter townCenter;
 		foreach (Building bldg in rtsObjects) {
-			if (bldg != null) {
-				townCenter = bldg.GetComponent<IndustrialCenter> ();
-				if (townCenter != null) {
-					townCenter.CreateNewBuilding (keyInput);
-				}
+			townCenter = bldg.GetComponent<IndustrialCenter> ();
+			if (townCenter != null) {
+				townCenter.CreateNewBuilding (keyInput);
 			}
 		}
 	}

@@ -12,7 +12,7 @@ public abstract class Building : RTSObject {
 
 	public bool awake = false;
 
-	private Vector3 spawnPoint;
+	protected MapPos spawnPoint;
 
 	public GameObject flagPrefab;
 	private GameObject flagReference;
@@ -44,7 +44,7 @@ public abstract class Building : RTSObject {
 		// To do
 	}
 
-	protected Vector3 GetSpawnPoint(){
+	protected MapPos GetSpawnPoint(){
 		return spawnPoint;
 	}
 
@@ -87,7 +87,7 @@ public abstract class Building : RTSObject {
 	}
 
 	public virtual void SetSpawnPointAs(Vector3 spawnPosition){
-		spawnPoint = spawnPosition;
+		spawnPoint.setPosition(spawnPosition);
 	}
 
     public override INTERACTION_TYPE getInteractionType()

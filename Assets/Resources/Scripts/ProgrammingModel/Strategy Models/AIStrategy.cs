@@ -266,29 +266,34 @@ public class AIStrategy : Strategy {
 			return true;
 	}
 
-	Vector3 GetEmptyArea()
+	Vector3 GetEmptyArea(Bounds bounds)
 	{
-//		Bounds boundingBox = bldg.GetComponent<
+		Vector3 dimensions = bounds.size;
+
 		return new Vector3 (0, 0, 0);
 	}
 
 	T MakeNewBuilding<T>(out Vector3 emptyArea) where T : Building
 	{
-		emptyArea = GetEmptyArea();
-
+		GameObject bldg = null;
 		GameObject[] buildings = player.updatedPrefabs.buildingPrefabs;
+
+		for (int i = 0; i < buildings.Length; i++) {
+			if (buildings [i].GetComponent<Building>() is T) {
+				bldg = buildings [i];
+				break;
+			}
+		}
+
+		emptyArea = GetEmptyArea(bldg.GetComponent<Building>().getModel().GetComponent<Renderer>().bounds);
 
 		T t = null;
 
 		if (emptyArea == null)
 			return t;
 
-		for (int i = 0; i < buildings.Length; i++) {
-			if (buildings [i].GetComponent<Building>() is T) {
-				t = (T) RTSObject.InstantiatePlayableObject (buildings[i], emptyArea, player.transform).GetComponent<Building>();
-				return t;
-			}
-		}
+		t = (T)(RTSObject.InstantiatePlayableObject (bldg, emptyArea, player.transform).GetComponent<Building>());
+		t.SetToAwake ();
 
 		return t;
 	}

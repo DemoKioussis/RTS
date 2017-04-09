@@ -11,6 +11,12 @@ public class TrainingBuilding : Building{
 	public float yOffset = 0.25f;
 	public int unitIndex;
 
+	public GameObject mapPosPrefab;
+
+	void Awake(){
+		spawnPoint = ((GameObject)Instantiate (mapPosPrefab, transform)).GetComponent<MapPos>();
+	}
+
 	void Start(){
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext>();
 		unit = player.updatedPrefabs.unitPrefabs [unitIndex].GetComponent<Unit>();
@@ -39,15 +45,18 @@ public class TrainingBuilding : Building{
 
 	public void SpawnUnit(Unit unit)
 	{
-		GameObject unitObject = InstantiatePlayableObject (unit.gameObject, transform.position, player.transform);
+		float z = transform.position.z - getModel ().bounds.size.z / 2 - 0.5f - 1f;
+		Vector3 vec = new Vector3 (transform.position.x, transform.position.y, z);
+		GameObject unitObject = InstantiatePlayableObject (unit.gameObject, vec, player.transform);
 		if (spawnPointSet) 
 		{
-			//unitObject.GetComponent<Unit> ().movement.moveTo (GetSpawnPoint ());
+			unitObject.GetComponent<Unit> ().InteractWith (GetSpawnPoint());
 		} 
 		else 
 		{
+			SetSpawnPointAs(vec - new Vector3(0, 0, 2 * getModel().bounds.size.z + 0.5f + 1f));
 			// spawn point is not set
-			//unitObject.GetComponent<Unit> ().movement.moveTo (new Vector3(transform.position.x, transform.position.y, transform.position.z - 1.0f));
+			unitObject.GetComponent<Unit> ().InteractWith (GetSpawnPoint());
 		}
 	}
 		
