@@ -15,17 +15,15 @@ public class Resource : Interactable {
 		type = gameObject.tag;
 		quantity = Random.Range (startingMinQuantity, startingMaxQuantity + 1);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (quantity == 0) {
-			Destroy (this.gameObject);
-		}
-	}
 
 	public virtual void GetQuantity(int q)
 	{
 		quantity -= q;
+
+		if (quantity == 0) {
+			GameContext.currentGameContext.activeResources.Remove (this);
+			Destroy (this.gameObject);
+		}
 	}
     public override INTERACTION_TYPE getInteractionType()
     {

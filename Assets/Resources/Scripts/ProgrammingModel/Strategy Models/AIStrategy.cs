@@ -203,12 +203,11 @@ public class AIStrategy : Strategy {
 
 	Vector3 FindClosestResource(string resourceType)
 	{
-		Resource[] resources = GameContext.currentGameContext.activeResources;
-
+		List<Resource> resources = GameContext.currentGameContext.activeResources;
 		Resource closestResource = null;
 		float minDistance = 100000000000000;
 
-		for (int i = 0; i < resources.Length; i++) {
+		for (int i = 0; i < resources.Count; i++) {
 			if (resources [i].gameObject.tag == resourceType) {
 				float distance = (resources [i].transform.position - player.industrialCenter.transform.position).magnitude;
 				if (distance < minDistance) {
@@ -226,7 +225,12 @@ public class AIStrategy : Strategy {
 
 	bool ManagePaper()
 	{
+		// return the Resource, it would be easier for you because I set up a function to set the resource from the building
 		Vector3 point = FindClosestResource ("Paper");
+
+		// The function will also associate the building to the resource
+		// example: building.AssociateToResource(Resource res) --> does everything (assign building to resource and resource to building)
+
 		return MakeNewBuilding<ResourceBuilding> (point);
 
 		// WE NEED TO SET THE RESOURCE OF EACH OF THIS! KEEP IN MIND!

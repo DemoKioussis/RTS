@@ -45,6 +45,9 @@ public class Unit : RTSObject {
 		// To do
 	}
 
+	public override bool CheckCost(){
+		return base.CheckCost () && player.population < player.populationLimit;
+	}
 
 	public override void ReplaceStatsReferences(RTSObject otherObject)
 	{

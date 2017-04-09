@@ -23,13 +23,13 @@ public class ResourceBuilding : Building {
 			{
 				if (resource.type == "Glue") 
 				{
+					player.glueQuantity += resourceBldgStats.glueReturn;
 					resource.GetQuantity (resourceBldgStats.glueReturn);
-					player.glueQuantity++;
 				} 
 				else if (resource.type == "Paper") 
 				{
+					player.paperQuantity += resourceBldgStats.paperReturn;
 					resource.GetQuantity (resourceBldgStats.paperReturn);
-					player.paperQuantity++;
 				}
 			}
 		}
@@ -41,16 +41,27 @@ public class ResourceBuilding : Building {
 		// To do
 	}
 
-	public override void SetPositionOfBuildingWith(Resource res){
+	public override void AssignResourcePosition(Resource res){
 		resource = res;
 	}
 
-	public override void ClearPositionOfBuilding(){
+	public override void ClearResourcePosition(){
 		resource = null;
 	}
 
+	// function to set building accord to resource where the resource is assigned to building
+	public override void SetToResource(){
+		resource.building = this;
+	}
+
+	// function to set building according to resource in case the building is not assigned a resource
+	public override void AssociateToResource(Resource res){
+		resource = res;
+		resource.building = this;
+	}
+
 	public override Vector3 GetPositionOfResource(){
-		return resource.gameObject.transform.position;
+		return resource.transform.position;
 	}
 
 	public void DisableResourceCollider(){
