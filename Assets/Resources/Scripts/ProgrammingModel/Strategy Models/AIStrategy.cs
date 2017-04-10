@@ -31,8 +31,8 @@ public class AIStrategy : Strategy {
 	public AIStrategy(PlayerContext player)
 	{
 		this.player = player;
-		int numVertices = GameContext.currentGameContext.map.GetComponent<MeshFilter> ().mesh.vertices.Length;
-		GameContext.currentGameContext.map.GetComponent<MeshFilter> ().mesh.colors = new Color[numVertices];
+		int numVertices = GameContext.currentGameContext.map.GetComponentInChildren<MeshFilter> ().mesh.vertices.Length;
+		GameContext.currentGameContext.map.GetComponentInChildren<MeshFilter> ().mesh.colors = new Color[numVertices];
 
 		tasks.Add (new WeighedTask (Activity.MAKEPAPER, 1.0f));
 		tasks.Add (new WeighedTask (Activity.MAKEGLUE, 1.0f));
@@ -69,7 +69,7 @@ public class AIStrategy : Strategy {
 	{
 		GameContext game = GameContext.currentGameContext;
 		GameMap map = game.map;
-		Vector3[] vertices = map.GetComponent<MeshFilter> ().mesh.vertices;
+		Vector3[] vertices = map.GetComponentInChildren<MeshFilter> ().mesh.vertices;
 		Color[] colors = new Color[vertices.Length];
 
 		for (int i = 0; i < vertices.Length; i++) {
@@ -86,7 +86,7 @@ public class AIStrategy : Strategy {
 			colors [i] = new Color (1.0f, 1.0f, 1.0f) * magnitude / 50.0f;
 		}
 
-		GameContext.currentGameContext.map.GetComponent<MeshFilter> ().mesh.colors = colors;
+		GameContext.currentGameContext.map.GetComponentInChildren<MeshFilter> ().mesh.colors = colors;
 
 		float overallLocalInfluence = 0;
 

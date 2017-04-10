@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114853600190930494}
   m_Layer: 12
   m_Name: Glue
-  m_TagString: Untagged
+  m_TagString: Glue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
