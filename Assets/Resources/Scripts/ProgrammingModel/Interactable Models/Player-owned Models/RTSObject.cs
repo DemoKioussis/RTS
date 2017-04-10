@@ -125,6 +125,8 @@ public abstract class RTSObject : Interactable {
 		objectIsColliding = false;
 	}
 
+	public virtual void Destroy() {}
+
     public MeshRenderer getModel() {
 		if (model == null) {
 			model = GetComponentInChildren<MeshRenderer>();

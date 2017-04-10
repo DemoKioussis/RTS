@@ -97,6 +97,12 @@ public abstract class Building : RTSObject {
 		spawnPoint.setPosition(spawnPosition);
 	}
 
+	public override void Destroy(){
+		player.activeBuildings.Remove (this);
+		GameContext.currentGameContext.activeBuildings.Remove (this);
+		Destroy (this.gameObject);
+	}
+
     public override INTERACTION_TYPE getInteractionType()
     {
         return INTERACTION_TYPE.BUILDING;

@@ -34,7 +34,7 @@ public class SelectionComponent : MonoBehaviour {
 		// If we press the left mouse button, begin selection and remember the location of the mouse
 		if( Input.GetMouseButtonDown( 0 ) )
 		{
-            if (selectedUnitGroup != null && !selectedUnitGroup.isActivated())
+			if (selectedUnitGroup != null && !selectedUnitGroup.isActivated())
                 Destroy(selectedUnitGroup.gameObject);
 
             clickPosition = Input.mousePosition;
@@ -97,8 +97,6 @@ public class SelectionComponent : MonoBehaviour {
 							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel().bounds);
 							selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
 							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
-							Debug.Log (selectableObject.GetComponent<Building> ().player);
-							Debug.Log(selectableObject.GetComponent<Building>().player == player);
 							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building>().player == player) {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
@@ -137,7 +135,6 @@ public class SelectionComponent : MonoBehaviour {
 			{
 				interactable = hitInfo.collider.GetComponent<Interactable>();
 				if (interactable != null) {
-					Debug.Log("Interacted with: " + interactable.name + " type: " + interactable.getInteractionType());
 					if (selectedUnitGroup != null) {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedUnitGroup.InteractWith (interactable);
@@ -146,6 +143,7 @@ public class SelectionComponent : MonoBehaviour {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedBuildingGroup.InteractWith (interactable);
 					}
+					Debug.Log("Interacted with: " + interactable.name + " type: " + interactable.getInteractionType());
 				}
 			}
 		}

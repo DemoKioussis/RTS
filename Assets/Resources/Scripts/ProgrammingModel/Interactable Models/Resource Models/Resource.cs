@@ -21,6 +21,7 @@ public class Resource : Interactable {
 		quantity -= q;
 
 		if (quantity == 0) {
+			building.Destroy ();
 			GameContext.currentGameContext.activeResources.Remove (this);
 			Destroy (this.gameObject);
 		}
