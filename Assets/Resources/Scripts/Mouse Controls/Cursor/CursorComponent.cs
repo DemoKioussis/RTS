@@ -88,10 +88,8 @@ public class CursorComponent : MonoBehaviour {
 
 			currentRTSObject = tempObj.GetComponent<RTSObject> ();
 
-			currentRTSObject.isBeingPlaced = true;
-
 			// get the renderer of the object
-			gameObjectRenderer = tempObj.GetComponent<RTSObject> ().getModel();
+			gameObjectRenderer = currentRTSObject.getModel();
 
 			// get the initial property colors of the object
 			initialColor = gameObjectRenderer.material.color; 
@@ -100,6 +98,9 @@ public class CursorComponent : MonoBehaviour {
 			gameObjectRenderer.material.color = colorOfNoCollision;
 
 			currentRTSObject.CanBePlaced ();
+
+			currentRTSObject.isBeingPlaced = true;
+
 		}
 	}
 
