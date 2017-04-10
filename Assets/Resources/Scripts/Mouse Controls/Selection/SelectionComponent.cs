@@ -39,10 +39,8 @@ public class SelectionComponent : MonoBehaviour {
 
             clickPosition = Input.mousePosition;
 
-		//	if (selectedUnitGroup != null)
-		//		Destroy(selectedUnitGroup.gameObject);
 			if (selectedBuildingGroup != null)
-				Destroy(selectedBuildingGroup.gameObject);
+				Destroy (selectedBuildingGroup.gameObject);
 
 			selectedUnits = new List<Unit>();
 			selectedBuildings = new List<Building>();
@@ -99,6 +97,8 @@ public class SelectionComponent : MonoBehaviour {
 							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel().bounds);
 							selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
 							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
+							Debug.Log (selectableObject.GetComponent<Building> ().player);
+							Debug.Log(selectableObject.GetComponent<Building>().player == player);
 							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building>().player == player) {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
@@ -111,9 +111,12 @@ public class SelectionComponent : MonoBehaviour {
 					}
 				}
 			}
-            	if (selectedUnitGroup != null && selectedUnitGroup.IsEmpty())
+            	
+			if (selectedUnitGroup != null && selectedUnitGroup.IsEmpty())
             		Destroy(selectedUnitGroup.gameObject);
-
+			
+			if (selectedBuildingGroup != null && selectedBuildingGroup.IsEmpty())
+				Destroy(selectedBuildingGroup.gameObject);
             /*
 			var sb = new StringBuilder();
 			sb.AppendLine( string.Format( "Selecting [{0}] Objects", selectedObjects.Count ) );
