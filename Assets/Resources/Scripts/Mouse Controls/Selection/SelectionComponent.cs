@@ -133,7 +133,7 @@ public class SelectionComponent : MonoBehaviour {
 			Interactable interactable;
 			if (hitInfo.collider != null)
 			{
-				interactable = hitInfo.collider.GetComponent<Interactable>();
+				interactable = hitInfo.collider.GetComponent<InteractableLink>().getInteractable();
 				if (interactable != null) {
 					if (selectedUnitGroup != null) {
 						InteractionSetter (interactable, hitInfo.point);
