@@ -14,7 +14,7 @@ public class Stats {
 }
 	
 [System.Serializable]
-public class UnitStats {
+public class UnitStats{
 	public float moveSpeed;
 	public float trainingTime;
 	public int populationCost;
@@ -45,6 +45,17 @@ public class ResourceBuildingStats {
 	public float gatheringTime;
 	public int glueReturn;
 	public int paperReturn;
+}
+
+[System.Serializable]
+public class ResourceStats : Stats{
+	public string type;
+	public int quantity;
+}
+
+[System.Serializable]
+public class MapStats : Stats{
+	// map stats, if we ever do this
 }
 
 [System.Serializable]

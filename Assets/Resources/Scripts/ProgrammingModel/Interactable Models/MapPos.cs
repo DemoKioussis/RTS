@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class MapPos : Interactable {
 
+	MapStats stats;
 
     Vector3 position;
     public void setPosition(Vector3 p) {
         position = p;
     }
-
+	public override Stats GetStats ()
+	{
+		return stats;
+	}
     public override Vector3 getPosition()
     {
         return position;

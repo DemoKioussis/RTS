@@ -16,6 +16,7 @@ public class PlayerContext : MonoBehaviour {
 	public PlayerMap playerMap;
 	public GameObject inputManager;
 	public GameObject selectionManager;
+	public GameObject UIManager;
 	public Strategy strategy;
 
 	public int glueQuantity;

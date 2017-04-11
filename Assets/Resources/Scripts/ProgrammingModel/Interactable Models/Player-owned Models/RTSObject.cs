@@ -34,6 +34,11 @@ public abstract class RTSObject : Interactable {
         targetInteraction = t;
     }
 
+	public override Stats GetStats ()
+	{
+		return stats;
+	}
+
 	public virtual bool CheckCost(){
 		return player.glueQuantity >= stats.glueCost && player.paperQuantity >= stats.paperCost;
 	}

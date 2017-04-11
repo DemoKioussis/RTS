@@ -65,6 +65,7 @@ MonoBehaviour:
     type: 2}
   selectionManager: {fileID: 1592148528117964, guid: 9c6fe5621f3e2ec4e9bb57050224fa5a,
     type: 2}
+  UIManager: {fileID: 1035216436831978, guid: eef5e34c7005d40af929c1630817f976, type: 2}
   glueQuantity: 40
   paperQuantity: 40
   population: 0
