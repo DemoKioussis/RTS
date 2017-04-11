@@ -6,44 +6,60 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
 
 	private GameObject hudPanel; // contains all UI elements of the game
-	private GameObject gameInfoPanel;
-	private Text name;
-	private Text health;
+	private Text infoStats;
 
+	private GameObject selectedObjectInfoPanel;
 	private Interactable selectedObject;
-	private Stats selectedObjectStats;
-
-	private bool isGroup;
 
 	// Use this for initialization
 	void Start () {
-		isGroup = false;
 		hudPanel = GameObject.FindGameObjectWithTag ("HUDPanel");
-		gameInfoPanel = GameObject.FindGameObjectWithTag ("InfoPanel");
-	}
-
-	void Update(){
-		if (selectedObject != null) {
-		}
+		infoStats = GameObject.FindGameObjectWithTag ("InfoStats").GetComponent<Text>();
 	}
 	 
+	void Update(){
+		if (selectedObject != null) {
+			GetInformation (selectedObject);
+		}
+	}
+
 	// Add interactable object to the info panel
 	public void AddToInfoPanel(Interactable selectedGameObj){
 		if (selectedGameObj == null) {
 			return;
 		}
 
-		isGroup = false;
-		selectedObject = selectedGameObj;
 		selectedObjectInfoPanel = (GameObject)Instantiate (selectedGameObj.GetInfoPanel (), hudPanel.transform);
-		selectedObjectStats = selectedGameObj.GetStats();
+		selectedObject = selectedGameObj; // keep track of the object
+
+		GetInformation (selectedObject);
 	}
 
 	public void ClearInfoPanel(){
+		// clear everything
 		Destroy(selectedObjectInfoPanel.gameObject);
-		selectedObjectInfoPanel = null;
 		selectedObject = null;
-		selectedObjectStats = null;
-		isGroup = false;
+		selectedObjectInfoPanel = null;
+	}
+
+	public void GetInformation(Interactable selectedObj){
+		switch (selectedObj.getInteractionType())
+		{
+		case INTERACTION_TYPE.BUILDING:
+			infoStats.text = selectedObj.GetStats ().hitpoints + " hp";
+			break;
+		case INTERACTION_TYPE.POSITION:
+			infoStats.text = "";			
+			break;
+		case INTERACTION_TYPE.UNIT:
+			infoStats.text = selectedObj.GetStats().hitpoints + " hp";
+			break;
+		case INTERACTION_TYPE.RESOURCE:
+			{
+				ResourceStats stats = (ResourceStats) selectedObj.GetStats ();
+				infoStats.text = stats.quantity + " " + stats.type + " left";
+				break;
+			}
+		}
 	}
 }

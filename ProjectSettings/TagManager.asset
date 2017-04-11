@@ -10,7 +10,7 @@ TagManager:
   - Paper
   - InputManager
   - HUDPanel
-  - InfoPanel
+  - InfoStats
   layers:
   - Default
   - TransparentFX

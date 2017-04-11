@@ -6,6 +6,8 @@ public class Resource : Interactable {
 	public ResourceBuilding building;
 	public ResourceStats stats;
 
+	public GameObject selectionCircle;
+
 	public int startingMinQuantity;
 	public int startingMaxQuantity;
 
@@ -18,6 +20,11 @@ public class Resource : Interactable {
 		type = gameObject.tag;
 		stats.quantity = Random.Range (startingMinQuantity, startingMaxQuantity + 1);
 		startingQuantity = stats.quantity;
+		stats.type = type;
+	}
+
+	public MeshRenderer getModel(){
+		return GetComponent<MeshRenderer> ();
 	}
 
 	public virtual void GetQuantity(int q)

@@ -49,6 +49,7 @@ public class ResourceBuildingStats {
 
 [System.Serializable]
 public class ResourceStats : Stats{
+	public string type;
 	public int quantity;
 }
 
