@@ -29,9 +29,11 @@ public class SelectionComponent : MonoBehaviour {
     void Awake()
     {
         player = GetComponentInParent<PlayerContext>();
-		ui = GetComponentInParent<UIManager> ();
-
     }
+
+	void Start(){
+		ui = GameObject.FindGameObjectWithTag ("UIManager").GetComponent<UIManager> ();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -63,7 +65,10 @@ public class SelectionComponent : MonoBehaviour {
 				}
 			}
 
-			ui.ClearInfoPanel ();
+			if (selectedResource != null) {
+				Destroy(selectedResource.selectionCircle.gameObject);
+				ui.ClearInfoPanel ();
+			}
 		}
 
 		// If we let go of the left mouse button, end selection
@@ -124,6 +129,7 @@ public class SelectionComponent : MonoBehaviour {
 						}
 					} else if (hitInfo.collider.gameObject.GetComponent<Resource> () != null) {
 						// clicked on resource
+						Debug.Log("Clicked on Resource");
 						Resource selectableObject = hitInfo.collider.gameObject.GetComponent<Resource> ();
 						if (selectableObject.selectionCircle == null) {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);

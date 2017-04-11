@@ -104,6 +104,7 @@ public class PlayerContext : MonoBehaviour {
 			strategy = new PlayerStrategy (this);
 			Instantiate (selectionManager, transform);
 			Instantiate (inputManager, transform);
+			Instantiate (UIManager, transform);
 		}
 
 		switch (this.playerId) {
