@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 1876395793822784, guid: 05309cf6fb5664786b4d6b9b59086be5,
+  infoPanelPrefab: {fileID: 1504821867040206, guid: 05309cf6fb5664786b4d6b9b59086be5,
     type: 2}
   stats:
     viewRange: 0
