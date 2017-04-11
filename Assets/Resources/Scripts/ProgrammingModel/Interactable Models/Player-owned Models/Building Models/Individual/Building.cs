@@ -12,6 +12,7 @@ public abstract class Building : RTSObject {
 	public bool awake = false;
 
 	protected MapPos spawnPoint;
+	protected Vector3 spawnPosition;
 
 	public GameObject flagPrefab;
 	private GameObject flagReference;
@@ -93,8 +94,12 @@ public abstract class Building : RTSObject {
 		return new Vector3(0,0,0);
 	}
 
-	public virtual void SetSpawnPointAs(Vector3 spawnPosition){
-		spawnPoint.setPosition(spawnPosition);
+	public virtual void SetSpawnPointAs(MapPos p){
+		spawnPoint = p;
+	}
+
+	public void SetSpawnPointAs(Vector3 position){
+		spawnPoint.setPosition(position);
 	}
 
 	public override void Destroy(){
@@ -110,7 +115,9 @@ public abstract class Building : RTSObject {
 
 	public abstract BUILDING_TYPE getBuildingType();
     public override void buildingInteraction(Building b) { }
-    public override void positionInteraction(MapPos p) { }
+    public override void positionInteraction(MapPos p) {
+		SetSpawnPointAs (p);
+	}
     public override void unitInteraction(Unit u) { }
     public override void resourceInteraction(Resource r) { }
 }

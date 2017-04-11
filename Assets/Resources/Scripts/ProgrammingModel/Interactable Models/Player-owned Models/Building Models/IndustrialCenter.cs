@@ -52,7 +52,7 @@ public class IndustrialCenter : Building {
 		cursor.CancelAction ();
 	}
 
-	public override void SetSpawnPointAs(Vector3 spawnPosition){
+	public override void SetSpawnPointAs(MapPos p){
 		Debug.Log ("Cannot set spawn point for this building");
 	}
 

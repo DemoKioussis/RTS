@@ -67,8 +67,9 @@ public class SelectionComponent : MonoBehaviour {
 
 			if (selectedResource != null) {
 				Destroy(selectedResource.selectionCircle.gameObject);
-				ui.ClearInfoPanel ();
 			}
+
+			ui.ClearInfoPanel ();
 		}
 
 		// If we let go of the left mouse button, end selection
@@ -119,17 +120,16 @@ public class SelectionComponent : MonoBehaviour {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
 
-								ui.AddToInfoPanel (selectedBuildingGroup);
+								ui.AddToInfoPanel (selectableObject); 
 							} else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit> ().player == player) {
 								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
 								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
 
-								ui.AddToInfoPanel (selectedUnitGroup);
+								ui.AddToInfoPanel (selectableObject);
 							}
 						}
 					} else if (hitInfo.collider.gameObject.GetComponent<Resource> () != null) {
 						// clicked on resource
-						Debug.Log("Clicked on Resource");
 						Resource selectableObject = hitInfo.collider.gameObject.GetComponent<Resource> ();
 						if (selectableObject.selectionCircle == null) {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);

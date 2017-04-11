@@ -40,7 +40,7 @@ public class BuildingGroup : RTSObjectGroup {
     public override void positionInteraction(MapPos p) {
         foreach (Building bldg in rtsObjects)
         {
-			bldg.SetSpawnPointAs (p.getPosition());
+			bldg.InteractWith (p);
         }
     }
     public override void unitInteraction(Unit u) { }

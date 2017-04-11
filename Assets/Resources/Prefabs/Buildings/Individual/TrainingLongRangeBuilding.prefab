@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 208504450301498626}
   - component: {fileID: 114535769843775354}
   - component: {fileID: 114501542103888264}
+  - component: {fileID: 114759623769977600}
   m_Layer: 10
   m_Name: TrainingLongRangeBuilding
   m_TagString: Untagged
@@ -184,6 +185,18 @@ MonoBehaviour:
   unitIndex: 0
   mapPosPrefab: {fileID: 1412890718017786, guid: d90e21a17de674f28b3de4b3bb9bf2d6,
     type: 2}
+--- !u!114 &114759623769977600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013997411748500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 114535769843775354}
 --- !u!208 &208504450301498626
 NavMeshObstacle:
   m_ObjectHideFlags: 1

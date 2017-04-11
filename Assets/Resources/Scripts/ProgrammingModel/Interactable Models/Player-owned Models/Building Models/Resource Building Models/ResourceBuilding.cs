@@ -68,7 +68,7 @@ public class ResourceBuilding : Building {
 		resource.gameObject.GetComponent<Collider> ().enabled = false;
 	}
 		
-	public override void SetSpawnPointAs(Vector3 p){
+	public override void SetSpawnPointAs(MapPos p){
 		Debug.Log ("You cannot set a spawn point for this building");
 	}
 
