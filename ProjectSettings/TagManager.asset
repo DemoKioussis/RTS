@@ -9,6 +9,8 @@ TagManager:
   - Glue
   - Paper
   - InputManager
+  - HUDPanel
+  - InfoPanel
   layers:
   - Default
   - TransparentFX

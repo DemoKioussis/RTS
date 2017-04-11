@@ -8,10 +8,16 @@ public enum INTERACTION_TYPE { POSITION, UNIT, BUILDING, RESOURCE,GROUP }
 public abstract class Interactable : MonoBehaviour {
 
     public int teamId;
+	public GameObject infoPanelPrefab;
+
+	public GameObject GetInfoPanel(){
+		return infoPanelPrefab;
+	}
+
+	public abstract Stats GetStats ();
 
     public abstract INTERACTION_TYPE getInteractionType();
 
-    
     public virtual void InteractWith(Interactable i)
     {
    
