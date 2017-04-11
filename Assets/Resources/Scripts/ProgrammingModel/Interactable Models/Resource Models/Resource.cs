@@ -10,15 +10,22 @@ public class Resource : Interactable {
 
 	public string type;
 
+	private int startingQuantity;
+
 	// Use this for initialization
 	void Start () {
 		type = gameObject.tag;
 		quantity = Random.Range (startingMinQuantity, startingMaxQuantity + 1);
+		startingQuantity = quantity;
 	}
 
 	public virtual void GetQuantity(int q)
 	{
 		quantity -= q;
+		// decrease the scale at every 10 number
+		if (quantity % 10 == 0) {
+			transform.localScale = transform.localScale * ((float)quantity / startingQuantity); 
+		}
 
 		if (quantity == 0) {
 			building.Destroy ();
