@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4463335828916058}
-  - component: {fileID: 135360957961386770}
   - component: {fileID: 195020718062020762}
   - component: {fileID: 114170303354362912}
   - component: {fileID: 54010832629035568}
@@ -205,9 +204,9 @@ MonoBehaviour:
     populationCost: 1
   militaryStats:
     minAttackRange: 0
-    maxAttackRange: 0
+    maxAttackRange: 10
     attackStrength: 0
-    attackRate: 0
+    attackRate: 5
 --- !u!114 &114194836389441868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,18 +227,6 @@ MonoBehaviour:
   hasFired: 0
   atTarget: 0
   lookForTarget: 0
---- !u!135 &135360957961386770
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1909318969148630}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195020718062020762
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -247,7 +234,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909318969148630}
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
