@@ -4915,6 +4915,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114026131029257938, guid: da7ab72db1fc3a445a002d723b9ae676,
+        type: 2}
+      propertyPath: layerMask.m_Bits
+      value: 11776
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da7ab72db1fc3a445a002d723b9ae676, type: 2}
   m_IsPrefabParent: 0
@@ -5901,7 +5906,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 135537584332458456, guid: e6af921ca5cf8aa4db039dbf761b6938, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e6af921ca5cf8aa4db039dbf761b6938, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1261001646
@@ -9267,6 +9274,7 @@ GameObject:
   - component: {fileID: 2000133729}
   - component: {fileID: 2000133728}
   - component: {fileID: 2000133732}
+  - component: {fileID: 2000133733}
   m_Layer: 11
   m_Name: Plane
   m_TagString: Untagged
@@ -9351,6 +9359,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
+--- !u!114 &2000133733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000133727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 2000133732}
 --- !u!1001 &2004101108
 Prefab:
   m_ObjectHideFlags: 0

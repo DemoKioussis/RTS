@@ -9,6 +9,9 @@ TagManager:
   - Glue
   - Paper
   - InputManager
+  - HUDPanel
+  - InfoStats
+  - UIManager
   layers:
   - Default
   - TransparentFX
@@ -23,7 +26,7 @@ TagManager:
   - Building
   - Map
   - Resource
-  - 
+  - SelectionTarget
   - 
   - 
   - 

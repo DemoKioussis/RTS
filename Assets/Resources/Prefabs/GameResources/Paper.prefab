@@ -107,8 +107,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
+  infoPanelPrefab: {fileID: 1804171346793474, guid: 9d1f16155971a4efbbb687427ef20d14,
+    type: 2}
   building: {fileID: 0}
-  quantity: 0
+  stats:
+    viewRange: 0
+    maxHitpoints: 0
+    hitpoints: 0
+    influenceMultiplier: 0
+    paperCost: 0
+    glueCost: 0
+    type: 
+    quantity: 0
+  selectionCircle: {fileID: 0}
   startingMinQuantity: 500
   startingMaxQuantity: 2000
   type: 

@@ -14,6 +14,7 @@ public class SelectionComponent : MonoBehaviour {
 	public GameObject selectionCirclePrefab;
 	List<Unit> selectedUnits = new List<Unit> ();
 	List<Building> selectedBuildings = new List<Building> ();
+	Resource selectedResource;
 	public UnitGroup selectedUnitGroup;
 	public BuildingGroup selectedBuildingGroup;
 	public UnitGroup selectedUnitGroupPrefab;
@@ -23,10 +24,16 @@ public class SelectionComponent : MonoBehaviour {
 	bool previousInputLeftClick;
 	Vector3 clickPosition;
 
+	UIManager ui;
+
     void Awake()
     {
         player = GetComponentInParent<PlayerContext>();
     }
+
+	void Start(){
+		ui = GameObject.FindGameObjectWithTag ("UIManager").GetComponent<UIManager> ();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -58,6 +65,10 @@ public class SelectionComponent : MonoBehaviour {
 				}
 			}
 
+			if (selectedResource != null) {
+				Destroy(selectedResource.selectionCircle.gameObject);
+				ui.ClearInfoPanel ();
+			}
 		}
 
 		// If we let go of the left mouse button, end selection
@@ -85,36 +96,60 @@ public class SelectionComponent : MonoBehaviour {
 						}
 					}
 				}
+				if (!selectedUnitGroup.IsEmpty ()) 
+				{
+					ui.AddToInfoPanel (selectedUnitGroup);
+				} 
+				else if(!selectedBuildingGroup.IsEmpty())
+				{
+					ui.AddToInfoPanel (selectedBuildingGroup);
+				}
 			}
 			else {
 				RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
 				if (hitInfo.collider != null) {
 					if (hitInfo.collider.gameObject.GetComponent<RTSObject> () != null) {
 						RTSObject selectableObject = hitInfo.collider.gameObject.GetComponent<RTSObject> ();
-						if( selectableObject.selectionCircle == null )
-						{
-							selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
-							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel().bounds);
-							selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
-							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
-							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building>().player == player) {
+						if (selectableObject.selectionCircle == null) {
+							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
+							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
+							selectableObject.selectionCircle.transform.SetParent (selectableObject.transform, false);
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (90, 0, 0);
+							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building> ().player == player) {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
-							}
-							else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit>().player == player) {
+
+								ui.AddToInfoPanel (selectedBuildingGroup);
+							} else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit> ().player == player) {
 								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
 								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
+
+								ui.AddToInfoPanel (selectedUnitGroup);
 							}
+						}
+					} else if (hitInfo.collider.gameObject.GetComponent<Resource> () != null) {
+						// clicked on resource
+						Debug.Log("Clicked on Resource");
+						Resource selectableObject = hitInfo.collider.gameObject.GetComponent<Resource> ();
+						if (selectableObject.selectionCircle == null) {
+							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
+							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
+							selectableObject.selectionCircle.transform.SetParent (selectableObject.transform, false);
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (90, 0, 0);
+
+							selectedResource = selectableObject;
+							ui.AddToInfoPanel (selectableObject);
 						}
 					}
 				}
+
 			}
-            	
 			if (selectedUnitGroup != null && selectedUnitGroup.IsEmpty())
-            		Destroy(selectedUnitGroup.gameObject);
+            	Destroy(selectedUnitGroup.gameObject);
 			
 			if (selectedBuildingGroup != null && selectedBuildingGroup.IsEmpty())
 				Destroy(selectedBuildingGroup.gameObject);
+
             /*
 			var sb = new StringBuilder();
 			sb.AppendLine( string.Format( "Selecting [{0}] Objects", selectedObjects.Count ) );
@@ -133,7 +168,7 @@ public class SelectionComponent : MonoBehaviour {
 			Interactable interactable;
 			if (hitInfo.collider != null)
 			{
-				interactable = hitInfo.collider.GetComponent<Interactable>();
+				interactable = hitInfo.collider.GetComponent<InteractableLink>().getInteractable();
 				if (interactable != null) {
 					if (selectedUnitGroup != null) {
 						InteractionSetter (interactable, hitInfo.point);
