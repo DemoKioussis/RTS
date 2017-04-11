@@ -18,9 +18,15 @@ public class SelectionComponent : MonoBehaviour {
 	public BuildingGroup selectedBuildingGroup;
 	public UnitGroup selectedUnitGroupPrefab;
 	public BuildingGroup selectedBuildingGroupPrefab;
+    PlayerContext player;
 
 	bool previousInputLeftClick;
 	Vector3 clickPosition;
+
+    void Awake()
+    {
+        player = GetComponentInParent<PlayerContext>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -28,15 +34,13 @@ public class SelectionComponent : MonoBehaviour {
 		// If we press the left mouse button, begin selection and remember the location of the mouse
 		if( Input.GetMouseButtonDown( 0 ) )
 		{
-            if (selectedUnitGroup != null && !selectedUnitGroup.isActivated())
+			if (selectedUnitGroup != null && !selectedUnitGroup.isActivated())
                 Destroy(selectedUnitGroup.gameObject);
 
             clickPosition = Input.mousePosition;
 
-		//	if (selectedUnitGroup != null)
-		//		Destroy(selectedUnitGroup.gameObject);
 			if (selectedBuildingGroup != null)
-				Destroy(selectedBuildingGroup.gameObject);
+				Destroy (selectedBuildingGroup.gameObject);
 
 			selectedUnits = new List<Unit>();
 			selectedBuildings = new List<Building>();
@@ -54,8 +58,6 @@ public class SelectionComponent : MonoBehaviour {
 				}
 			}
 
-			Debug.Log (selectedBuildingGroup.rtsObjects);
-
 		}
 
 		// If we let go of the left mouse button, end selection
@@ -72,11 +74,11 @@ public class SelectionComponent : MonoBehaviour {
 							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject>().SetSize(selectableObject.getModel().bounds);
 							selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
 							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
-							if (selectableObject.GetComponent<Building> () != null) {
+							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building>().player == player) {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
 							}
-							else if (selectableObject.GetComponent<Unit> () != null) {
+							else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit>().player == player) {
 								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
 								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
 							}
@@ -95,11 +97,11 @@ public class SelectionComponent : MonoBehaviour {
 							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel().bounds);
 							selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
 							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
-							if (selectableObject.GetComponent<Building> () != null) {
+							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building>().player == player) {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
 							}
-							else if (selectableObject.GetComponent<Unit> () != null) {
+							else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit>().player == player) {
 								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
 								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
 							}
@@ -107,9 +109,12 @@ public class SelectionComponent : MonoBehaviour {
 					}
 				}
 			}
-            	if (selectedUnitGroup != null && selectedUnitGroup.IsEmpty())
+            	
+			if (selectedUnitGroup != null && selectedUnitGroup.IsEmpty())
             		Destroy(selectedUnitGroup.gameObject);
-
+			
+			if (selectedBuildingGroup != null && selectedBuildingGroup.IsEmpty())
+				Destroy(selectedBuildingGroup.gameObject);
             /*
 			var sb = new StringBuilder();
 			sb.AppendLine( string.Format( "Selecting [{0}] Objects", selectedObjects.Count ) );
@@ -130,7 +135,6 @@ public class SelectionComponent : MonoBehaviour {
 			{
 				interactable = hitInfo.collider.GetComponent<Interactable>();
 				if (interactable != null) {
-					Debug.Log("Interacted with: " + interactable.name + " type: " + interactable.getInteractionType());
 					if (selectedUnitGroup != null) {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedUnitGroup.InteractWith (interactable);
@@ -139,6 +143,7 @@ public class SelectionComponent : MonoBehaviour {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedBuildingGroup.InteractWith (interactable);
 					}
+					Debug.Log("Interacted with: " + interactable.name + " type: " + interactable.getInteractionType());
 				}
 			}
 		}

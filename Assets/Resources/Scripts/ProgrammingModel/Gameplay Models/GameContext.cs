@@ -18,9 +18,9 @@ public class GameContext : MonoBehaviour {
 	public GameObject mapPrefab;
 	public PrefabDatabase prefabs;
 
-	public Unit[] activeUnits;
-	public Building[] activeBuildings;
-	public Resource[] activeResources;
+	public List<Unit> activeUnits;
+	public List<Building> activeBuildings;
+	public List<Resource> activeResources;
 
 	public GameMap map;
 	// Use this for initialization

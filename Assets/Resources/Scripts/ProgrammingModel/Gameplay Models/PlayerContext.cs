@@ -15,6 +15,7 @@ public class PlayerContext : MonoBehaviour {
 
 	public PlayerMap playerMap;
 	public GameObject inputManager;
+	public GameObject selectionManager;
 	public Strategy strategy;
 
 	public int glueQuantity;
@@ -71,7 +72,8 @@ public class PlayerContext : MonoBehaviour {
 			}
 
 		if (townCenter != null) {
-			industrialCenter = RTSObject.InstantiatePlayableObject (townCenter, new Vector3(spawnPoints[index].x, 0, spawnPoints[index].z), transform).GetComponent<IndustrialCenter>();
+			industrialCenter = townCenter.GetComponent<RTSObject>().InstantiatePlayableObject (new Vector3(spawnPoints[index].x, 0, spawnPoints[index].z), transform).GetComponent<IndustrialCenter>();
+			industrialCenter.buildings = updatedPrefabs.buildingPrefabs;
 			industrialCenter.SetToAwake ();
 		}
 	}
@@ -84,7 +86,7 @@ public class PlayerContext : MonoBehaviour {
 
 		// SpawnRandomUnits ();
 
-		// strategy.RealizeStrategy ();
+		 strategy.RealizeStrategy ();
 	}
 
 	public void Init(int playerId, int teamId, bool isAI, bool fogOfWar, bool explored)
@@ -99,10 +101,11 @@ public class PlayerContext : MonoBehaviour {
 		else {
 			// is a player
 			strategy = new PlayerStrategy (this);
+			Instantiate (selectionManager, transform);
 			Instantiate (inputManager, transform);
 		}
 
-		switch (this.teamId) {
+		switch (this.playerId) {
 		case 0:
 			playerColor = new Color (0, 0, 255);
 			break;
@@ -117,13 +120,17 @@ public class PlayerContext : MonoBehaviour {
 		// To do: Make sure that player is still playable. If not, destroy
 	}
 
-	void SpawnRandomUnits()
+	public void Buy(RTSObject entity)
 	{
-		if (Random.Range (0.0f, 1.0f) <= spawnProbability) {
-			GameObject playableObject = updatedPrefabs.unitPrefabs [Random.Range (0, updatedPrefabs.unitPrefabs.Length)];
-			Vector3 position = new Vector3 (Random.Range (-5.0f, 5.0f), 0, Random.Range(-5.0f, 5.0f));
-			RTSObject.InstantiatePlayableObject (playableObject, position, transform);
-//			activeUnits.Add(RTSObject.InstantiatePlayableObject (playableObject, position, transform).GetComponent<Unit>());
+		glueQuantity -= entity.stats.glueCost;
+		paperQuantity -= entity.stats.paperCost;
+	}
+
+	public void Sell(RTSObject entity)
+	{
+		if (entity != null) {
+			glueQuantity += entity.stats.glueCost;
+			paperQuantity += entity.stats.paperCost;
 		}
 	}
 }

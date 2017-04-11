@@ -38,7 +38,6 @@ public class BuildingGroup : RTSObjectGroup {
 
     public override void buildingInteraction(Building b) { }
     public override void positionInteraction(MapPos p) {
-		Debug.Log (rtsObjects.Count);
         foreach (Building bldg in rtsObjects)
         {
 			bldg.SetSpawnPointAs (p.getPosition());

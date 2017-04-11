@@ -7,7 +7,6 @@ public class TrainingBuilding : Building{
 	List<Stub> stubPrefabs = new List<Stub>();
 
 	public Unit unit;
-	public PlayerContext player;
 	public float yOffset = 0.25f;
 	public int unitIndex;
 
@@ -18,7 +17,6 @@ public class TrainingBuilding : Building{
 	}
 
 	void Start(){
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext>();
 		unit = player.updatedPrefabs.unitPrefabs [unitIndex].GetComponent<Unit>();
 	}
 
@@ -27,13 +25,12 @@ public class TrainingBuilding : Building{
 	{
 		if (awake)
 		{
-			UpdateTime ();
+			UpdateTime (); // increase game time
 			if (unitReadyToGo () && unit.CheckCost()) 
 			{
 				// Debug.Log("Building is awake");
 				SpawnUnit (unit);
-				unit.RemovePlayerResourceQuantity ();
-				player.population++;
+				player.Buy (unit);
 			}
 		}
 	}
@@ -46,9 +43,12 @@ public class TrainingBuilding : Building{
 
 	public void SpawnUnit(Unit unit)
 	{
+		player.population++; // increase population
+
 		float z = transform.position.z - getModel ().bounds.size.z / 2 - 0.5f - 1f;
 		Vector3 vec = new Vector3 (transform.position.x, transform.position.y, z);
-		GameObject unitObject = InstantiatePlayableObject (unit.gameObject, vec, player.transform);
+		GameObject unitObject = unit.InstantiatePlayableObject (vec, player.transform);
+
 		if (spawnPointSet) 
 		{
 			unitObject.GetComponent<Unit> ().InteractWith (GetSpawnPoint());

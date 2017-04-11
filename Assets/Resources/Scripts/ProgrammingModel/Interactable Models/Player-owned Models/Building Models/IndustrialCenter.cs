@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IndustrialCenter : ResourceBuilding {
+public class IndustrialCenter : Building {
 
-	private GameObject[] buildings;
+	public GameObject[] buildings;
 
 	private CursorComponent cursor;
 
 	void Awake(){
-		buildings = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerContext> ().updatedPrefabs.buildingPrefabs;
 		cursor = GameObject.FindGameObjectWithTag ("InputManager").GetComponent<CursorComponent>();
 	}
 
@@ -31,12 +30,25 @@ public class IndustrialCenter : ResourceBuilding {
 	public void CreateNewBuilding(char keyInput){
 		int index = int.Parse (keyInput + "");
 
-		if (index >= 0 && index < buildings.Length && buildings[index].GetComponent<RTSObject>().CheckCost()) {
+		RTSObject newObj = buildings [index].GetComponent<RTSObject> ();
+
+		if (cursor.currentRTSObject != null) {
+			// object on cursor
+			if (cursor.currentRTSObject.GetComponent<Building> () != null) {
+				// object is a building
+				if (RTSObject.compareRTSObject (cursor.currentRTSObject, newObj)) {
+					this.CancelAction ();
+				}
+			}
+		}
+
+		if (index >= 0 && index < buildings.Length && newObj.CheckCost()) {
 			cursor.SpawnObjectOnCursor (buildings [index]);
 		}
 	}
 
 	public void CancelAction(){
+		player.Sell(cursor.currentRTSObject);
 		cursor.CancelAction ();
 	}
 

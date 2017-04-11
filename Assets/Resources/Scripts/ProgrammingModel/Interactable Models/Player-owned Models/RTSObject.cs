@@ -34,13 +34,8 @@ public abstract class RTSObject : Interactable {
         targetInteraction = t;
     }
 
-	public bool CheckCost(){
+	public virtual bool CheckCost(){
 		return player.glueQuantity >= stats.glueCost && player.paperQuantity >= stats.paperCost;
-	}
-
-	public void RemovePlayerResourceQuantity(){
-		player.glueQuantity -= stats.glueCost;
-		player.paperQuantity -= stats.paperCost;
 	}
 
     public override void InteractWith(Interactable i)
@@ -70,10 +65,11 @@ public abstract class RTSObject : Interactable {
 		stats = otherObject.stats;
 	}
 		
-	public static GameObject InstantiatePlayableObject(GameObject playableObject, Vector3 position, Transform parent)
+	public GameObject InstantiatePlayableObject(Vector3 position, Transform parent)
 	{
-		GameObject output = Instantiate (playableObject, position, Quaternion.identity, parent);
-		output.GetComponent<RTSObject> ().player = playableObject.GetComponent<RTSObject> ().player;
+		GameObject output = Instantiate (gameObject, position, Quaternion.identity, parent);
+		output.GetComponent<RTSObject> ().player = player;
+		output.GetComponent<RTSObject> ().player.Buy (output.GetComponent<RTSObject> ());
 		//output.GetComponent<RTSObject> ().ReplaceStatsReferences (playableObject.GetComponent<RTSObject> ());
 		output.GetComponent<RTSObject> ().getModel().enabled = true;
 
@@ -88,6 +84,39 @@ public abstract class RTSObject : Interactable {
 		return output;
 	}
 
+	public static void RemovePlayableObject(RTSObject rtsObject) {
+		if (rtsObject.GetComponent<Unit> ()) {
+			Unit unit = rtsObject.GetComponent<Unit> ();
+			unit.player.activeUnits.Remove (unit);
+		} else if (rtsObject.GetComponent<Building> ()) {
+			Building bldg = rtsObject.GetComponent<Building> ();
+			bldg.player.activeBuildings.Remove (bldg);
+		}
+	}
+
+	public static bool compareRTSObject(RTSObject current, RTSObject next){
+		if(current == null || next == null){
+			return false;
+		}
+
+		// check if it is a building
+		Building bldg1 = current.GetComponent<Building> ();
+		Building bldg2 = next.GetComponent<Building> ();
+
+		if (bldg1.getBuildingType () == bldg2.getBuildingType ()) {
+			// same building type
+
+			if (bldg1.GetComponent<TrainingBuilding> () != null) {
+				// both are training buldings, check if they have the same unitIndex
+				return bldg1.GetComponent<TrainingBuilding>().unitIndex != bldg2.GetComponent<TrainingBuilding>().unitIndex;
+			}
+				
+			return false;
+		}
+
+		return true;
+	}
+
 	public void CannotBePlaced(){
 		objectIsColliding = true;
 	}
@@ -95,6 +124,8 @@ public abstract class RTSObject : Interactable {
 	public void CanBePlaced(){
 		objectIsColliding = false;
 	}
+
+	public virtual void Destroy() {}
 
     public MeshRenderer getModel() {
 		if (model == null) {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CursorComponent : MonoBehaviour {
 
-	private RTSObject currentRTSObject;
+	public RTSObject currentRTSObject;
 
 	private Renderer gameObjectRenderer;
 	private Color initialColor;
@@ -82,21 +82,14 @@ public class CursorComponent : MonoBehaviour {
 	}
 
 	public void SpawnObjectOnCursor(GameObject nextRTSObject){
-
-		if(compareRTSObject(currentRTSObject, nextRTSObject.GetComponent<RTSObject>())){
-			CancelAction ();
-		}
-
 		if (currentRTSObject == null) {
 			// User is not currently placing an object
-			GameObject tempObj = RTSObject.InstantiatePlayableObject(nextRTSObject, transform.position, transform); // get reference to the object
+			GameObject tempObj = nextRTSObject.GetComponent<RTSObject>().InstantiatePlayableObject(transform.position, transform); // get reference to the object
 
 			currentRTSObject = tempObj.GetComponent<RTSObject> ();
 
-			currentRTSObject.isBeingPlaced = true;
-
 			// get the renderer of the object
-			gameObjectRenderer = tempObj.GetComponent<RTSObject> ().getModel();
+			gameObjectRenderer = currentRTSObject.getModel();
 
 			// get the initial property colors of the object
 			initialColor = gameObjectRenderer.material.color; 
@@ -105,29 +98,23 @@ public class CursorComponent : MonoBehaviour {
 			gameObjectRenderer.material.color = colorOfNoCollision;
 
 			currentRTSObject.CanBePlaced ();
+
+			currentRTSObject.isBeingPlaced = true;
+
 		}
 	}
 
 	public void CancelAction(){
-		Destroy(currentRTSObject.gameObject);
+		if (currentRTSObject != null) {
+			// Remove from the list of active objects
+			RTSObject.RemovePlayableObject (currentRTSObject);
 
-		currentRTSObject = null;
-	}
+			// Destroy it in the game
+			Destroy (currentRTSObject.gameObject);
 
-	private bool compareRTSObject(RTSObject current, RTSObject next){
-		if(current == null || next == null){
-			return false;
+			// set the reference to null
+			currentRTSObject = null;
 		}
-
-		// check if it is a building
-		Building bldg1 = current.GetComponent<Building> ();
-		Building bldg2 = next.GetComponent<Building> ();
-
-		if (bldg1.getBuildingType () == bldg2.getBuildingType ()) {
-			return false;
-		}
-
-		return true;
 	}
 
 	private void SetGameObjectTo(Vector3 position){
@@ -147,11 +134,8 @@ public class CursorComponent : MonoBehaviour {
 			if (tempBldg.getBuildingType () == BUILDING_TYPE.RESOURCE) 
 			{
 				// object is a resource building
-				tempBldg.transform.position = tempBldg.GetPositionOfResource ();
-				// disable the resource collider
-				tempBldg.GetComponent<ResourceBuilding> ().DisableResourceCollider ();
+				tempBldg.SetToResource ();
 			}
-			tempBldg.RemovePlayerResourceQuantity ();
 			tempBldg.SetToAwake ();
 		} 
 		else 

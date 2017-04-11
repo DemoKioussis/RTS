@@ -83,8 +83,8 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 30
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -134,7 +134,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4193414593395086, guid: 855fc263fca3eb74584483c6a53c0348, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1970701683590384, guid: 855fc263fca3eb74584483c6a53c0348, type: 2}
       propertyPath: m_TagString
@@ -144,7 +144,7 @@ Prefab:
         type: 2}
       propertyPath: mapPrefab
       value: 
-      objectReference: {fileID: 1277172318468260, guid: 8a58fb6f295b0418fab4afafeccc585f,
+      objectReference: {fileID: 1446915279116254, guid: 8a58fb6f295b0418fab4afafeccc585f,
         type: 2}
     - target: {fileID: 114269166190658114, guid: 855fc263fca3eb74584483c6a53c0348,
         type: 2}
@@ -160,7 +160,8 @@ Prefab:
         type: 2}
       propertyPath: map
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 114746410272989538, guid: 8a58fb6f295b0418fab4afafeccc585f,
+        type: 2}
     - target: {fileID: 114269166190658114, guid: 855fc263fca3eb74584483c6a53c0348,
         type: 2}
       propertyPath: playerType.Array.data[1]
@@ -232,119 +233,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1294453703}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1679681425
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1679681430}
-  - component: {fileID: 1679681429}
-  - component: {fileID: 1679681428}
-  - component: {fileID: 1679681427}
-  - component: {fileID: 1679681426}
-  - component: {fileID: 1679681431}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &1679681426
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1679681425}
-  m_Enabled: 1
---- !u!124 &1679681427
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1679681425}
-  m_Enabled: 1
---- !u!92 &1679681428
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1679681425}
-  m_Enabled: 1
---- !u!20 &1679681429
-Camera:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1679681425}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967293
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
---- !u!4 &1679681430
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1679681425}
-  m_LocalRotation: {x: -0.47662383, y: 0.00052463554, z: -0.0002845561, w: -0.87910724}
-  m_LocalPosition: {x: -0.066618115, y: 8.1403265, z: -6.3723955}
+  m_LocalPosition: {x: -66.4, y: 9.5, z: -110.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1679681431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1679681425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d79dd01b1bc92401ca2e924719474624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 3584
-  selectionCirclePrefab: {fileID: 166266, guid: b95631d263a174465a52d446a85dace8,
-    type: 2}
-  selectedUnitGroup: {fileID: 0}
-  selectedBuildingGroup: {fileID: 0}
-  selectedUnitGroupPrefab: {fileID: 114209035315617428, guid: 8ed1c8b142f734a35a2066bd2a06f3ae,
-    type: 2}
-  selectedBuildingGroupPrefab: {fileID: 114868029730161312, guid: d08ca96e112e44c5cabb17d5610df379,
-    type: 2}
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
