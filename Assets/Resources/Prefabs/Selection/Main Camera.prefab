@@ -38,8 +38,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592148528117964}
-  m_LocalRotation: {x: -0.0050742836, y: -0.9356907, z: 0.3525279, w: -0.013468269}
-  m_LocalPosition: {x: 8.067568, y: 2.6480408, z: 11.025211}
+  m_LocalRotation: {x: -0.32829946, y: 0.0007157922, z: -0.00024675392, w: -0.9445734}
+  m_LocalPosition: {x: 0.36139885, y: 33.25374, z: -45.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 3584
+    m_Bits: 11776
   selectionCirclePrefab: {fileID: 166266, guid: b95631d263a174465a52d446a85dace8,
     type: 2}
   selectedUnitGroup: {fileID: 0}
@@ -129,6 +129,8 @@ MonoBehaviour:
   movementSpeed: 0.1
   rotationSpeed: 4
   smoothness: 0.85
+  scrollSpeedX: 50
+  scrollSpeedY: 50
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!124 &124579552199146406
 Behaviour:
