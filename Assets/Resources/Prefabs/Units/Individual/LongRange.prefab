@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909318969148630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1000, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4423019377906876}
@@ -232,11 +232,11 @@ MonoBehaviour:
   infoPanelPrefab: {fileID: 1617241690816232, guid: bbe5fbaae305743a2b38a20d9e24157a,
     type: 2}
   stats:
-    viewRange: 0
-    maxHitpoints: 0
+    viewRange: 2
+    maxHitpoints: 5
     hitpoints: 5
     influenceMultiplier: 0
-    paperCost: 20
+    paperCost: 30
     glueCost: 60
   player: {fileID: 0}
   objectIsColliding: 0
@@ -245,12 +245,12 @@ MonoBehaviour:
   selectionCircle: {fileID: 0}
   unitStats:
     moveSpeed: 2
-    trainingTime: 8
+    trainingTime: 40
     populationCost: 2
   militaryStats:
-    minAttackRange: 0
-    maxAttackRange: 10
-    attackStrength: 3
+    minAttackRange: 1
+    maxAttackRange: 2
+    attackStrength: 2
     attackRate: 5
 --- !u!114 &114194836389441868
 MonoBehaviour:

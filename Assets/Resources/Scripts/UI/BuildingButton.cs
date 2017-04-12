@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingButton : MonoBehaviour {
 
 	private SelectionComponent selection;
 
 	private BuildingGroup selectedBuildingGroup;
+
+	public ButtonManager buttonManager;
 
 	// Use this for initialization
 	void Start () {
@@ -35,5 +38,15 @@ public class BuildingButton : MonoBehaviour {
 		{
 			selectedBuildingGroup.SetToSleep ();
 		}
+	}
+
+	public void SetClicked()
+	{
+		GetComponent<Image> ().color = Color.green;
+	}
+
+	public void SetUnclick()
+	{
+		GetComponent<Image> ().color = Color.white;
 	}
 }
