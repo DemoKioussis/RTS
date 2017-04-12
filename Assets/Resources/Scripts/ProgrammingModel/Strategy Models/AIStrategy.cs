@@ -51,9 +51,9 @@ public class AIStrategy : Strategy {
 		for (int i = 0; i < tasks.Count; i++) {
 			bool wasFulfilled = true;
 			if (tasks [i].activity == Activity.MAKEGLUE) {
-				wasFulfilled = ManageGlue ();
+				wasFulfilled = ManageResource ("Glue");
 			} else if (tasks [i].activity == Activity.MAKEPAPER) {
-				wasFulfilled = ManagePaper ();
+				wasFulfilled = ManageResource ("Paper");
 			} else if (tasks [i].activity == Activity.MAKESHORTRANGE) {
 				wasFulfilled = ManageShortRange (tasks[i].value);
 			} else if (tasks [i].activity == Activity.MAKELONGRANGE) {
@@ -104,12 +104,12 @@ public class AIStrategy : Strategy {
 
 	float PaperResourceHeuristic()
 	{
-		return 100.0f / (paperGatheringRate * paperGatheringRate + paperQuantityInStock + 1);
+		return 100.0f / (Mathf.Pow(paperGatheringRate * 10, 2) + paperQuantityInStock + 1);
 	}
 
 	float GlueResourceHeuristic ()
 	{
-		return 100.0f / (glueGatheringRate * glueGatheringRate + paperQuantityInStock + 1);
+		return 100.0f / (Mathf.Pow(glueGatheringRate * 10, 2) + paperQuantityInStock + 1);
 	}
 
 	float ShortRangeHeuristic()
@@ -201,14 +201,14 @@ public class AIStrategy : Strategy {
 		}
 	}
 
-	Vector3 FindClosestResource(string resourceType)
+	Resource FindClosestResource(string resourceType)
 	{
 		List<Resource> resources = GameContext.currentGameContext.activeResources;
 		Resource closestResource = null;
 		float minDistance = 100000000000000;
 
 		for (int i = 0; i < resources.Count; i++) {
-			if (resources [i].gameObject.tag == resourceType) {
+			if (resources [i].gameObject.tag == resourceType && resources[i].building == null) {
 				float distance = (resources [i].transform.position - player.industrialCenter.transform.position).magnitude;
 				if (distance < minDistance) {
 					minDistance = distance;
@@ -216,31 +216,24 @@ public class AIStrategy : Strategy {
 				}
 			}
 		}
-
-		if (closestResource != null)
-			return closestResource.transform.position;
-		else
-			return new Vector3(0, 0, 0);
+			
+		return closestResource;
 	}
 
-	bool ManagePaper()
+	bool ManageResource(string resType)
 	{
 		// return the Resource, it would be easier for you because I set up a function to set the resource from the building
-		Vector3 point = FindClosestResource ("Paper");
+		Resource resource = FindClosestResource (resType);
 
-		// The function will also associate the building to the resource
-		// example: building.AssociateToResource(Resource res) --> does everything (assign building to resource and resource to building)
-
-		return MakeNewBuilding<ResourceBuilding> (point);
-
-		// WE NEED TO SET THE RESOURCE OF EACH OF THIS! KEEP IN MIND!
-	}
-
-	bool ManageGlue()
-	{
-		Vector3 point = FindClosestResource ("Glue");
-		return MakeNewBuilding<ResourceBuilding> (point);
-		return true;
+		if (resource != null) {
+			ResourceBuilding rB = MakeNewBuilding<ResourceBuilding> (resource.transform.position);
+			if (rB != null) {
+				rB.AssociateToResource (resource);
+				return true;
+			} else
+				return false;
+		} else
+			return false;
 	}
 
 	bool ManageShortRange(float value)
@@ -302,7 +295,7 @@ public class AIStrategy : Strategy {
 
 		float angleDiff = 2 * Mathf.PI / resolution;
 
-		for(int j = 0; j < 4; j++)
+		for(int j = 0; j < 10; j++)
 			for (int i = 0; i < resolution; i++) {
 				Vector3 pos = (player.industrialCenter.transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
 				Debug.DrawLine (player.industrialCenter.transform.position, pos, Color.red, 10);
