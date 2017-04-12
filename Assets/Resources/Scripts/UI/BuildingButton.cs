@@ -27,8 +27,6 @@ public class BuildingButton : MonoBehaviour {
 		if (selectedBuildingGroup != null) 
 		{
 			selectedBuildingGroup.SetToAwake ();
-			buttonManager.buttonAwake.GetComponent<BuildingButton> ().SetClicked ();
-			buttonManager.buttonSleep.GetComponent<BuildingButton> ().SetUnclick ();
 		}
 	}
 
@@ -39,8 +37,6 @@ public class BuildingButton : MonoBehaviour {
 		if (selectedBuildingGroup != null) 
 		{
 			selectedBuildingGroup.SetToSleep ();
-			buttonManager.buttonAwake.GetComponent<BuildingButton> ().SetUnclick ();
-			buttonManager.buttonSleep.GetComponent<BuildingButton> ().SetClicked ();
 		}
 	}
 
