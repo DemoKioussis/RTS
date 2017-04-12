@@ -66,7 +66,8 @@ public class SelectionComponent : MonoBehaviour {
 			}
 
 			if (selectedResource != null) {
-				Destroy(selectedResource.selectionCircle.gameObject);
+				Destroy(selectedResource.selectionCircle);
+				selectedResource.selectionCircle = null;
 			}
 
 			ui.ClearInfoPanel ();
@@ -109,8 +110,9 @@ public class SelectionComponent : MonoBehaviour {
 			else {
 				RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
 				if (hitInfo.collider != null) {
-					if (hitInfo.collider.gameObject.GetComponent<RTSObject> () != null) {
-						RTSObject selectableObject = hitInfo.collider.gameObject.GetComponent<RTSObject> ();
+					if (hitInfo.collider.gameObject.GetComponentInParent<RTSObject> () != null) {
+						// structure of units have been changed, collider is now located in the selection target of the model
+						RTSObject selectableObject = hitInfo.collider.gameObject.GetComponentInParent<RTSObject> ();
 						if (selectableObject.selectionCircle == null) {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
 							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
@@ -121,7 +123,9 @@ public class SelectionComponent : MonoBehaviour {
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
 
 								ui.AddToInfoPanel (selectableObject); 
-							} else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit> ().player == player) {
+
+							} 
+							else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit> ().player == player) {
 								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
 								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
 

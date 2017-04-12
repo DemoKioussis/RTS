@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4889567938745956}
-  - component: {fileID: 65405184429216822}
   - component: {fileID: 208682175949583008}
   - component: {fileID: 114230253866852286}
   - component: {fileID: 114639570120121158}
@@ -40,6 +39,7 @@ GameObject:
   - component: {fileID: 4733167063634844}
   - component: {fileID: 23203523227314718}
   - component: {fileID: 33155471450712592}
+  - component: {fileID: 65111076780714318}
   m_Layer: 10
   m_Name: model
   m_TagString: TownCenter
@@ -112,12 +112,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664104818636626}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65405184429216822
+--- !u!65 &65111076780714318
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1562591949264656}
+  m_GameObject: {fileID: 1664104818636626}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
