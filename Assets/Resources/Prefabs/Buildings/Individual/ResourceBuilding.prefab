@@ -54,9 +54,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4425673127613658}
   - component: {fileID: 54503101019123658}
-  - component: {fileID: 208187411288077394}
   - component: {fileID: 114114409178643154}
-  - component: {fileID: 114347873008499604}
+  - component: {fileID: 114770049565579030}
   m_Layer: 10
   m_Name: ResourceBuilding
   m_TagString: Untagged
@@ -75,7 +74,6 @@ GameObject:
   - component: {fileID: 33635667129793050}
   - component: {fileID: 65569373839348866}
   - component: {fileID: 23167184050556890}
-  - component: {fileID: 114326383880627586}
   m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
@@ -520,6 +518,7 @@ MonoBehaviour:
     gatheringTime: 2
     glueReturn: 1
     paperReturn: 2
+--- !u!114 &114770049565579030
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -530,17 +529,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdc615a7781a4a24a0880f96a0e04ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1153354502849054}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
