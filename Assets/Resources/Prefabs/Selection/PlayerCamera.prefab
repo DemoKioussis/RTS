@@ -108,7 +108,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 15872
-  selectionCirclePrefab: {fileID: 166266, guid: b95631d263a174465a52d446a85dace8,
+  selectionCirclePrefab: {fileID: 1505797937451228, guid: b95631d263a174465a52d446a85dace8,
     type: 2}
   selectedUnitGroup: {fileID: 0}
   selectedBuildingGroup: {fileID: 0}
