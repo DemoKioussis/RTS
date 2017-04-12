@@ -37,7 +37,7 @@ public class KeyboardComponent : MonoBehaviour {
 					UnitKeyControls.ActivateKeyboardAction (selectedUnitGroup, Input.inputString.ToCharArray () [0]);
 				}
 
-				selection.ClearUI ();
+				//selection.ClearUI ();
 			}
 		}
 	}

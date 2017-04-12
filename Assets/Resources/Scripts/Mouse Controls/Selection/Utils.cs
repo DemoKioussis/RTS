@@ -39,11 +39,13 @@ public static class Utils {
         Utils.DrawScreenRect( new Rect( rect.xMin, rect.yMax - thickness, rect.width, thickness ), color );
     }
 
-    public static Rect GetScreenRect( Vector3 screenPosition1, Vector3 screenPosition2 )
+	public static Rect GetScreenRect( Vector3 screenPosition1, Vector3 screenPosition2, Collider2D uiPanel )
     {
         // Move origin from bottom left to top left
         screenPosition1.y = Screen.height - screenPosition1.y;
+		screenPosition2.y = Mathf.Clamp (screenPosition2.y, uiPanel.bounds.max.y, Screen.height);
         screenPosition2.y = Screen.height - screenPosition2.y;
+
         // Calculate corners
         var topLeft = Vector3.Min( screenPosition1, screenPosition2 );
         var bottomRight = Vector3.Max( screenPosition1, screenPosition2 );
