@@ -140,6 +140,7 @@ public class CursorComponent : MonoBehaviour {
 			{
 				// object is a resource building
 				tempBldg.SetToResource ();
+				tempBldg.transform.position = tempBldg.GetPositionOfResource ();
 			}
 			tempBldg.SetToAwake ();
 		} 
