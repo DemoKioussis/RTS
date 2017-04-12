@@ -70,7 +70,7 @@ public class SelectionComponent : MonoBehaviour {
 				selectedResource.selectionCircle = null;
 			}
 
-			ui.ClearInfoPanel ();
+			ClearUI ();
 		}
 
 		// If we let go of the left mouse button, end selection
@@ -100,11 +100,19 @@ public class SelectionComponent : MonoBehaviour {
 				}
 				if (!selectedUnitGroup.IsEmpty ()) 
 				{
-					ui.AddToInfoPanel (selectedUnitGroup);
+					if (selectedUnitGroup.Count() > 1) {
+						ui.AddToInfoPanel (selectedUnitGroup);
+					} else {
+						ui.AddToInfoPanel(selectedUnitGroup.rtsObjects[0]);
+					}
 				} 
 				else if(!selectedBuildingGroup.IsEmpty())
 				{
-					ui.AddToInfoPanel (selectedBuildingGroup);
+					if (selectedBuildingGroup.Count() > 1) {
+						ui.AddToInfoPanel (selectedBuildingGroup);
+					} else {
+						ui.AddToInfoPanel(selectedBuildingGroup.rtsObjects[0]);
+					}
 				}
 			}
 			else {
@@ -212,6 +220,10 @@ public class SelectionComponent : MonoBehaviour {
 		var camera = Camera.main;
 		var viewportBounds = Utils.GetViewportBounds( camera, mousePosition1, Input.mousePosition );
 		return viewportBounds.Contains( camera.WorldToViewportPoint( gameObject.transform.position ) );
+	}
+
+	public void ClearUI(){
+		ui.ClearInfoPanel ();
 	}
 
 	void OnGUI()
