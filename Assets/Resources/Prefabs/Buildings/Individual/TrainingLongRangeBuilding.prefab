@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114759623769977600}
   m_Layer: 10
   m_Name: TrainingLongRangeBuilding
-  m_TagString: Untagged
+  m_TagString: LongRangeBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
-    paperCost: 10
-    glueCost: 30
+    paperCost: 100
+    glueCost: 180
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0

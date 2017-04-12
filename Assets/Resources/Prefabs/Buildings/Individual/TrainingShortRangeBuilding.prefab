@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114946821121906948}
   m_Layer: 10
   m_Name: TrainingShortRangeBuilding
-  m_TagString: Untagged
+  m_TagString: ShortRangeBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,8 +160,8 @@ MonoBehaviour:
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
-    paperCost: 30
-    glueCost: 10
+    paperCost: 50
+    glueCost: 60
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
@@ -172,6 +172,7 @@ MonoBehaviour:
   unit: {fileID: 0}
   yOffset: 0.25
   unitIndex: 1
+  progress: 0
   mapPosPrefab: {fileID: 1412890718017786, guid: d90e21a17de674f28b3de4b3bb9bf2d6,
     type: 2}
 --- !u!114 &114337268938526732

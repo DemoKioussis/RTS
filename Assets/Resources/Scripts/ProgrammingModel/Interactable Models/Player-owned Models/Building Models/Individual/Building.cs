@@ -108,6 +108,16 @@ public abstract class Building : RTSObject {
 		Destroy (this.gameObject);
 	}
 
+	public override GameObject InstantiatePlayableObject(Vector3 position, Transform parent)
+	{
+		GameObject output = base.InstantiatePlayableObject (position, parent);
+
+		Building bldg = output.GetComponent<Building> ();
+		bldg.player.activeBuildings.Add (bldg);
+
+		return output;
+	}
+
     public override INTERACTION_TYPE getInteractionType()
     {
         return INTERACTION_TYPE.BUILDING;

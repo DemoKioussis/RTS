@@ -87,7 +87,7 @@ public class PlayerContext : MonoBehaviour {
 
 		// SpawnRandomUnits ();
 
-		 strategy.RealizeStrategy ();
+		strategy.RealizeStrategy ();
 	}
 
 	public void Init(int playerId, int teamId, bool isAI, bool fogOfWar, bool explored)
@@ -126,6 +126,10 @@ public class PlayerContext : MonoBehaviour {
 	{
 		glueQuantity -= entity.stats.glueCost;
 		paperQuantity -= entity.stats.paperCost;
+
+		Unit unit = entity.GetComponent<Unit> ();
+		if (unit != null)
+			population += unit.unitStats.populationCost;
 	}
 
 	public void Sell(RTSObject entity)
@@ -134,5 +138,10 @@ public class PlayerContext : MonoBehaviour {
 			glueQuantity += entity.stats.glueCost;
 			paperQuantity += entity.stats.paperCost;
 		}
+	}
+
+	public void TakeLosses(int pop)
+	{
+		population -= pop;
 	}
 }

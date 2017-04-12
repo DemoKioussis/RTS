@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 54010832629035568}
   m_Layer: 9
   m_Name: ShortRange
-  m_TagString: Untagged
+  m_TagString: ShortRangeUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,8 +224,8 @@ MonoBehaviour:
     maxHitpoints: 0
     hitpoints: 5
     influenceMultiplier: 0
-    paperCost: 0
-    glueCost: 0
+    paperCost: 40
+    glueCost: 10
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0

@@ -10,6 +10,8 @@ public class TrainingBuilding : Building{
 	public float yOffset = 0.25f;
 	public int unitIndex;
 
+	public float progress;
+
 	public GameObject mapPosPrefab;
 
 	void Awake(){
@@ -30,7 +32,6 @@ public class TrainingBuilding : Building{
 			{
 				// Debug.Log("Building is awake");
 				SpawnUnit (unit);
-				player.Buy (unit);
 			}
 		}
 	}
@@ -43,8 +44,6 @@ public class TrainingBuilding : Building{
 
 	public void SpawnUnit(Unit unit)
 	{
-		player.population++; // increase population
-
 		float z = transform.position.z - getModel ().bounds.size.z / 2 - 0.5f - 1f;
 		Vector3 vec = new Vector3 (transform.position.x, transform.position.y, z);
 		GameObject unitObject = unit.InstantiatePlayableObject (vec, player.transform);
@@ -85,6 +84,8 @@ public class TrainingBuilding : Building{
 	}
 
 	private bool unitReadyToGo(){
+		progress = (float)gameTime * 100 / (float)unit.unitStats.trainingTime;
+
 		if (gameTime >= 1.0f && (int)gameTime % (int)unit.unitStats.trainingTime == 0) {
 			gameTime = 0.0f;
 			return true;
