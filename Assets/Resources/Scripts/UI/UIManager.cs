@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour {
 		selectedObjectInfoPanel = (GameObject)Instantiate (infoPanel, Vector3.zero, infoPanel.transform.rotation, hudPanel.transform);
 
 		// I had to hard code this value...
-		selectedObjectInfoPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3 (50, 0, 0);
+		selectedObjectInfoPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3 (100, 0, 0);
 
 		selectedObject = selectedGameObj; // keep track of the object
 
