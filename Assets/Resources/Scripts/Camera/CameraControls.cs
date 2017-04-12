@@ -11,6 +11,8 @@ public class CameraControls : MonoBehaviour
     public float scrollSpeedY = 1.0f;
 	public float offset = 50.0f;
 
+	public float minBoundOffset = 2.8f;
+
     public AnimationCurve speedCurve;
 
     Vector3 targetPosition;
@@ -26,9 +28,15 @@ public class CameraControls : MonoBehaviour
 
 	Vector3 industrialCenterPos;
 
+	GameObject mapPlane;
+	Bounds mapBounds;
+
     // Use this for initialization
     void Start()
     {
+		mapPlane = GameObject.FindGameObjectWithTag ("MapPlane");
+		mapBounds = mapPlane.GetComponent<MeshRenderer> ().bounds;
+
         targetPosition = transform.position;
         targetRotation = transform.rotation;
         targetRotationY = transform.localRotation.eulerAngles.y;
@@ -79,7 +87,8 @@ public class CameraControls : MonoBehaviour
 		else if (mousePosition.y <= (0.0f + offset) || Input.GetKey(KeyCode.S))
 			transform.Translate(Vector3.back * scrollSpeedY * Time.deltaTime, Space.World);
 
-
+		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, mapBounds.min.x - minBoundOffset, mapBounds.max.x), transform.position.y,
+			Mathf.Clamp (transform.position.z, mapBounds.min.z - minBoundOffset, mapBounds.max.z));
     }
     
 
