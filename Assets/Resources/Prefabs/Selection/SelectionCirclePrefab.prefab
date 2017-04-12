@@ -121,5 +121,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedX: 0
-  speedY: 60
-  speedZ: 0
+  speedY: 0
+  speedZ: 60
