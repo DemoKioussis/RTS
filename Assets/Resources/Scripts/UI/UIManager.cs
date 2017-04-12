@@ -42,8 +42,8 @@ public class UIManager : MonoBehaviour {
 
 	public void ClearInfoPanel(){
 		// clear everything
-		if (selectedObject != null) {
-			Destroy (selectedObjectInfoPanel);
+		if (selectedObject != null && selectedObjectInfoPanel != null) {
+			Destroy (selectedObjectInfoPanel.gameObject);
 		}
 		selectedObject = null;
 		selectedObjectInfoPanel = null;
