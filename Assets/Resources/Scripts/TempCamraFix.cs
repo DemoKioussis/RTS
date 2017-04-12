@@ -15,7 +15,9 @@ public class TempCamraFix : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.I))
             z = -speed;
 
-
-        transform.Translate(new Vector3(x, y, z));
+        Quaternion rotation = transform.rotation;
+        transform.rotation = Quaternion.identity;
+        transform.Translate(new Vector3(x, z, y));
+        transform.rotation = rotation;
     }
 }

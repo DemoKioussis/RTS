@@ -185,6 +185,8 @@ public class SelectionComponent : MonoBehaviour {
 					Debug.Log("Interacted with: " + interactable.name + " type: " + interactable.getInteractionType());
 				}
 			}
+
+			isSelecting = false;
 		}
 	}
 
