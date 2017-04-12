@@ -297,7 +297,7 @@ Prefab:
         type: 2}
       propertyPath: mapPrefab
       value: 
-      objectReference: {fileID: 1249076479385878, guid: 8a58fb6f295b0418fab4afafeccc585f,
+      objectReference: {fileID: 1749618608166566, guid: f333fb090e3165e4da65a6d0ec8315ea,
         type: 2}
     - target: {fileID: 114269166190658114, guid: 855fc263fca3eb74584483c6a53c0348,
         type: 2}
@@ -313,7 +313,7 @@ Prefab:
         type: 2}
       propertyPath: map
       value: 
-      objectReference: {fileID: 114770654119288630, guid: 8a58fb6f295b0418fab4afafeccc585f,
+      objectReference: {fileID: 114486531526346226, guid: f333fb090e3165e4da65a6d0ec8315ea,
         type: 2}
     - target: {fileID: 114269166190658114, guid: 855fc263fca3eb74584483c6a53c0348,
         type: 2}
