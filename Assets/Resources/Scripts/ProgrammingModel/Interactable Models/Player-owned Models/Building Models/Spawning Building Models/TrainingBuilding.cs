@@ -10,6 +10,8 @@ public class TrainingBuilding : Building{
 	public float yOffset = 0.25f;
 	public int unitIndex;
 
+	public float progress;
+
 	public GameObject mapPosPrefab;
 
 	void Awake(){
@@ -30,7 +32,6 @@ public class TrainingBuilding : Building{
 			{
 				// Debug.Log("Building is awake");
 				SpawnUnit (unit);
-				player.Buy (unit);
 			}
 		}
 	}
@@ -43,8 +44,6 @@ public class TrainingBuilding : Building{
 
 	public void SpawnUnit(Unit unit)
 	{
-		player.population++; // increase population
-
 		float z = transform.position.z - getModel ().bounds.size.z / 2 - 0.5f - 1f;
 		Vector3 vec = new Vector3 (transform.position.x, transform.position.y, z);
 		GameObject unitObject = unit.InstantiatePlayableObject (vec, player.transform);
@@ -58,6 +57,7 @@ public class TrainingBuilding : Building{
 			SetSpawnPointAs(vec - new Vector3(0, 0, 2 * getModel().bounds.size.z + 0.5f + 1f));
 			// spawn point is not set
 			unitObject.GetComponent<Unit> ().InteractWith (GetSpawnPoint());
+			spawnPointSet = true;
 		}
 	}
 
@@ -67,10 +67,10 @@ public class TrainingBuilding : Building{
 	}
 
 	// Set the spawn point
-	public override void SetSpawnPointAs(Vector3 spawnPosition){
+	public override void SetSpawnPointAs(MapPos spawnPosition){
 		if(base.GetFlagReference() == null){
 			// Debug.Log ("Setting Spawn Point");
-			GameObject flag = (GameObject)Instantiate (base.flagPrefab, spawnPosition, transform.rotation);
+			GameObject flag = (GameObject)Instantiate (base.flagPrefab, spawnPosition.getPosition(), transform.rotation);
 			base.SetFlagReference(flag);
 			base.SetSpawnPointAs (spawnPosition);
 			spawnPointSet = true; // spawn point is set
@@ -84,6 +84,8 @@ public class TrainingBuilding : Building{
 	}
 
 	private bool unitReadyToGo(){
+		progress = (float)gameTime * 100 / (float)unit.unitStats.trainingTime;
+
 		if (gameTime >= 1.0f && (int)gameTime % (int)unit.unitStats.trainingTime == 0) {
 			gameTime = 0.0f;
 			return true;

@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 54010832629035568}
   m_Layer: 9
   m_Name: LongRange
-  m_TagString: Untagged
+  m_TagString: LongRangeUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,13 +230,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
+  infoPanelPrefab: {fileID: 1617241690816232, guid: bbe5fbaae305743a2b38a20d9e24157a,
+    type: 2}
   stats:
     viewRange: 0
     maxHitpoints: 0
     hitpoints: 5
     influenceMultiplier: 0
-    paperCost: 0
-    glueCost: 0
+    paperCost: 20
+    glueCost: 60
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
@@ -245,7 +247,7 @@ MonoBehaviour:
   unitStats:
     moveSpeed: 2
     trainingTime: 8
-    populationCost: 1
+    populationCost: 2
   militaryStats:
     minAttackRange: 0
     maxAttackRange: 10

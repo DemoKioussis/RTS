@@ -29,9 +29,11 @@ public class SelectionComponent : MonoBehaviour {
     void Awake()
     {
         player = GetComponentInParent<PlayerContext>();
-		ui = GetComponentInParent<UIManager> ();
-
     }
+
+	void Start(){
+		ui = GameObject.FindGameObjectWithTag ("UIManager").GetComponent<UIManager> ();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -61,6 +63,10 @@ public class SelectionComponent : MonoBehaviour {
 					Destroy( selectableObject.selectionCircle.gameObject );
 					selectableObject.selectionCircle = null;
 				}
+			}
+
+			if (selectedResource != null) {
+				Destroy(selectedResource.selectionCircle.gameObject);
 			}
 
 			ui.ClearInfoPanel ();
@@ -114,12 +120,12 @@ public class SelectionComponent : MonoBehaviour {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
 
-								ui.AddToInfoPanel (selectedBuildingGroup);
+								ui.AddToInfoPanel (selectableObject); 
 							} else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit> ().player == player) {
 								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
 								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
 
-								ui.AddToInfoPanel (selectedUnitGroup);
+								ui.AddToInfoPanel (selectableObject);
 							}
 						}
 					} else if (hitInfo.collider.gameObject.GetComponent<Resource> () != null) {

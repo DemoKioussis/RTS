@@ -28,6 +28,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1848794179734180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4186838040181808}
+  - component: {fileID: 114606714004650434}
+  - component: {fileID: 135992958190291558}
+  m_Layer: 13
+  m_Name: SelectionTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1909318969148630
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,13 +53,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4463335828916058}
-  - component: {fileID: 135360957961386770}
   - component: {fileID: 195020718062020762}
   - component: {fileID: 114170303354362912}
   - component: {fileID: 54010832629035568}
   m_Layer: 9
   m_Name: ShortRange
-  m_TagString: Untagged
+  m_TagString: ShortRangeUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,6 +80,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4186838040181808
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848794179734180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4463335828916058}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4423019377906876
 Transform:
   m_ObjectHideFlags: 1
@@ -89,6 +118,7 @@ Transform:
   m_Children:
   - {fileID: 4423019377906876}
   - {fileID: 4719042259445186}
+  - {fileID: 4186838040181808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,13 +217,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
+  infoPanelPrefab: {fileID: 1324953949932960, guid: fe305dbaa6db04df2a73702457e11f52,
+    type: 2}
   stats:
     viewRange: 0
     maxHitpoints: 0
     hitpoints: 5
     influenceMultiplier: 0
-    paperCost: 0
-    glueCost: 0
+    paperCost: 40
+    glueCost: 10
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
@@ -227,12 +259,25 @@ MonoBehaviour:
   targetInFireRange: 0
   hasFired: 0
   atTarget: 0
---- !u!135 &135360957961386770
+  lookForTarget: 0
+--- !u!114 &114606714004650434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848794179734180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 114170303354362912}
+--- !u!135 &135992958190291558
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1909318969148630}
+  m_GameObject: {fileID: 1848794179734180}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

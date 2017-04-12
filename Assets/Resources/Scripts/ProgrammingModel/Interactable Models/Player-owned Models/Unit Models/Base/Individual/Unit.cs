@@ -49,6 +49,16 @@ public class Unit : RTSObject {
 		return base.CheckCost () && player.population < player.populationLimit;
 	}
 
+	public override GameObject InstantiatePlayableObject(Vector3 position, Transform parent)
+	{
+		GameObject output = base.InstantiatePlayableObject (position, parent);
+
+		Unit unit = output.GetComponent<Unit> ();
+		unit.player.activeUnits.Add (unit);
+
+		return output;
+	}
+
 	public override void ReplaceStatsReferences(RTSObject otherObject)
 	{
 		base.ReplaceStatsReferences (otherObject);
@@ -74,4 +84,10 @@ public class Unit : RTSObject {
         ((UnitStateMachine)getStateMachine()).getAttackBehaviour().setAttackTarget();
     }
     public override void resourceInteraction(Resource r) { }
+
+	void OnDestroy()
+	{
+		if (player != null)
+			player.TakeLosses (unitStats.populationCost);
+	}
 }

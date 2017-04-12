@@ -8,6 +8,8 @@ public class AIStrategy : Strategy {
 	int glueQuantityInStock;
 	int shortRangeUnits;
 	int longRangeUnits;
+	int shortRangeBuildings;
+	int longRangeBuildings;
 	float paperGatheringRate;
 	float glueGatheringRate;
 	int population;
@@ -55,9 +57,9 @@ public class AIStrategy : Strategy {
 			} else if (tasks [i].activity == Activity.MAKEPAPER) {
 				wasFulfilled = ManageResource ("Paper");
 			} else if (tasks [i].activity == Activity.MAKESHORTRANGE) {
-				wasFulfilled = ManageShortRange (tasks[i].value);
+				wasFulfilled = ManageShortRange ();
 			} else if (tasks [i].activity == Activity.MAKELONGRANGE) {
-				wasFulfilled = ManageLongRange (tasks[i].value);
+				wasFulfilled = ManageLongRange ();
 			}
 
 			if (!wasFulfilled)
@@ -104,7 +106,7 @@ public class AIStrategy : Strategy {
 
 	float PaperResourceHeuristic()
 	{
-		return 100.0f / (Mathf.Pow(paperGatheringRate * 10, 2) + paperQuantityInStock + 1);
+		return 101.0f / (Mathf.Pow(paperGatheringRate * 10, 2) + paperQuantityInStock + 1);
 	}
 
 	float GlueResourceHeuristic ()
@@ -114,18 +116,12 @@ public class AIStrategy : Strategy {
 
 	float ShortRangeHeuristic()
 	{
-		if (population == 0 || shortRangeUnits == 0 || longRangeUnits == 0)
-			return 1.5f;
-		else
-			return (float)population * ((float) shortRangeUnits / (float) longRangeUnits > 1.5f ? -1.0f : 1.0f) / (float)populationLimit + dangerIndex;
+		return (float)(population + 1.0f) * ((float) shortRangeUnits / (float) (longRangeUnits + 1)) / (Mathf.Pow(populationLimit * 2, 2) + shortRangeBuildings + 1) + dangerIndex * 0.1f;
 	}
 
 	float LongRangeHeuristic()
 	{
-		if (population == 0 || shortRangeUnits == 0 || longRangeUnits == 0)
-			return 1.0f / 1.5f;
-		else
-			return (float)population * ((float) longRangeUnits / (float) shortRangeUnits > 1.0f / 1.5f ? -1.0f : 1.0f) / (float)populationLimit + dangerIndex;
+		return (float)(population + 1.0f) * ((float) longRangeUnits / (float) (shortRangeUnits + 1)) / (Mathf.Pow(populationLimit * 2, 2) + longRangeBuildings + 1) + dangerIndex * 0.1f;
 	}
 
 	void UpdateTasks()
@@ -181,6 +177,7 @@ public class AIStrategy : Strategy {
 					}
 
 				} else if (player.activeBuildings [i] is TrainingBuilding) {
+					player.activeBuildings [i].awake = false;
 					Unit unit = (player.activeBuildings [i] as TrainingBuilding).unit.GetComponent<Unit>();
 					if (unit != null) {
 						paperGatheringRate -= (float)unit.stats.paperCost / unit.unitStats.trainingTime;
@@ -194,11 +191,24 @@ public class AIStrategy : Strategy {
 		longRangeUnits = 0;
 
 		for (int i = 0; i < player.activeUnits.Count; i++) {
-			if (player.activeUnits [i] is ShortRangeUnit)
+			if (player.activeUnits [i].tag == "ShortRangeUnit")
 				shortRangeUnits++;
-			else if (player.activeUnits [i] is LongRangeUnit)
+			else if (player.activeUnits [i].tag == "LongRangeUnit")
 				longRangeUnits++;
 		}
+
+		shortRangeBuildings = 0;
+		longRangeBuildings = 0;
+
+		for (int i = 0; i < player.activeBuildings.Count; i++) {
+			if (player.activeBuildings [i].awake) {
+				if (player.activeBuildings [i].tag == "ShortRangeBuilding")
+					shortRangeBuildings++;
+				else if (player.activeBuildings [i].tag == "LongRangeBuilding")
+					longRangeBuildings++;
+			}
+		}
+
 	}
 
 	Resource FindClosestResource(string resourceType)
@@ -236,10 +246,10 @@ public class AIStrategy : Strategy {
 			return false;
 	}
 
-	bool ManageShortRange(float value)
+	bool ManageShortRange()
 	{
 		for (int i = 0; i < player.activeBuildings.Count; i++) {
-			if(!(value > 0 ^ player.activeBuildings[i].awake))
+			if(!player.activeBuildings[i].awake)
 			{
 				TrainingBuilding bldg = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
 				if (bldg != null) {
@@ -252,17 +262,14 @@ public class AIStrategy : Strategy {
 				}
 			}	
 		}
-
-		if (value > 0)
-			return MakeNewTrainingBuilding<ShortRangeUnit>();
-		else
-			return true;
+			
+		return MakeNewTrainingBuilding("ShortRangeBuilding");
 	}
 
-	bool ManageLongRange(float value)
+	bool ManageLongRange()
 	{
 		for (int i = 0; i < player.activeBuildings.Count; i++) {
-			if(!(value > 0 ^ player.activeBuildings[i].awake))
+			if(!player.activeBuildings[i].awake)
 			{
 				TrainingBuilding bldg = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
 				if (bldg != null) {
@@ -275,11 +282,8 @@ public class AIStrategy : Strategy {
 				}
 			}
 		}
-
-		if (value > 0)
-			return MakeNewTrainingBuilding<LongRangeUnit>();
-		else
-			return true;
+			
+		return MakeNewTrainingBuilding("LongRangeBuilding");
 	}
 
 	Vector3 GetEmptyArea(Bounds bounds)
@@ -289,40 +293,44 @@ public class AIStrategy : Strategy {
 
 		Vector3 tCSize = player.industrialCenter.getModel().GetComponent<Renderer> ().bounds.size / 2;
 
-		float initialRadius = Mathf.Max (tCSize.x, tCSize.z);
+		float initialRadius = 2;//Mathf.Max (tCSize.x, tCSize.z);
 
 		int resolution = 10;
 
 		float angleDiff = 2 * Mathf.PI / resolution;
 
+		Bounds b = GameContext.currentGameContext.map.GetComponent<Renderer> ().bounds;
+
 		for(int j = 0; j < 10; j++)
 			for (int i = 0; i < resolution; i++) {
 				Vector3 pos = (player.industrialCenter.transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
-				Debug.DrawLine (player.industrialCenter.transform.position, pos, Color.red, 10);
-				Collider[] c = Physics.OverlapBox (pos, tCSize / 5);
-				if (c != null) {
-					bool validPos = true;
-					for (int k = 0; k < c.Length; k++)
-						if (c [k] != null && c [k].gameObject.layer != LayerMask.NameToLayer ("Floor")) {
-							validPos = false;
-							break;
-						}
-
-					if (validPos)
-						return pos;
+				if (pos.x > b.min.x && pos.x < b.max.x && pos.z > b.min.z && pos.z < b.max.z) {
+					Debug.DrawLine (player.industrialCenter.transform.position, pos, Color.red, 10);
+					Collider[] c = Physics.OverlapBox (pos, tCSize / 5);
+					if (c != null) {
+						bool validPos = true;
+						for (int k = 0; k < c.Length; k++)
+							if (c [k] != null && c [k].gameObject.layer != LayerMask.NameToLayer ("Map")) {
+								validPos = false;
+								break;
+							}
+								
+						if (validPos)
+							return pos;
+					}
 				}
 			}
 
 		return new Vector3 (0, 0, 0);
 	}
 
-	T MakeNewBuilding<T>() where T : Building
+	T MakeNewBuilding<T>(string tag) where T : Building
 	{
 		GameObject bldg = null;
 		GameObject[] buildings = player.updatedPrefabs.buildingPrefabs;
 
 		for (int i = 0; i < buildings.Length; i++) {
-			if (buildings [i].GetComponent<Building>() is T) {
+			if (buildings [i].GetComponent<Building>() is T && buildings[i].gameObject.tag == tag) {
 				bldg = buildings [i];
 				break;
 			}
@@ -368,15 +376,16 @@ public class AIStrategy : Strategy {
 		return t;
 	}
 
-	bool MakeNewTrainingBuilding<T>() where T : Unit
+	bool MakeNewTrainingBuilding(string tag)
 	{
-		TrainingBuilding tB = MakeNewBuilding<TrainingBuilding>();
+		TrainingBuilding tB = MakeNewBuilding<TrainingBuilding>(tag);
 		
 		GameObject[] units = player.updatedPrefabs.unitPrefabs;
 
 		for (int i = 0; i < units.Length; i++) {
-			if (units [i].GetComponent<Unit>() is T) {
+			if (units [i].tag == tag) {
 				tB.unit = units [i].GetComponent<Unit>();
+				tB.SetToAwake ();
 				return true;
 			}
 		}

@@ -11,6 +11,11 @@ TagManager:
   - InputManager
   - HUDPanel
   - InfoStats
+  - UIManager
+  - ShortRangeBuilding
+  - LongRangeBuilding
+  - ShortRangeUnit
+  - LongRangeUnit
   layers:
   - Default
   - TransparentFX

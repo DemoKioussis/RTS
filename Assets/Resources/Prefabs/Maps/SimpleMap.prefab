@@ -1658,7 +1658,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1804171346793474, guid: 9d1f16155971a4efbbb687427ef20d14,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1670,8 +1671,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 40
-  startingMaxQuantity: 100
+  startingMinQuantity: 800
+  startingMaxQuantity: 2000
   type: 
 --- !u!114 &114201822633604590
 MonoBehaviour:
@@ -1685,7 +1686,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1804171346793474, guid: 9d1f16155971a4efbbb687427ef20d14,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1697,8 +1699,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 40
-  startingMaxQuantity: 100
+  startingMinQuantity: 800
+  startingMaxQuantity: 2000
   type: 
 --- !u!114 &114277802190537586
 MonoBehaviour:
@@ -1712,7 +1714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1804171346793474, guid: 9d1f16155971a4efbbb687427ef20d14,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1724,8 +1727,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 40
-  startingMaxQuantity: 100
+  startingMinQuantity: 800
+  startingMaxQuantity: 2000
   type: 
 --- !u!114 &114366655470924334
 MonoBehaviour:
@@ -1739,7 +1742,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1011424783178116, guid: 7be372e1b4565432ca4e8bb3e193bb4d,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1751,8 +1755,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 10
-  startingMaxQuantity: 300
+  startingMinQuantity: 1000
+  startingMaxQuantity: 5000
   type: 
 --- !u!114 &114395757616211814
 MonoBehaviour:
@@ -1766,7 +1770,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1804171346793474, guid: 9d1f16155971a4efbbb687427ef20d14,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1778,8 +1783,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 40
-  startingMaxQuantity: 100
+  startingMinQuantity: 800
+  startingMaxQuantity: 2000
   type: 
 --- !u!114 &114405400362457518
 MonoBehaviour:
@@ -1793,7 +1798,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1011424783178116, guid: 7be372e1b4565432ca4e8bb3e193bb4d,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1805,8 +1811,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 10
-  startingMaxQuantity: 300
+  startingMinQuantity: 1000
+  startingMaxQuantity: 5000
   type: 
 --- !u!114 &114413405954088994
 MonoBehaviour:
@@ -1820,7 +1826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1011424783178116, guid: 7be372e1b4565432ca4e8bb3e193bb4d,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1832,8 +1839,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 10
-  startingMaxQuantity: 300
+  startingMinQuantity: 1000
+  startingMaxQuantity: 5000
   type: 
 --- !u!114 &114414827547057066
 MonoBehaviour:
@@ -1847,7 +1854,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1011424783178116, guid: 7be372e1b4565432ca4e8bb3e193bb4d,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1859,8 +1867,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 10
-  startingMaxQuantity: 300
+  startingMinQuantity: 1000
+  startingMaxQuantity: 5000
   type: 
 --- !u!114 &114560479261665000
 MonoBehaviour:
@@ -1874,7 +1882,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1011424783178116, guid: 7be372e1b4565432ca4e8bb3e193bb4d,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1886,8 +1895,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 10
-  startingMaxQuantity: 300
+  startingMinQuantity: 1000
+  startingMaxQuantity: 5000
   type: 
 --- !u!114 &114621686902781858
 MonoBehaviour:
@@ -1901,7 +1910,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1011424783178116, guid: 7be372e1b4565432ca4e8bb3e193bb4d,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1913,8 +1923,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 10
-  startingMaxQuantity: 300
+  startingMinQuantity: 1000
+  startingMaxQuantity: 5000
   type: 
 --- !u!114 &114678511937507676
 MonoBehaviour:
@@ -1928,7 +1938,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1804171346793474, guid: 9d1f16155971a4efbbb687427ef20d14,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1940,8 +1951,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 40
-  startingMaxQuantity: 100
+  startingMinQuantity: 800
+  startingMaxQuantity: 2000
   type: 
 --- !u!114 &114698363000333702
 MonoBehaviour:
@@ -1955,7 +1966,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1011424783178116, guid: 7be372e1b4565432ca4e8bb3e193bb4d,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -1967,8 +1979,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 10
-  startingMaxQuantity: 300
+  startingMinQuantity: 1000
+  startingMaxQuantity: 5000
   type: 
 --- !u!114 &114743458400224508
 MonoBehaviour:
@@ -1994,7 +2006,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1011424783178116, guid: 7be372e1b4565432ca4e8bb3e193bb4d,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -2006,8 +2019,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 10
-  startingMaxQuantity: 300
+  startingMinQuantity: 1000
+  startingMaxQuantity: 5000
   type: 
 --- !u!114 &114871648082090674
 MonoBehaviour:
@@ -2021,7 +2034,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1804171346793474, guid: 9d1f16155971a4efbbb687427ef20d14,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -2033,8 +2047,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 40
-  startingMaxQuantity: 100
+  startingMinQuantity: 800
+  startingMaxQuantity: 2000
   type: 
 --- !u!114 &114884333377575542
 MonoBehaviour:
@@ -2048,7 +2062,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1804171346793474, guid: 9d1f16155971a4efbbb687427ef20d14,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -2060,8 +2075,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 40
-  startingMaxQuantity: 100
+  startingMinQuantity: 800
+  startingMaxQuantity: 2000
   type: 
 --- !u!114 &114928432827884878
 MonoBehaviour:
@@ -2075,7 +2090,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 0}
+  infoPanelPrefab: {fileID: 1804171346793474, guid: 9d1f16155971a4efbbb687427ef20d14,
+    type: 2}
   building: {fileID: 0}
   stats:
     viewRange: 0
@@ -2087,8 +2103,8 @@ MonoBehaviour:
     type: 
     quantity: 0
   selectionCircle: {fileID: 0}
-  startingMinQuantity: 40
-  startingMaxQuantity: 100
+  startingMinQuantity: 800
+  startingMaxQuantity: 2000
   type: 
 --- !u!114 &114945456931348996
 MonoBehaviour:
