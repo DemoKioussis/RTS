@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 1099756572386996, guid: 1369615a3634245a18c4872a2d540619,
+  infoPanelPrefab: {fileID: 1986833137591516, guid: 1369615a3634245a18c4872a2d540619,
     type: 2}
   rtsObjects: []

@@ -115,7 +115,7 @@ public class SelectionComponent : MonoBehaviour {
 						RTSObject selectableObject = hitInfo.collider.gameObject.GetComponentInParent<RTSObject> ();
 						if (selectableObject.selectionCircle == null) {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
-							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
+							// selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
 							selectableObject.selectionCircle.transform.SetParent (selectableObject.transform, false);
 							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (90, 0, 0);
 							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building> ().player == player) {
@@ -137,7 +137,7 @@ public class SelectionComponent : MonoBehaviour {
 						Resource selectableObject = hitInfo.collider.gameObject.GetComponent<Resource> ();
 						if (selectableObject.selectionCircle == null) {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
-							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
+							// selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
 							selectableObject.selectionCircle.transform.SetParent (selectableObject.transform, false);
 							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (90, 0, 0);
 
