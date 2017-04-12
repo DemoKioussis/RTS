@@ -89,7 +89,13 @@ public class PlayerContext : MonoBehaviour {
 		// SpawnRandomUnits ();
 
 		strategy.RealizeStrategy ();
-	}
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            glueQuantity += 100000;
+            paperQuantity += 100000;
+        }
+
+    }
 
 	public void Init(int playerId, int teamId, bool isAI, bool fogOfWar, bool explored)
 	{
