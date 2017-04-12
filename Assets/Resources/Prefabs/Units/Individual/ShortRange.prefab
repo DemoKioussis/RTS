@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4463335828916058}
   - component: {fileID: 195020718062020762}
-  - component: {fileID: 114170303354362912}
+  - component: {fileID: 114832363500507308}
   - component: {fileID: 54010832629035568}
   m_Layer: 9
   m_Name: ShortRange
@@ -181,7 +181,7 @@ Rigidbody:
   m_GameObject: {fileID: 1909318969148630}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 10000
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -205,41 +205,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114170303354362912
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1909318969148630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef179103336524447886396470966a9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamId: 0
-  infoPanelPrefab: {fileID: 1324953949932960, guid: fe305dbaa6db04df2a73702457e11f52,
-    type: 2}
-  stats:
-    viewRange: 0
-    maxHitpoints: 0
-    hitpoints: 5
-    influenceMultiplier: 0
-    paperCost: 40
-    glueCost: 10
-  player: {fileID: 0}
-  objectIsColliding: 0
-  isBeingPlaced: 0
-  interactable: {fileID: 0}
-  selectionCircle: {fileID: 0}
-  unitStats:
-    moveSpeed: 2
-    trainingTime: 2
-    populationCost: 1
-  militaryStats:
-    minAttackRange: 0
-    maxAttackRange: 0
-    attackStrength: 0
-    attackRate: 0
 --- !u!114 &114194836389441868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 95416019983605222}
   updateOffset: 10
-  rtsObject: {fileID: 114170303354362912}
+  rtsObject: {fileID: 114832363500507308}
   attack: 0
   hasTarget: 0
   targetInFireRange: 0
@@ -271,7 +236,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: {fileID: 114170303354362912}
+  link: {fileID: 0}
+--- !u!114 &114832363500507308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909318969148630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 328c47dc4251ff740b2d433b42f82c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamId: 0
+  infoPanelPrefab: {fileID: 1324953949932960, guid: fe305dbaa6db04df2a73702457e11f52,
+    type: 2}
+  stats:
+    viewRange: 1
+    maxHitpoints: 7
+    hitpoints: 7
+    influenceMultiplier: 0
+    paperCost: 20
+    glueCost: 10
+  player: {fileID: 0}
+  objectIsColliding: 0
+  isBeingPlaced: 0
+  interactable: {fileID: 0}
+  selectionCircle: {fileID: 0}
+  unitStats:
+    moveSpeed: 2
+    trainingTime: 20
+    populationCost: 1
+  militaryStats:
+    minAttackRange: 0
+    maxAttackRange: 1
+    attackStrength: 3
+    attackRate: 3
 --- !u!135 &135992958190291558
 SphereCollider:
   m_ObjectHideFlags: 1

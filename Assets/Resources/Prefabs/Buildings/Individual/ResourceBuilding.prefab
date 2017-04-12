@@ -519,20 +519,7 @@ MonoBehaviour:
   resourceBldgStats:
     gatheringTime: 2
     glueReturn: 1
-    paperReturn: 1
---- !u!114 &114326383880627586
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1159257960119182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  link: {fileID: 114114409178643154}
---- !u!114 &114347873008499604
+    paperReturn: 2
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -543,7 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdc615a7781a4a24a0880f96a0e04ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!208 &208187411288077394
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
