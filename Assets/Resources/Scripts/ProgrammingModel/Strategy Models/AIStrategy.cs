@@ -149,8 +149,8 @@ public class AIStrategy : Strategy {
 
 			stats += tasks [i].value + " ";
 		}
-
-		Debug.Log (stats);
+        if (player.debugAiStats) 
+		    Debug.Log (stats);
 
 		tasks.Sort (SortByValue);
 	}

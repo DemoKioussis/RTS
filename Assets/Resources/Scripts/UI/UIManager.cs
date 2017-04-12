@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour {
 		infoStats = GameObject.FindGameObjectWithTag ("InfoStats").GetComponent<Text>();
 	}
 	 
-	void Update(){
+	void FixedUpdate(){
 		if (selectedObject != null) {
 			GetInformation (selectedObject);
 		}
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour {
 		selectedObjectInfoPanel = (GameObject)Instantiate (infoPanel, Vector3.zero, infoPanel.transform.rotation, hudPanel.transform);
 
 		// I had to hard code this value...
-		selectedObjectInfoPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3 (-197, 0, 0);
+		selectedObjectInfoPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3 (100, 0, 0);
 
 		selectedObject = selectedGameObj; // keep track of the object
 
@@ -42,8 +42,8 @@ public class UIManager : MonoBehaviour {
 
 	public void ClearInfoPanel(){
 		// clear everything
-		if (selectedObject != null) {
-			Destroy (selectedObjectInfoPanel);
+		if (selectedObject != null && selectedObjectInfoPanel != null) {
+			Destroy (selectedObjectInfoPanel.gameObject);
 		}
 		selectedObject = null;
 		selectedObjectInfoPanel = null;
@@ -55,13 +55,13 @@ public class UIManager : MonoBehaviour {
 		switch (selectedObj.getInteractionType())
 		{
 		case INTERACTION_TYPE.BUILDING:
-			infoStats.text = selectedObj.GetStats ().hitpoints + " hp";
+			infoStats.text = selectedObj.GetStats ().hitpoints + "/" + selectedObj.GetStats ().maxHitpoints + " hp";
 			break;
 		case INTERACTION_TYPE.POSITION:
 			infoStats.text = "";			
 			break;
 		case INTERACTION_TYPE.UNIT:
-			infoStats.text = selectedObj.GetStats().hitpoints + " hp";
+			infoStats.text = selectedObj.GetStats().hitpoints + "/" + selectedObj.GetStats ().maxHitpoints + " hp";
 			break;
 		case INTERACTION_TYPE.RESOURCE:
 			{

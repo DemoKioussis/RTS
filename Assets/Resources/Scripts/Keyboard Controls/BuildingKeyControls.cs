@@ -16,10 +16,10 @@ public class BuildingKeyControls : MonoBehaviour {
 		case '3':
 			bldgGroup.CreateNewBuilding ('3');
 			break;
-		case 'a':
+		case '+':
 			bldgGroup.SetToAwake ();
 			break;
-		case 's':
+		case '-':
 			bldgGroup.SetToSleep ();
 			break; 
 		case 'x':

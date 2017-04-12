@@ -25,6 +25,7 @@ public class SelectionComponent : MonoBehaviour {
 	Vector3 clickPosition;
 
 	UIManager ui;
+	Collider2D uiPanel;
 
     void Awake()
     {
@@ -33,18 +34,19 @@ public class SelectionComponent : MonoBehaviour {
 
 	void Start(){
 		ui = GameObject.FindGameObjectWithTag ("UIManager").GetComponent<UIManager> ();
+		uiPanel = GameObject.FindGameObjectWithTag ("UIBoundary").GetComponent<Collider2D> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		// If we press the left mouse button, begin selection and remember the location of the mouse
-		if( Input.GetMouseButtonDown( 0 ) )
+		if( Input.GetMouseButtonDown( 0 ) && !MouseInUI())
 		{
 			if (selectedUnitGroup != null && !selectedUnitGroup.isActivated())
-                Destroy(selectedUnitGroup.gameObject);
+				Destroy(selectedUnitGroup.gameObject);
 
-            clickPosition = Input.mousePosition;
+			clickPosition = Input.mousePosition;
 
 			if (selectedBuildingGroup != null)
 				Destroy (selectedBuildingGroup.gameObject);
@@ -66,10 +68,11 @@ public class SelectionComponent : MonoBehaviour {
 			}
 
 			if (selectedResource != null) {
-				Destroy(selectedResource.selectionCircle.gameObject);
+				Destroy(selectedResource.selectionCircle);
+				selectedResource.selectionCircle = null;
 			}
 
-			ui.ClearInfoPanel ();
+			ClearUI ();
 		}
 
 		// If we let go of the left mouse button, end selection
@@ -83,9 +86,9 @@ public class SelectionComponent : MonoBehaviour {
 						if( selectableObject.selectionCircle == null )
 						{
 							selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
-							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject>().SetSize(selectableObject.getModel().bounds);
+							//selectableObject.selectionCircle.GetComponent<SizeBasedOnObject>().SetSize(selectableObject.getModel().bounds);
 							selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
-							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 0, 0, 0 );
 							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building>().player == player) {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
@@ -99,29 +102,40 @@ public class SelectionComponent : MonoBehaviour {
 				}
 				if (!selectedUnitGroup.IsEmpty ()) 
 				{
-					ui.AddToInfoPanel (selectedUnitGroup);
+					if (selectedUnitGroup.Count() > 1) {
+						ui.AddToInfoPanel (selectedUnitGroup);
+					} else {
+						ui.AddToInfoPanel(selectedUnitGroup.rtsObjects[0]);
+					}
 				} 
 				else if(!selectedBuildingGroup.IsEmpty())
 				{
-					ui.AddToInfoPanel (selectedBuildingGroup);
+					if (selectedBuildingGroup.Count() > 1) {
+						ui.AddToInfoPanel (selectedBuildingGroup);
+					} else {
+						ui.AddToInfoPanel(selectedBuildingGroup.rtsObjects[0]);
+					}
 				}
 			}
 			else {
 				RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
 				if (hitInfo.collider != null) {
-					if (hitInfo.collider.gameObject.GetComponent<RTSObject> () != null) {
-						RTSObject selectableObject = hitInfo.collider.gameObject.GetComponent<RTSObject> ();
+					if (hitInfo.collider.gameObject.GetComponentInParent<RTSObject> () != null) {
+						// structure of units have been changed, collider is now located in the selection target of the model
+						RTSObject selectableObject = hitInfo.collider.gameObject.GetComponentInParent<RTSObject> ();
 						if (selectableObject.selectionCircle == null) {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
-							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
+							// selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
 							selectableObject.selectionCircle.transform.SetParent (selectableObject.transform, false);
-							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (90, 0, 0);
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (0, 0, 0);
 							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building> ().player == player) {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
 
 								ui.AddToInfoPanel (selectableObject); 
-							} else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit> ().player == player) {
+
+							} 
+							else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit> ().player == player) {
 								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
 								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
 
@@ -133,9 +147,9 @@ public class SelectionComponent : MonoBehaviour {
 						Resource selectableObject = hitInfo.collider.gameObject.GetComponent<Resource> ();
 						if (selectableObject.selectionCircle == null) {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
-							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
+							// selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
 							selectableObject.selectionCircle.transform.SetParent (selectableObject.transform, false);
-							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (90, 0, 0);
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (0, 0, 0);
 
 							selectedResource = selectableObject;
 							ui.AddToInfoPanel (selectableObject);
@@ -145,20 +159,20 @@ public class SelectionComponent : MonoBehaviour {
 
 			}
 			if (selectedUnitGroup != null && selectedUnitGroup.IsEmpty())
-            	Destroy(selectedUnitGroup.gameObject);
-			
+				Destroy(selectedUnitGroup.gameObject);
+
 			if (selectedBuildingGroup != null && selectedBuildingGroup.IsEmpty())
 				Destroy(selectedBuildingGroup.gameObject);
 
-            /*
-			var sb = new StringBuilder();
-			sb.AppendLine( string.Format( "Selecting [{0}] Objects", selectedObjects.Count ) );
-			foreach( var selectedObject in selectedObjects )
-				sb.AppendLine( "-> " + selectedObject.gameObject.name );
-			Debug.Log( sb.ToString() );
-			*/
+			/*
+		var sb = new StringBuilder();
+		sb.AppendLine( string.Format( "Selecting [{0}] Objects", selectedObjects.Count ) );
+		foreach( var selectedObject in selectedObjects )
+			sb.AppendLine( "-> " + selectedObject.gameObject.name );
+		Debug.Log( sb.ToString() );
+		*/
 
-            isSelecting = false;
+			isSelecting = false;
 		}
 
 		if (Input.GetMouseButtonDown(1))
@@ -181,7 +195,10 @@ public class SelectionComponent : MonoBehaviour {
 					Debug.Log("Interacted with: " + interactable.name + " type: " + interactable.getInteractionType());
 				}
 			}
+
+			isSelecting = false;
 		}
+
 	}
 
 	void InteractionSetter(Interactable interaction, Vector3 position)
@@ -193,10 +210,8 @@ public class SelectionComponent : MonoBehaviour {
 				((MapPos)interaction).setPosition (position);
 				break;
 			}
-
 		}
 	}
-
 
 	public bool IsWithinSelectionBounds( GameObject gameObject )
 	{
@@ -208,14 +223,26 @@ public class SelectionComponent : MonoBehaviour {
 		return viewportBounds.Contains( camera.WorldToViewportPoint( gameObject.transform.position ) );
 	}
 
+	public void ClearUI(){
+		ui.ClearInfoPanel ();
+	}
+
 	void OnGUI()
 	{
 		if( isSelecting )
 		{
 			// Create a rect from both mouse positions
-			var rect = Utils.GetScreenRect( mousePosition1, Input.mousePosition );
+			var rect = Utils.GetScreenRect( mousePosition1, Input.mousePosition, uiPanel );
 			Utils.DrawScreenRect( rect, new Color( 0.8f, 0.8f, 0.95f, 0.25f ) );
 			Utils.DrawScreenRectBorder( rect, 2, new Color( 0.8f, 0.8f, 0.95f ) );
 		}
+	}
+
+	bool MouseInUI()
+	{
+		if (uiPanel.bounds.Contains(Input.mousePosition))
+			return true;
+
+		return false;
 	}
 }

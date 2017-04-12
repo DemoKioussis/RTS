@@ -36,6 +36,8 @@ public class KeyboardComponent : MonoBehaviour {
 					// function takes the input and finds the correct Building Group function to execute
 					UnitKeyControls.ActivateKeyboardAction (selectedUnitGroup, Input.inputString.ToCharArray () [0]);
 				}
+
+				//selection.ClearUI ();
 			}
 		}
 	}

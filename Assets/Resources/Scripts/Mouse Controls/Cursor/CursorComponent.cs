@@ -6,6 +6,7 @@ public class CursorComponent : MonoBehaviour {
 
 	public RTSObject currentRTSObject;
 
+	private PlayerContext player;
 	private Renderer gameObjectRenderer;
 	private Color initialColor;
 	private Color transparentColor;
@@ -31,6 +32,8 @@ public class CursorComponent : MonoBehaviour {
 			initialColor = gameObjectRenderer.material.color; 
 		// end of test
 		*/
+
+		player = GetComponentInParent<PlayerContext> ();
 
 		// set the colors
 		colorOfNoCollision = new Color (0, 1, 0, transparentFactor);
@@ -106,6 +109,8 @@ public class CursorComponent : MonoBehaviour {
 
 	public void CancelAction(){
 		if (currentRTSObject != null) {
+			player.Sell (currentRTSObject);
+
 			// Remove from the list of active objects
 			RTSObject.RemovePlayableObject (currentRTSObject);
 
@@ -135,6 +140,7 @@ public class CursorComponent : MonoBehaviour {
 			{
 				// object is a resource building
 				tempBldg.SetToResource ();
+				tempBldg.transform.position = tempBldg.GetPositionOfResource ();
 			}
 			tempBldg.SetToAwake ();
 		} 

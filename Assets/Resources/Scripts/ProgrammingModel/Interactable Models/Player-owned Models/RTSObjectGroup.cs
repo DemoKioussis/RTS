@@ -38,6 +38,10 @@ public class RTSObjectGroup : Interactable {
 		return groupSize == 0;
 	}
 
+	public int Count(){
+		return rtsObjects.Count;
+	}
+
 	public override Stats GetStats ()
 	{
 		return rtsObjects[0].GetStats(); // only give the first stat of the group

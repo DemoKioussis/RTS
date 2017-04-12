@@ -7,7 +7,7 @@ using UnityEngine;
 public class Stats {
 	public float viewRange;
 	public int maxHitpoints;
-	public int hitpoints;
+	public float hitpoints;
 	public float influenceMultiplier;
 	public int paperCost;
 	public int glueCost;

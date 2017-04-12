@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class BaseStateBehaviour : StateMachineBehaviour {
 
     protected BaseStateMachine stateMachine;
+    public virtual void awake() {
+
+    }
     public void setStateMachine(BaseStateMachine s) {
         stateMachine = s;
     }

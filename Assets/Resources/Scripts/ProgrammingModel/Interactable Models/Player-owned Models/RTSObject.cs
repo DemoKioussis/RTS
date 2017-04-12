@@ -13,7 +13,7 @@ public abstract class RTSObject : Interactable {
 
 	public bool objectIsColliding;
 	public bool isBeingPlaced;
-
+    private bool alive = true;
 	public Interactable interactable;
 	public GameObject selectionCircle;
     MeshRenderer model;
@@ -54,10 +54,20 @@ public abstract class RTSObject : Interactable {
 
     public void takeDamage(float d)
     {
-        Debug.Log("I TOOK DAMAGE!");
+        Debug.Log("I TOOK "+d+" DAMAGE!");
+        stats.hitpoints -= d;
+        if (stats.hitpoints <= 0) {
+            die();
+        }
     }
-
-	protected virtual void Heal(int hp)
+    protected virtual void die() {
+        if (alive) {
+            Debug.Log("AAAAAHHHH I DIED");
+            alive = false;
+            GameObject.Destroy(this.gameObject, 0.1f);
+        }
+    }
+    protected virtual void Heal(int hp)
 	{
 		stats.hitpoints += hp;
 
@@ -132,5 +142,8 @@ public abstract class RTSObject : Interactable {
     }
     public virtual BaseStateMachine getStateMachine() {
         return stateDFA;
+    }
+    public bool isAlive() {
+        return alive;
     }
 }
