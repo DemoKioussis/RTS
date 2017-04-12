@@ -100,11 +100,19 @@ public class SelectionComponent : MonoBehaviour {
 				}
 				if (!selectedUnitGroup.IsEmpty ()) 
 				{
-					ui.AddToInfoPanel (selectedUnitGroup);
+					if (selectedUnitGroup.Count() > 1) {
+						ui.AddToInfoPanel (selectedUnitGroup);
+					} else {
+						ui.AddToInfoPanel(selectedUnitGroup.rtsObjects[0]);
+					}
 				} 
 				else if(!selectedBuildingGroup.IsEmpty())
 				{
-					ui.AddToInfoPanel (selectedBuildingGroup);
+					if (selectedBuildingGroup.Count() > 1) {
+						ui.AddToInfoPanel (selectedBuildingGroup);
+					} else {
+						ui.AddToInfoPanel(selectedBuildingGroup.rtsObjects[0]);
+					}
 				}
 			}
 			else {
