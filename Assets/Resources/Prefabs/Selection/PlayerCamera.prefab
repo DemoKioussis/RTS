@@ -132,13 +132,25 @@ MonoBehaviour:
   smoothness: 0.85
   scrollSpeedX: 25
   scrollSpeedY: 25
-  offset: 25
+  offset: 50
   speedCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.0019379843
+      value: -0.0124999285
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   targetRotation: {x: -0.0050742836, y: -0.9356907, z: 0.3525279, w: -0.013468269}
 --- !u!114 &114980429843519912
 MonoBehaviour:
