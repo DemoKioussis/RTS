@@ -34,6 +34,10 @@ public class TrainingBuilding : Building{
 				SpawnUnit (unit);
 			}
 		}
+		// hack for debugging
+		if (Input.GetKeyUp(KeyCode.O)) {
+			SpawnUnit (unit);
+		}
 	}
 
 

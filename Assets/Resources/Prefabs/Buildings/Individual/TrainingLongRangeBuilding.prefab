@@ -172,7 +172,7 @@ MonoBehaviour:
     hitpoints: 0
     influenceMultiplier: 0
     paperCost: 100
-    glueCost: 180
+    glueCost: 90
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0

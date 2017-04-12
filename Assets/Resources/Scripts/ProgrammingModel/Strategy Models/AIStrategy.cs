@@ -57,9 +57,9 @@ public class AIStrategy : Strategy {
 			} else if (tasks [i].activity == Activity.MAKEPAPER) {
 				wasFulfilled = ManageResource ("Paper");
 			} else if (tasks [i].activity == Activity.MAKESHORTRANGE) {
-				wasFulfilled = ManageShortRange ();
+				wasFulfilled = ManageShortRange (tasks[i].value);
 			} else if (tasks [i].activity == Activity.MAKELONGRANGE) {
-				wasFulfilled = ManageLongRange ();
+				wasFulfilled = ManageLongRange (tasks[i].value);
 			}
 
 			if (!wasFulfilled)
@@ -101,7 +101,7 @@ public class AIStrategy : Strategy {
 
 		overallLocalInfluence /= 50.0f;
 
-		dangerIndex = 1.0f / overallLocalInfluence;
+		dangerIndex = 1.0f / (overallLocalInfluence + 1.0f);
 	}
 
 	float PaperResourceHeuristic()
@@ -116,12 +116,12 @@ public class AIStrategy : Strategy {
 
 	float ShortRangeHeuristic()
 	{
-		return (float)(population + 1.0f) * ((float) shortRangeUnits / (float) (longRangeUnits + 1)) / (Mathf.Pow(populationLimit * 2, 2) + shortRangeBuildings + 1) + dangerIndex * 0.1f;
+		return (2.0f * (float) (longRangeUnits + 1) / (float) (shortRangeUnits + 1)) / (population * 2 + shortRangeBuildings + 1) + dangerIndex * 0.1f;
 	}
 
 	float LongRangeHeuristic()
 	{
-		return (float)(population + 1.0f) * ((float) longRangeUnits / (float) (shortRangeUnits + 1)) / (Mathf.Pow(populationLimit * 2, 2) + longRangeBuildings + 1) + dangerIndex * 0.1f;
+		return (1.0f * (float) (shortRangeUnits + 1) / (float) (longRangeUnits + 1)) / (population * 2 + longRangeBuildings + 1) + dangerIndex * 0.1f;
 	}
 
 	void UpdateTasks()
@@ -201,12 +201,10 @@ public class AIStrategy : Strategy {
 		longRangeBuildings = 0;
 
 		for (int i = 0; i < player.activeBuildings.Count; i++) {
-			if (player.activeBuildings [i].awake) {
-				if (player.activeBuildings [i].tag == "ShortRangeBuilding")
-					shortRangeBuildings++;
-				else if (player.activeBuildings [i].tag == "LongRangeBuilding")
-					longRangeBuildings++;
-			}
+			if (player.activeBuildings [i].tag == "ShortRangeBuilding")
+				shortRangeBuildings++;
+			else if (player.activeBuildings [i].tag == "LongRangeBuilding")
+				longRangeBuildings++;
 		}
 
 	}
@@ -246,44 +244,54 @@ public class AIStrategy : Strategy {
 			return false;
 	}
 
-	bool ManageShortRange()
+	bool ManageShortRange(float importance)
 	{
+		bool setSomething = false;
 		for (int i = 0; i < player.activeBuildings.Count; i++) {
 			if(!player.activeBuildings[i].awake)
 			{
-				TrainingBuilding bldg = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
-				if (bldg != null) {
-					ShortRangeUnit unit = bldg.unit.GetComponent<ShortRangeUnit> ();
+				if(player.activeBuildings [i].tag == "ShortRangeBuilding")
+				{
+					TrainingBuilding b = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
+					ShortRangeUnit unit = b.unit.GetComponent<ShortRangeUnit>();
 
 					if (unit != null) {
-						player.activeBuildings [i].ToggleAwake ();
-						return true;
-					}
-				}
-			}	
-		}
-			
-		return MakeNewTrainingBuilding("ShortRangeBuilding");
-	}
-
-	bool ManageLongRange()
-	{
-		for (int i = 0; i < player.activeBuildings.Count; i++) {
-			if(!player.activeBuildings[i].awake)
-			{
-				TrainingBuilding bldg = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
-				if (bldg != null) {
-					LongRangeUnit unit = bldg.unit.GetComponent<LongRangeUnit> ();
-
-					if (unit != null) {
-						player.activeBuildings [i].ToggleAwake ();
-						return true;
+						b.SetToAwake ();
+						setSomething = true;
 					}
 				}
 			}
 		}
-			
-		return MakeNewTrainingBuilding("LongRangeBuilding");
+
+		if (importance > 0.1f)
+			return MakeNewTrainingBuilding ("ShortRangeBuilding");
+		else
+			return setSomething;
+	}
+
+	bool ManageLongRange(float importance)
+	{
+		bool setSomething = false;
+		for (int i = 0; i < player.activeBuildings.Count; i++) {
+			if(!player.activeBuildings[i].awake)
+			{
+				if(player.activeBuildings [i].tag == "LongRangeBuilding")
+				{
+					TrainingBuilding b = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
+					LongRangeUnit unit = b.unit.GetComponent<LongRangeUnit>();
+
+					if (unit != null) {
+						b.SetToAwake ();
+						setSomething = true;
+					}
+				}
+			}
+		}
+
+		if (importance > 0.1f)
+			return MakeNewTrainingBuilding ("LongRangeBuilding");
+		else
+			return setSomething;
 	}
 
 	Vector3 GetEmptyArea(Bounds bounds)
@@ -293,7 +301,7 @@ public class AIStrategy : Strategy {
 
 		Vector3 tCSize = player.industrialCenter.getModel().GetComponent<Renderer> ().bounds.size / 2;
 
-		float initialRadius = 2;//Mathf.Max (tCSize.x, tCSize.z);
+		float initialRadius = 4;// * Mathf.Max (tCSize.x, tCSize.z);
 
 		int resolution = 10;
 
@@ -301,11 +309,14 @@ public class AIStrategy : Strategy {
 
 		Bounds b = GameContext.currentGameContext.map.GetComponentInChildren<Renderer> ().bounds;
 
-		for(int j = 0; j < 10; j++)
+		List<Building> buildings = player.activeBuildings;
+
+		buildings.Sort (SortByDistanceToTC);
+
+		for(int j = 0; j < buildings.Count; j++)
 			for (int i = 0; i < resolution; i++) {
-				Vector3 pos = (player.industrialCenter.transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
+				Vector3 pos = (buildings[j].transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
 				if (pos.x > b.min.x && pos.x < b.max.x && pos.z > b.min.z && pos.z < b.max.z) {
-					Debug.DrawLine (player.industrialCenter.transform.position, pos, Color.red, 10);
 					Collider[] c = Physics.OverlapBox (pos, tCSize / 5);
 					if (c != null) {
 						bool validPos = true;
@@ -385,7 +396,6 @@ public class AIStrategy : Strategy {
 		for (int i = 0; i < units.Length; i++) {
 			if (units [i].tag == tag) {
 				tB.unit = units [i].GetComponent<Unit>();
-				tB.SetToAwake ();
 				return true;
 			}
 		}
@@ -403,6 +413,11 @@ public class AIStrategy : Strategy {
 			return - Mathf.Abs (t1.value).CompareTo (Mathf.Abs (t2.value));
 		else
 			return - t1.value.CompareTo (t2.value);
+	}
+
+	public static int SortByDistanceToTC(Building b1, Building b2)
+	{
+		return (b1.transform.position - b1.player.industrialCenter.transform.position).magnitude.CompareTo ((b2.transform.position - b2.player.industrialCenter.transform.position).magnitude);
 	}
 }
 

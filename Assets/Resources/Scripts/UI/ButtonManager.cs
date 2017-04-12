@@ -16,15 +16,26 @@ public class ButtonManager : MonoBehaviour {
 		selection = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SelectionComponent> ();
 		buttonAwake.SetActive (false);
 		buttonSleep.SetActive (false);
+		buttonAwake.GetComponent<BuildingButton>().buttonManager = this;
+		buttonSleep.GetComponent<BuildingButton>().buttonManager = this;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		selectedBuildingGroup = selection.selectedBuildingGroup;
 
-		if (selectedBuildingGroup != null && !selectedBuildingGroup.IsEmpty()) {
+		if (selectedBuildingGroup != null && !selectedBuildingGroup.IsEmpty()
+			&& selectedBuildingGroup.rtsObjects[0].GetComponent<Building>().getBuildingType() != BUILDING_TYPE.TOWNCENTER) {
 			buttonAwake.SetActive (true);
 			buttonSleep.SetActive (true);
+			if (selectedBuildingGroup.rtsObjects [0].GetComponent<Building> ().awake) {
+				buttonAwake.GetComponent<BuildingButton> ().SetClicked ();
+				buttonSleep.GetComponent<BuildingButton> ().SetUnclick ();
+			} else {
+				buttonAwake.GetComponent<BuildingButton> ().SetUnclick ();
+				buttonSleep.GetComponent<BuildingButton> ().SetClicked ();
+			}
+
 		} else {
 			buttonAwake.SetActive (false);
 			buttonSleep.SetActive (false);
