@@ -86,7 +86,7 @@ public class SelectionComponent : MonoBehaviour {
 							selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
 //							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject>().SetSize(selectableObject.getModel().bounds);
 							selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
-							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 90, 0, 0 );
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 0, 0, 0 );
 							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building>().player == player) {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
@@ -125,7 +125,7 @@ public class SelectionComponent : MonoBehaviour {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
 							// selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
 							selectableObject.selectionCircle.transform.SetParent (selectableObject.transform, false);
-							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (90, 0, 0);
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (0, 0, 0);
 							if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building> ().player == player) {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
@@ -147,7 +147,7 @@ public class SelectionComponent : MonoBehaviour {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
 							// selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
 							selectableObject.selectionCircle.transform.SetParent (selectableObject.transform, false);
-							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (90, 0, 0);
+							selectableObject.selectionCircle.transform.eulerAngles = new Vector3 (0, 0, 0);
 
 							selectedResource = selectableObject;
 							ui.AddToInfoPanel (selectableObject);
