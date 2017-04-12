@@ -234,7 +234,7 @@ public class AIStrategy : Strategy {
 		Resource resource = FindClosestResource (resType);
 
 		if (resource != null) {
-			ResourceBuilding rB = MakeNewBuilding<ResourceBuilding> (resource.transform.position);
+			ResourceBuilding rB = MakeNewBuilding<ResourceBuilding> (new Vector3(resource.transform.position.x, resource.getModel().bounds.size.y /2, resource.transform.position.z));
 			if (rB != null) {
 				rB.AssociateToResource (resource);
 				return true;
@@ -299,10 +299,6 @@ public class AIStrategy : Strategy {
 		Vector3 dimensions = bounds.size;
 		float maxDimension = Mathf.Max (dimensions.x, dimensions.z);
 
-		Vector3 tCSize = player.industrialCenter.getModel().GetComponent<Renderer> ().bounds.size / 2;
-
-		float initialRadius = 4;// * Mathf.Max (tCSize.x, tCSize.z);
-
 		int resolution = 10;
 
 		float angleDiff = 2 * Mathf.PI / resolution;
@@ -315,9 +311,11 @@ public class AIStrategy : Strategy {
 
 		for(int j = 0; j < buildings.Count; j++)
 			for (int i = 0; i < resolution; i++) {
+				Vector3 bldg = buildings[j].getModel().GetComponent<Renderer> ().bounds.size / 2;
+				float initialRadius = Mathf.Max (bldg.x, bldg.z);
 				Vector3 pos = (buildings[j].transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
 				if (pos.x > b.min.x && pos.x < b.max.x && pos.z > b.min.z && pos.z < b.max.z) {
-					Collider[] c = Physics.OverlapBox (pos, tCSize / 5);
+					Collider[] c = Physics.OverlapBox (pos, bldg);
 					if (c != null) {
 						bool validPos = true;
 						for (int k = 0; k < c.Length; k++)
@@ -327,7 +325,7 @@ public class AIStrategy : Strategy {
 							}
 								
 						if (validPos)
-							return pos;
+							return new Vector3(pos.x, bounds.size.y / 2, pos.z);
 					}
 				}
 			}
@@ -417,7 +415,7 @@ public class AIStrategy : Strategy {
 
 	public static int SortByDistanceToTC(Building b1, Building b2)
 	{
-		return (b1.transform.position - b1.player.industrialCenter.transform.position).magnitude.CompareTo ((b2.transform.position - b2.player.industrialCenter.transform.position).magnitude);
+		return (b2.transform.position - b2.player.industrialCenter.transform.position).magnitude.CompareTo ((b1.transform.position - b1.player.industrialCenter.transform.position).magnitude);
 	}
 }
 
