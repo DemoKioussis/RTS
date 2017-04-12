@@ -8,6 +8,7 @@ public class CameraControls : MonoBehaviour
     public float smoothness = 0.85f;
     public float scrollSpeedX = 1.0f;
     public float scrollSpeedY = 1.0f;
+	public float offset = 5.0f;
 
     Vector3 targetPosition;
     
@@ -47,15 +48,15 @@ public class CameraControls : MonoBehaviour
 
         /// MOVEMENT
         // Horizontal
-        if (mousePosition.x >= Screen.width || Input.GetKey(KeyCode.D))
+		if (mousePosition.x >= (Screen.width - offset) || Input.GetKey(KeyCode.D))
             transform.Translate(Vector3.right * scrollSpeedX * Time.deltaTime, Space.World);
-        else if (mousePosition.x <= 0.0f || Input.GetKey(KeyCode.A))
+		else if (mousePosition.x <= (0.0f + offset) || Input.GetKey(KeyCode.A))
             transform.Translate(Vector3.left * scrollSpeedX * Time.deltaTime, Space.World);
 
         // Vertical
-        if (mousePosition.y >= Screen.height || Input.GetKey(KeyCode.W))
+		if (mousePosition.y >= (Screen.height - offset) || Input.GetKey(KeyCode.W))
             transform.Translate(Vector3.forward * scrollSpeedY * Time.deltaTime, Space.World);
-        else if (mousePosition.y <= 0.0f || Input.GetKey(KeyCode.S))
+		else if (mousePosition.y <= (0.0f + offset) || Input.GetKey(KeyCode.S))
             transform.Translate(Vector3.back * scrollSpeedY * Time.deltaTime, Space.World);
     }
 }
