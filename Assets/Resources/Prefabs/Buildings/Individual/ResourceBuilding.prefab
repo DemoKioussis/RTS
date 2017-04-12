@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 208187411288077394}
   - component: {fileID: 114114409178643154}
   - component: {fileID: 114347873008499604}
-  - component: {fileID: 114134067260692926}
   m_Layer: 10
   m_Name: ResourceBuilding
   m_TagString: Untagged
@@ -76,6 +75,7 @@ GameObject:
   - component: {fileID: 33635667129793050}
   - component: {fileID: 65569373839348866}
   - component: {fileID: 23167184050556890}
+  - component: {fileID: 114326383880627586}
   m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830494904067796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 0.15, y: 1, z: 0.15}
   m_Children: []
   m_Father: {fileID: 4425673127613658}
@@ -337,7 +337,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: bff4b158aecf27c48b06afcfd17a4eb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -520,12 +520,12 @@ MonoBehaviour:
     gatheringTime: 2
     glueReturn: 1
     paperReturn: 1
---- !u!114 &114134067260692926
+--- !u!114 &114326383880627586
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1153354502849054}
+  m_GameObject: {fileID: 1159257960119182}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
