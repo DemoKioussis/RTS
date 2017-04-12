@@ -17,7 +17,10 @@ public class BaseUnitAttackBehaviour : BaseStateBehaviour
             Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
         }
         else
+        {
             ((UnitStateMachine)stateMachine).setHasTarget(false);
+            Debug.Log("NO TARGET");
+        }
     }
     protected override void exit()
     {

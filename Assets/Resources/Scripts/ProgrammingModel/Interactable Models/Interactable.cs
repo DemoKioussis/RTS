@@ -40,6 +40,7 @@ public abstract class Interactable : MonoBehaviour {
         }
     }
     public virtual Vector3 getPosition() {
+
         return transform.position;
     }
     public abstract void buildingInteraction(Building b);

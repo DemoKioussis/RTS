@@ -192,7 +192,7 @@ public class SelectionComponent : MonoBehaviour {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedBuildingGroup.InteractWith (interactable);
 					}
-					Debug.Log("Interacted with: " + interactable.name + " type: " + interactable.getInteractionType());
+				//	Debug.Log("Interacted with: " + interactable.name + " type: " + interactable.getInteractionType());
 				}
 			}
 

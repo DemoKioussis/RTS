@@ -40,6 +40,36 @@ public class BuildingButton : MonoBehaviour {
 		}
 	}
 
+	public void CreateResourceChin()
+	{
+		selectedBuildingGroup = selection.selectedBuildingGroup;	
+
+		if (selectedBuildingGroup != null) 
+		{
+			selectedBuildingGroup.CreateNewBuilding('1');
+		}
+	}
+		
+	public void CreateLongRange()
+	{
+		selectedBuildingGroup = selection.selectedBuildingGroup;	
+
+		if (selectedBuildingGroup != null) 
+		{
+			selectedBuildingGroup.CreateNewBuilding('2');
+		}
+	}
+
+	public void CreateShortRange()
+	{
+		selectedBuildingGroup = selection.selectedBuildingGroup;	
+
+		if (selectedBuildingGroup != null) 
+		{
+			selectedBuildingGroup.CreateNewBuilding('3');
+		}
+	}
+
 	public void SetClicked()
 	{
 		GetComponent<Image> ().color = Color.green;
