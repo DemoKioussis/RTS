@@ -18,6 +18,7 @@ TagManager:
   - LongRangeUnit
   - UIPanel
   - MapPlane
+  - UIBoundary
   layers:
   - Default
   - TransparentFX

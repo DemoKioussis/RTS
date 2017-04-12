@@ -28,7 +28,7 @@ public class KeyboardComponent : MonoBehaviour {
 				if (selectedBuildingGroup != null) 
 				{
 					// function takes the input and finds the correct Building Group function to execute
-					BuildingKeyControls.ActivateKeyboardAction (selectedBuildingGroup, Input.inputString.ToCharArray () [0]);
+					selectedBuildingGroup.SetToAwake ();
 				}
 
 				if (selectedUnitGroup != null) 

@@ -30,6 +30,7 @@ public class CameraControls : MonoBehaviour
 
 	GameObject mapPlane;
 	Bounds mapBounds;
+	Collider2D uiBoundary;
 
     // Use this for initialization
     void Start()
@@ -48,6 +49,8 @@ public class CameraControls : MonoBehaviour
 		Ray ray = new Ray(industrialCenterPos, Quaternion.Euler(-45.0f, 0.0f, 0.0f) * Vector3.up);
 		Vector3 cameraPos = ray.GetPoint (20.0f);
 		transform.position = new Vector3 (cameraPos.x, transform.position.y, cameraPos.z);
+
+		uiBoundary = GameObject.FindGameObjectWithTag ("UIBoundary").GetComponent<Collider2D> ();
     }
 
     // Update is called once per frame
