@@ -11,6 +11,7 @@ public class PlayerStrategy : Strategy {
 
 	public override void RealizeStrategy()
 	{
+        if(player.debugAiStats)
 		Debug.Log ("Player " + player.playerId + " made a move!");
 	}
 }
