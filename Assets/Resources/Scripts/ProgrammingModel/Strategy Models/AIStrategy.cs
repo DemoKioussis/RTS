@@ -299,7 +299,7 @@ public class AIStrategy : Strategy {
 
 		float angleDiff = 2 * Mathf.PI / resolution;
 
-		Bounds b = GameContext.currentGameContext.map.GetComponent<Renderer> ().bounds;
+		Bounds b = GameContext.currentGameContext.map.GetComponentInChildren<Renderer> ().bounds;
 
 		for(int j = 0; j < 10; j++)
 			for (int i = 0; i < resolution; i++) {
