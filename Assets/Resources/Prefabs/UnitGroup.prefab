@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
+  infoPanelPrefab: {fileID: 1333481346922512, guid: 07b4c152b0c4e4ab79148882d40c55d1,
+    type: 2}
   rtsObjects: []
   arriveRadius: 5
   arrivePercent: 0.99

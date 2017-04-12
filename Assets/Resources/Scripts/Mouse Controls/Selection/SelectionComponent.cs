@@ -29,9 +29,11 @@ public class SelectionComponent : MonoBehaviour {
     void Awake()
     {
         player = GetComponentInParent<PlayerContext>();
-		ui = GetComponentInParent<UIManager> ();
-
     }
+
+	void Start(){
+		ui = GameObject.FindGameObjectWithTag ("UIManager").GetComponent<UIManager> ();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -61,6 +63,11 @@ public class SelectionComponent : MonoBehaviour {
 					Destroy( selectableObject.selectionCircle.gameObject );
 					selectableObject.selectionCircle = null;
 				}
+			}
+
+			if (selectedResource != null) {
+				Destroy(selectedResource.selectionCircle);
+				selectedResource.selectionCircle = null;
 			}
 
 			ui.ClearInfoPanel ();
@@ -103,8 +110,9 @@ public class SelectionComponent : MonoBehaviour {
 			else {
 				RaycastHit hitInfo = Utils.GetPositionFromMouseClick(layerMask);
 				if (hitInfo.collider != null) {
-					if (hitInfo.collider.gameObject.GetComponent<RTSObject> () != null) {
-						RTSObject selectableObject = hitInfo.collider.gameObject.GetComponent<RTSObject> ();
+					if (hitInfo.collider.gameObject.GetComponentInParent<RTSObject> () != null) {
+						// structure of units have been changed, collider is now located in the selection target of the model
+						RTSObject selectableObject = hitInfo.collider.gameObject.GetComponentInParent<RTSObject> ();
 						if (selectableObject.selectionCircle == null) {
 							selectableObject.selectionCircle = Instantiate (selectionCirclePrefab, Vector3.zero, Quaternion.identity);
 							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject> ().SetSize (selectableObject.getModel ().bounds);
@@ -114,12 +122,14 @@ public class SelectionComponent : MonoBehaviour {
 								selectedBuildings.Add (selectableObject.GetComponent<Building> ());
 								selectedBuildingGroup.Add (selectableObject.GetComponent<Building> ());
 
-								ui.AddToInfoPanel (selectedBuildingGroup);
-							} else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit> ().player == player) {
+								ui.AddToInfoPanel (selectableObject); 
+
+							} 
+							else if (selectableObject.GetComponent<Unit> () != null && selectableObject.GetComponent<Unit> ().player == player) {
 								selectedUnits.Add (selectableObject.GetComponent<Unit> ());
 								selectedUnitGroup.Add (selectableObject.GetComponent<Unit> ());
 
-								ui.AddToInfoPanel (selectedUnitGroup);
+								ui.AddToInfoPanel (selectableObject);
 							}
 						}
 					} else if (hitInfo.collider.gameObject.GetComponent<Resource> () != null) {

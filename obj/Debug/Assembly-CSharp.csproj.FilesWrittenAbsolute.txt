@@ -19,3 +19,5 @@
 /Users/dkwok/Desktop/RTS/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/dkwok/Desktop/RTS/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/dkwok/Desktop/RTS/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/dkwok/Desktop/RTS/Temp/bin/Debug/UnityEngine.Purchasing.dll
+/Users/dkwok/Desktop/RTS/Temp/bin/Debug/UnityEngine.Advertisements.dll

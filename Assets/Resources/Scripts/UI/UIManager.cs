@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-	private GameObject hudPanel; // contains all UI elements of the game
+	public GameObject hudPanel; // contains all UI elements of the game
 	private Text infoStats;
 
 	private GameObject selectedObjectInfoPanel;
 	private Interactable selectedObject;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		hudPanel = GameObject.FindGameObjectWithTag ("HUDPanel");
 		infoStats = GameObject.FindGameObjectWithTag ("InfoStats").GetComponent<Text>();
 	}
 	 
-	void Update(){
+	void FixedUpdate(){
 		if (selectedObject != null) {
 			GetInformation (selectedObject);
 		}
@@ -29,7 +29,12 @@ public class UIManager : MonoBehaviour {
 			return;
 		}
 
-		selectedObjectInfoPanel = (GameObject)Instantiate (selectedGameObj.GetInfoPanel (), hudPanel.transform);
+		GameObject infoPanel = selectedGameObj.GetInfoPanel ();
+		selectedObjectInfoPanel = (GameObject)Instantiate (infoPanel, Vector3.zero, infoPanel.transform.rotation, hudPanel.transform);
+
+		// I had to hard code this value...
+		selectedObjectInfoPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3 (50, 0, 0);
+
 		selectedObject = selectedGameObj; // keep track of the object
 
 		GetInformation (selectedObject);
@@ -37,22 +42,26 @@ public class UIManager : MonoBehaviour {
 
 	public void ClearInfoPanel(){
 		// clear everything
-		Destroy(selectedObjectInfoPanel.gameObject);
+		if (selectedObject != null) {
+			Destroy (selectedObjectInfoPanel);
+		}
 		selectedObject = null;
 		selectedObjectInfoPanel = null;
+		infoStats.text = "";
+
 	}
 
 	public void GetInformation(Interactable selectedObj){
 		switch (selectedObj.getInteractionType())
 		{
 		case INTERACTION_TYPE.BUILDING:
-			infoStats.text = selectedObj.GetStats ().hitpoints + " hp";
+			infoStats.text = selectedObj.GetStats ().hitpoints + "/" + selectedObj.GetStats ().maxHitpoints + " hp";
 			break;
 		case INTERACTION_TYPE.POSITION:
 			infoStats.text = "";			
 			break;
 		case INTERACTION_TYPE.UNIT:
-			infoStats.text = selectedObj.GetStats().hitpoints + " hp";
+			infoStats.text = selectedObj.GetStats().hitpoints + "/" + selectedObj.GetStats ().maxHitpoints + " hp";
 			break;
 		case INTERACTION_TYPE.RESOURCE:
 			{

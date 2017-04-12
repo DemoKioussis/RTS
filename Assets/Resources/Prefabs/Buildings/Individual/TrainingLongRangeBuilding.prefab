@@ -19,14 +19,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4022402197915298}
-  - component: {fileID: 65067496358227154}
   - component: {fileID: 54947955570101634}
   - component: {fileID: 208504450301498626}
   - component: {fileID: 114535769843775354}
   - component: {fileID: 114501542103888264}
+  - component: {fileID: 114759623769977600}
   m_Layer: 10
   m_Name: TrainingLongRangeBuilding
-  m_TagString: Untagged
+  m_TagString: LongRangeBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 4015887546333782}
   - component: {fileID: 23452659252709088}
   - component: {fileID: 33008594898611572}
+  - component: {fileID: 65305671721182596}
   m_Layer: 10
   m_Name: model
   m_TagString: Untagged
@@ -128,12 +129,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65067496358227154
+--- !u!65 &65305671721182596
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1013997411748500}
+  m_GameObject: {fileID: 1778651359303796}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
@@ -163,15 +164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
-  infoPanelPrefab: {fileID: 1876395793822784, guid: 05309cf6fb5664786b4d6b9b59086be5,
+  infoPanelPrefab: {fileID: 1504821867040206, guid: 05309cf6fb5664786b4d6b9b59086be5,
     type: 2}
   stats:
     viewRange: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
-    paperCost: 10
-    glueCost: 30
+    paperCost: 100
+    glueCost: 180
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
@@ -184,6 +185,18 @@ MonoBehaviour:
   unitIndex: 0
   mapPosPrefab: {fileID: 1412890718017786, guid: d90e21a17de674f28b3de4b3bb9bf2d6,
     type: 2}
+--- !u!114 &114759623769977600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013997411748500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 114535769843775354}
 --- !u!208 &208504450301498626
 NavMeshObstacle:
   m_ObjectHideFlags: 1

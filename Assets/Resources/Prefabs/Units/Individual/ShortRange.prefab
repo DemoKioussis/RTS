@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4186838040181808}
   - component: {fileID: 114606714004650434}
   - component: {fileID: 135992958190291558}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: SelectionTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 54010832629035568}
   m_Layer: 9
   m_Name: ShortRange
-  m_TagString: Untagged
+  m_TagString: ShortRangeUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,13 +217,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
+  infoPanelPrefab: {fileID: 1324953949932960, guid: fe305dbaa6db04df2a73702457e11f52,
+    type: 2}
   stats:
     viewRange: 0
     maxHitpoints: 0
     hitpoints: 5
     influenceMultiplier: 0
-    paperCost: 0
-    glueCost: 0
+    paperCost: 40
+    glueCost: 10
   player: {fileID: 0}
   objectIsColliding: 0
   isBeingPlaced: 0
@@ -269,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: {fileID: 0}
+  link: {fileID: 114170303354362912}
 --- !u!135 &135992958190291558
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -6,12 +6,16 @@ public class CameraControls : MonoBehaviour
     public float movementSpeed = 0.1f;
     public float rotationSpeed = 4f;
     public float smoothness = 0.85f;
+    public float scrollSpeedX = 1.0f;
+    public float scrollSpeedY = 1.0f;
 
     Vector3 targetPosition;
     
     public Quaternion targetRotation;
     float targetRotationY;
     float targetRotationX;
+
+    Vector2 mousePosition;
 
     // Use this for initialization
     void Start()
@@ -23,21 +27,9 @@ public class CameraControls : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if( Input.GetKey( KeyCode.W ) )
-            targetPosition += transform.forward * movementSpeed;
-        if( Input.GetKey( KeyCode.A ) )
-            targetPosition -= transform.right * movementSpeed;
-        if( Input.GetKey( KeyCode.S ) )
-            targetPosition -= transform.forward * movementSpeed;
-        if( Input.GetKey( KeyCode.D ) )
-            targetPosition += transform.right * movementSpeed;
-        if( Input.GetKey( KeyCode.Q ) )
-            targetPosition -= transform.up * movementSpeed;
-        if( Input.GetKey( KeyCode.E ) )
-            targetPosition += transform.up * movementSpeed;
-
+        
         if( Input.GetMouseButton( 1 ) )
         {
             Cursor.visible = false;
@@ -48,7 +40,22 @@ public class CameraControls : MonoBehaviour
         else
             Cursor.visible = true;
 
-        transform.position = Vector3.Lerp( transform.position, targetPosition, ( 1.0f - smoothness ) );
         transform.rotation = Quaternion.Lerp( transform.rotation, targetRotation, ( 1.0f - smoothness ) );
+        
+
+        mousePosition = Input.mousePosition;
+
+        /// MOVEMENT
+        // Horizontal
+        if (mousePosition.x >= Screen.width || Input.GetKey(KeyCode.D))
+            transform.Translate(Vector3.right * scrollSpeedX * Time.deltaTime, Space.World);
+        else if (mousePosition.x <= 0.0f || Input.GetKey(KeyCode.A))
+            transform.Translate(Vector3.left * scrollSpeedX * Time.deltaTime, Space.World);
+
+        // Vertical
+        if (mousePosition.y >= Screen.height || Input.GetKey(KeyCode.W))
+            transform.Translate(Vector3.forward * scrollSpeedY * Time.deltaTime, Space.World);
+        else if (mousePosition.y <= 0.0f || Input.GetKey(KeyCode.S))
+            transform.Translate(Vector3.back * scrollSpeedY * Time.deltaTime, Space.World);
     }
 }

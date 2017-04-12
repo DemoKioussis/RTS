@@ -19,10 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4889567938745956}
-  - component: {fileID: 65405184429216822}
   - component: {fileID: 208682175949583008}
   - component: {fileID: 114230253866852286}
-  - component: {fileID: 114659230613910482}
+  - component: {fileID: 114639570120121158}
   m_Layer: 10
   m_Name: IndustrialCenter
   m_TagString: TownCenter
@@ -40,6 +39,7 @@ GameObject:
   - component: {fileID: 4733167063634844}
   - component: {fileID: 23203523227314718}
   - component: {fileID: 33155471450712592}
+  - component: {fileID: 65111076780714318}
   m_Layer: 10
   m_Name: model
   m_TagString: TownCenter
@@ -112,12 +112,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664104818636626}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65405184429216822
+--- !u!65 &65111076780714318
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1562591949264656}
+  m_GameObject: {fileID: 1664104818636626}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
+  infoPanelPrefab: {fileID: 1448047610170100, guid: 7ad7d36b04f5f405ebb84b79c08a1c84,
+    type: 2}
   stats:
     viewRange: 0
     maxHitpoints: 0
@@ -151,7 +153,7 @@ MonoBehaviour:
   awake: 0
   flagPrefab: {fileID: 1728843172292248, guid: c0328b19ca2252841a48901676292e46, type: 2}
   buildings: []
---- !u!114 &114659230613910482
+--- !u!114 &114639570120121158
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -159,9 +161,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1562591949264656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b54a1c977b84d1682159249ca69e54, type: 3}
+  m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  link: {fileID: 114230253866852286}
 --- !u!208 &208682175949583008
 NavMeshObstacle:
   m_ObjectHideFlags: 1

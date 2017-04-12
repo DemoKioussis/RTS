@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 208535040532183760}
   - component: {fileID: 65694154962087128}
   - component: {fileID: 114853600190930494}
+  - component: {fileID: 114600825661774740}
   m_Layer: 12
   m_Name: Glue
   m_TagString: Glue
@@ -94,6 +95,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 32.553215, y: 19.717089, z: 22.30821}
   m_Center: {x: -0.4905052, y: 9.858544, z: 0.8334946}
+--- !u!114 &114600825661774740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949998073391828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 114853600190930494}
 --- !u!114 &114853600190930494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,8 +119,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
+  infoPanelPrefab: {fileID: 1011424783178116, guid: 7be372e1b4565432ca4e8bb3e193bb4d,
+    type: 2}
   building: {fileID: 0}
-  quantity: 0
+  stats:
+    viewRange: 0
+    maxHitpoints: 0
+    hitpoints: 0
+    influenceMultiplier: 0
+    paperCost: 0
+    glueCost: 0
+    type: 
+    quantity: 0
+  selectionCircle: {fileID: 0}
   startingMinQuantity: 500
   startingMaxQuantity: 2000
   type: 
