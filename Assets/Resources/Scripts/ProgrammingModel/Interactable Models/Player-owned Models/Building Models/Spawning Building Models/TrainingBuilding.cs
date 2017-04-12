@@ -58,6 +58,7 @@ public class TrainingBuilding : Building{
 			SetSpawnPointAs(vec - new Vector3(0, 0, 2 * getModel().bounds.size.z + 0.5f + 1f));
 			// spawn point is not set
 			unitObject.GetComponent<Unit> ().InteractWith (GetSpawnPoint());
+			spawnPointSet = true;
 		}
 	}
 
@@ -67,10 +68,10 @@ public class TrainingBuilding : Building{
 	}
 
 	// Set the spawn point
-	public override void SetSpawnPointAs(Vector3 spawnPosition){
+	public override void SetSpawnPointAs(MapPos spawnPosition){
 		if(base.GetFlagReference() == null){
 			// Debug.Log ("Setting Spawn Point");
-			GameObject flag = (GameObject)Instantiate (base.flagPrefab, spawnPosition, transform.rotation);
+			GameObject flag = (GameObject)Instantiate (base.flagPrefab, spawnPosition.getPosition(), transform.rotation);
 			base.SetFlagReference(flag);
 			base.SetSpawnPointAs (spawnPosition);
 			spawnPointSet = true; // spawn point is set

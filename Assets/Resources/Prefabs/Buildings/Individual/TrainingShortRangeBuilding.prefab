@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 208475728612975070}
   - component: {fileID: 114124073906239260}
   - component: {fileID: 114337268938526732}
+  - component: {fileID: 114946821121906948}
   m_Layer: 10
   m_Name: TrainingShortRangeBuilding
   m_TagString: Untagged
@@ -184,6 +185,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdc615a7781a4a24a0880f96a0e04ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114946821121906948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273228444577668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df5f7e89d90f6884ebfa14d9ec7fe615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 114124073906239260}
 --- !u!208 &208475728612975070
 NavMeshObstacle:
   m_ObjectHideFlags: 1

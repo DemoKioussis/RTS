@@ -51,4 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf6e574d83a5435b923e1a964a61d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamId: 0
+  infoPanelPrefab: {fileID: 1866976334631156, guid: 1369615a3634245a18c4872a2d540619,
+    type: 2}
   rtsObjects: []
