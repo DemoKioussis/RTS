@@ -232,9 +232,9 @@ MonoBehaviour:
   infoPanelPrefab: {fileID: 1617241690816232, guid: bbe5fbaae305743a2b38a20d9e24157a,
     type: 2}
   stats:
-    viewRange: 0
-    maxHitpoints: 0
-    hitpoints: 5
+    viewRange: 15
+    maxHitpoints: 100
+    hitpoints: 100
     influenceMultiplier: 0
     paperCost: 20
     glueCost: 60
@@ -250,7 +250,7 @@ MonoBehaviour:
   militaryStats:
     minAttackRange: 0
     maxAttackRange: 10
-    attackStrength: 3
+    attackStrength: 20
     attackRate: 5
 --- !u!114 &114194836389441868
 MonoBehaviour:

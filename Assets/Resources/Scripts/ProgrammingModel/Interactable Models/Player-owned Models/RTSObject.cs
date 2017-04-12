@@ -54,17 +54,15 @@ public abstract class RTSObject : Interactable {
 
     public void takeDamage(float d)
     {
-        Debug.Log("I TOOK "+d+" DAMAGE!");
         stats.hitpoints -= d;
         if (stats.hitpoints <= 0) {
             die();
         }
     }
     protected virtual void die() {
-        if (alive) {
-            Debug.Log("AAAAAHHHH I DIED");
+        if (alive)
+        {
             alive = false;
-            GameObject.Destroy(this.gameObject, 0.1f);
         }
     }
     protected virtual void Heal(int hp)

@@ -91,7 +91,6 @@ public class UnitGroup : RTSObjectGroup {
     }
     public override void unitInteraction(Unit u) {
         preInteract(u);
-        Debug.Log("Going to attack");
         foreach (Unit myUnit in rtsObjects)
         {
             myUnit.InteractWith(u);

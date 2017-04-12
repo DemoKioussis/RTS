@@ -10,6 +10,7 @@ public class UnitStateMachine : BaseStateMachine {
     UnitMoveBehaviour moveBehaviour;
     BaseUnitAttackBehaviour attackBehaviour;
     BaseUnitIdleBehaviour idleBehaviour;
+    UnitFindTargetBehaviour findTargetBehaviour;
     Unit unit;
    
     public bool attack, hasTarget, targetInFireRange, hasFired, atTarget,lookForTarget;
@@ -23,6 +24,8 @@ public class UnitStateMachine : BaseStateMachine {
         moveBehaviour.awake();
         attackBehaviour = stateMachine.GetBehaviour<BaseUnitAttackBehaviour>();
         idleBehaviour = stateMachine.GetBehaviour<BaseUnitIdleBehaviour>();
+        findTargetBehaviour = stateMachine.GetBehaviour<UnitFindTargetBehaviour>();
+
 
     }
 
@@ -60,14 +63,15 @@ public class UnitStateMachine : BaseStateMachine {
         else
             setHasTarget(false);
 
-        if (!hasTarget && attack) {
-            setLookForTarget(true);
-        }
+
 
 
 
     }
-
+    public Unit getUnit()
+    {
+        return unit;
+    }
 
     public void reload() {
         Invoke("reloadAction", ((Military)unit).militaryStats.attackRate);
@@ -76,6 +80,7 @@ public class UnitStateMachine : BaseStateMachine {
     private void reloadAction() {
         setHasFired(false);
     }
+
     protected override void setInitialState() {
         updateParameter("Attack", attack);
         updateParameter("HasTarget", hasTarget);

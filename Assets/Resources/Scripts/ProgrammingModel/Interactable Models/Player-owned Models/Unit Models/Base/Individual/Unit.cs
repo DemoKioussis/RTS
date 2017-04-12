@@ -39,6 +39,17 @@ public class Unit : RTSObject {
         return group;
     }
 
+    protected override void die()
+    {
+
+        if (isAlive())
+        {
+            GameObject.Destroy(this.gameObject, 0.2f);
+            group.Remove(this);
+            player.activeUnits.Remove(this);
+            base.die();
+        }
+    }
     public override float Influence ()
 	{
 		return stats.hitpoints;
