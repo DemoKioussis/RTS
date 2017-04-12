@@ -250,7 +250,7 @@ MonoBehaviour:
   militaryStats:
     minAttackRange: 0
     maxAttackRange: 10
-    attackStrength: 0
+    attackStrength: 3
     attackRate: 5
 --- !u!114 &114194836389441868
 MonoBehaviour:
@@ -291,7 +291,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909318969148630}
   m_Enabled: 1
-  m_Radius: 0.6
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerContext : MonoBehaviour {
+    public bool debugAiStats;
 	public bool fogOfWar = true;
 	public bool explored = false;
 
