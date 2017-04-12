@@ -73,7 +73,7 @@ public class SelectionComponent : MonoBehaviour {
 					selectedResource.selectionCircle = null;
 				}
 
-				ui.ClearInfoPanel ();
+				ClearUI ();
 			}
 
 			// If we let go of the left mouse button, end selection
@@ -87,7 +87,7 @@ public class SelectionComponent : MonoBehaviour {
 							if( selectableObject.selectionCircle == null )
 							{
 								selectableObject.selectionCircle = Instantiate( selectionCirclePrefab , Vector3.zero, Quaternion.identity);
-								//							selectableObject.selectionCircle.GetComponent<SizeBasedOnObject>().SetSize(selectableObject.getModel().bounds);
+								//selectableObject.selectionCircle.GetComponent<SizeBasedOnObject>().SetSize(selectableObject.getModel().bounds);
 								selectableObject.selectionCircle.transform.SetParent( selectableObject.transform, false );
 								selectableObject.selectionCircle.transform.eulerAngles = new Vector3( 0, 0, 0 );
 								if (selectableObject.GetComponent<Building> () != null && selectableObject.GetComponent<Building>().player == player) {
@@ -103,11 +103,19 @@ public class SelectionComponent : MonoBehaviour {
 					}
 					if (!selectedUnitGroup.IsEmpty ()) 
 					{
-						ui.AddToInfoPanel (selectedUnitGroup);
+						if (selectedUnitGroup.Count() > 1) {
+							ui.AddToInfoPanel (selectedUnitGroup);
+						} else {
+							ui.AddToInfoPanel(selectedUnitGroup.rtsObjects[0]);
+						}
 					} 
 					else if(!selectedBuildingGroup.IsEmpty())
 					{
-						ui.AddToInfoPanel (selectedBuildingGroup);
+						if (selectedBuildingGroup.Count() > 1) {
+							ui.AddToInfoPanel (selectedBuildingGroup);
+						} else {
+							ui.AddToInfoPanel(selectedBuildingGroup.rtsObjects[0]);
+						}
 					}
 				}
 				else {
@@ -227,6 +235,10 @@ public class SelectionComponent : MonoBehaviour {
 		var camera = Camera.main;
 		var viewportBounds = Utils.GetViewportBounds( camera, mousePosition1, Input.mousePosition );
 		return viewportBounds.Contains( camera.WorldToViewportPoint( gameObject.transform.position ) );
+	}
+
+	public void ClearUI(){
+		ui.ClearInfoPanel ();
 	}
 
 	void OnGUI()
