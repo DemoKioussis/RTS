@@ -79,4 +79,9 @@ public class BuildingButton : MonoBehaviour {
 	{
 		GetComponent<Image> ().color = Color.white;
 	}
+
+	void OnMouseOver()
+	{
+		Debug.Log ("cock");
+	}
 }
