@@ -55,13 +55,13 @@ public class UIManager : MonoBehaviour {
 		switch (selectedObj.getInteractionType())
 		{
 		case INTERACTION_TYPE.BUILDING:
-			infoStats.text = selectedObj.GetStats ().hitpoints + " hp";
+			infoStats.text = selectedObj.GetStats ().hitpoints + "/" + selectedObj.GetStats ().maxHitpoints + " hp";
 			break;
 		case INTERACTION_TYPE.POSITION:
 			infoStats.text = "";			
 			break;
 		case INTERACTION_TYPE.UNIT:
-			infoStats.text = selectedObj.GetStats().hitpoints + " hp";
+			infoStats.text = selectedObj.GetStats().hitpoints + "/" + selectedObj.GetStats ().maxHitpoints + " hp";
 			break;
 		case INTERACTION_TYPE.RESOURCE:
 			{
