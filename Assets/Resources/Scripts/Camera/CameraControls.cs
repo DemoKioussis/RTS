@@ -11,6 +11,8 @@ public class CameraControls : MonoBehaviour
     public float scrollSpeedY = 1.0f;
 	public float offset = 50.0f;
 
+    public AnimationCurve speedCurve;
+
     Vector3 targetPosition;
     
     public Quaternion targetRotation;
@@ -62,7 +64,6 @@ public class CameraControls : MonoBehaviour
 			transform.Translate(Vector3.forward * scrollSpeedY * Time.deltaTime, Space.World);
 		else if (mousePosition.y <= (0.0f + offset) || Input.GetKey(KeyCode.S))
 			transform.Translate(Vector3.back * scrollSpeedY * Time.deltaTime, Space.World);
-
 
 
     }
