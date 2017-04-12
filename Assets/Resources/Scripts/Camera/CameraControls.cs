@@ -24,6 +24,8 @@ public class CameraControls : MonoBehaviour
 	GameObject uiPanel;
 	float uiHeight;
 
+	Vector3 industrialCenterPos;
+
     // Use this for initialization
     void Start()
     {
@@ -32,14 +34,19 @@ public class CameraControls : MonoBehaviour
         targetRotationY = transform.localRotation.eulerAngles.y;
         targetRotationX = transform.localRotation.eulerAngles.x;
 		uiPanel = GameObject.FindGameObjectWithTag ("UIPanel");
-		Vector3 industrialCenterPos = GetComponentInParent<PlayerContext> ().industrialCenter.gameObject.transform.position;
-		transform.position = new Vector3 (industrialCenterPos.x, transform.position.y, industrialCenterPos.z);
+		industrialCenterPos = GetComponentInParent<PlayerContext> ().industrialCenter.gameObject.transform.position;
+
+
+		Ray ray = new Ray(industrialCenterPos, Quaternion.Euler(-45.0f, 0.0f, 0.0f) * Vector3.up);
+		Vector3 cameraPos = ray.GetPoint (20.0f);
+		transform.position = new Vector3 (cameraPos.x, transform.position.y, cameraPos.z);
     }
 
     // Update is called once per frame
 
     void LateUpdate()
     {
+
 		Rect screenRect = new Rect(0,0, Screen.width, Screen.height);
 		if (!screenRect.Contains(Input.mousePosition))
 			return;
