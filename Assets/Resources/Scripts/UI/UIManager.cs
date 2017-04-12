@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour {
 	public GameObject hudPanel; // contains all UI elements of the game
 	private Text infoStats;
 
+	private PlayerContext player;
+	private Text[] playerStats;
+
 	private GameObject selectedObjectInfoPanel;
 	private Interactable selectedObject;
 
@@ -15,12 +18,16 @@ public class UIManager : MonoBehaviour {
 	void Awake () {
 		hudPanel = GameObject.FindGameObjectWithTag ("HUDPanel");
 		infoStats = GameObject.FindGameObjectWithTag ("InfoStats").GetComponent<Text>();
+		player = GetComponentInParent<PlayerContext> ();
+		playerStats = GameObject.FindGameObjectWithTag ("PlayerStats").GetComponentsInChildren<Text>();
 	}
 	 
 	void FixedUpdate(){
 		if (selectedObject != null) {
 			GetInformation (selectedObject);
 		}
+
+		GetPlayerInformation ();
 	}
 
 	// Add interactable object to the info panel
@@ -71,4 +78,14 @@ public class UIManager : MonoBehaviour {
 			}
 		}
 	}
+
+	private void GetPlayerInformation(){
+		// 0 is paper
+		// 1 is glue
+		// 2 is popuplation
+		playerStats [0].text = "Paper: " + player.paperQuantity;
+		playerStats [1].text = "Glue: " + player.glueQuantity;
+		playerStats [2].text = "Pop: " + player.population + "/" + player.populationLimit;
+	}
+
 }
