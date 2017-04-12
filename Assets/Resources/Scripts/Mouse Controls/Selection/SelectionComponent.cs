@@ -70,7 +70,7 @@ public class SelectionComponent : MonoBehaviour {
 				selectedResource.selectionCircle = null;
 			}
 
-			ui.ClearInfoPanel ();
+			ClearUI ();
 		}
 
 		// If we let go of the left mouse button, end selection
@@ -220,6 +220,10 @@ public class SelectionComponent : MonoBehaviour {
 		var camera = Camera.main;
 		var viewportBounds = Utils.GetViewportBounds( camera, mousePosition1, Input.mousePosition );
 		return viewportBounds.Contains( camera.WorldToViewportPoint( gameObject.transform.position ) );
+	}
+
+	public void ClearUI(){
+		ui.ClearInfoPanel ();
 	}
 
 	void OnGUI()
