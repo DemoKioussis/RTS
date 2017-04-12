@@ -129,6 +129,9 @@ MonoBehaviour:
   movementSpeed: 0.1
   rotationSpeed: 4
   smoothness: 0.85
+  scrollSpeedX: 1
+  scrollSpeedY: 1
+  offset: 50
   targetRotation: {x: -0.0050742836, y: -0.9356907, z: 0.3525279, w: -0.013468269}
 --- !u!124 &124579552199146406
 Behaviour:
