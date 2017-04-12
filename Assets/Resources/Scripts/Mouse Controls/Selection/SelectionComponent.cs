@@ -100,7 +100,7 @@ public class SelectionComponent : MonoBehaviour {
 						}
 					}
 				}
-				if (!selectedUnitGroup.IsEmpty ()) 
+				if (!selectedUnitGroup.IsEmpty () && (!MouseInUI() || isSelecting)) 
 				{
 					if (selectedUnitGroup.Count() > 1) {
 						ui.AddToInfoPanel (selectedUnitGroup);
@@ -108,7 +108,7 @@ public class SelectionComponent : MonoBehaviour {
 						ui.AddToInfoPanel(selectedUnitGroup.rtsObjects[0]);
 					}
 				} 
-				else if(!selectedBuildingGroup.IsEmpty())
+				else if(!selectedBuildingGroup.IsEmpty() && (!MouseInUI() || isSelecting))
 				{
 					if (selectedBuildingGroup.Count() > 1) {
 						ui.AddToInfoPanel (selectedBuildingGroup);

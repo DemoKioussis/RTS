@@ -33,7 +33,7 @@ public class BuildingButton : MonoBehaviour {
 
 		if (selectedBuildingGroup != null) 
 		{
-			selectedBuildingGroup.SetToSleep ();
+			//selectedBuildingGroup.SetToSleep ();
 		}
 	}
 }
