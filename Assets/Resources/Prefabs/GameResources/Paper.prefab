@@ -120,6 +120,8 @@ MonoBehaviour:
     glueCost: 0
     type: 
     quantity: 0
+  resourceDepletedObject: {fileID: 1531737341544194, guid: a0647ea5c3729449c9605392692a85f4,
+    type: 2}
   selectionCircle: {fileID: 0}
   startingMinQuantity: 500
   startingMaxQuantity: 2000
