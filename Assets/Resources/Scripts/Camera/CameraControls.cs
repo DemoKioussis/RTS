@@ -32,11 +32,18 @@ public class CameraControls : MonoBehaviour
         targetRotationY = transform.localRotation.eulerAngles.y;
         targetRotationX = transform.localRotation.eulerAngles.x;
 		uiPanel = GameObject.FindGameObjectWithTag ("UIPanel");
+		Vector3 industrialCenterPos = GetComponentInParent<PlayerContext> ().industrialCenter.gameObject.transform.position;
+		transform.position = new Vector3 (industrialCenterPos.x, transform.position.y, industrialCenterPos.z);
     }
 
     // Update is called once per frame
+
     void LateUpdate()
     {
+		Rect screenRect = new Rect(0,0, Screen.width, Screen.height);
+		if (!screenRect.Contains(Input.mousePosition))
+			return;
+
         if( Input.GetMouseButton( 1 ) )
         {
             Cursor.visible = false;
@@ -67,6 +74,7 @@ public class CameraControls : MonoBehaviour
 
 
     }
+    
 
 	bool IsInUI()
 	{
