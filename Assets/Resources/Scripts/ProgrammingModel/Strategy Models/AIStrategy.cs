@@ -315,7 +315,7 @@ public class AIStrategy : Strategy {
 
 		for(int j = 0; j < buildings.Count; j++)
 			for (int i = 0; i < resolution; i++) {
-				Vector3 pos = (buildings[i].transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
+				Vector3 pos = (buildings[j].transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
 				if (pos.x > b.min.x && pos.x < b.max.x && pos.z > b.min.z && pos.z < b.max.z) {
 					Collider[] c = Physics.OverlapBox (pos, tCSize / 5);
 					if (c != null) {
@@ -417,7 +417,7 @@ public class AIStrategy : Strategy {
 
 	public static int SortByDistanceToTC(Building b1, Building b2)
 	{
-		return (b1.transform.position - b1.player.industrialCenter.transform.position).magnitude.CompareTo (b2.transform.position - b2.player.industrialCenter.transform.position);
+		return (b1.transform.position - b1.player.industrialCenter.transform.position).magnitude.CompareTo ((b2.transform.position - b2.player.industrialCenter.transform.position).magnitude);
 	}
 }
 
