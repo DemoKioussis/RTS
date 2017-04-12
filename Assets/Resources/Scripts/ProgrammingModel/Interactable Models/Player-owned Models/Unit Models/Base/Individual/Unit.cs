@@ -10,10 +10,10 @@ public class Unit : RTSObject {
     // Update is called once per frame
 
 	void Update () {
-		if (!playerSetUp && player != null) {
+/*		if (!playerSetUp && player != null) {
 			player.activeUnits.Add (this);
 			playerSetUp = true;
-		}
+		}*/
 	}
     void OnDrawGizmos()
     {
