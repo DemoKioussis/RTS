@@ -16,6 +16,8 @@ public class ButtonManager : MonoBehaviour {
 		selection = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SelectionComponent> ();
 		buttonAwake.SetActive (false);
 		buttonSleep.SetActive (false);
+		buttonAwake.GetComponent<BuildingButton>().buttonManager = this;
+		buttonSleep.GetComponent<BuildingButton>().buttonManager = this;
 	}
 	
 	// Update is called once per frame
