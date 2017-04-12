@@ -19,6 +19,7 @@ TagManager:
   - UIPanel
   - MapPlane
   - UIBoundary
+  - PlayerStats
   layers:
   - Default
   - TransparentFX
