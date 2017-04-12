@@ -230,10 +230,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 0
+  infoPanelPrefab: {fileID: 0}
   stats:
     viewRange: 0
-    maxHitpoints: 0
-    hitpoints: 5
+    maxHitpoints: 25
+    hitpoints: 25
     influenceMultiplier: 0
     paperCost: 0
     glueCost: 0
@@ -249,7 +250,7 @@ MonoBehaviour:
   militaryStats:
     minAttackRange: 0
     maxAttackRange: 10
-    attackStrength: 0
+    attackStrength: 2
     attackRate: 5
 --- !u!114 &114194836389441868
 MonoBehaviour:
