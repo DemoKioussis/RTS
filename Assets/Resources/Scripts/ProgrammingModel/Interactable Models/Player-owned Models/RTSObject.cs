@@ -13,7 +13,7 @@ public abstract class RTSObject : Interactable {
 
 	public bool objectIsColliding;
 	public bool isBeingPlaced;
-    private bool alive;
+    private bool alive = true;
 	public Interactable interactable;
 	public GameObject selectionCircle;
     MeshRenderer model;
@@ -60,13 +60,12 @@ public abstract class RTSObject : Interactable {
             die();
         }
     }
-    private void die() {
+    protected virtual void die() {
         if (alive) {
-            Debug.Log("Oh no! I died");
+            Debug.Log("AAAAAHHHH I DIED");
             alive = false;
-            GameObject.Destroy(this.gameObject, 3);
-                }
-
+            GameObject.Destroy(this.gameObject, 0.1f);
+        }
     }
     protected virtual void Heal(int hp)
 	{
