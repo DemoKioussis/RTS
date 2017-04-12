@@ -19,10 +19,11 @@ public class UnitStateMachine : BaseStateMachine {
         base.Awake();
         unit = (Unit)getRTSObject();
         moveBehaviour = stateMachine.GetBehaviour<UnitMoveBehaviour>();
+        moveBehaviour.setAgent(GetComponentInParent<NavMeshAgent>());
+        moveBehaviour.awake();
         attackBehaviour = stateMachine.GetBehaviour<BaseUnitAttackBehaviour>();
         idleBehaviour = stateMachine.GetBehaviour<BaseUnitIdleBehaviour>();
 
-        moveBehaviour.setAgent(GetComponentInParent<NavMeshAgent>());
     }
 
     public UnitMoveBehaviour getMoveBehaviour() {

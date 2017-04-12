@@ -10,9 +10,14 @@ public class BaseUnitAttackBehaviour : BaseStateBehaviour
   
     protected override void enter()
     {
-        ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
-        ((UnitStateMachine)stateMachine).setHasFired(true);
-        Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+        if (stateMachine.getRTSObject().getTargetInteraction() != null || ((RTSObject)(stateMachine.getRTSObject().getTargetInteraction())).isAlive())
+        {
+            ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
+            ((UnitStateMachine)stateMachine).setHasFired(true);
+            Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+        }
+        else
+            ((UnitStateMachine)stateMachine).setHasTarget(false);
     }
     protected override void exit()
     {

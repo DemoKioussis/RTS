@@ -14,8 +14,8 @@ public class UnitMoveBehaviour : BaseStateBehaviour
     public float movementDelta;
     Vector3 lastPosition;
     Vector3 origionalPosition;
-    void Awake() {
-
+    void  awake() {
+        agent.speed = ((Unit)stateMachine.getRTSObject()).unitStats.moveSpeed;
     }
     protected override void enter()
     {

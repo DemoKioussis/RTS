@@ -150,7 +150,7 @@ public class AIStrategy : Strategy {
 			stats += tasks [i].value + " ";
 		}
 
-		Debug.Log (stats);
+	//	Debug.Log (stats);
 
 		tasks.Sort (SortByValue);
 	}
