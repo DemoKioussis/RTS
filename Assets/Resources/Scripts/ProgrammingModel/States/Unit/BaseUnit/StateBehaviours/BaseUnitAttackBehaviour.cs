@@ -14,7 +14,7 @@ public class BaseUnitAttackBehaviour : BaseUnitBehaviour
         {
            
                 ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
-                ((UnitStateMachine)stateMachine).setHasFired(true);
+                ((UnitStateMachine)stateMachine).fire();
                 Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
 
         }
@@ -37,12 +37,5 @@ public class BaseUnitAttackBehaviour : BaseUnitBehaviour
         ((UnitStateMachine)stateMachine).reload();
     }
 
-    public void setAttackTarget() {
-        ((UnitStateMachine)stateMachine).setAttack(true);
-    }
-    public void stopAttack() {
-        ((UnitStateMachine)stateMachine).setAttack(false);
-
-    }
 
 }

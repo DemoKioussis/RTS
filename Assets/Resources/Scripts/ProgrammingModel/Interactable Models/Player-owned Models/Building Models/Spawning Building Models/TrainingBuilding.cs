@@ -35,7 +35,7 @@ public class TrainingBuilding : Building{
 			}
 		}
 		// hack for debugging
-		if (Input.GetKeyUp(KeyCode.O)) {
+		if (Input.GetKeyUp(KeyCode.O) && awake) {
 			SpawnUnit (unit);
 		}
 	}

@@ -25,13 +25,13 @@ public class UnitFindTargetBehaviour : BaseUnitBehaviour
     protected override void exit()
     {
         if (!targetFound) {
-            ((UnitStateMachine)stateMachine).setAttack(false);
-            ((UnitStateMachine)stateMachine).setTargetInFireRange(false);
+            ((UnitStateMachine)stateMachine).stopAttack();
+            ((UnitStateMachine)stateMachine).targetIsInFireRange();
         }
         if (targetFound)
         {
-            ((UnitStateMachine)stateMachine).setAttack(true);
-            ((UnitStateMachine)stateMachine).setTargetInFireRange(false);
+            ((UnitStateMachine)stateMachine).attackTarget();
+            ((UnitStateMachine)stateMachine).targetIsNotInRange();
         }
 
     }

@@ -275,7 +275,7 @@ MonoBehaviour:
   interactable: {fileID: 0}
   selectionCircle: {fileID: 0}
   unitStats:
-    moveSpeed: 2
+    moveSpeed: 8
     trainingTime: 40
     populationCost: 2
   militaryStats:
@@ -305,6 +305,7 @@ MonoBehaviour:
   hasFired: 0
   atTarget: 0
   lookForTarget: 0
+  defend: 0
 --- !u!114 &114518334990013660
 MonoBehaviour:
   m_ObjectHideFlags: 1

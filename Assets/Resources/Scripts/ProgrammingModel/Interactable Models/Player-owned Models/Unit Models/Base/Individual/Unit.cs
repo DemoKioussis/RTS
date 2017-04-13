@@ -73,7 +73,7 @@ public class Unit : RTSObject {
 
 		return output;
 	}
-
+    
 	public override void ReplaceStatsReferences(RTSObject otherObject)
 	{
 		base.ReplaceStatsReferences (otherObject);
@@ -82,7 +82,11 @@ public class Unit : RTSObject {
 			unitStats = ((Unit)otherObject).unitStats;
 	}
 
-  
+
+
+    public void defend() {
+        ((UnitStateMachine)getStateMachine()).defendPosition();
+    }
     public override INTERACTION_TYPE getInteractionType()
     {
         return INTERACTION_TYPE.UNIT;
@@ -91,17 +95,16 @@ public class Unit : RTSObject {
     public override void buildingInteraction(Building b) { }
     public override void positionInteraction(MapPos p) {
 
-        ((UnitStateMachine)getStateMachine()).getMoveBehaviour().setDestination(p.getPosition());
-        ((UnitStateMachine)getStateMachine()).getAttackBehaviour().stopAttack();
+        ((UnitStateMachine)getStateMachine()).moveTo(p);
 
     }
     public override void unitInteraction(Unit u) {
         if (u.player != player)
         {
-            ((UnitStateMachine)getStateMachine()).getAttackBehaviour().setAttackTarget();
+            ((UnitStateMachine)getStateMachine()).attackTarget();
         }
         else
-            ((UnitStateMachine)getStateMachine()).getAttackBehaviour().stopAttack();
+            ((UnitStateMachine)getStateMachine()).stopAttack();
     }
     public override void resourceInteraction(Resource r) { }
 

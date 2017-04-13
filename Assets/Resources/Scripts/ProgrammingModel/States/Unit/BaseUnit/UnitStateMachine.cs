@@ -13,7 +13,7 @@ public class UnitStateMachine : BaseStateMachine {
     UnitFindTargetBehaviour findTargetBehaviour;
     Unit unit;
    
-    public bool attack, hasTarget, targetInFireRange, hasFired, atTarget,lookForTarget;
+    public bool attack, hasTarget, targetInFireRange, hasFired, atTarget,lookForTarget,defend;
 
     private bool reloading;
     override public void Awake() {
@@ -40,7 +40,6 @@ public class UnitStateMachine : BaseStateMachine {
     {
         return idleBehaviour;
     }
-
    
     // new update function for efficiency's sake
     protected override void update()
@@ -82,8 +81,48 @@ public class UnitStateMachine : BaseStateMachine {
     private void reloadAction() {
         setHasFired(false);
     }
+    public void fire() {
+        setHasFired(true);
+    }
+
     public void lostTarget() {
         setAtTarget(false);
+    }
+
+
+    public void moveTo(Interactable p) {
+        getMoveBehaviour().setDestination(p.getPosition());
+        setAttack(false);
+    }
+
+    public void attackTarget()
+    {
+        setAttack(true);
+
+    }
+    public void stopAttack()
+    {
+        setAttack(false);
+    }
+
+    public void targetIsInFireRange() {
+        setTargetInFireRange(true);
+    }
+    public void targetIsNotInRange()
+    {
+        setTargetInFireRange(false);
+    }
+
+    public void arrived() {
+        setAtTarget(true);
+    }
+
+    public void defendPosition() {
+        setDefend(true);
+    }
+
+    public void stopDefend() {
+        setDefend(false);
     }
 
     protected override void setInitialState() {
@@ -93,7 +132,7 @@ public class UnitStateMachine : BaseStateMachine {
         updateParameter("HasFired", hasFired);
         updateParameter("AtTarget", atTarget);
     }
-    public void setAttack(bool b)
+    private void setAttack(bool b)
     {
         if (b != attack)
         {
@@ -101,7 +140,7 @@ public class UnitStateMachine : BaseStateMachine {
             updateParameter("Attack", b);
         }
     }
-    public void setHasTarget(bool b)
+    private void setHasTarget(bool b)
     {
         if (b != hasTarget)
         {
@@ -109,7 +148,7 @@ public class UnitStateMachine : BaseStateMachine {
             updateParameter("HasTarget", b);
         }
     }
-    public void setTargetInFireRange(bool b)
+    private void setTargetInFireRange(bool b)
     {
         if (b != targetInFireRange)
         {
@@ -117,7 +156,7 @@ public class UnitStateMachine : BaseStateMachine {
             updateParameter("TargetInFireRange", b);
         }
     }
-    public void setHasFired(bool b)
+    private void setHasFired(bool b)
     {
         if (b != hasFired)
         {
@@ -125,7 +164,7 @@ public class UnitStateMachine : BaseStateMachine {
             updateParameter("HasFired", b);
         }
     }
-    public void setAtTarget(bool b)
+    private void setAtTarget(bool b)
     {
         if (b != atTarget)
         {
@@ -133,12 +172,19 @@ public class UnitStateMachine : BaseStateMachine {
             updateParameter("AtTarget", b);
         }
     }
-    public void setLookForTarget(bool b)
+    private void setLookForTarget(bool b)
     {
         if (b != lookForTarget)
         {
             lookForTarget = b;
             updateParameter("LookForTarget", b);
+        }
+    }
+    private void setDefend(bool b) {
+        if (b != defend)
+        {
+            defend = b;
+            updateParameter("Defend", b);
         }
     }
 
