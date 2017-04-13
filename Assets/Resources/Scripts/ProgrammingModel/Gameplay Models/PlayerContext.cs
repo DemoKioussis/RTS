@@ -111,10 +111,10 @@ public class PlayerContext : MonoBehaviour {
 
 		switch (this.playerId) {
 		case 0:
-			playerColor = new Color (0, 0, 255);
+			playerColor = new Color (0.3f, 0.3f, 1.0f, 1.0f);
 			break;
 		case 1:
-			playerColor = new Color (255, 0, 0);
+			playerColor = new Color (1.0f, 0.3f, 0.3f, 1.0f);
 			break;
 		}
 	}
