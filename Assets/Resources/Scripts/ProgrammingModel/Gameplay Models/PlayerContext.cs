@@ -49,21 +49,13 @@ public class PlayerContext : MonoBehaviour {
 		for (int i = 0; i < originalPrefabs.buildingPrefabs.Length; i++) {
 			updatedPrefabs.buildingPrefabs [i] = Instantiate(originalPrefabs.buildingPrefabs [i], transform);
 			updatedPrefabs.buildingPrefabs [i].GetComponent<Building> ().player = this;
-			Debug.Log (updatedPrefabs.buildingPrefabs [i].GetComponent<RTSObject> ().getModel());
 			updatedPrefabs.buildingPrefabs [i].GetComponent<RTSObject> ().getModel().enabled = false;
 			updatedPrefabs.buildingPrefabs [i].GetComponent<RTSObject> ().getModel().material.SetColor ("_Color", playerColor);
 		}
 
-		List<Vector3> spawnPoints = new List<Vector3> ();
+		GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag ("SpawnPoint");
 
-		for(int i = 0; i < GameContext.currentGameContext.map.transform.childCount; i++)
-		{
-			Transform t = GameContext.currentGameContext.map.transform.GetChild (i);
-			if (t.name == "SpawnPoint")
-				spawnPoints.Add (t.position);
-		}
-
-		int index = Random.Range (0, spawnPoints.Count);
+		int index = Random.Range (0, spawnPoints.Length);
 
 		GameObject townCenter = null;
 
@@ -73,10 +65,13 @@ public class PlayerContext : MonoBehaviour {
 				break;
 			}
 
+
 		if (townCenter != null) {
-			industrialCenter = townCenter.GetComponent<RTSObject>().InstantiatePlayableObject (new Vector3(spawnPoints[index].x, 0, spawnPoints[index].z), transform).GetComponent<IndustrialCenter>();
+			float yOffset = townCenter.GetComponent<IndustrialCenter> ().getModel ().bounds.size.y / 2;
+			industrialCenter = townCenter.GetComponent<RTSObject>().InstantiatePlayableObject (new Vector3(spawnPoints[index].transform.position.x, yOffset, spawnPoints[index].transform.position.z), transform).GetComponent<IndustrialCenter>();
 			industrialCenter.buildings = updatedPrefabs.buildingPrefabs;
 			industrialCenter.SetToAwake ();
+			DestroyImmediate (spawnPoints [index].gameObject);
 		}
 	}
 
