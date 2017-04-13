@@ -6,16 +6,19 @@ public class Projectile : MonoBehaviour {
 
     public MeshRenderer render;
     public Unit u;
+    public LineRenderer line;
     void Awake() {
     }
     public void fire() {
-        Debug.Log("FIRE!");
-        render.enabled = true;
-        render.transform.localScale = new Vector3(0.1f,u.militaryStats.attackRange,0.1f);
+        Vector3[] positions = { transform.position, u.getTargetInteraction().transform.position };
+        line.enabled = true;
+        line.SetPositions(positions);
+       // render.enabled = true;
+       // render.transform.localScale = new Vector3(0.1f,u.militaryStats.attackRange,0.1f);
 
     }
     public void reload() {
-        render.enabled = false;
+        line.enabled = false;
 
     }
 

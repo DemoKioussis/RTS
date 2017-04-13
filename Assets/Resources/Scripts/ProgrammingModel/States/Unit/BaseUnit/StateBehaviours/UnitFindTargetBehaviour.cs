@@ -53,7 +53,7 @@ public class UnitFindTargetBehaviour : BaseUnitBehaviour
             {
                 RTSObject rts = (RTSObject)link.getInteractable();
 
-                if (rts != null && rts.player.playerId != playerID) {
+                if (rts != null && rts.player.playerId != playerID && rts.isAlive()) {
                     ((UnitStateMachine)stateMachine).getUnit().getGroup().InteractWith(rts);
                     targetFound = true;
                     return;

@@ -38,16 +38,22 @@ public class BaseUnitAttackBehaviour : BaseUnitBehaviour
     }
 
     private void fire() {
-        ((Unit)stateMachine.getRTSObject()).projectile.fire();
 
-        ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
-        ((UnitStateMachine)stateMachine).fire();
-        Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
-        stateMachine.gameObject.GetComponentInParent<Rigidbody>().AddForce(new Vector3(0, 100, 0));
+        if (stateMachine.getRTSObject() != null && stateMachine.getRTSObject().isAlive())
+        {
+            ((Unit)stateMachine.getRTSObject()).projectile.fire();
+
+            ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
+            ((UnitStateMachine)stateMachine).fire();
+            Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+            stateMachine.gameObject.GetComponentInParent<Rigidbody>().AddForce(new Vector3(0, 100, 0));
+        }
     }
     private void reload() {
-        ((UnitStateMachine)stateMachine).reload();
-        ((Unit)stateMachine.getRTSObject()).projectile.reload();
+        if(stateMachine.getRTSObject()!=null && stateMachine.getRTSObject().isAlive()){
+            ((UnitStateMachine)stateMachine).reload();
+            ((Unit)stateMachine.getRTSObject()).projectile.reload();
+        }
     }
 
 
