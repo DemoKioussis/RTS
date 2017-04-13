@@ -181,7 +181,7 @@ MonoBehaviour:
   scrollSpeedX: 25
   scrollSpeedY: 25
   offset: 20
-  minBoundOffset: 8.5
+  minBoundOffset: 12.5
   speedCurve:
     serializedVersion: 2
     m_Curve:
