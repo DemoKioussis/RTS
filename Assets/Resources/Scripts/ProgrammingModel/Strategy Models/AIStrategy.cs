@@ -435,7 +435,7 @@ public class AIStrategy : Strategy {
 				army.Add (player.activeUnits [i]);
 			}
 
-			army.InteractWith (GameContext.currentGameContext.activePlayers[0].industrialCenter);
+		//	army.InteractWith (GameContext.currentGameContext.activePlayers[0].industrialCenter);
 		}
 	}
 

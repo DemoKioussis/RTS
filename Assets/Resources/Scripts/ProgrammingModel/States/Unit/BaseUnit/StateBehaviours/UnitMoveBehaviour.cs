@@ -22,7 +22,7 @@ public class UnitMoveBehaviour : BaseUnitBehaviour
         agent.Resume();
         Debug.Log("ENTER!!");
         arrived = false;
-        if (targetNotNull())
+        if (targetNotNull() && targetAlive())
         {
        
                 agent.SetDestination(getTargetPosition());
