@@ -63,6 +63,7 @@ public abstract class RTSObject : Interactable {
         if (alive)
         {
             alive = false;
+            stateDFA.setAlive(false);
         }
     }
     protected virtual void Heal(int hp)

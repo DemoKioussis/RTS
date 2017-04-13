@@ -11,24 +11,27 @@ public class BaseStateMachine : MonoBehaviour {
     private int updateOffsetCounter;
     [SerializeField]
     private int updateOffset;
+    public float updateSpeed;
     [SerializeField]
     private RTSObject rtsObject;
+    protected bool alive;
+    public BaseStateBehaviour[] behaviours;
     virtual public void Awake() {
         stateMachine = GetComponent<Animator>();
-        BaseStateBehaviour[] behaviours = stateMachine.GetBehaviours<BaseStateBehaviour>();
+        behaviours = stateMachine.GetBehaviours<BaseStateBehaviour>();
         foreach (BaseStateBehaviour b in behaviours) {
             b.setStateMachine(this);
+            b.setUpdateOffset(updateOffset);
         }
         setInitialState();
+        setAlive(true);
     }
 
     void Update()
     {
-        if (updateOffsetCounter++ > updateOffset)
-        {
-            updateOffsetCounter = 0;
+
             update();
-        }
+        
     }
     protected virtual void update() {
 
@@ -50,6 +53,17 @@ public class BaseStateMachine : MonoBehaviour {
     public RTSObject getRTSObject() {
         return rtsObject;
     }
+ 
+
+    public virtual void setAlive(bool a)
+    {
+        if (alive != a)
+        {
+            alive = a;
+            updateParameter("alive", a);
+        }
+    }
+
 
 
 }
