@@ -21,7 +21,7 @@ public class MinimapController : MonoBehaviour {
 				if (playerCamera == null) {
 					playerCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraControls> ();
 				}
-				playerCamera.transform.position = new Vector3(mouseInMap.x, playerCamera.transform.position.y, mouseInMap.y);
+				playerCamera.updatePosition ();
 			}
 		}
 
