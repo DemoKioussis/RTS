@@ -51824,7 +51824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37eafa64e1ca64b4189b17af3cfa07bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fogOfWar: 0
+  fogOfWar: 1
   fogOfWarPrefab: {fileID: 1067264979285932, guid: 5aab89b82be62ce42affea69f25ccb2d,
     type: 2}
   resolution: 100

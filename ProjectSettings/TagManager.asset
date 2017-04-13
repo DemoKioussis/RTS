@@ -20,6 +20,7 @@ TagManager:
   - MapPlane
   - UIBoundary
   - PlayerStats
+  - MiniMapCamera
   layers:
   - Default
   - TransparentFX

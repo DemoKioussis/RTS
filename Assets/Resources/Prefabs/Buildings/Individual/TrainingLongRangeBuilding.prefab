@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1940ebfba144eb145bf51bb0f16aa8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 0}
 --- !u!114 &114501542103888264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,11 +351,11 @@ MonoBehaviour:
   infoPanelPrefab: {fileID: 1504821867040206, guid: 05309cf6fb5664786b4d6b9b59086be5,
     type: 2}
   stats:
-    viewRange: 0
+    viewRange: 20
     viewRangeMin: 0
     viewRangeMax: 0
-    maxHitpoints: 0
-    hitpoints: 0
+    maxHitpoints: 200
+    hitpoints: 200
     influenceMultiplier: 0
     paperCost: 100
     glueCost: 90

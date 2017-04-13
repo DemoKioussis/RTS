@@ -197,4 +197,4 @@ MonoBehaviour:
   activeUnits: []
   activeBuildings: []
   industrialCenter: {fileID: 0}
-  minPopForAttack: 10
+  minPopForAttack: 20
