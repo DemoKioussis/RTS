@@ -9,11 +9,14 @@ public class ViewRangeCollider : MonoBehaviour {
         rtsObject = GetComponentInParent<RTSObject>();
         col = GetComponent<SphereCollider>();
         rtsObject.viewRangeCollider = this;
-		updateCollider ();
-        
+        updateCollider();
     }
 
     public void updateCollider() {
-        col.radius = rtsObject.stats.viewRange;
+        if (col != null)
+        {
+            col.radius = rtsObject.stats.viewRange;
+        }
+
     }
 }

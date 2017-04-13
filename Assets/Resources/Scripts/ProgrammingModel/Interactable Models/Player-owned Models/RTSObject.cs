@@ -13,7 +13,7 @@ public abstract class RTSObject : Interactable {
     public ViewRangeCollider viewRangeCollider;
 	public bool objectIsColliding;
 	public bool isBeingPlaced;
-    private bool alive = true;
+    protected bool alive = true;
 	public Interactable interactable;
 	public GameObject selectionCircle;
     MeshRenderer model;

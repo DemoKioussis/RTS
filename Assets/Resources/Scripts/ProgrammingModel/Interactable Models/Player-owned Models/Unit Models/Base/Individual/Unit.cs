@@ -11,6 +11,7 @@ public class Unit : RTSObject {
     private bool heightAdvantage = false;
     public float minBonuHeight;
     public Transform defendCollider;
+    public Projectile projectile;
     // Update is called once per frame
     protected override void  Awake() {
         base.Awake();

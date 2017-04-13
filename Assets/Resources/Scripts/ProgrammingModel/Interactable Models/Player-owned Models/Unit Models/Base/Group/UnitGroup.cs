@@ -20,6 +20,18 @@ public class UnitGroup : RTSObjectGroup {
 
     }
 
+    public void removeNull()
+    {
+        for (int i = 0; i < rtsObjects.Count; i++)
+        {
+            if (rtsObjects[i] == null)
+            {
+                rtsObjects.RemoveAt(i);
+                i = 0;
+            }
+        }
+    }
+
     void OnDrawGizmos() {
         if(currentInteraction!=null)
             Gizmos.DrawWireSphere(currentInteraction.getPosition(), arriveRadius);
@@ -39,8 +51,10 @@ public class UnitGroup : RTSObjectGroup {
         }
     }
     private void stopAgents() {
+        removeNull();
         foreach (Unit u in rtsObjects) {
-            ((UnitStateMachine)u.getStateMachine()).arrived();
+            if(u!=null)
+                ((UnitStateMachine)u.getStateMachine()).arrived();
         }
     }
     void preInteract(Interactable i) {
@@ -53,11 +67,16 @@ public class UnitGroup : RTSObjectGroup {
 
     private Vector3 getCenter() {
         Vector3 mean = new Vector3(0, 0, 0);
-
+        removeNull();
         foreach (Unit u in rtsObjects) {
-            mean += u.transform.position;
+            if(u!=null)
+                mean += u.transform.position;
         }
-        mean = mean / rtsObjects.Count;
+        if (rtsObjects.Count > 0)
+        {
+            mean = mean / rtsObjects.Count;
+        }
+
         return mean;
     }
 
@@ -65,10 +84,14 @@ public class UnitGroup : RTSObjectGroup {
     public override void buildingInteraction(Building b) {
         preInteract(b);
         setArriveRadius(2);
+        removeNull();
         foreach (Unit myUnit in rtsObjects)
         {
-            myUnit.InteractWith(b);
-            ((UnitStateMachine)(myUnit.getStateMachine())).getMoveBehaviour().setArriveRadius(arriveRadius);
+            if (myUnit != null)
+            {
+                myUnit.InteractWith(b);
+                ((UnitStateMachine)(myUnit.getStateMachine())).getMoveBehaviour().setArriveRadius(arriveRadius);
+            }
         }
     }
     public override void positionInteraction(MapPos p) {
@@ -79,10 +102,14 @@ public class UnitGroup : RTSObjectGroup {
     public override void unitInteraction(Unit u) {
         preInteract(u);
         setArriveRadius(2);
+        removeNull();
         foreach (Unit myUnit in rtsObjects)
         {
-            myUnit.InteractWith(u);
-            ((UnitStateMachine)(myUnit.getStateMachine())).getMoveBehaviour().setArriveRadius(arriveRadius);
+            if (myUnit != null)
+            {
+                myUnit.InteractWith(u);
+                ((UnitStateMachine)(myUnit.getStateMachine())).getMoveBehaviour().setArriveRadius(arriveRadius);
+            }
         }
 
     }
@@ -120,13 +147,15 @@ public class UnitGroup : RTSObjectGroup {
         arrivalCount = 0;
     }
     public void setDefensive() {
+        removeNull();
         if (isDefending)
         {
             isDefending = false;
             Debug.Log("Unsetting Defence Mode");
             foreach (Unit u in rtsObjects)
             {
-                u.stopDefend();
+                if(u!=null)
+                    u.stopDefend();
             }
         }
         else
@@ -135,7 +164,8 @@ public class UnitGroup : RTSObjectGroup {
             Debug.Log("Setting Defence Mode");
             foreach (Unit u in rtsObjects)
             {
-                u.defend();
+                if(u!=null)
+                    u.defend();
             }
         }
     }
