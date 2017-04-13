@@ -23,11 +23,12 @@ public class MinimapController : MonoBehaviour {
 		if (!selection.isSelecting) {
 			
 			if (collider.bounds.Contains (Input.mousePosition)) {
+				Debug.Log (collider.gameObject.transform.position);
+				Debug.Log (Input.mousePosition);
 				Vector2 mouseInMap = new Vector2 (Input.mousePosition.x - collider.gameObject.transform.position.x,
 					                    Input.mousePosition.y - collider.gameObject.transform.position.y);
-				//mouseInMap *= (16 / 9);
 				if (Input.GetMouseButton (0)) {
-					playerCamera.updatePosition ();
+					playerCamera.transform.position = new Vector3(mouseInMap.x, playerCamera.transform.position.y, mouseInMap.y);
 				}
 			}
 
