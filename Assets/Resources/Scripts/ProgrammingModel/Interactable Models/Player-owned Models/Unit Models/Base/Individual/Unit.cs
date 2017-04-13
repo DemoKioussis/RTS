@@ -152,7 +152,14 @@ public class Unit : RTSObject {
         return INTERACTION_TYPE.UNIT;
     }
 
-    public override void buildingInteraction(Building b) { }
+    public override void buildingInteraction(Building b) {
+        if (b.player != player)
+        {
+            ((UnitStateMachine)getStateMachine()).attackTarget();
+        }
+        else
+            ((UnitStateMachine)getStateMachine()).stopAttack();
+    }
     public override void positionInteraction(MapPos p) {
 
         ((UnitStateMachine)getStateMachine()).moveTo(p);
