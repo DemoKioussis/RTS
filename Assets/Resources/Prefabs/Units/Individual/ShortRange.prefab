@@ -28,6 +28,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1350315232876650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4917296727397812}
+  - component: {fileID: 135861026486367914}
+  - component: {fileID: 114011834363234728}
+  m_Layer: 14
+  m_Name: FogOfWarCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1848794179734180
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +136,7 @@ Transform:
   - {fileID: 4423019377906876}
   - {fileID: 4719042259445186}
   - {fileID: 4186838040181808}
+  - {fileID: 4917296727397812}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -134,6 +152,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4463335828916058}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4917296727397812
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350315232876650}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4463335828916058}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23555196330804262
 MeshRenderer:
@@ -205,6 +236,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114011834363234728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350315232876650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1940ebfba144eb145bf51bb0f16aa8df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114194836389441868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,7 +260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 95416019983605222}
   updateOffset: 10
+  updateSpeed: 0
   rtsObject: {fileID: 114832363500507308}
+  behaviours: []
   attack: 0
   hasTarget: 0
   targetInFireRange: 0
@@ -272,6 +316,18 @@ MonoBehaviour:
     maxAttackRange: 1
     attackStrength: 3
     attackRate: 3
+--- !u!135 &135861026486367914
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1350315232876650}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135992958190291558
 SphereCollider:
   m_ObjectHideFlags: 1

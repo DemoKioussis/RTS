@@ -28,11 +28,8 @@ public abstract class BaseStateBehaviour : StateMachineBehaviour {
         {
             updateOffsetCounter = 0;
             update();
-
         }
-
     }
-
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         exit();

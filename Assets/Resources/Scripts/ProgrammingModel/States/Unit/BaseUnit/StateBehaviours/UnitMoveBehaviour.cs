@@ -23,9 +23,11 @@ public class UnitMoveBehaviour : BaseUnitBehaviour
         arrived = false;
         if (targetNotNull())
         {
-            agent.SetDestination(getTargetPosition());
-            lastPosition = getTargetPosition();
-            origionalPosition = lastPosition;
+       
+                agent.SetDestination(getTargetPosition());
+                lastPosition = getTargetPosition();
+                origionalPosition = lastPosition;
+            
         }
         else
             ((UnitStateMachine)stateMachine).lostTarget();
@@ -54,26 +56,29 @@ public class UnitMoveBehaviour : BaseUnitBehaviour
     }
     private void checkArrived()
     {
-
-        if (stateMachine.getRTSObject().getTargetInteraction().getInteractionType() == INTERACTION_TYPE.POSITION || targetAlive())
-        {
-            if (!arrived && distanceTo(getTargetPosition()) < arriveRadius)
+   
+            if (stateMachine.getRTSObject().getTargetInteraction().getInteractionType() == INTERACTION_TYPE.POSITION || targetAlive())
             {
-                arrived = true;
-                ((Unit)stateMachine.getRTSObject()).getGroup().unitArrived();
+                if (!arrived && distanceTo(getTargetPosition()) < arriveRadius)
+                {
+                    arrived = true;
+                    ((Unit)stateMachine.getRTSObject()).getGroup().unitArrived();
+                }
             }
-        }
+        
     }
 
     private void checkMoved() {
-        if (targetNotNull())
-        {
-            if (Vector3.Distance(lastPosition, getTargetPosition()) > movementDelta)
+   
+            if (targetNotNull())
             {
-                lastPosition = getTargetPosition();
-                setDestination(lastPosition);
+                if (Vector3.Distance(lastPosition, getTargetPosition()) > movementDelta)
+                {
+                    lastPosition = getTargetPosition();
+                    setDestination(lastPosition);
+                }
             }
-        }
+        
     }
 
     public void setArriveRadius(float r) {

@@ -35,8 +35,8 @@ TagManager:
   - Map
   - Resource
   - SelectionTarget
-  - 
-  - 
+  - ViewRangeCollider
+  - FogOfWar
   - 
   - 
   - 

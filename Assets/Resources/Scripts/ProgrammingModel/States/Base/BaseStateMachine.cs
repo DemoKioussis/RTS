@@ -60,7 +60,7 @@ public class BaseStateMachine : MonoBehaviour {
         if (alive != a)
         {
             alive = a;
-            updateParameter("alive", a);
+            updateParameter("Alive", a);
         }
     }
 

@@ -12,9 +12,11 @@ public class BaseUnitAttackBehaviour : BaseUnitBehaviour
     {
         if (targetNotNull() && ((RTSObject)(stateMachine.getRTSObject().getTargetInteraction())).isAlive())
         {
-            ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
-            ((UnitStateMachine)stateMachine).setHasFired(true);
-            Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+           
+                ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
+                ((UnitStateMachine)stateMachine).setHasFired(true);
+                Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+
         }
         else
         {
