@@ -9,8 +9,12 @@ public class FogOfWar : MonoBehaviour {
 		RTSObject rts = c.transform.GetComponentInParent<RTSObject> ();
 		if (rts != null) {
 			PlayerContext p = rts.player;
-			if (p != null && p.strategy is PlayerStrategy)
-				Destroy (gameObject);
+			if (p != null && p.strategy is PlayerStrategy) {
+//				Building b = c.GetComponentInParent<Building> ();
+//				if (b == null || b != null && !b.isBeingPlaced) {
+					Destroy (gameObject);
+//				}
+			}
 			else
 				Destroy (c.gameObject);
 		}
