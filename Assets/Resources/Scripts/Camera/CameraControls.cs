@@ -94,11 +94,14 @@ public class CameraControls : MonoBehaviour
 		else if (mousePosition.y <= (0.0f + offset) || Input.GetKey(KeyCode.S))
 			transform.Translate(Vector3.back * scrollSpeedY * Time.deltaTime, Space.World);
 
+		updatePosition ();
+    }
+    
+	public void updatePosition(){
 		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, mapBounds.min.x - minBoundOffset + rectangleMinimap.bounds.size.x, mapBounds.max.x - rectangleMinimap.bounds.size.x / 2),
 			transform.position.y,
 			Mathf.Clamp (transform.position.z, mapBounds.min.z - minBoundOffset - rectangleMinimap.bounds.size.z / 2, mapBounds.max.z - 2 * rectangleMinimap.bounds.size.z));
-    }
-    
+	}
 
 	bool IsInUI()
 	{

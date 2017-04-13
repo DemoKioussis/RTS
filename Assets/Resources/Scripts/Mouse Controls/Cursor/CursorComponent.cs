@@ -5,7 +5,7 @@ using UnityEngine;
 public class CursorComponent : MonoBehaviour {
 
 	public RTSObject currentRTSObject;
-
+	public LayerMask layerMask;
 	private PlayerContext player;
 	private Renderer gameObjectRenderer;
 	private Color initialColor;
@@ -44,7 +44,7 @@ public class CursorComponent : MonoBehaviour {
 
 	void Update()
 	{
-		hit = Utils.GetPositionFromMouseClick (1 << LayerMask.NameToLayer("Map"));
+		hit = Utils.GetPositionFromMouseClick (layerMask);
 
 		if(hit.collider != null){
 			transform.position = hit.point + new Vector3(0, yOffset, 0); // update the position of the mouse
