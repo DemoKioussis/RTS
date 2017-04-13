@@ -45,7 +45,6 @@ public class UnitFindTargetBehaviour : BaseUnitBehaviour
 
         foreach (Collider c in hitColliders)
         {
-            Debug.Log(c);
             
             InteractableLink link = c.GetComponent<InteractableLink>();
             if (link != null)

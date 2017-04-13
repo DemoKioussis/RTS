@@ -96,7 +96,12 @@ public class Unit : RTSObject {
 
     }
     public override void unitInteraction(Unit u) {
-        ((UnitStateMachine)getStateMachine()).getAttackBehaviour().setAttackTarget();
+        if (u.player != player)
+        {
+            ((UnitStateMachine)getStateMachine()).getAttackBehaviour().setAttackTarget();
+        }
+        else
+            ((UnitStateMachine)getStateMachine()).getAttackBehaviour().stopAttack();
     }
     public override void resourceInteraction(Resource r) { }
 
