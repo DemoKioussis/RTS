@@ -17,14 +17,15 @@ public class MinimapController : MonoBehaviour {
 	}
 
 	public void test(){
-		if (playerCamera == null) {
-			playerCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraControls> ();
-		}
-
-		Debug.Log ("test");
+		Debug.Log ("Hi");
+		Debug.Log ("Mouse :" + Input.mousePosition);
+		Debug.Log (transform.position);
 	}
 
 	public void UpdateMinimapAndPlayerCamera(){
+		if (playerCamera == null) {
+			playerCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraControls> ();
+		}
 
 		CalculateMinimapRatio();
 
@@ -32,7 +33,7 @@ public class MinimapController : MonoBehaviour {
 	}
 
 	private void CalculateMinimapRatio(){
-
+		
 	}
 
 	private void UpdatePlayerCameraPosition(){
