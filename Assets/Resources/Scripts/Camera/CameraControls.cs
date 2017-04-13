@@ -61,7 +61,6 @@ public class CameraControls : MonoBehaviour
 
     void LateUpdate()
     {
-
 		Rect screenRect = new Rect(0,0, Screen.width, Screen.height);
 		if (!screenRect.Contains(Input.mousePosition))
 			return;
