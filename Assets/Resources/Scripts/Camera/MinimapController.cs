@@ -9,11 +9,19 @@ public class MinimapController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		playerCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraControls> ();
+		
 	}
 
 	void Update(){
 		minimapCoordinates = Input.mousePosition;
+	}
+
+	public void test(){
+		if (playerCamera == null) {
+			playerCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraControls> ();
+		}
+
+		Debug.Log ("test");
 	}
 
 	public void UpdateMinimapAndPlayerCamera(){
