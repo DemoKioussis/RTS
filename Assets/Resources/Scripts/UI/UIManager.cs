@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour {
 
 	public GameObject hudPanel; // contains all UI elements of the game
 	private Text infoStats;
+	private GameObject progressBar;
 
 	private PlayerContext player;
 	private Text[] playerStats;
@@ -20,6 +21,8 @@ public class UIManager : MonoBehaviour {
 		infoStats = GameObject.FindGameObjectWithTag ("InfoStats").GetComponent<Text>();
 		player = GetComponentInParent<PlayerContext> ();
 		playerStats = GameObject.FindGameObjectWithTag ("PlayerStats").GetComponentsInChildren<Text>();
+		progressBar = GameObject.FindGameObjectWithTag ("UIProgress");
+		progressBar.SetActive (false);
 	}
 	 
 	void FixedUpdate(){
@@ -55,6 +58,7 @@ public class UIManager : MonoBehaviour {
 		selectedObject = null;
 		selectedObjectInfoPanel = null;
 		infoStats.text = "";
+		progressBar.SetActive (false);
 
 	}
 
@@ -63,6 +67,11 @@ public class UIManager : MonoBehaviour {
 		{
 		case INTERACTION_TYPE.BUILDING:
 			infoStats.text = selectedObj.GetStats ().hitpoints + "/" + selectedObj.GetStats ().maxHitpoints + " hp";
+			if (selectedObj.GetComponent<TrainingBuilding> () != null) {
+				progressBar.SetActive (true);
+				progressBar.GetComponent<Image>().fillAmount = selectedObj.GetComponent<TrainingBuilding> ().progress / 100.0f;
+			}
+
 			break;
 		case INTERACTION_TYPE.POSITION:
 			infoStats.text = "";			

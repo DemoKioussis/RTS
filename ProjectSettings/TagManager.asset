@@ -21,6 +21,7 @@ TagManager:
   - UIBoundary
   - PlayerStats
   - MiniMapCamera
+  - UIProgress
   layers:
   - Default
   - TransparentFX
