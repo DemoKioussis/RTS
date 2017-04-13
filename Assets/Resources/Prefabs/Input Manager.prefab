@@ -64,6 +64,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRTSObject: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
   transparentFactor: 0.5
   colorOfNoCollision: {r: 0, g: 0, b: 0, a: 0}
   colorOfCollision: {r: 0, g: 0, b: 0, a: 0}
