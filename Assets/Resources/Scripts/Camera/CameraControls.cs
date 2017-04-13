@@ -106,7 +106,7 @@ public class CameraControls : MonoBehaviour
 	private void updatePosition(){
 		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, mapBounds.min.x - minBoundOffset + rectangleMinimap.bounds.size.x, mapBounds.max.x - rectangleMinimap.bounds.size.x / 2),
 			transform.position.y,
-			Mathf.Clamp (transform.position.z, mapBounds.min.z + rectangleMinimap.bounds.size.z / 2, mapBounds.max.z - rectangleMinimap.bounds.size.z / 2));
+			Mathf.Clamp (transform.position.z, mapBounds.min.z - rectangleMinimap.bounds.size.z, mapBounds.max.z - rectangleMinimap.bounds.size.z / 2));
 	}
 
 	bool IsInUI()
