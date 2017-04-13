@@ -28,8 +28,8 @@ public class ButtonManager : MonoBehaviour {
 	void Update () {
 		selectedBuildingGroup = selection.selectedBuildingGroup;
 
-		if (selectedBuildingGroup != null && !selectedBuildingGroup.IsEmpty()
-			&& selectedBuildingGroup.rtsObjects[0].GetComponent<Building>().getBuildingType() != BUILDING_TYPE.TOWNCENTER
+		if (selectedBuildingGroup != null && !selectedBuildingGroup.IsEmpty() && selectedBuildingGroup.rtsObjects[0] != null && selectedBuildingGroup.rtsObjects[0].GetComponent<Building>() != null
+            && selectedBuildingGroup.rtsObjects[0].GetComponent<Building>().getBuildingType() != BUILDING_TYPE.TOWNCENTER
 				&& selectedBuildingGroup.rtsObjects[0].GetComponent<Building>().getBuildingType() != BUILDING_TYPE.RESOURCE) {
 			buttonAwake.SetActive (true);
 			buttonSleep.SetActive (true);

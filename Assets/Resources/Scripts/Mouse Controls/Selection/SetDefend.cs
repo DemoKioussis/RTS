@@ -11,7 +11,8 @@ public class SetDefend : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
-        
+
+            Debug.Log("PRESSED DEFENCE!");
             if (selection.selectedUnitGroup!= null)
                 selection.selectedUnitGroup.setDefensive();
         }
