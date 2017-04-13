@@ -116,12 +116,12 @@ public class AIStrategy : Strategy {
 
 	float ShortRangeHeuristic()
 	{
-		return (2.0f * (float) (longRangeUnits + 1) / (float) (shortRangeUnits + 1)) / (population * 2 + shortRangeBuildings + 1) + dangerIndex * 0.1f;
+		return (2.0f * (float) (longRangeUnits + 1) / (float) (shortRangeUnits + 1)) / (population * 2 + Mathf.Pow(shortRangeBuildings, 2) + 1) + dangerIndex * 0.1f;
 	}
 
 	float LongRangeHeuristic()
 	{
-		return (1.0f * (float) (shortRangeUnits + 1) / (float) (longRangeUnits + 1)) / (population * 2 + longRangeBuildings + 1) + dangerIndex * 0.1f;
+		return (1.0f * (float) (shortRangeUnits + 1) / (float) (longRangeUnits + 1)) / (population * 2 + Mathf.Pow(longRangeBuildings, 2) + 1) + dangerIndex * 0.1f;
 	}
 
 	void UpdateTasks()
@@ -263,7 +263,7 @@ public class AIStrategy : Strategy {
 			}
 		}
 
-		if (importance > 0.1f)
+		if (importance / (shortRangeBuildings + 1) < 0.001f)
 			return MakeNewTrainingBuilding ("ShortRangeBuilding");
 		else
 			return setSomething;
@@ -272,6 +272,7 @@ public class AIStrategy : Strategy {
 	bool ManageLongRange(float importance)
 	{
 		bool setSomething = false;
+
 		for (int i = 0; i < player.activeBuildings.Count; i++) {
 			if(!player.activeBuildings[i].awake)
 			{
@@ -288,7 +289,7 @@ public class AIStrategy : Strategy {
 			}
 		}
 
-		if (importance > 0.1f)
+		if (importance / (shortRangeBuildings + 1) < 0.001f)
 			return MakeNewTrainingBuilding ("LongRangeBuilding");
 		else
 			return setSomething;
@@ -303,7 +304,7 @@ public class AIStrategy : Strategy {
 
 		float angleDiff = 2 * Mathf.PI / resolution;
 
-		Bounds b = GameContext.currentGameContext.map.GetComponentInChildren<Renderer> ().bounds;
+		Bounds b = GameObject.FindGameObjectWithTag("MapPlane").GetComponent<Renderer>().bounds;
 
 		List<Building> buildings = player.activeBuildings;
 
@@ -311,7 +312,7 @@ public class AIStrategy : Strategy {
 
 		for(int j = 0; j < buildings.Count; j++)
 			for (int i = 0; i < resolution; i++) {
-				Vector3 bldg = buildings[j].getModel().GetComponent<Renderer> ().bounds.size / 2;
+				Vector3 bldg = buildings[j].getModel().bounds.size;
 				float initialRadius = Mathf.Max (bldg.x, bldg.z);
 				Vector3 pos = (buildings[j].transform.position + new Vector3(Mathf.Cos(angleDiff * i), 0, Mathf.Sin(angleDiff * i)) * initialRadius * j);
 				if (pos.x > b.min.x && pos.x < b.max.x && pos.z > b.min.z && pos.z < b.max.z) {
