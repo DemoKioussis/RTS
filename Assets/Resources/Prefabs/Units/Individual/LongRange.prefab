@@ -232,9 +232,9 @@ MonoBehaviour:
   infoPanelPrefab: {fileID: 1617241690816232, guid: bbe5fbaae305743a2b38a20d9e24157a,
     type: 2}
   stats:
-    viewRange: 2
-    maxHitpoints: 5
-    hitpoints: 5
+    viewRange: 15
+    maxHitpoints: 100
+    hitpoints: 100
     influenceMultiplier: 0
     paperCost: 30
     glueCost: 60
@@ -249,8 +249,8 @@ MonoBehaviour:
     populationCost: 2
   militaryStats:
     minAttackRange: 1
-    maxAttackRange: 2
-    attackStrength: 2
+    maxAttackRange: 10
+    attackStrength: 20
     attackRate: 5
 --- !u!114 &114194836389441868
 MonoBehaviour:
@@ -265,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 95416019983605222}
   updateOffset: 10
+  updateSpeed: 0.1
   rtsObject: {fileID: 114170303354362912}
   attack: 0
   hasTarget: 0

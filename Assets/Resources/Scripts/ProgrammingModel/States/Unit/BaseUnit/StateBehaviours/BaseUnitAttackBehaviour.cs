@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // use this to set what happens when we are in state
-public class BaseUnitAttackBehaviour : BaseStateBehaviour
+public class BaseUnitAttackBehaviour : BaseUnitBehaviour
 {
 
   
     protected override void enter()
     {
-        if (stateMachine.getRTSObject().getTargetInteraction() != null || ((RTSObject)(stateMachine.getRTSObject().getTargetInteraction())).isAlive())
+        if (targetNotNull() && ((RTSObject)(stateMachine.getRTSObject().getTargetInteraction())).isAlive())
         {
             ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
             ((UnitStateMachine)stateMachine).setHasFired(true);
@@ -18,9 +18,9 @@ public class BaseUnitAttackBehaviour : BaseStateBehaviour
         }
         else
         {
-            ((UnitStateMachine)stateMachine).setHasTarget(false);
-            Debug.Log("NO TARGET");
+            ((UnitStateMachine)stateMachine).lostTarget();   
         }
+        
     }
     protected override void exit()
     {

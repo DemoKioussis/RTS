@@ -44,10 +44,14 @@ public class Unit : RTSObject {
 
         if (isAlive())
         {
-            GameObject.Destroy(this.gameObject, 0.2f);
-            group.Remove(this);
+            if (group != null)
+            {
+                group.Remove(this);
+            }
             player.activeUnits.Remove(this);
             base.die();
+            GameObject.Destroy(this.gameObject, 0.2f);
+
         }
     }
     public override float Influence ()

@@ -48,7 +48,8 @@ public class UnitStateMachine : BaseStateMachine {
         Interactable target = unit.getTargetInteraction();
         if (target != null)
         {
-            setHasTarget(true);
+            if (getRTSObject().isAlive())
+                setHasTarget(true);
             // attackDistance
             if (Vector3.Distance(transform.position, target.transform.position) < ((Military)unit).militaryStats.maxAttackRange)
             {
@@ -60,8 +61,9 @@ public class UnitStateMachine : BaseStateMachine {
             if (Vector3.Distance(transform.position, target.transform.position) > moveBehaviour.getArriveRadius())
                 setAtTarget(false);
         }
-        else
-            setHasTarget(false);
+        else {
+               setHasTarget(false);
+        }
 
 
 
@@ -79,6 +81,9 @@ public class UnitStateMachine : BaseStateMachine {
 
     private void reloadAction() {
         setHasFired(false);
+    }
+    public void lostTarget() {
+        setAtTarget(false);
     }
 
     protected override void setInitialState() {

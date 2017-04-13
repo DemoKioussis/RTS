@@ -5,6 +5,11 @@ using UnityEngine;
 public class TempCamraFix : MonoBehaviour {
 
     public float speed;
+    Vector3 startPosition;
+
+    void Start() {
+        startPosition = transform.position;
+    }
 
     void Update() {
         float y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
@@ -19,5 +24,9 @@ public class TempCamraFix : MonoBehaviour {
         transform.rotation = Quaternion.identity;
         transform.Translate(new Vector3(x, z, y));
         transform.rotation = rotation;
+
+        if (Input.GetKeyDown(KeyCode.Return)) {
+            transform.position = startPosition;
+        }
     }
 }
