@@ -70,6 +70,7 @@ public class GameContext : MonoBehaviour {
 	void GameWon(PlayerContext player)
 	{
 		Debug.Log (player.playerId);
+		Application.Quit ();
 	}
 
 /*	void SetSpawnables()
