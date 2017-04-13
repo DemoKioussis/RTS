@@ -11,9 +11,6 @@ public class GameMap : MonoBehaviour {
 	void Start () {
 		resources = GetComponentsInChildren<Resource> ();
 		GameContext.currentGameContext.activeResources = new List<Resource>(resources);
-
-
-
 	}
 	
 	// Update is called once per frame

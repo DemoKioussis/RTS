@@ -7,5 +7,9 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/_Scenes/Andres/ChinchillaScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/_Scenes/David/Dexter 1.unity
+  - enabled: 1
+    path: Assets/Resources/_Scenes/Final Game/Main Menu.unity
+  - enabled: 1
+    path: Assets/Resources/_Scenes/Final Game/Final.unity
