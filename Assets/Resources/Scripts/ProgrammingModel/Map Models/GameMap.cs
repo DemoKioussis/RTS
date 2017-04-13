@@ -22,8 +22,10 @@ public class GameMap : MonoBehaviour {
 		for(int j = 0; j < resolution; j++)
 			for(int i = 0; i < resolution; i++)
 			{
-				Instantiate (fogOfWarPrefab, new Vector3(i * newScale.x - (mapSize.x - newScale.x) / 2, 0,j * newScale.z - (mapSize.z - newScale.z) / 2), Quaternion.identity).transform.localScale = newScale;
-			}
+                GameObject t = Instantiate(fogOfWarPrefab, new Vector3(i * newScale.x - (mapSize.x - newScale.x) / 2, 0, j * newScale.z - (mapSize.z - newScale.z) / 2), Quaternion.identity);
+                t.transform.localScale = newScale;
+                t.transform.parent = transform;
+            }
 
 		previousFogOfWar = fogOfWar;
 	}
