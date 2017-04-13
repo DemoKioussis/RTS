@@ -7,6 +7,10 @@ public class ButtonManager : MonoBehaviour {
 	public GameObject buttonAwake;
 	public GameObject buttonSleep;
 
+	public GameObject shortRange;
+	public GameObject longRange;
+	public GameObject resource;
+
 	private SelectionComponent selection;
 
 	private BuildingGroup selectedBuildingGroup;
@@ -25,7 +29,8 @@ public class ButtonManager : MonoBehaviour {
 		selectedBuildingGroup = selection.selectedBuildingGroup;
 
 		if (selectedBuildingGroup != null && !selectedBuildingGroup.IsEmpty()
-			&& selectedBuildingGroup.rtsObjects[0].GetComponent<Building>().getBuildingType() != BUILDING_TYPE.TOWNCENTER) {
+			&& selectedBuildingGroup.rtsObjects[0].GetComponent<Building>().getBuildingType() != BUILDING_TYPE.TOWNCENTER
+				&& selectedBuildingGroup.rtsObjects[0].GetComponent<Building>().getBuildingType() != BUILDING_TYPE.RESOURCE) {
 			buttonAwake.SetActive (true);
 			buttonSleep.SetActive (true);
 			if (selectedBuildingGroup.rtsObjects [0].GetComponent<Building> ().awake) {
@@ -39,6 +44,17 @@ public class ButtonManager : MonoBehaviour {
 		} else {
 			buttonAwake.SetActive (false);
 			buttonSleep.SetActive (false);
+		}
+
+		if (selectedBuildingGroup != null && !selectedBuildingGroup.IsEmpty ()
+		    && selectedBuildingGroup.rtsObjects [0].GetComponent<Building> ().getBuildingType () == BUILDING_TYPE.TOWNCENTER) {
+			shortRange.SetActive (true);
+			longRange.SetActive (true);
+			resource.SetActive (true);
+		} else {
+			shortRange.SetActive (false);
+			longRange.SetActive (false);
+			resource.SetActive (false);
 		}
 	}
 }

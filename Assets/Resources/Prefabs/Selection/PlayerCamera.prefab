@@ -132,7 +132,7 @@ MonoBehaviour:
   smoothness: 0.85
   scrollSpeedX: 25
   scrollSpeedY: 25
-  offset: 30
+  offset: 20
   minBoundOffset: 8.5
   speedCurve:
     serializedVersion: 2
