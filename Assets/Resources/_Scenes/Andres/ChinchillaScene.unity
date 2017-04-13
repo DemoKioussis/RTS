@@ -314,6 +314,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1508795447074836, guid: b2e5e17a9a2d3443a94fae9224152568, type: 2}
+      propertyPath: m_TagString
+      value: MiniMapCamera
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2e5e17a9a2d3443a94fae9224152568, type: 2}
   m_IsPrefabParent: 0

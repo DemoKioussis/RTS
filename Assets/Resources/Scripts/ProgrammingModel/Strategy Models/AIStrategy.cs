@@ -16,7 +16,7 @@ public class AIStrategy : Strategy {
 	int populationLimit;
 	float dangerIndex;
 
-	UnitGroup army = null;
+	List<UnitGroup> army = new List<UnitGroup>();
 
 	public class WeighedTask
 	{
@@ -343,7 +343,7 @@ public class AIStrategy : Strategy {
 					if (c != null) {
 						bool validPos = true;
 						for (int k = 0; k < c.Length; k++)
-							if (c [k] != null && c [k].gameObject.layer != LayerMask.NameToLayer ("Map")) {
+							if (c [k] != null && c [k].gameObject.layer != LayerMask.NameToLayer ("Map") && c [k].gameObject.layer != LayerMask.NameToLayer ("FogOfWar")) {
 								validPos = false;
 								break;
 							}
@@ -427,15 +427,23 @@ public class AIStrategy : Strategy {
 
 	void MilitaryManagement()
 	{
-		if (army == null && population >= player.minPopForAttack) {
-			army = (GameObject.Instantiate (player.armyGroupPrefab, player.transform) as GameObject).GetComponent<UnitGroup>();
+		List<Unit> idleGuys = new List<Unit> ();
+
+		for (int i = 0; i < player.activeUnits.Count; i++) {
+			if (player.activeUnits [i].getGroup () == null)
+				idleGuys.Add (player.activeUnits [i]);
+		}
+
+		if(idleGuys.Count > player.minPopForAttack)
+		{
+			army.Add((GameObject.Instantiate (player.armyGroupPrefab, player.transform) as GameObject).GetComponent<UnitGroup>());
 
 			for (int i = 0; i < player.activeUnits.Count; i++)
 			{
-				army.Add (player.activeUnits [i]);
+				army[army.Count - 1].Add (player.activeUnits [i]);
 			}
 
-		//	army.InteractWith (GameContext.currentGameContext.activePlayers[0].industrialCenter);
+			army[army.Count - 1].InteractWith (GameContext.currentGameContext.activePlayers[0].industrialCenter);
 		}
 	}
 
