@@ -6,7 +6,10 @@ using UnityEngine;
 [System.Serializable]
 public class Stats {
 	public float viewRange;
-	public int maxHitpoints;
+    public float viewRangeMin;
+    public float viewRangeMax;
+
+    public int maxHitpoints;
 	public float hitpoints;
 	public float influenceMultiplier;
 	public int paperCost;
@@ -34,9 +37,11 @@ public class WorkerStats {
 
 [System.Serializable]
 public class MilitaryStats {
-	public float minAttackRange;
-	public float maxAttackRange;
-	public float attackStrength;
+	public float attackRange;
+    public float AttackRangeMin;
+    public float AttackRangeMax;
+
+    public float attackStrength;
 	public float attackRate;
 }
 

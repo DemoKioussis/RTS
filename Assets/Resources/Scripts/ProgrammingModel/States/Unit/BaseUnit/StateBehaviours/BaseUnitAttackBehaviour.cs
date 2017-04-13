@@ -7,22 +7,28 @@ using UnityEngine;
 public class BaseUnitAttackBehaviour : BaseUnitBehaviour
 {
 
-  
+
     protected override void enter()
     {
-        if (targetNotNull() && ((RTSObject)(stateMachine.getRTSObject().getTargetInteraction())).isAlive())
+        if (targetNotNull() && ((UnitStateMachine)stateMachine).hasAttackTarget)
         {
-           
-                ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
-                ((UnitStateMachine)stateMachine).fire();
-                Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+            INTERACTION_TYPE interactionType = stateMachine.getRTSObject().getTargetInteraction().getInteractionType();
 
+            if ((interactionType == INTERACTION_TYPE.UNIT || interactionType == INTERACTION_TYPE.BUILDING) && ((RTSObject)(stateMachine.getRTSObject().getTargetInteraction())).isAlive())
+            {
+                {
+
+                    ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
+                    ((UnitStateMachine)stateMachine).fire();
+                    Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+
+                }
+            }
+            else
+            {
+                ((UnitStateMachine)stateMachine).loseTarget();
+            }
         }
-        else
-        {
-            ((UnitStateMachine)stateMachine).lostTarget();   
-        }
-        
     }
     protected override void exit()
     {

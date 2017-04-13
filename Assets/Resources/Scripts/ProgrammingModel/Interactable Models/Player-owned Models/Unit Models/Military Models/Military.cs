@@ -6,7 +6,7 @@ using UnityEngine;
 public class Military : Unit {
 
 	
-	public MilitaryStats militaryStats;
+
 
 
 

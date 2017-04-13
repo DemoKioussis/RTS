@@ -13,7 +13,7 @@ public class UnitStateMachine : BaseStateMachine {
     UnitFindTargetBehaviour findTargetBehaviour;
     Unit unit;
    
-    public bool attack, hasTarget, targetInFireRange, hasFired, atTarget,lookForTarget,defend;
+    public bool attack, hasAttackTarget,hasDestinationTarget, targetInFireRange, hasFired, atTarget,lookForTarget,defend;
 
     private bool reloading;
     override public void Awake() {
@@ -47,26 +47,35 @@ public class UnitStateMachine : BaseStateMachine {
         Interactable target = unit.getTargetInteraction();
         if (target != null)
         {
-            if (getRTSObject().isAlive())
-                setHasTarget(true);
-            // attackDistance
-            if (Vector3.Distance(transform.position, target.transform.position) < ((Military)unit).militaryStats.maxAttackRange)
+            if (target.getInteractionType() == INTERACTION_TYPE.POSITION)
+                setHasDestinationTarget(true);
+            else if (((RTSObject)target).isAlive())
             {
-                setTargetInFireRange(true);
+                if (((RTSObject)target).player != unit.player)
+                {
+                    setHasAttackTarget(true);
+                }
+                else
+                    setHasDestinationTarget(true);
+
+                if (hasAttackTarget && Vector3.Distance(transform.position, target.transform.position) < (unit).militaryStats.attackRange)
+                {
+                    setTargetInFireRange(true);
+                }
+                else
+                    setTargetInFireRange(false);
+
+                if (Vector3.Distance(transform.position, target.transform.position) > moveBehaviour.getArriveRadius())
+                    setAtTarget(false);
             }
             else
-                setTargetInFireRange(false);
+            {
+                loseTarget();
+            }
 
-            if (Vector3.Distance(transform.position, target.transform.position) > moveBehaviour.getArriveRadius())
-                setAtTarget(false);
+
+
         }
-        else {
-               setHasTarget(false);
-        }
-
-
-
-
 
     }
     public Unit getUnit()
@@ -84,15 +93,20 @@ public class UnitStateMachine : BaseStateMachine {
     public void fire() {
         setHasFired(true);
     }
-
-    public void lostTarget() {
+    public void loseTarget() {
+        setHasAttackTarget(false);
+        setHasDestinationTarget(false);
         setAtTarget(false);
+        
     }
 
 
     public void moveTo(Interactable p) {
+        loseTarget();
         getMoveBehaviour().setDestination(p.getPosition());
         setAttack(false);
+        unit.stopDefend();
+        setDefend(false);
     }
 
     public void attackTarget()
@@ -127,7 +141,8 @@ public class UnitStateMachine : BaseStateMachine {
 
     protected override void setInitialState() {
         updateParameter("Attack", attack);
-        updateParameter("HasTarget", hasTarget);
+        updateParameter("HasAttackTarget", hasAttackTarget);
+        updateParameter("HasDestinationTarget", hasDestinationTarget);
         updateParameter("TargetInFireRange", targetInFireRange);
         updateParameter("HasFired", hasFired);
         updateParameter("AtTarget", atTarget);
@@ -140,12 +155,20 @@ public class UnitStateMachine : BaseStateMachine {
             updateParameter("Attack", b);
         }
     }
-    private void setHasTarget(bool b)
+    private void setHasAttackTarget(bool b)
     {
-        if (b != hasTarget)
+        if (b != hasAttackTarget)
         {
-            hasTarget = b;
-            updateParameter("HasTarget", b);
+            hasAttackTarget = b;
+            updateParameter("HasAttackTarget", b);
+        }
+    }
+    private void setHasDestinationTarget(bool b)
+    {
+        if (b != hasDestinationTarget)
+        {
+            hasDestinationTarget = b;
+            updateParameter("HasDestinationTarget", b);
         }
     }
     private void setTargetInFireRange(bool b)

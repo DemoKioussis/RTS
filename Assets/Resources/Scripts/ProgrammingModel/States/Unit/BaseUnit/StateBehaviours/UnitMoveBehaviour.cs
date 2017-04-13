@@ -19,7 +19,8 @@ public class UnitMoveBehaviour : BaseUnitBehaviour
     }
     protected override void enter()
     {
-
+        agent.Resume();
+        Debug.Log("ENTER!!");
         arrived = false;
         if (targetNotNull())
         {
@@ -30,7 +31,7 @@ public class UnitMoveBehaviour : BaseUnitBehaviour
             
         }
         else
-            ((UnitStateMachine)stateMachine).lostTarget();
+            ((UnitStateMachine)stateMachine).loseTarget();
 
 
     }
@@ -38,14 +39,12 @@ public class UnitMoveBehaviour : BaseUnitBehaviour
     {
         
         path = null;
-        agent.ResetPath();
+        agent.Stop();
     }
     protected override void update()
     {
-  
             checkArrived();
             checkMoved();
-        
     }
 
     public void setAgent(NavMeshAgent a) {
@@ -57,7 +56,7 @@ public class UnitMoveBehaviour : BaseUnitBehaviour
     private void checkArrived()
     {
    
-            if (stateMachine.getRTSObject().getTargetInteraction().getInteractionType() == INTERACTION_TYPE.POSITION || targetAlive())
+            if ( stateMachine.getRTSObject().getTargetInteraction().getInteractionType() == INTERACTION_TYPE.POSITION || targetAlive())
             {
                 if (!arrived && distanceTo(getTargetPosition()) < arriveRadius)
                 {

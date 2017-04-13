@@ -12,15 +12,14 @@ public class UnitGroup : RTSObjectGroup {
     Vector3 targetPosition;
     Vector3 center;
     public MapPos emptyMapPos;
+    private bool isDefending = false;
     private int arrivalCount = 0;
     void Awake() {
     }
 
     void Update() {
         center = getCenter();
-        if (Input.GetKeyDown(KeyCode.Keypad0)) {
-            setDefensive();
-        }
+
     }
 
     void OnDrawGizmos() {
@@ -114,9 +113,24 @@ public class UnitGroup : RTSObjectGroup {
         center = getCenter();
         arrivalCount = 0;
     }
-    private void setDefensive() {
-        foreach(Unit u in rtsObjects) {
-            u.defend();
+    public void setDefensive() {
+        if (isDefending)
+        {
+            isDefending = false;
+            Debug.Log("Unsetting Defence Mode");
+            foreach (Unit u in rtsObjects)
+            {
+                u.stopDefend();
+            }
+        }
+        else
+        {
+            isDefending = true;
+            Debug.Log("Setting Defence Mode");
+            foreach (Unit u in rtsObjects)
+            {
+                u.defend();
+            }
         }
     }
 

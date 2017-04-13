@@ -9,7 +9,6 @@ public class PlayerContext : MonoBehaviour {
 	public bool fogOfWar = true;
 	public bool explored = false;
 
-
     public Transform[] buildingTransforms;
     public int playerId;
 	public int teamId;

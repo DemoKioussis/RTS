@@ -26,12 +26,13 @@ public class UnitFindTargetBehaviour : BaseUnitBehaviour
     {
         if (!targetFound) {
             ((UnitStateMachine)stateMachine).stopAttack();
-            ((UnitStateMachine)stateMachine).targetIsInFireRange();
+            ((UnitStateMachine)stateMachine).targetIsNotInRange();
         }
         if (targetFound)
         {
             ((UnitStateMachine)stateMachine).attackTarget();
-            ((UnitStateMachine)stateMachine).targetIsNotInRange();
+            if(Vector3.Distance(stateMachine.getRTSObject().targetInteraction.transform.position,stateMachine.transform.position) <= stateMachine.getRTSObject().stats.viewRange)
+                ((UnitStateMachine)stateMachine).targetIsInFireRange();
         }
 
     }
