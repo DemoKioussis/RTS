@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d86b160838f8d44bffeef86954c884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armyGroupPrefab: {fileID: 1525976192289450, guid: 7bcd2a3c971fc3b4ab83e0666e7bd577,
+    type: 2}
   debugAiStats: 0
   fogOfWar: 1
   explored: 0
@@ -195,4 +197,4 @@ MonoBehaviour:
   activeUnits: []
   activeBuildings: []
   industrialCenter: {fileID: 0}
-  spawnProbability: 0.1
+  minPopForAttack: 4

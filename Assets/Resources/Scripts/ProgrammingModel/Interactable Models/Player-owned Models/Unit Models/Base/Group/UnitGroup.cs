@@ -14,7 +14,9 @@ public class UnitGroup : RTSObjectGroup {
     public MapPos emptyMapPos;
     private bool isDefending = false;
     private int arrivalCount = 0;
+
     void Awake() {
+		
     }
 
     void Update() {

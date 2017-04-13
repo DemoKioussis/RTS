@@ -5,6 +5,8 @@ using UnityEngine;
 
 
 public class PlayerContext : MonoBehaviour {
+	public GameObject armyGroupPrefab;
+
     public bool debugAiStats;
 	public bool fogOfWar = true;
 	public bool explored = false;
@@ -30,7 +32,7 @@ public class PlayerContext : MonoBehaviour {
 	public List<Building> activeBuildings = new List<Building>();
 	public IndustrialCenter industrialCenter = null;
 
-	public float spawnProbability;
+	public int minPopForAttack;
 
 	void Start()
 	{
