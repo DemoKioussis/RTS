@@ -18,7 +18,9 @@ public class MinimapController : MonoBehaviour {
 				                     Input.mousePosition.y - collider.gameObject.transform.position.y);
 			//mouseInMap *= (16 / 9);
 			if (Input.GetMouseButton(0)){
-				playerCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraControls>();
+				if (playerCamera == null) {
+					playerCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraControls> ();
+				}
 				playerCamera.transform.position = new Vector3(mouseInMap.x, playerCamera.transform.position.y, mouseInMap.y);
 			}
 		}
@@ -30,16 +32,8 @@ public class MinimapController : MonoBehaviour {
 		if (playerCamera == null) {
 			playerCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraControls> ();
 		}
-
-		CalculateMinimapRatio();
-
-		UpdatePlayerCameraPosition ();
 	}
 
-	private void CalculateMinimapRatio(){
-		
-	}
 
-	private void UpdatePlayerCameraPosition(){
-	}
+
 }

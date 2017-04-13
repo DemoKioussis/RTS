@@ -32,6 +32,8 @@ public class CameraControls : MonoBehaviour
 	Bounds mapBounds;
 	Collider2D uiBoundary;
 
+	Renderer rectangleMinimap;
+
     // Use this for initialization
     void Start()
     {
@@ -51,6 +53,8 @@ public class CameraControls : MonoBehaviour
 		transform.position = new Vector3 (cameraPos.x, transform.position.y, cameraPos.z);
 
 		uiBoundary = GameObject.FindGameObjectWithTag ("UIBoundary").GetComponent<Collider2D> ();
+
+		rectangleMinimap = GetComponentInChildren <Renderer> ();
     }
 
     // Update is called once per frame
@@ -90,8 +94,9 @@ public class CameraControls : MonoBehaviour
 		else if (mousePosition.y <= (0.0f + offset) || Input.GetKey(KeyCode.S))
 			transform.Translate(Vector3.back * scrollSpeedY * Time.deltaTime, Space.World);
 
-		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, mapBounds.min.x - minBoundOffset, mapBounds.max.x), transform.position.y,
-			Mathf.Clamp (transform.position.z, mapBounds.min.z - minBoundOffset, mapBounds.max.z));
+		transform.position = new Vector3 (Mathf.Clamp (transform.position.x, mapBounds.min.x - minBoundOffset + rectangleMinimap.bounds.size.x, mapBounds.max.x - rectangleMinimap.bounds.size.x / 2),
+			transform.position.y,
+			Mathf.Clamp (transform.position.z, mapBounds.min.z - minBoundOffset - rectangleMinimap.bounds.size.z / 2, mapBounds.max.z - 2 * rectangleMinimap.bounds.size.z));
     }
     
 
