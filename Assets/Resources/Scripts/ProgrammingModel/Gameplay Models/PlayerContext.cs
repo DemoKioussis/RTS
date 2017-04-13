@@ -47,6 +47,12 @@ public class PlayerContext : MonoBehaviour {
 			updatedPrefabs.unitPrefabs [i].GetComponent<Unit> ().player = this;
 			updatedPrefabs.unitPrefabs [i].GetComponent<RTSObject> ().getModel().enabled = false;
 			updatedPrefabs.unitPrefabs [i].GetComponent<RTSObject> ().getModel().material.SetColor ("_Color", playerColor);
+
+			for (int j = 0; j < updatedPrefabs.unitPrefabs [i].transform.childCount; j++)
+				if (updatedPrefabs.unitPrefabs [i].transform.GetChild (j).gameObject.layer == LayerMask.NameToLayer ("MiniMapObject")) {
+					updatedPrefabs.unitPrefabs [i].transform.GetChild (j).GetComponent<Renderer>().material.SetColor ("_Color", playerColor);
+					break;
+				}
 		}
 			
 		for (int i = 0; i < originalPrefabs.buildingPrefabs.Length; i++) {
@@ -54,6 +60,12 @@ public class PlayerContext : MonoBehaviour {
 			updatedPrefabs.buildingPrefabs [i].GetComponent<Building> ().player = this;
 			updatedPrefabs.buildingPrefabs [i].GetComponent<RTSObject> ().getModel().enabled = false;
 			updatedPrefabs.buildingPrefabs [i].GetComponent<RTSObject> ().getModel().material.SetColor ("_Color", playerColor);
+
+			for (int j = 0; j < updatedPrefabs.buildingPrefabs [i].transform.childCount; j++)
+				if (updatedPrefabs.buildingPrefabs [i].transform.GetChild (j).gameObject.layer == LayerMask.NameToLayer ("MiniMapObject")) {
+					updatedPrefabs.buildingPrefabs [i].transform.GetChild (j).GetComponent<Renderer>().material.SetColor ("_Color", playerColor * 0.2f);
+					break;
+				}
 		}
 
 		GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag ("SpawnPoint");
@@ -80,8 +92,6 @@ public class PlayerContext : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// GameLost ();
-
 		// Update
 
 		// SpawnRandomUnits ();

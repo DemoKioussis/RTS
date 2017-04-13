@@ -8,7 +8,7 @@ using System.Text;
 public class SelectionComponent : MonoBehaviour {
 
 	public LayerMask layerMask;
-	bool isSelecting = false;
+	public bool isSelecting = false;
 	Vector3 mousePosition1;
 
 	public GameObject selectionCirclePrefab;
