@@ -41,7 +41,8 @@ public class BaseUnitAttackBehaviour : BaseUnitBehaviour
 
         if (stateMachine.getRTSObject() != null && stateMachine.getRTSObject().isAlive())
         {
-            ((Unit)stateMachine.getRTSObject()).projectile.fire();
+            if(((Unit)stateMachine.getRTSObject()).projectile!=null)
+                ((Unit)stateMachine.getRTSObject()).projectile.fire();
 
             ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
             ((UnitStateMachine)stateMachine).fire();
@@ -52,7 +53,8 @@ public class BaseUnitAttackBehaviour : BaseUnitBehaviour
     private void reload() {
         if(stateMachine.getRTSObject()!=null && stateMachine.getRTSObject().isAlive()){
             ((UnitStateMachine)stateMachine).reload();
-            ((Unit)stateMachine.getRTSObject()).projectile.reload();
+            if (((Unit)stateMachine.getRTSObject()).projectile!=null)
+                ((Unit)stateMachine.getRTSObject()).projectile.reload();
         }
     }
 
