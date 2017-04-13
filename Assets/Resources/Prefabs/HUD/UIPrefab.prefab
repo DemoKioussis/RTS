@@ -1407,7 +1407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630d18f3e808547c0babcc6c3366c04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
   minimapCoordinates: {x: 0, y: 0}
   collider: {fileID: 65540390649909610}
 --- !u!114 &114473617311226300
