@@ -345,7 +345,7 @@ MonoBehaviour:
   targetInteraction: {fileID: 0}
   unitStats:
     moveSpeed: 8
-    trainingTime: 20
+    trainingTime: 15
     populationCost: 1
   militaryStats:
     attackRange: 5

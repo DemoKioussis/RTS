@@ -117,7 +117,7 @@ public class AIStrategy : Strategy {
 
 	float GlueResourceHeuristic ()
 	{
-		return 100.0f / (Mathf.Pow(glueGatheringRate * 10, 2) + paperQuantityInStock + 1);
+		return 100.0f / (Mathf.Pow(glueGatheringRate * 10, 2) + glueQuantityInStock + 1);
 	}
 
 	float ShortRangeHeuristic()
@@ -240,7 +240,7 @@ public class AIStrategy : Strategy {
 		Resource resource = FindClosestResource (resType);
 
 		if (resource != null) {
-			ResourceBuilding rB = MakeNewBuilding<ResourceBuilding> (new Vector3(resource.transform.position.x, resource.getModel().bounds.size.y /2, resource.transform.position.z));
+			ResourceBuilding rB = MakeNewBuilding<ResourceBuilding> (new Vector3(resource.transform.position.x, 0, resource.transform.position.z));
 			if (rB != null) {
 				rB.AssociateToResource (resource);
 				return true;
@@ -349,7 +349,7 @@ public class AIStrategy : Strategy {
 							}
 								
 						if (validPos)
-							return new Vector3(pos.x, bounds.size.y / 2, pos.z);
+							return new Vector3(pos.x, 0, pos.z);
 					}
 				}
 			}
@@ -430,9 +430,12 @@ public class AIStrategy : Strategy {
 		if (army == null && population >= player.minPopForAttack) {
 			army = (GameObject.Instantiate (player.armyGroupPrefab, player.transform) as GameObject).GetComponent<UnitGroup>();
 
-			for (int i = 0; i < player.activeUnits.Count; i++) {
+			for (int i = 0; i < player.activeUnits.Count; i++)
+			{
 				army.Add (player.activeUnits [i]);
 			}
+
+			army.InteractWith (GameContext.currentGameContext.activePlayers[0].industrialCenter);
 		}
 	}
 

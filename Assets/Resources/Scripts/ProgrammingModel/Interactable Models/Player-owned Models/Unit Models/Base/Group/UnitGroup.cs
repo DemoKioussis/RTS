@@ -15,10 +15,6 @@ public class UnitGroup : RTSObjectGroup {
     private bool isDefending = false;
     private int arrivalCount = 0;
 
-    void Awake() {
-		
-    }
-
     void Update() {
         center = getCenter();
 

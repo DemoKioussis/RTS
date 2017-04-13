@@ -10,9 +10,4 @@ public class AIRaidGroup : UnitGroup {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
