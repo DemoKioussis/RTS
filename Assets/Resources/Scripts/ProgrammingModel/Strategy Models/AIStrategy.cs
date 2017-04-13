@@ -16,6 +16,8 @@ public class AIStrategy : Strategy {
 	int populationLimit;
 	float dangerIndex;
 
+	UnitGroup army = null;
+
 	public class WeighedTask
 	{
 		public Activity activity;
@@ -65,6 +67,8 @@ public class AIStrategy : Strategy {
 			if (!wasFulfilled)
 				break;
 		}
+
+		MilitaryManagement ();
 	}
 
 	void UpdateInfluenceMap()
@@ -249,6 +253,7 @@ public class AIStrategy : Strategy {
 	bool ManageShortRange(float importance)
 	{
 		bool setSomething = false;
+		bool buyBuilding = true;
 		for (int i = 0; i < player.activeBuildings.Count; i++) {
 			if(!player.activeBuildings[i].awake)
 			{
@@ -257,24 +262,32 @@ public class AIStrategy : Strategy {
 					TrainingBuilding b = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
 					ShortRangeUnit unit = b.unit.GetComponent<ShortRangeUnit>();
 
-					if (unit != null) {
-						b.SetToAwake ();
-						setSomething = true;
-					}
+					if (b.progress <= 95 || (b.progress > 95 && b.progress < 105 && unit.CheckCost ())) {
+						if (unit != null) {
+							b.SetToAwake ();
+							setSomething = true;
+						}
+					} else
+						buyBuilding = false;
 				}
 			}
 		}
 
-		if (importance / (shortRangeBuildings + 1) < 0.001f)
-			return MakeNewTrainingBuilding ("ShortRangeBuilding");
-		else
-			return setSomething;
+		if (buyBuilding) {
+			if (importance / (shortRangeBuildings + 1) > 0.05f)
+				return MakeNewTrainingBuilding ("ShortRangeBuilding");
+			else if (importance < 0.3f)
+				return false;
+			else
+				return setSomething;
+		} else
+			return false;
 	}
 
 	bool ManageLongRange(float importance)
 	{
 		bool setSomething = false;
-
+		bool buyBuilding = true;
 		for (int i = 0; i < player.activeBuildings.Count; i++) {
 			if(!player.activeBuildings[i].awake)
 			{
@@ -283,18 +296,26 @@ public class AIStrategy : Strategy {
 					TrainingBuilding b = player.activeBuildings [i].GetComponent<TrainingBuilding> ();
 					LongRangeUnit unit = b.unit.GetComponent<LongRangeUnit>();
 
-					if (unit != null) {
-						b.SetToAwake ();
-						setSomething = true;
-					}
+					if (b.progress <= 95 || (b.progress > 95 && b.progress < 105 && unit.CheckCost ())) {
+						if (unit != null) {
+							b.SetToAwake ();
+							setSomething = true;
+						}
+					} else
+						buyBuilding = false;
 				}
 			}
 		}
 
-		if (importance / (shortRangeBuildings + 1) < 0.001f)
-			return MakeNewTrainingBuilding ("LongRangeBuilding");
-		else
-			return setSomething;
+		if (buyBuilding) {
+			if (importance / (shortRangeBuildings + 1) > 0.05f)
+				return MakeNewTrainingBuilding ("LongRangeBuilding");
+			else if (importance < 0.3f)
+				return false;
+			else
+				return setSomething;
+		} else
+			return false;
 	}
 
 	Vector3 GetEmptyArea(Bounds bounds)
@@ -402,6 +423,17 @@ public class AIStrategy : Strategy {
 		}
 
 		return false;
+	}
+
+	void MilitaryManagement()
+	{
+		if (army == null && population >= player.minPopForAttack) {
+			army = (GameObject.Instantiate (player.armyGroupPrefab, player.transform) as GameObject).GetComponent<UnitGroup>();
+
+			for (int i = 0; i < player.activeUnits.Count; i++) {
+				army.Add (player.activeUnits [i]);
+			}
+		}
 	}
 
 	public static int SortByValue(WeighedTask t1, WeighedTask t2)
