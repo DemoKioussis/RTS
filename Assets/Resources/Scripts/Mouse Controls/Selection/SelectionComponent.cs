@@ -188,7 +188,7 @@ public class SelectionComponent : MonoBehaviour {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedUnitGroup.InteractWith (interactable);
 					}
-					if (selectedBuildingGroup != null) {
+                    else if (selectedBuildingGroup != null) {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedBuildingGroup.InteractWith (interactable);
 					}
