@@ -74,6 +74,7 @@ public class UnitGroup : RTSObjectGroup {
             Unit u = (Unit)rtsObjects[0];
             UnitStateMachine s = (UnitStateMachine)u.getStateMachine();
             arriveRadius = Mathf.Sqrt(rtsObjects.Count * s.getMoveBehaviour().getRadius());
+
         }
         center = getCenter();
         arrivalCount = 0;
