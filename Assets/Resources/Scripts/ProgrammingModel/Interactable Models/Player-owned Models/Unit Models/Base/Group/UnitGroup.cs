@@ -7,15 +7,15 @@ public class UnitGroup : RTSObjectGroup {
 	
     public float arriveRadius;
     public float arrivePercent;
-    NavMeshPath path;
-    Interactable currentInteraction;
-    Vector3 targetPosition;
-    Vector3 center;
+    protected NavMeshPath path;
+    protected Interactable currentInteraction;
+    protected Vector3 targetPosition;
+    protected Vector3 center;
     public MapPos emptyMapPos;
     private bool isDefending = false;
     private int arrivalCount = 0;
 
-    void Update() {
+    public virtual void Update() {
         center = getCenter();
 
     }

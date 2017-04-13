@@ -10,4 +10,14 @@ public class AIRaidGroup : UnitGroup {
 	void Start () {
 		
 	}
+
+	public override void Update()
+	{
+		base.Update ();
+
+/*		for (int i = 0; i < rtsObjects.Count; i++)
+			if ((rtsObjects [i].transform.position - center).magnitude > 1.0f) {
+				MapPos mapPos = Insta
+			}*/
+	}
 }
