@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1940ebfba144eb145bf51bb0f16aa8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 0}
 --- !u!135 &1546969509
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -830,41 +831,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20111944646461992, guid: b2e5e17a9a2d3443a94fae9224152568,
-        type: 2}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294871241
-      objectReference: {fileID: 0}
-    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2e5e17a9a2d3443a94fae9224152568, type: 2}

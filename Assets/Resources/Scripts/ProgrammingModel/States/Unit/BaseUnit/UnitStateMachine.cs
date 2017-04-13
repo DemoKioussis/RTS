@@ -84,8 +84,12 @@ public class UnitStateMachine : BaseStateMachine {
     }
 
     public void reload() {
-        Invoke("reloadAction", ((Military)unit).militaryStats.attackRate);
-        unit.projectile.reload();
+        if (unit != null && unit.isAlive())
+        {
+            Invoke("reloadAction", ((Military)unit).militaryStats.attackRate);
+            if(unit.projectile!=null)
+                unit.projectile.reload();
+        }
 
     }
 

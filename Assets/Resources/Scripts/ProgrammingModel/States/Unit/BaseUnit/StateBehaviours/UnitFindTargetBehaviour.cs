@@ -31,7 +31,8 @@ public class UnitFindTargetBehaviour : BaseUnitBehaviour
         if (targetFound)
         {
             ((UnitStateMachine)stateMachine).attackTarget();
-            if(Vector3.Distance(stateMachine.getRTSObject().targetInteraction.transform.position,stateMachine.transform.position) <= stateMachine.getRTSObject().stats.viewRange)
+            
+            if(stateMachine.getRTSObject().targetInteraction!=null && Vector3.Distance(stateMachine.getRTSObject().targetInteraction.transform.position,stateMachine.transform.position) <= stateMachine.getRTSObject().stats.viewRange)
                 ((UnitStateMachine)stateMachine).targetIsInFireRange();
         }
 
@@ -52,7 +53,7 @@ public class UnitFindTargetBehaviour : BaseUnitBehaviour
             {
                 RTSObject rts = (RTSObject)link.getInteractable();
 
-                if (rts != null && rts.player.playerId != playerID) {
+                if (rts != null && rts.player.playerId != playerID && rts.isAlive()) {
                     ((UnitStateMachine)stateMachine).getUnit().getGroup().InteractWith(rts);
                     targetFound = true;
                     return;
