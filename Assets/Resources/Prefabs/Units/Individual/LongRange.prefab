@@ -121,8 +121,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4719042259445186}
-  - component: {fileID: 23555196330804262}
   - component: {fileID: 33171695146815314}
+  - component: {fileID: 23555196330804262}
   m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
@@ -371,7 +371,7 @@ MonoBehaviour:
     paperCost: 30
     glueCost: 60
   player: {fileID: 0}
-  viewRangeCollider: {fileID: 0}
+  viewRangeCollider: {fileID: 114518334990013660}
   objectIsColliding: 0
   isBeingPlaced: 0
   interactable: {fileID: 0}

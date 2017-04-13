@@ -8,7 +8,7 @@ using System.Text;
 public class SelectionComponent : MonoBehaviour {
 
 	public LayerMask layerMask;
-	bool isSelecting = false;
+	public bool isSelecting = false;
 	Vector3 mousePosition1;
 
 	public GameObject selectionCirclePrefab;
@@ -188,7 +188,7 @@ public class SelectionComponent : MonoBehaviour {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedUnitGroup.InteractWith (interactable);
 					}
-					if (selectedBuildingGroup != null) {
+                    else if (selectedBuildingGroup != null) {
 						InteractionSetter (interactable, hitInfo.point);
 						selectedBuildingGroup.InteractWith (interactable);
 					}

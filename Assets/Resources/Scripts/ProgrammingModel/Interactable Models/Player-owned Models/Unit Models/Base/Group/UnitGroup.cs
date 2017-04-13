@@ -62,7 +62,15 @@ public class UnitGroup : RTSObjectGroup {
     }
 
 
-    public override void buildingInteraction(Building b) { }
+    public override void buildingInteraction(Building b) {
+        preInteract(b);
+        setArriveRadius(2);
+        foreach (Unit myUnit in rtsObjects)
+        {
+            myUnit.InteractWith(b);
+            ((UnitStateMachine)(myUnit.getStateMachine())).getMoveBehaviour().setArriveRadius(arriveRadius);
+        }
+    }
     public override void positionInteraction(MapPos p) {
         preInteract(p);
         setPositionTarget(p);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameMap : MonoBehaviour {
 	public bool fogOfWar;
+	bool previousFogOfWar;
 	public GameObject fogOfWarPrefab;
 	public int resolution;
 	public Resource[] resources;
@@ -23,16 +24,30 @@ public class GameMap : MonoBehaviour {
 			{
 				Instantiate (fogOfWarPrefab, new Vector3(i * newScale.x - (mapSize.x - newScale.x) / 2, 0,j * newScale.z - (mapSize.z - newScale.z) / 2), Quaternion.identity).transform.localScale = newScale;
 			}
+
+		previousFogOfWar = fogOfWar;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Camera.current != null) {
-			if (fogOfWar) {
-				Camera.current.cullingMask += 1 << LayerMask.NameToLayer ("FogOfWar");
-			} else {
-				Camera.current.cullingMask -= 1 << LayerMask.NameToLayer ("FogOfWar");
+		if (previousFogOfWar != fogOfWar) {
+			GameObject mainCamObject = GameObject.FindGameObjectWithTag ("MainCamera");
+			if (mainCamObject != null) {
+				Camera mainCam = mainCamObject.GetComponent<Camera> ();
+				if (mainCam != null) {
+					mainCam.cullingMask ^= (1 << LayerMask.NameToLayer ("FogOfWar"));
+				}
 			}
+
+			GameObject miniMapCamObject = GameObject.FindGameObjectWithTag ("MiniMapCamera");
+			if (miniMapCamObject != null) {
+				Camera miniMapCam = miniMapCamObject.GetComponent<Camera> ();
+				if (miniMapCam != null) {
+					miniMapCam.cullingMask ^= (1 << LayerMask.NameToLayer ("FogOfWar"));
+				}
+			}
+
+			previousFogOfWar = fogOfWar;
 		}
 	}
 }

@@ -6,10 +6,13 @@ public class FogOfWar : MonoBehaviour {
 
 	void OnTriggerEnter(Collider c)
 	{
-		PlayerContext p = c.transform.GetComponentInParent<RTSObject> ().player;
-		if (p.strategy is PlayerStrategy)
-			Destroy (gameObject);
-		else
-			Destroy (c.gameObject);
+		RTSObject rts = c.transform.GetComponentInParent<RTSObject> ();
+		if (rts != null) {
+			PlayerContext p = rts.player;
+			if (p != null && p.strategy is PlayerStrategy)
+				Destroy (gameObject);
+			else
+				Destroy (c.gameObject);
+		}
 	}
 }

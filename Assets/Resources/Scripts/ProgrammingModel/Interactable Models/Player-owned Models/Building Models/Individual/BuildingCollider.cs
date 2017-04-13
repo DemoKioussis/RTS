@@ -20,17 +20,15 @@ public class BuildingCollider : MonoBehaviour {
 				// check the type of the building
 				BUILDING_TYPE type = buildingObject.getBuildingType ();
 
-				if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer == LayerMask.NameToLayer ("Resource"))) 
-				{
+				if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer == LayerMask.NameToLayer ("Resource"))) {
 					if (col.gameObject.GetComponent<Resource> ().building == null) {
 						buildingObject.CanBePlaced ();
 						buildingObject.AssignResourcePosition (col.gameObject.GetComponent<Resource> ());
 					}
 				} 
-				else if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer != LayerMask.NameToLayer ("Resource"))) 
-				{
+				else if (type.Equals (BUILDING_TYPE.RESOURCE) && (col.gameObject.layer != LayerMask.NameToLayer ("Resource"))) {
 					buildingObject.CannotBePlaced ();
-				}
+				} 
 				else if (type.Equals (BUILDING_TYPE.TRAINING) && col.gameObject.layer != LayerMask.NameToLayer ("Map")) 
 				{
 					// cursor collided with an object
@@ -53,7 +51,7 @@ public class BuildingCollider : MonoBehaviour {
 					buildingObject.CannotBePlaced ();
 
 					buildingObject.ClearResourcePosition ();
-				} 
+				}  
 				else if (type.Equals (BUILDING_TYPE.TRAINING) && col.gameObject.layer != LayerMask.NameToLayer ("Map")) 
 				{
 					buildingObject.CanBePlaced ();

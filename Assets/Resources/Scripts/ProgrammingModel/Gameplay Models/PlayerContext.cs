@@ -50,7 +50,7 @@ public class PlayerContext : MonoBehaviour {
 
 			for (int j = 0; j < updatedPrefabs.unitPrefabs [i].transform.childCount; j++)
 				if (updatedPrefabs.unitPrefabs [i].transform.GetChild (j).gameObject.layer == LayerMask.NameToLayer ("MiniMapObject")) {
-//					updatedPrefabs.unitPrefabs [i].transform.GetChild (j).GetComponent<RTSObject> ().getModel().material.SetColor ("_Color", playerColor);
+					updatedPrefabs.unitPrefabs [i].transform.GetChild (j).GetComponent<Renderer>().material.SetColor ("_Color", playerColor);
 					break;
 				}
 		}
@@ -63,7 +63,7 @@ public class PlayerContext : MonoBehaviour {
 
 			for (int j = 0; j < updatedPrefabs.buildingPrefabs [i].transform.childCount; j++)
 				if (updatedPrefabs.buildingPrefabs [i].transform.GetChild (j).gameObject.layer == LayerMask.NameToLayer ("MiniMapObject")) {
-//					updatedPrefabs.buildingPrefabs [i].transform.GetChild (j).GetComponent<RTSObject> ().getModel().material.SetColor ("_Color", playerColor * 0.2f);
+					updatedPrefabs.buildingPrefabs [i].transform.GetChild (j).GetComponent<Renderer>().material.SetColor ("_Color", playerColor * 0.2f);
 					break;
 				}
 		}

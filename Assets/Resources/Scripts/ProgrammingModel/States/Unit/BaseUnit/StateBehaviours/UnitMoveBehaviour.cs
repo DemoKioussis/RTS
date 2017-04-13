@@ -20,9 +20,8 @@ public class UnitMoveBehaviour : BaseUnitBehaviour
     protected override void enter()
     {
         agent.Resume();
-        Debug.Log("ENTER!!");
         arrived = false;
-        if (targetNotNull())
+        if (targetNotNull() && targetAlive())
         {
        
                 agent.SetDestination(getTargetPosition());
