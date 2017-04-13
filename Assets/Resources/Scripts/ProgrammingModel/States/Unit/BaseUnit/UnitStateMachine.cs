@@ -85,6 +85,8 @@ public class UnitStateMachine : BaseStateMachine {
 
     public void reload() {
         Invoke("reloadAction", ((Military)unit).militaryStats.attackRate);
+        unit.projectile.reload();
+
     }
 
     private void reloadAction() {
@@ -92,6 +94,7 @@ public class UnitStateMachine : BaseStateMachine {
     }
     public void fire() {
         setHasFired(true);
+        unit.projectile.fire();
     }
     public void loseTarget() {
         setHasAttackTarget(false);

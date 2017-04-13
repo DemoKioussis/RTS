@@ -13,7 +13,10 @@ public class ViewRangeCollider : MonoBehaviour {
     }
 
     public void updateCollider() {
-        col.radius = rtsObject.stats.viewRange;
+        if (col != null)
+        {
+            col.radius = rtsObject.stats.viewRange;
+        }
 
     }
 }
