@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+
 public class PlayerContext : MonoBehaviour {
     public bool debugAiStats;
 	public bool fogOfWar = true;
 	public bool explored = false;
 
-	public int playerId;
+
+    public Transform[] buildingTransforms;
+    public int playerId;
 	public int teamId;
 	public Color playerColor;
-
 	public PrefabDatabase updatedPrefabs;
 
 	public PlayerMap playerMap;

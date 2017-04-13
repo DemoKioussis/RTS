@@ -51,6 +51,7 @@ public class TrainingBuilding : Building{
 		float z = transform.position.z - getModel ().bounds.size.z / 2 - 0.5f - 1f;
 		Vector3 vec = new Vector3 (transform.position.x, transform.position.y, z);
 		GameObject unitObject = unit.InstantiatePlayableObject (vec, player.transform);
+        unitObject.transform.parent = transform;
 
 		if (spawnPointSet) 
 		{
