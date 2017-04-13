@@ -8,7 +8,6 @@ public class BuildingCollider : MonoBehaviour {
 
 	void Start(){
 		buildingObject = gameObject.GetComponentInParent<Building> ();
-		Debug.Log (buildingObject);
 
 	}
 

@@ -17,10 +17,8 @@ public class BaseUnitAttackBehaviour : BaseUnitBehaviour
             if ((interactionType == INTERACTION_TYPE.UNIT || interactionType == INTERACTION_TYPE.BUILDING) && ((RTSObject)(stateMachine.getRTSObject().getTargetInteraction())).isAlive())
             {
                 {
-
-                    ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
-                    ((UnitStateMachine)stateMachine).fire();
-                    Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+                    fire();
+                    
 
                 }
             }
@@ -39,6 +37,12 @@ public class BaseUnitAttackBehaviour : BaseUnitBehaviour
 
     }
 
+    private void fire() {
+        ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
+        ((UnitStateMachine)stateMachine).fire();
+        Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+        stateMachine.gameObject.GetComponentInParent<Rigidbody>().AddForce(new Vector3(0, 100, 0));
+    }
     private void reload() {
         ((UnitStateMachine)stateMachine).reload();
     }
