@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameMap : MonoBehaviour {
+	public bool fogOfWar;
 
 	public Resource[] resources;
 
@@ -10,6 +11,9 @@ public class GameMap : MonoBehaviour {
 	void Start () {
 		resources = GetComponentsInChildren<Resource> ();
 		GameContext.currentGameContext.activeResources = new List<Resource>(resources);
+
+
+
 	}
 	
 	// Update is called once per frame

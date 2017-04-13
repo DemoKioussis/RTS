@@ -13,7 +13,9 @@ public class UnitGroup : RTSObjectGroup {
     Vector3 center;
     public MapPos emptyMapPos;
     private int arrivalCount = 0;
+
     void Awake() {
+		
     }
 
     void Update() {
