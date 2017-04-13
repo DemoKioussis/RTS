@@ -41911,6 +41911,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -41941,6 +41943,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -41971,6 +41975,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42025,6 +42031,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42055,6 +42063,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42133,6 +42143,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42163,6 +42175,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42241,6 +42255,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42271,6 +42287,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42301,6 +42319,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42355,6 +42375,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42397,6 +42419,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42440,6 +42464,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42482,6 +42508,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42512,6 +42540,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42542,6 +42572,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42584,6 +42616,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42662,6 +42696,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42704,6 +42740,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42734,6 +42772,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42764,6 +42804,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42818,6 +42860,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42872,6 +42916,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42902,6 +42948,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42932,6 +42980,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -42998,6 +43048,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43028,6 +43080,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43070,6 +43124,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43100,6 +43156,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43130,6 +43188,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43160,6 +43220,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43190,6 +43252,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43232,6 +43296,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43298,6 +43364,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43328,6 +43396,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43370,6 +43440,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43436,6 +43508,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43478,6 +43552,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43520,6 +43596,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43562,6 +43640,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43592,6 +43672,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43634,6 +43716,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43664,6 +43748,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43706,6 +43792,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43736,6 +43824,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43778,6 +43868,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43808,6 +43900,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43862,6 +43956,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43904,6 +44000,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43934,6 +44032,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43964,6 +44064,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -43994,6 +44096,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44024,6 +44128,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44054,6 +44160,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44084,6 +44192,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44126,6 +44236,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44156,6 +44268,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44186,6 +44300,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44216,6 +44332,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44246,6 +44364,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44276,6 +44396,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44306,6 +44428,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44336,6 +44460,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44366,6 +44492,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44408,6 +44536,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44450,6 +44580,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44492,6 +44624,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44522,6 +44656,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44564,6 +44700,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44606,6 +44744,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44684,6 +44824,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44787,6 +44929,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44817,6 +44961,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44847,6 +44993,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44877,6 +45025,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44907,6 +45057,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44937,6 +45089,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44967,6 +45121,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -44997,6 +45153,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45027,6 +45185,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45057,6 +45217,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45099,6 +45261,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45141,6 +45305,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45231,6 +45397,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45261,6 +45429,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45291,6 +45461,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45333,6 +45505,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45375,6 +45549,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45417,6 +45593,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45447,6 +45625,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45477,6 +45657,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45507,6 +45689,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45537,6 +45721,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45591,6 +45777,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45621,6 +45809,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45651,6 +45841,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45693,6 +45885,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45723,6 +45917,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45777,6 +45973,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45807,6 +46005,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45873,6 +46073,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45903,6 +46105,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45933,6 +46137,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -45963,6 +46169,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46041,6 +46249,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46095,6 +46305,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46149,6 +46361,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46215,6 +46429,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46269,6 +46485,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46299,6 +46517,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46341,6 +46561,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46371,6 +46593,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46401,6 +46625,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46431,6 +46657,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46485,6 +46713,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46551,6 +46781,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46593,6 +46825,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46623,6 +46857,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46665,6 +46901,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46695,6 +46933,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46725,6 +46965,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46755,6 +46997,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46797,6 +47041,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46827,6 +47073,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46857,6 +47105,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46947,6 +47197,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -46977,6 +47229,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47019,6 +47273,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47049,6 +47305,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47091,6 +47349,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47121,6 +47381,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47175,6 +47437,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47241,6 +47505,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47271,6 +47537,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47325,6 +47593,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47355,6 +47625,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47385,6 +47657,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47439,6 +47713,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47481,6 +47757,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47523,6 +47801,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47565,6 +47845,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47595,6 +47877,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47625,6 +47909,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47667,6 +47953,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47697,6 +47985,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47763,6 +48053,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47793,6 +48085,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47835,6 +48129,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47865,6 +48161,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47895,6 +48193,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -47974,6 +48274,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48016,6 +48318,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48082,6 +48386,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48112,6 +48418,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48142,6 +48450,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48172,6 +48482,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48202,6 +48514,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48232,6 +48546,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48274,6 +48590,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48341,6 +48659,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48371,6 +48691,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48401,6 +48723,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48431,6 +48755,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48485,6 +48811,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48527,6 +48855,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48581,6 +48911,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48647,6 +48979,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48677,6 +49011,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48731,6 +49067,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48785,6 +49123,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48815,6 +49155,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48881,6 +49223,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48923,6 +49267,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -48953,6 +49299,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49007,6 +49355,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49085,6 +49435,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49127,6 +49479,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49169,6 +49523,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49199,6 +49555,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49229,6 +49587,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49271,6 +49631,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49313,6 +49675,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49343,6 +49707,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49385,6 +49751,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49415,6 +49783,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49457,6 +49827,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49523,6 +49895,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49565,6 +49939,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49620,6 +49996,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49650,6 +50028,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49716,6 +50096,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49770,6 +50152,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49848,6 +50232,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49878,6 +50264,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49920,6 +50308,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49962,6 +50352,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -49992,6 +50384,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50058,6 +50452,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50088,6 +50484,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50142,6 +50540,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50196,6 +50596,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50262,6 +50664,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50292,6 +50696,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50322,6 +50728,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50364,6 +50772,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50394,6 +50804,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50448,6 +50860,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50490,6 +50904,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50520,6 +50936,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50550,6 +50968,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50580,6 +51000,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50610,6 +51032,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50652,6 +51076,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50694,6 +51120,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50724,6 +51152,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50754,6 +51184,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50808,6 +51240,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50862,6 +51296,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50940,6 +51376,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -50970,6 +51408,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51012,6 +51452,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51066,6 +51508,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51108,6 +51552,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51150,6 +51596,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51180,6 +51628,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51234,6 +51684,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51288,6 +51740,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51342,6 +51796,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51384,6 +51840,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51450,6 +51908,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51492,6 +51952,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51522,6 +51984,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51552,6 +52016,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51582,6 +52048,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51612,6 +52080,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51654,6 +52124,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51708,6 +52180,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51762,6 +52236,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51792,6 +52268,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51822,6 +52300,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51888,6 +52368,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51930,6 +52412,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -51972,6 +52456,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52050,6 +52536,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52092,6 +52580,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52122,6 +52612,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52152,6 +52644,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52182,6 +52676,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52248,6 +52744,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52290,6 +52788,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52320,6 +52820,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52362,6 +52864,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52392,6 +52896,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52422,6 +52928,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52464,6 +52972,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52494,6 +53004,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52536,6 +53048,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52566,6 +53080,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52596,6 +53112,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52650,6 +53168,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52680,6 +53200,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52746,6 +53268,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52770,6 +53294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37eafa64e1ca64b4189b17af3cfa07bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fogOfWar: 0
+  fogOfWarPrefab: {fileID: 1067264979285932, guid: 5aab89b82be62ce42affea69f25ccb2d,
+    type: 2}
+  resolution: 100
   resources: []
 --- !u!114 &114649148780853432
 MonoBehaviour:
@@ -52788,6 +53316,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52854,6 +53384,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52896,6 +53428,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -52950,6 +53484,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53016,6 +53552,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53082,6 +53620,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53124,6 +53664,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53154,6 +53696,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53244,6 +53788,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53286,6 +53832,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53352,6 +53900,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53394,6 +53944,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53460,6 +54012,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53490,6 +54044,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53568,6 +54124,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53598,6 +54156,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53628,6 +54188,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53658,6 +54220,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53724,6 +54288,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53754,6 +54320,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53784,6 +54352,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53838,6 +54408,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53868,6 +54440,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53898,6 +54472,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53940,6 +54516,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -53982,6 +54560,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54012,6 +54592,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54078,6 +54660,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54132,6 +54716,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54162,6 +54748,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54216,6 +54804,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54246,6 +54836,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54300,6 +54892,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54342,6 +54936,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54384,6 +54980,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54426,6 +55024,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54480,6 +55080,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54510,6 +55112,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54552,6 +55156,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54582,6 +55188,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54636,6 +55244,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54666,6 +55276,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54708,6 +55320,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54738,6 +55352,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54768,6 +55384,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54846,6 +55464,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54900,6 +55520,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54930,6 +55552,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -54972,6 +55596,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55014,6 +55640,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55044,6 +55672,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55074,6 +55704,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55104,6 +55736,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55146,6 +55780,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55188,6 +55824,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55242,6 +55880,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55272,6 +55912,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55326,6 +55968,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55356,6 +56000,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55422,6 +56068,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55476,6 +56124,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55518,6 +56168,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55572,6 +56224,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55674,6 +56328,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55764,6 +56420,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55794,6 +56452,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55836,6 +56496,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55866,6 +56528,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55896,6 +56560,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -55962,6 +56628,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56028,6 +56696,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56070,6 +56740,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56100,6 +56772,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56130,6 +56804,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56160,6 +56836,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56202,6 +56880,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56244,6 +56924,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56298,6 +56980,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56352,6 +57036,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56395,6 +57081,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56425,6 +57113,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56467,6 +57157,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56497,6 +57189,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56527,6 +57221,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56569,6 +57265,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56599,6 +57297,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56629,6 +57329,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56659,6 +57361,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56689,6 +57393,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56755,6 +57461,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56797,6 +57505,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56827,6 +57537,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56881,6 +57593,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56923,6 +57637,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56953,6 +57669,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -56983,6 +57701,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57025,6 +57745,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57103,6 +57825,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57133,6 +57857,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57163,6 +57889,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57205,6 +57933,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57259,6 +57989,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57289,6 +58021,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57343,6 +58077,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57373,6 +58109,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57403,6 +58141,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57469,6 +58209,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57511,6 +58253,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57553,6 +58297,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57583,6 +58329,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57613,6 +58361,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57643,6 +58393,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57769,6 +58521,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57811,6 +58565,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57841,6 +58597,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57871,6 +58629,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57901,6 +58661,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57931,6 +58693,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -57986,6 +58750,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -58052,6 +58818,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -58082,6 +58850,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -58124,6 +58894,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -58190,6 +58962,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -58220,6 +58994,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0
@@ -58262,6 +59038,8 @@ MonoBehaviour:
   building: {fileID: 0}
   stats:
     viewRange: 0
+    viewRangeMin: 0
+    viewRangeMax: 0
     maxHitpoints: 0
     hitpoints: 0
     influenceMultiplier: 0

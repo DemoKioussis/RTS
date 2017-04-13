@@ -39,7 +39,6 @@ public class GameContext : MonoBehaviour {
 			activePlayers.Add (allPlayers [allPlayers.Count - 1]);
 			activePlayers [allPlayers.Count - 1].Init (i, i, playerType[i], true, false);
 		}
-//		SetSpawnables ();
 	}
 
 	void Update() {
