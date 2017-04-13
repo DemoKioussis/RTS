@@ -4,22 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // use this to set what happens when we are in state
-public class BaseUnitAttackBehaviour : BaseStateBehaviour
+public class BaseUnitAttackBehaviour : BaseUnitBehaviour
 {
 
-  
+
     protected override void enter()
     {
-        if (stateMachine.getRTSObject().getTargetInteraction() != null || ((RTSObject)(stateMachine.getRTSObject().getTargetInteraction())).isAlive())
+        if (targetNotNull() && ((UnitStateMachine)stateMachine).hasAttackTarget)
         {
-            ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
-            ((UnitStateMachine)stateMachine).setHasFired(true);
-            Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
-        }
-        else
-        {
-            ((UnitStateMachine)stateMachine).setHasTarget(false);
-            Debug.Log("NO TARGET");
+            INTERACTION_TYPE interactionType = stateMachine.getRTSObject().getTargetInteraction().getInteractionType();
+
+            if ((interactionType == INTERACTION_TYPE.UNIT || interactionType == INTERACTION_TYPE.BUILDING) && ((RTSObject)(stateMachine.getRTSObject().getTargetInteraction())).isAlive())
+            {
+                {
+                    fire();
+                    
+
+                }
+            }
+            else
+            {
+                ((UnitStateMachine)stateMachine).loseTarget();
+            }
         }
     }
     protected override void exit()
@@ -31,16 +37,15 @@ public class BaseUnitAttackBehaviour : BaseStateBehaviour
 
     }
 
+    private void fire() {
+        ((RTSObject)stateMachine.getRTSObject().getTargetInteraction()).takeDamage((((Military)stateMachine.getRTSObject()).militaryStats.attackStrength));
+        ((UnitStateMachine)stateMachine).fire();
+        Debug.DrawLine(stateMachine.getRTSObject().getTargetInteraction().getPosition(), stateMachine.transform.position, Color.green);
+        stateMachine.gameObject.GetComponentInParent<Rigidbody>().AddForce(new Vector3(0, 100, 0));
+    }
     private void reload() {
         ((UnitStateMachine)stateMachine).reload();
     }
 
-    public void setAttackTarget() {
-        ((UnitStateMachine)stateMachine).setAttack(true);
-    }
-    public void stopAttack() {
-        ((UnitStateMachine)stateMachine).setAttack(false);
-
-    }
 
 }

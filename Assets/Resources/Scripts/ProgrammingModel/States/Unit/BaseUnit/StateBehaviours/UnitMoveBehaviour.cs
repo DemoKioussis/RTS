@@ -4,42 +4,47 @@ using UnityEngine;
 using UnityEngine.AI;
 
 // use this to set what happens when we are in state
-public class UnitMoveBehaviour : BaseStateBehaviour
+public class UnitMoveBehaviour : BaseUnitBehaviour
 {
     private NavMeshAgent agent;
     private NavMeshPath path;
 
-    float arriveRadius;
+    public float arriveRadius;
     bool arrived;
     public float movementDelta;
     Vector3 lastPosition;
     Vector3 origionalPosition;
-    void  awake() {
+    public override void awake() {
         agent.speed = ((Unit)stateMachine.getRTSObject()).unitStats.moveSpeed;
     }
     protected override void enter()
     {
-
+        agent.Resume();
+        Debug.Log("ENTER!!");
         arrived = false;
-
-     //   if(path==null)
-        agent.SetDestination(getTargetPosition());
-        lastPosition = getTargetPosition();
-        origionalPosition = lastPosition;
-    //    else
-   //         agent.SetPath(path);
+        if (targetNotNull())
+        {
+       
+                agent.SetDestination(getTargetPosition());
+                lastPosition = getTargetPosition();
+                origionalPosition = lastPosition;
+            
+        }
+        else
+            ((UnitStateMachine)stateMachine).loseTarget();
 
 
     }
     protected override void exit()
     {
+        
         path = null;
-        agent.ResetPath();
+        agent.Stop();
     }
     protected override void update()
     {
-        checkArrived();
-        checkMoved();
+            checkArrived();
+            checkMoved();
     }
 
     public void setAgent(NavMeshAgent a) {
@@ -50,18 +55,29 @@ public class UnitMoveBehaviour : BaseStateBehaviour
     }
     private void checkArrived()
     {
-        if (!arrived && distanceTo(getTargetPosition()) < arriveRadius)
-        {
-            arrived = true;
-            ((Unit)stateMachine.getRTSObject()).getGroup().unitArrived();
-        }
+   
+            if ( stateMachine.getRTSObject().getTargetInteraction().getInteractionType() == INTERACTION_TYPE.POSITION || targetAlive())
+            {
+                if (!arrived && distanceTo(getTargetPosition()) < arriveRadius)
+                {
+                    arrived = true;
+                    ((Unit)stateMachine.getRTSObject()).getGroup().unitArrived();
+                }
+            }
+        
     }
 
     private void checkMoved() {
-        if (Vector3.Distance(lastPosition, getTargetPosition()) > movementDelta) {
-            lastPosition = getTargetPosition();
-            setDestination(lastPosition);
-        }
+   
+            if (targetNotNull())
+            {
+                if (Vector3.Distance(lastPosition, getTargetPosition()) > movementDelta)
+                {
+                    lastPosition = getTargetPosition();
+                    setDestination(lastPosition);
+                }
+            }
+        
     }
 
     public void setArriveRadius(float r) {

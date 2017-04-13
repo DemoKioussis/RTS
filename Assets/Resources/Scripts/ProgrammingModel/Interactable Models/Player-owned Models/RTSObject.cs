@@ -10,7 +10,7 @@ public abstract class RTSObject : Interactable {
 	public Stats stats;
 	protected bool playerSetUp = false;
 	public PlayerContext player = null;
-
+    public ViewRangeCollider viewRangeCollider;
 	public bool objectIsColliding;
 	public bool isBeingPlaced;
     private bool alive = true;
@@ -18,12 +18,14 @@ public abstract class RTSObject : Interactable {
 	public GameObject selectionCircle;
     MeshRenderer model;
     BaseStateMachine stateDFA;
-    Interactable targetInteraction;
-    void Awake()
+    public Interactable targetInteraction;
+    protected virtual void Awake()
 	{
-		interactable = GetComponent<Interactable>();
+        interactable = GetComponent<Interactable>();
+
         model = GetComponentInChildren<MeshRenderer>();
         stateDFA = GetComponentInChildren<BaseStateMachine>();
+        stats.viewRange = stats.viewRangeMin;
     }
 
 	Activity currentActivity;
@@ -63,6 +65,7 @@ public abstract class RTSObject : Interactable {
         if (alive)
         {
             alive = false;
+            stateDFA.setAlive(false);
         }
     }
     protected virtual void Heal(int hp)
@@ -144,4 +147,10 @@ public abstract class RTSObject : Interactable {
     public bool isAlive() {
         return alive;
     }
+
+    public void updateViewRangeCollider() {
+        if(viewRangeCollider!=null)
+            viewRangeCollider.updateCollider();
+    }
 }
+

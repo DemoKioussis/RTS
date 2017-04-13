@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // use this to set what happens when we are in state
-public class BaseUnitIdleBehaviour : BaseStateBehaviour
+public class BaseUnitIdleBehaviour : BaseUnitBehaviour
 {
 
     protected override void enter()
     {
-
     }
     protected override void exit()
     {
@@ -16,6 +15,7 @@ public class BaseUnitIdleBehaviour : BaseStateBehaviour
     }
     protected override void update()
     {
+
 
     }
 

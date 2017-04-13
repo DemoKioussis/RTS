@@ -84,9 +84,11 @@ public class AIStrategy : Strategy {
 				if (j != player.playerId) {
 					PlayerContext p = game.activePlayers [j];
 					for (int k = 0; k < p.activeUnits.Count; k++)
-						magnitude += p.activeUnits [k].Influence() / (1 + (vertices [i] - p.activeUnits [k].transform.position).sqrMagnitude);
-					for (int k = 0; k < p.activeBuildings.Count; k++)
-						magnitude += p.activeBuildings [k].Influence() / (1 + (vertices [i] - p.activeBuildings [k].transform.position).sqrMagnitude);
+                        if(p.activeUnits[k]!=null) // i added this because p.activeUnits[k] becomes null for dead units 
+                            magnitude += p.activeUnits [k].Influence() / (1 + (vertices [i] - p.activeUnits [k].transform.position).sqrMagnitude);
+                    for (int k = 0; k < p.activeBuildings.Count; k++)
+                        if (p.activeBuildings[k] != null)  // i added this because p.activeBuilings[k] becomes null for dead building 
+						    magnitude += p.activeBuildings [k].Influence() / (1 + (vertices [i] - p.activeBuildings [k].transform.position).sqrMagnitude);
 				}
 			}
 			colors [i] = new Color (1.0f, 1.0f, 1.0f) * magnitude / 50.0f;

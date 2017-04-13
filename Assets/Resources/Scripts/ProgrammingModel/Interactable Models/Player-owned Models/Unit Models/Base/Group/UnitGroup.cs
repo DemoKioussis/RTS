@@ -12,6 +12,7 @@ public class UnitGroup : RTSObjectGroup {
     Vector3 targetPosition;
     Vector3 center;
     public MapPos emptyMapPos;
+    private bool isDefending = false;
     private int arrivalCount = 0;
 
     void Awake() {
@@ -20,6 +21,7 @@ public class UnitGroup : RTSObjectGroup {
 
     void Update() {
         center = getCenter();
+
     }
 
     void OnDrawGizmos() {
@@ -42,7 +44,7 @@ public class UnitGroup : RTSObjectGroup {
     }
     private void stopAgents() {
         foreach (Unit u in rtsObjects) {
-            ((UnitStateMachine)u.getStateMachine()).setAtTarget(true);
+            ((UnitStateMachine)u.getStateMachine()).arrived();
         }
     }
     void preInteract(Interactable i) {
@@ -67,38 +69,71 @@ public class UnitGroup : RTSObjectGroup {
     public override void buildingInteraction(Building b) { }
     public override void positionInteraction(MapPos p) {
         preInteract(p);
-        MapPos temp = Instantiate(emptyMapPos, p.getPosition(), Quaternion.identity);
-        temp.setPosition(p.getPosition());
+        setPositionTarget(p);
+       
+    }
+    public override void unitInteraction(Unit u) {
+        preInteract(u);
+        setArriveRadius(2);
+        foreach (Unit myUnit in rtsObjects)
+        {
+            myUnit.InteractWith(u);
+            ((UnitStateMachine)(myUnit.getStateMachine())).getMoveBehaviour().setArriveRadius(arriveRadius);
+        }
+
+    }
+    public override void resourceInteraction(Resource r) { }
+
+    private void setPositionTarget(Interactable p) {
+        Interactable temp = Instantiate(emptyMapPos, p.getPosition(), Quaternion.identity);
+        ((MapPos)temp).setPosition(p.getPosition());
         temp.transform.parent = transform;
         currentInteraction = temp;
-        if (rtsObjects.Count > 0)
-        {
-            Unit u = (Unit)rtsObjects[0];
-            UnitStateMachine s = (UnitStateMachine)u.getStateMachine();
-            arriveRadius = Mathf.Sqrt(rtsObjects.Count * s.getMoveBehaviour().getRadius());
-        }
-        center = getCenter();
-        arrivalCount = 0;
+
+        setArriveRadius(1);
+
         path = new NavMeshPath();
         targetPosition = p.getPosition();
         NavMesh.CalculatePath(center, p.getPosition(), NavMesh.AllAreas, path);
         foreach (Unit u in rtsObjects)
         {
-
             UnitStateMachine s = (UnitStateMachine)u.getStateMachine();
             s.getMoveBehaviour().setPath(path);
             s.getMoveBehaviour().setArriveRadius(arriveRadius);
-            u.InteractWith(temp);  
+            u.InteractWith(temp);
         }
     }
-    public override void unitInteraction(Unit u) {
-        preInteract(u);
-        foreach (Unit myUnit in rtsObjects)
-        {
-            myUnit.InteractWith(u);
-        }
 
+    private void setArriveRadius(float scale) {
+        if (rtsObjects.Count > 0)
+        {
+            Unit u = (Unit)rtsObjects[0];
+            UnitStateMachine s = (UnitStateMachine)u.getStateMachine();
+            arriveRadius = Mathf.Sqrt(rtsObjects.Count * s.getMoveBehaviour().getRadius());
+            arriveRadius *= scale;
+        }
+        center = getCenter();
+        arrivalCount = 0;
     }
-    public override void resourceInteraction(Resource r) { }
+    public void setDefensive() {
+        if (isDefending)
+        {
+            isDefending = false;
+            Debug.Log("Unsetting Defence Mode");
+            foreach (Unit u in rtsObjects)
+            {
+                u.stopDefend();
+            }
+        }
+        else
+        {
+            isDefending = true;
+            Debug.Log("Setting Defence Mode");
+            foreach (Unit u in rtsObjects)
+            {
+                u.defend();
+            }
+        }
+    }
 
 }

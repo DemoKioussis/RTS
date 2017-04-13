@@ -5,13 +5,18 @@ using UnityEngine;
 public abstract class BaseStateBehaviour : StateMachineBehaviour {
 
     protected BaseStateMachine stateMachine;
+    private int updateOffsetCounter;
+    int updateOffset;
+
     public virtual void awake() {
 
     }
     public void setStateMachine(BaseStateMachine s) {
         stateMachine = s;
     }
-
+    public void setUpdateOffset(int i) {
+        updateOffset = i;
+    }
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enter();
@@ -19,7 +24,11 @@ public abstract class BaseStateBehaviour : StateMachineBehaviour {
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        update();
+        if (updateOffsetCounter++ > updateOffset)
+        {
+            updateOffsetCounter = 0;
+            update();
+        }
     }
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

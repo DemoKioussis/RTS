@@ -58,7 +58,6 @@ public abstract class Building : RTSObject {
 	}
 
 	public void SetToAwake(){ 
-		Debug.Log(gameObject.name + " is Awake");
 		awake = true;
 	}
 
