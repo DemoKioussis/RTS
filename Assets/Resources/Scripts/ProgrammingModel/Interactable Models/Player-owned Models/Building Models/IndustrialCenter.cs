@@ -64,4 +64,10 @@ public class IndustrialCenter : Building {
 	public override BUILDING_TYPE getBuildingType(){
 		return BUILDING_TYPE.TOWNCENTER;
 	}
+
+	void OnDestroy()
+	{
+		if (player != null && GameContext.currentGameContext != null)
+			GameContext.currentGameContext.activePlayers.Remove (player);
+	}
 }

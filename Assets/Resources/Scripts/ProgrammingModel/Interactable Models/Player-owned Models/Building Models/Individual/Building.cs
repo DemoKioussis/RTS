@@ -119,8 +119,14 @@ public abstract class Building : RTSObject {
 	}
     protected override void die()
     {
-        player.activeBuildings.Remove(this);
-        GameObject.Destroy(this.gameObject, 0.2f);
+        if (isAlive())
+        {
+            alive = false;
+            player.activeBuildings.Remove(this);
+
+            GameObject.Destroy(this.gameObject, 0.2f);
+        }
+       
 
     }
     public override INTERACTION_TYPE getInteractionType()

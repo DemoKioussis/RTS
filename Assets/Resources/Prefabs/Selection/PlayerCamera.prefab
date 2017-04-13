@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.1
-  rotationSpeed: 4
+  rotationSpeed: 0
   smoothness: 0.85
   scrollSpeedX: 25
   scrollSpeedY: 25

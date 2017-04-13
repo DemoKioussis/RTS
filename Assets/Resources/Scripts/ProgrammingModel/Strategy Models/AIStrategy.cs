@@ -46,7 +46,7 @@ public class AIStrategy : Strategy {
 
 	public override void RealizeStrategy()
 	{
-		UpdateInfluenceMap ();
+//		UpdateInfluenceMap ();
 
 		UpdateStateVariables ();
 

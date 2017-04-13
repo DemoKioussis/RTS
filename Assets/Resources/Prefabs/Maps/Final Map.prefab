@@ -51825,6 +51825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fogOfWar: 0
+  fogOfWarPrefab: {fileID: 1067264979285932, guid: 5aab89b82be62ce42affea69f25ccb2d,
+    type: 2}
+  resolution: 100
   resources: []
 --- !u!114 &114649148780853432
 MonoBehaviour:
