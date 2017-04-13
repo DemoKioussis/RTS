@@ -836,6 +836,36 @@ Prefab:
       propertyPath: m_CullingMask.m_Bits
       value: 4294871241
       objectReference: {fileID: 0}
+    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224305836525562496, guid: b2e5e17a9a2d3443a94fae9224152568,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2e5e17a9a2d3443a94fae9224152568, type: 2}
   m_IsPrefabParent: 0
